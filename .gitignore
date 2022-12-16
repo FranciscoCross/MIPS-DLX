@@ -1,0 +1,5 @@
+*.cache
+*user_files
+*.hw
+*.sim
+
