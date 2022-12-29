@@ -19,7 +19,7 @@ module imem#(
     reg [NB_DATA-1 : 0] MEM[MEM_SIZEB - 1 : 0];  //Register of memory 
     reg [NB_DATA-1 : 0] data;             //Local variable to store the latest register pointed at
       
-    always@(posedge i_clk)
+    always @(posedge i_clk)
         begin
             if(i_en_write)
                 MEM[i_addr] <= i_data;

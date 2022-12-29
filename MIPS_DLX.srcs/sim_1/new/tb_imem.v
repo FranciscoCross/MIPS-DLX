@@ -10,11 +10,11 @@ module tb_imem;
     reg EN_W;
     reg EN_R;
     
-   wire[N_BITS - 1 : 0] DATA_O;
+    wire[N_BITS - 1 : 0] DATA_O;
 
     //for clock pulse
-    reg clk;
-    
+    reg clk = 0;
+ 
     imem #(
         .MEM_SIZEB(MEM_SIZE),
         .NB_DATA(N_BITS)
@@ -27,17 +27,17 @@ module tb_imem;
         .i_data(DATA_I),
         .o_data(DATA_O)
     );
+    
     always #1 clk = ~clk; // # < timeunit > delay
        initial begin
            // $dumpfile("tb_imem.vcd");
             //Specify variables to be dumped, w/o any argument it dumps all variables 
           //  $dumpvars;
-           
 
             #0
             EN_W = 1;
             EN_R = 0;
-            ADDR_I= 32'b0;
+            ADDR_I= 6'b0;
             DATA_I= 32'b1010;
             
             #10
