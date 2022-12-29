@@ -1,0 +1,6 @@
+*.cache
+*user_files
+*.hw
+*.sim
+MIPS_DLX.runs
+
