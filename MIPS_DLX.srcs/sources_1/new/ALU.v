@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+`ifndef __alu
+`define __alu
+
+
 module ALU
     #( //For Parameters
         parameter N_BITS = 8
@@ -45,3 +49,5 @@ module ALU
     end 
    
 endmodule
+
+`endif
