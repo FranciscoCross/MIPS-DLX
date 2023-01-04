@@ -8,20 +8,20 @@ module alu_control
 
 	)
 	(
-		input wire [NB_FUNCTION-1:0] function_i,
-		input wire [NB_ALU_OP-1:0]   alu_op_i,
-		output wire [NB_OP_ALU-1:0] alu_op_o
+		input wire [NB_FUNCTION-1:0] i_function,
+		input wire [NB_ALU_OP-1:0]   i_alu_op,
+		output wire [NB_OP_ALU-1:0]  o_alu_op
 	);
 
 	reg [NB_OP_ALU-1:0] reg_alu_op;
-	assign alu_op_o = reg_alu_op;
+	assign o_alu_op = reg_alu_op;
 
 	always @(*)
 		begin
-			case (alu_op_i)
+			case (i_alu_op)
 				`R_ALUCODE://R-type
 					begin
-						case (function_i)
+						case (i_function)
 							`SLL_FUNCTION    : reg_alu_op    = `SLL; 
 							`SRL_FUNCTION    : reg_alu_op    = `SRL; 
 							`SRA_FUNCTION    : reg_alu_op    = `SRA; 

@@ -4,11 +4,15 @@ module tb_alu_control;
     localparam NB_FUNCTION = 6;
     localparam NB_ALU_OP = 3;
     localparam NB_OP_ALU = 4;
+    localparam NB_DATA = 8;
         
-    wire [NB_FUNCTION-1:0]  function_i;
-    wire [NB_ALU_OP-1:0]   alu_op_i;
-    
+    reg [NB_FUNCTION-1:0] i_function;
+    reg [NB_ALU_OP-1:0]   i_alu_op;
+    reg [NB_DATA - 1 : 0] A;
+    reg [NB_DATA - 1 : 0] B;
+
     wire [3:0] cod_op_alu;
+    wire[NB_DATA - 1 : 0] RES;
 
     //for clock pulse
     reg clk = 0;
@@ -16,9 +20,9 @@ module tb_alu_control;
     //Instancio alu_control
     alu_control inst_alu_control
     (
-        .function_i(function_i),
-        .alu_op_i(alu_op_i),
-        .alu_op_o(cod_op_alu)
+        .i_function(i_function),
+        .i_alu_op(i_alu_op),
+        .o_alu_op(cod_op_alu)
     );
     
     //Instancio ALU
@@ -32,19 +36,20 @@ module tb_alu_control;
     
     always #1 clk = ~clk; // # < timeunit > delay
        initial begin
-
-            #0
-            EN_W = 1;
-            EN_R = 0;
-            ADDR_I= 6'b0;
-            DATA_I= 32'b1010;
-            
-            #10
-            EN_W = 0;
-            EN_R = 1;
-            ADDR_I= 6'b0;
-            #12
-            $finish;
- 
+        #0
+        clk = 1;
+        A = 0;
+        B = 0;
+        i_alu_op = 0;
+        i_function = 0;
+        #10
+        A = 3;
+        B = 3;
+        //R TYPE Instruction
+        i_alu_op = `R_ALUCODE;
+        //Set ALU fcn
+        i_function = `ADDU_FUNCTION;
+        #10
+        $finish;
         end
 endmodule
