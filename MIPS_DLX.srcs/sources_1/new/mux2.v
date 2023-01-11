@@ -1,8 +1,9 @@
 `timescale 1ns / 1ps
+`include "parameters.vh"
 
 module mux2
 	#(
-		parameter NB_DATA = 5
+		parameter NB_DATA = `ADDRWIDTH
 	)
     (
     input i_SEL,
