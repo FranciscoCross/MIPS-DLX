@@ -21,17 +21,16 @@
 
 
 module tb_pc;
-    localparam NB_ADDRESS = 32;
+    localparam NB_DATA = 32;
        
     reg clk = 0;
-    reg [NB_ADDRESS -1 : 0] i_addr;
+    reg [NB_DATA -1 : 0] i_addr;
     reg enable = 1;
     reg reset = 0;
     
-    wire [NB_ADDRESS -1 : 0] o_addr;
+    wire [NB_DATA -1 : 0] o_addr;
 
-
-    pc #(.NB_ADDRESS (NB_ADDRESS)) inst_pc
+    pc #(.NB_DATA (NB_DATA)) inst_pc
     (
         .i_clk(clk),
         .i_reset(reset),
