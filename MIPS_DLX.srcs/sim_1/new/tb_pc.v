@@ -59,7 +59,7 @@ module tb_pc;
         #7 
             i_addr = 13;
         #8  //Overflow test should result in 0xFFFF FFFF
-            i_addr = 32'hFFFFFFFFF;
+            i_addr = 32'hFFFFFFFF;
         #9
         $finish;
     end

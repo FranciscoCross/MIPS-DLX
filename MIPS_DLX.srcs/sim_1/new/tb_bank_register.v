@@ -41,9 +41,9 @@ module tb_bank_register(
         clock = 1;
         reset = 1;
         rw = 1;
-        IN_ADDR_RA = 5'b010101;
-        IN_ADDR_RB = 5'b010111;
-        IN_ADDR_RW = 5'b010101;
+        IN_ADDR_RA = 5'b10101;
+        IN_ADDR_RB = 5'b10111;
+        IN_ADDR_RW = 5'b10101;
         IN_DATA_RW = 0;
         #2
         reset = 0;
@@ -51,21 +51,21 @@ module tb_bank_register(
         IN_DATA_RW = 15;
         #10
         IN_DATA_RW = 20;
-        IN_ADDR_RW = 5'b010111;
+        IN_ADDR_RW = 5'b10111;
         #10
         IN_DATA_RW = 25;
-        IN_ADDR_RW = 5'b010011;
+        IN_ADDR_RW = 5'b00011;
         #10
         IN_DATA_RW = 30;
-        IN_ADDR_RW = 5'b000111;
+        IN_ADDR_RW = 5'b00111;
         #10
         rw = 0;
         IN_DATA_RW = 35;
-        IN_ADDR_RW = 5'b110111;
+        IN_ADDR_RW = 5'b10111;
         #10
         rw = 1;
         IN_DATA_RW = 88;
-        IN_ADDR_RW = 5'b1110111;
+        IN_ADDR_RW = 5'b10111;
         #10
         $finish;
     end
