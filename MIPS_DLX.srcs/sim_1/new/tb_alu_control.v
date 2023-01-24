@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-
+`include "parameters.vh"
 module tb_alu_control;
     localparam NB_FUNCTION = 6;
     localparam NB_ALU_OP = 3;
