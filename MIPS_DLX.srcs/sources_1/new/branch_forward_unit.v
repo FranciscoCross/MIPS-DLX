@@ -1,4 +1,4 @@
-module unit_forward
+module branch_forward_unit
 	#(
 		parameter NB_DATA = 32,
 		parameter NB_REG  = 5
