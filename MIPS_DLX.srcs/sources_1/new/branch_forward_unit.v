@@ -5,53 +5,38 @@ module branch_forward_unit
 	)
 
 	(
-		input wire [NB_REG-1:0] ID_EX_rs_i,
-		input wire [NB_REG-1:0] ID_EX_rt_i,
+		input wire [NB_REG-1:0] i_ID_rs,
+		input wire [NB_REG-1:0] i_ID_rt,
 		
-		input wire [NB_REG-1:0] EX_MEM_write_reg_i,
-		input wire [NB_REG-1:0] MEM_WB_write_reg_i,
+		input wire [NB_REG-1:0] i_EX_MEM_write_reg,
+		input wire i_EX_MEM_reg_write,	
 
-		input wire EX_MEM_reg_write_i,
-		input wire MEM_WB_reg_write_i,
-
-		output reg [1:0] forward_A_o, forward_B_o
+		output reg o_forward_A, o_forward_B
 	);
+
+	initial 
+		begin
+			o_forward_A = 0;
+			o_forward_B = 0;
+		end
 
 	always @(*)
 		begin
-			//####################################################################################################################################
-			//#######################################################-FORWARD-A-##################################################################
+            //viene de la etapa MEM
+			if ((i_EX_MEM_reg_write == 1'b1) && (i_ID_rs == i_EX_MEM_write_reg))
+				o_forward_A = 1'b1;		
+			//Si no, viene del banco de registro
+            else
+				o_forward_A = 1'b0;
+
 			//####################################################################################################################################
 
-			//Cuando se quiere escribir un registro despues de la etapa de execution y memoria y ese coincide con el registro de que se decodeo y executa (viene de la etapa MEM)
-			if ((EX_MEM_reg_write_i == 1'b1) && (ID_EX_rs_i == EX_MEM_write_reg_i))
-				forward_A_o = 2'b01;
-			//Cuando se quiere escribir un registro despues de la etapa de memoria y writeback y ese coincide con el registro de que se decodeo y executa (viene de la etapa WB)
-			else if ((MEM_WB_reg_write_i == 1'b1) && (ID_EX_rs_i == MEM_WB_write_reg_i))
-				forward_A_o = 2'b10; 
-			//Si no queda otra es que viene del banco de registro
-			else
-				forward_A_o = 2'b00; 
-			//####################################################################################################################################
-			//#######################################################-FORWARD-B-##################################################################
-			//####################################################################################################################################
-			
-			//Cuando se quiere escribir un registro despues de la etapa de execution y memoria y ese coincide con el registro de que se decodeo y executa (viene de la etapa MEM)
-			if ((EX_MEM_reg_write_i == 1'b1) && (ID_EX_rt_i == EX_MEM_write_reg_i))
-				forward_B_o = 2'b01;
-			//Cuando se quiere escribir un registro despues de la etapa de memoria y writeback y ese coincide con el registro de que se decodeo y executa (viene de la etapa WB)
-			else if ((MEM_WB_reg_write_i == 1'b1) && (ID_EX_rt_i == MEM_WB_write_reg_i))
-				forward_B_o = 2'b10; 
-			//Si no queda otra es que viene del banco de registro
-			else
-				forward_B_o = 2'b00;
-
+            //viene de la etapa MEM
+			if ((i_EX_MEM_reg_write == 1'b1) && (i_ID_rt == i_EX_MEM_write_reg))
+				o_forward_B = 1'b1;			
+			//Si no, viene del banco de registro
+            else
+				o_forward_B = 1'b0; 
 		end
 
-	//seteo salidas en cero incialmente
-	initial
-		begin
-			forward_A_o = 2'b00;
-			forward_B_o = 2'b00;
-		end
 endmodule
