@@ -12,7 +12,7 @@ module unit_jump
 	
 	wire [NB_JUMP+1:0] conex_data_to_shift;
 
-	shift_left2 shift_left2
+	shift_left_2 shift_left_2
 	(
 		.i_data_to_shift(i_data_to_shift),
 		.o_data_to_shift(conex_data_to_shift)
