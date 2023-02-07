@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="60" Path="C:/Users/chito/Documents/Arqui/MIPS-DLX/MIPS_DLX.xpr">
+<Project Version="7" Minor="60" Path="C:/Users/Pancho/Documents/MIPS-DLX/MIPS_DLX.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="75d30ec341264157bb8cece982b07354"/>
@@ -216,6 +216,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/mem_controller.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/hazard_detect.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
