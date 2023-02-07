@@ -1,6 +1,6 @@
-`define WR_REG EX_write_register_i != 5'b0
-`define OP1   EX_write_register_i == ID_rs_i
-`define OP2   EX_write_register_i == ID_rt_i
+`define WR_REG i_EX_write_register != 5'b0
+`define OP1   i_EX_write_register == i_ID_rs
+`define OP2   i_EX_write_register == i_ID_rt
 
 
 
@@ -11,18 +11,18 @@ El modulo se define con dos parametros:
 	NB_REG = registros en el procesador
 
 Toma como entrada varios valores relacionados con la fase ID y la fase EX, incluyendo 
-	ID_EX_mem_read_i, 
-	EX_reg_write_i, 
-	ID_rs_i, ID_rt_i, 
-	EX_write_register_i, y EX_rt_i.
+	i_ID_EX_mem_read, 
+	i_EX_reg_write, 
+	i_ID_rs, i_ID_rt, 
+	i_EX_write_register, y i_EX_rt.
 
-La senial de detencion, halt_i, que detiene el procesador independientemente de cualquier conflicto de recursos.
-La senial stall_o se utiliza para detener el flujo de datos en el procesador si se detecta un conflicto de recursos. 
+La senial de detencion, i_halt, que detiene el procesador independientemente de cualquier conflicto de recursos.
+La senial o_stall se utiliza para detener el flujo de datos en el procesador si se detecta un conflicto de recursos. 
 Las seniales 
-	pc_write_o y IF_ID_write_o 
+	o_pc_write y o_IF_ID_write 
 se utilizan para detener la escritura en los registros PC y IF_ID respectivamente.
 El bloque always @(*) contiene la logica que determina si se debe detener el procesador o no. Si se detecta un conflicto de recursos, se detiene el procesador activando 
-las seniales stall_o, pc_write_o y IF_ID_write_o. 
+las seniales o_stall, o_pc_write y o_IF_ID_write. 
 De lo contrario, el procesador seguira funcionando normalmente.
  */
 
@@ -34,17 +34,17 @@ module hazard_detect
 		parameter NB_REG = 5
 	)
 	(
-		input wire ID_EX_mem_read_i,
-		input wire EX_reg_write_i,
-		input wire [NB_REG-1:0] ID_rs_i,
-		input wire [NB_REG-1:0] ID_rt_i,
-		input wire [NB_REG-1:0] EX_write_register_i,
-		input wire [NB_REG-1:0] EX_rt_i,
+		input wire i_ID_EX_mem_read,
+		input wire i_EX_reg_write,
+		input wire [NB_REG-1:0] i_ID_rs,
+		input wire [NB_REG-1:0] i_ID_rt,
+		input wire [NB_REG-1:0] i_EX_write_register,
+		input wire [NB_REG-1:0] i_EX_rt,
+		input wire i_halt,
 
-		input wire halt_i,
-		output reg stall_o,
-		output wire pc_write_o, 
-		output wire IF_ID_write_o 
+		output reg o_stall,
+		output wire o_pc_write, 
+		output wire o_IF_ID_write 
 	
 
 	);
@@ -57,33 +57,33 @@ module hazard_detect
 		begin
 			reg_pc_write    = 1'b1;
 			reg_IF_ID_write = 1'b1; 
-			stall_o = 1'b0; 
+			o_stall = 1'b0; 
 		end
 
 	always @(*)
 		begin 
-			if (((ID_EX_mem_read_i == 1'b1) && ((EX_rt_i != 5'b0) && ((EX_rt_i == ID_rs_i) || (EX_rt_i == ID_rt_i)))) || halt_i)                
+			if (((i_ID_EX_mem_read == 1'b1) && ((i_EX_rt != 5'b0) && ((i_EX_rt == i_ID_rs) || (i_EX_rt == i_ID_rt)))) || i_halt)                
 				begin						
 					reg_pc_write = 1'b0;
 					reg_IF_ID_write = 1'b0;
-					stall_o = 1'b1;
+					o_stall = 1'b1;
 				end
 			
-			else if (EX_reg_write_i == 1'b1 && ((`WR_REG) && ((`OP1) || (`OP2))))
+			else if (i_EX_reg_write == 1'b1 && ((`WR_REG) && ((`OP1) || (`OP2))))
 				begin					
 					reg_pc_write = 1'b0;
 					reg_IF_ID_write = 1'b0;
-					stall_o = 1'b1;
+					o_stall = 1'b1;
 				end			
 			else
 				begin
 					reg_pc_write = 1'b1;
 					reg_IF_ID_write = 1'b1;
-					stall_o = 1'b0; 
+					o_stall = 1'b0; 
 				end
 		end
 
-	assign pc_write_o = reg_pc_write;
-	assign IF_ID_write_o = reg_IF_ID_write;
+	assign o_pc_write = reg_pc_write;
+	assign o_IF_ID_write = reg_IF_ID_write;
 	
 endmodule
