@@ -38,13 +38,13 @@ module unit_forward
 			
 			//Cuando se quiere escribir un registro despues de la etapa de execution y memoria y ese coincide con el registro de que se decodeo y executa (viene de la etapa MEM)
 			if ((i_EX_MEM_reg_write == 1'b1) && (i_ID_EX_rt == i_EX_MEM_write_reg))
-				o_forward_B_o = 2'b01;
+				o_forward_B = 2'b01;
 			//Cuando se quiere escribir un registro despues de la etapa de memoria y writeback y ese coincide con el registro de que se decodeo y executa (viene de la etapa WB)
 			else if ((i_MEM_WB_reg_write == 1'b1) && (i_ID_EX_rt == i_MEM_WB_write_reg))
-				o_forward_B_o = 2'b10; 
+				o_forward_B = 2'b10; 
 			//Si no queda otra es que viene del banco de registro
 			else
-				o_forward_B_o = 2'b00;
+				o_forward_B = 2'b00;
 
 		end
 
@@ -52,6 +52,6 @@ module unit_forward
 	initial
 		begin
 			o_forward_A = 2'b00;
-			o_forward_B_o = 2'b00;
+			o_forward_B = 2'b00;
 		end
 endmodule

@@ -63,3 +63,14 @@
 
 `define N_ELEMENTS 128
 `define ADDRWIDTH $clog2(`N_ELEMENTS)
+
+//Defines para usar en DECODE 
+`define OP_CODE   31:26
+`define RS_BIT    25:21
+`define RT_BIT    20:16
+`define RD_BIT    15:11
+`define INM_BIT   15:0
+`define FUNC_BIT  5:0
+`define SHAMT_BIT 11:6
+`define JUMP_BIT  25:0 
+`define PC_BIT    31:28
