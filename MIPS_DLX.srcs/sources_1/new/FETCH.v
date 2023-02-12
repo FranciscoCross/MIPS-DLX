@@ -3,7 +3,7 @@
 
 //This just connects every module together
 
-module ifetch#(
+module FETCH#(
     parameter NB_DATA = `ADDRWIDTH,
     parameter MEM_SIZEB = `N_ELEMENTS,
     parameter NB_INST_LEN = 32
