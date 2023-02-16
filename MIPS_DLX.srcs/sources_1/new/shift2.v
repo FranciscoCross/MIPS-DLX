@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
-
+/*
+Modulo que desplaza los bits hacia la inzquierda en 2 y pierde los mas significativos
+*/
 module shift2#(
         parameter NB_DATA = 32
     )(

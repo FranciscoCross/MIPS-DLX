@@ -1,3 +1,4 @@
+//Modulo que Dezplaza haciea la izquierda sin perder los mas significativos seria como multiplcar por 4
 module shift_left_2
 	#(
 		parameter NB_DATA_1 = 26,
