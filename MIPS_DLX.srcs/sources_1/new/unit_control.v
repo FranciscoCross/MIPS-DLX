@@ -1,5 +1,26 @@
 `include "parameters.vh"
+/*
+La señal o_EX_control consta de 7 bits, 
+	Los bits o_EX_control [6:5], se utilizan para seleccionar la fuente de los valores de A y B. 
+	Los bits o_EX_control [5:4] indica el tipo de instrucción: I, R, J. 
+	Los bits o_EX_control [3:0], especifican el tipo de operación para la unidad ALU.
+La señal o_M_control consta de 6 bits. 
+	El bit o_M_control [5] indica que se desea leer de la memoria, 
+	El bit o_M_control [4] indica que se desea escribir en la memoria. 
+	Los bits o_M_control [3:1] indican el ancho de la variable a leer o escribir, 
+	El bit o_M_control [0], indica si la variable es signada o no.
+La señal o_WB_control consta de 3 bits. 
+	El bit o_WB_control [2] indica que se desea escribir en un registro. 
+	Los bits o_WB_control [1:0] especifican la fuente de datos: memoria a datos, resultado de la ALU, contador de programa o valor inmediato.
+La señal o_pc_src indica la fuente de la dirección del salto: 
+	registro, branch o jump. Las demás salidas del módulo se utilizan según su nombre descriptivo.
+La señal o_beq indica que se genera un salto condicional de tipo EQUAL:
+La señal o_bne indica que se genera un salto condicional de tipo NO EQUAL:
+La señal o_jump que se genera un salto incondicional:
+La señal o_halt_detected indica que se nesecita un halt por ende pone un 1 en esta salida:
 
+Dichas salidas se ven afectadas en función de la i_funtion y i_op_code que entran a los cases.
+*/
 module unit_control
 	#(
 		parameter NB_OPCODE   = 6,
