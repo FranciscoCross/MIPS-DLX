@@ -1,6 +1,11 @@
 `timescale 1ns / 1ps
 `include "parameters.vh"
-
+/*
+El módulo tiene cuatro puertos, 
+i_A e i_B son entradas que usan en la operacion, 
+i_OP Entrada que describe que operacion necesita hacer la ALU
+o_RES Salida del resultado de la operación realizada por la ALU.
+*/
 module ALU
     #( //For Parameters
         parameter N_BITS = 8,
