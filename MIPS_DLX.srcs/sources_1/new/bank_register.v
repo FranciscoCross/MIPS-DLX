@@ -1,5 +1,20 @@
 
+/*
+El modulo tiene entradas para la senial de reloj (i_clock), senial de reinicio (i_reset), senial de lectura/escritura (i_rw), 
+direcciones de registro de lectura A y B (i_addr_ra e i_addr_rb), direccion de registro de escritura (i_addr_rw) y datos 
+para escribir en el registro de escritura (i_data_rw) y las dos salidas que corresponden a los datos de lectura A y B 
+(o_data_ra y o_data_rb) que pueden ser seleccionados mediante las direcciones de registro de lectura A y B.
 
+La logica de control para escribir o leer de los registros varia según las seniales de entrada. 
+Si la senial de reinicio (i_reset) esta activa, se establecen las salidas de datos de lectura A y B en cero.
+Si la senial de lectura/escritura (i_rw) esta activa, el dato de entrada i_data_rw se escribe en el registro 
+correspondiente a la direccion de registro de escritura (i_addr_rw). 
+Si las direcciones de registro de lectura A o B coinciden con la direccion de registro de escritura, 
+los datos de salida correspondientes se actualizan con el nuevo valor. 
+
+En caso contrario, las salidas de datos de lectura A y B se actualizan con los datos almacenados en los registros correspondientes 
+a sus direcciones de registro.
+*/
 module bank_register
 	#(
 		parameter NB_REG = 5,
