@@ -1,5 +1,17 @@
 `timescale 1ns / 1ps
+/*
+Modulo de controlador de memoria utilizado para leer y escribir en una memoria. 
 
+Los puertos de entrada son 
+	i_data_write y i_data_read: se utilizan para escribir y leer datos de la memoria respectivamente. 
+	i_MEM_control se utiliza para enviar señales de control para leer o escribir en la memoria. 
+Los puertos de salida son 
+	o_data_write y o_data_read: que son las señales de salida de los datos que se escriben o leen en la memoria.
+
+El módulo utiliza dos bloques always para la lectura y la escritura. 
+	El bloque always para la lectura es el encargado de leer los datos de la memoria y almacenarlos en el registro reg_data_read. 
+	El bloque always para la escritura es el encargado de escribir los datos en la memoria. 
+*/
 //Defines para saber que se elige leer un byte, media palabra o una palabra
 `define BYTE  3'b001
 `define HALF_WORD 3'b010
