@@ -1,5 +1,22 @@
 `include "parameters.vh"
 
+
+/*
+Modulo alu_control que tiene TRES puertos:
+
+i_function: entrada que especifica la funcion deseada para la ALU.
+i_alu_op: 	entrada que especifica la operacion a realizar por la ALU.
+o_alu_op: 	salida que especifica la operacion FINAL que se enviará a la ALU.
+
+El modulo tiene tres parámetros NB_FUNCTION, NB_ALU_OP y NB_OP_ALU, estos especifican el tamanio de las entradas y salidas.
+
+El codigo utiliza cases para determinar la operacion final que se enviará a la ALU. 
+La entrada i_alu_op se utiliza como el selector principal, y luego, en funcion de su valor, 
+se elige una operacion específica de la ALU a partir de la entrada i_function. 
+El resultado final se almacena en un registro reg_alu_op, que se asigna a la salida o_alu_op.
+*/
+
+
 module alu_control
 	#(
 		parameter NB_FUNCTION = 6, //6 bist para elegir la funcion de la ALU
