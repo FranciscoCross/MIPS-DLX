@@ -1,4 +1,15 @@
 `include "parameters.vh"
+/*
+El modulo cuenta con los siguientes puertos
+
+i_pc: Representa la dirección de la próxima instrucción a ejecutar.
+i_inm_ext: Representa la dirección de destino del salto condicional.
+i_data_ra: Contiene el valor del registro RA (Registro A).
+i_data_rb: Contiene el valor del registro RB (Registro B).
+
+o_is_equal: Bit que indica si los valores de los registros RA y RB son iguales (1'b1) o si no (1'b0).
+o_branch_address: Contiene la dirección de destino del salto incondicional.
+*/
 
 module unit_branch
 	#(
