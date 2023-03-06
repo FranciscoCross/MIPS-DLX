@@ -51,7 +51,7 @@ module pipeline
 	//wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID;
 	/* signal unit control per stage*/
 	/* ------------------------------------------ */
-	//wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID_EX;
+	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID_EX;
 	//wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID_EX;
 	//wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID_EX;
 	/* ------------------------------------------ */
@@ -64,7 +64,7 @@ module pipeline
 	/* ------------------------------------------ */
 
 
-	//wire [NB_FUNCTION-1:0]  wire_function_ID_EX;
+	wire [NB_FUNCTION-1:0]  wire_function_ID_EX;
 
 	/* registros operandos */
 
@@ -72,11 +72,11 @@ module pipeline
     wire [NB_REG-1:0]   wire_rs_ID; 
     wire [NB_REG-1:0]   wire_rd_ID;
 	wire [NB_REG-1:0]   wire_rt_ID_EX; 
-    //wire [NB_REG-1:0]   wire_rs_ID_EX; 
-    //wire [NB_REG-1:0]   wire_rd_ID_EX;
+    wire [NB_REG-1:0]   wire_rs_ID_EX; 
+    wire [NB_REG-1:0]   wire_rd_ID_EX;
 
 	wire [NB_REG-1:0]   wire_shamt_ID;
-	//wire [NB_REG-1:0]   wire_shamt_ID_EX;
+	wire [NB_REG-1:0]   wire_shamt_ID_EX;
 	wire [NB_REG-1:0]   wire_write_reg_EX;
 	wire [NB_FUNCTION-1:0]  wire_function_ID;
 
@@ -93,13 +93,13 @@ module pipeline
     //wire [NB_DATA-1:0]  wire_inm_ext_WB;
 
     /* STORE */
-    //wire [NB_DATA-1:0]  wire_write_data_mem_EX_MEM;
+    wire [NB_DATA-1:0]  wire_write_data_mem_EX_MEM;
 
-	//wire [NB_DATA-1:0]  wire_data_write_WB_ID;
+	wire [NB_DATA-1:0]  wire_data_write_WB_ID;
 
 	/* conexion entre EX y reg_EX_MEM */
-	//wire [NB_DATA-1:0]  wire_result_alu_EX;
-    //wire [NB_DATA-1:0]  wire_result_alu_EX_MEM;
+	wire [NB_DATA-1:0]  wire_result_alu_EX;
+    wire [NB_DATA-1:0]  wire_result_alu_EX_MEM;
 
 	//wire [1:0] wire_pc_src_ID_IF;
 
@@ -108,8 +108,8 @@ module pipeline
 
 
 	/* CONEX UNIT FORWARDING EN EX*/
-	//wire wire_reg_write_MEM_EX;
-	//wire wire_reg_write_WB_EX;
+	wire wire_reg_write_MEM_EX;
+	wire wire_reg_write_WB_EX;
 
 	//wire [NB_REG-1:0] wire_write_reg_MEM_EX;
 	//wire [NB_REG-1:0] wire_write_reg_WB_EX;
@@ -123,8 +123,8 @@ module pipeline
 	//wire [NB_DATA-1:0] wire_alu_result_WB;
 	//wire [NB_DATA-1:0] wire_write_data_MEM;
 
-	//wire [NB_REG-1:0] wire_write_reg_MEM_WB;
-	//wire [NB_REG-1:0] wire_write_reg_WB_ID; // registro a escribir en ID
+	wire [NB_REG-1:0] wire_write_reg_MEM_WB;
+	wire [NB_REG-1:0] wire_write_reg_WB_ID; // registro a escribir en ID
 	//wire [NB_DATA-1:0] wire_mem_data_MEM_WB;
 	//wire [NB_DATA-1:0] wire_mem_data_WB;
 
@@ -194,6 +194,61 @@ module pipeline
 		.o_M_control(wire_M_ctrl_ID), 
 		.o_WB_control(wire_WB_ctrl_ID),
 		.o_halt(wire_halt_detected_IF_ID_EX)
-	);    
-	
+	);
+
+ 	latch_ID_EX ID_EX
+	(
+		.i_clock(clock),   
+		.i_reset(i_reset),
+		.i_enable(i_enable_pipe),
+		.i_halt_detected(wire_halt_detected_IF_ID_EX),
+		.i_pc(wire_pc_IF_ID),
+		.i_rs(wire_rs_ID), 
+		.i_rt(wire_rt_ID), 
+		.i_rd(wire_rd_ID),
+		.i_shamt(wire_shamt_ID),
+		.i_function(wire_function_ID),
+		.i_data_ra(wire_data_ra_ID),
+		.i_data_rb(wire_data_rb_ID),
+		.i_inm_ext(wire_inm_ext_ID),
+		.i_EX_control(wire_EX_ctrl_ID),
+		.i_M_control(wire_M_ctrl_ID),
+		.i_WB_control(wire_WB_ctrl_ID),
+	    .o_data_ra(wire_data_ra_ID_EX),
+		.o_data_rb(wire_data_rb_ID_EX),
+		.o_inm_ext(wire_inm_ext_ID_EX),
+		.o_shamt(wire_shamt_ID_EX),
+		.o_pc(wire_pc_ID_EX),
+		.o_rs(wire_rs_ID_EX), 
+		.o_rt(wire_rt_ID_EX), 
+		.o_rd(wire_rd_ID_EX),
+		.o_function(wire_function_ID_EX),
+		.o_EX_control(wire_EX_ctrl_ID_EX),
+		.o_M_control(wire_M_ctrl_ID_EX),
+		.o_WB_control(wire_WB_ctrl_ID_EX),
+		.o_halt_detected(wire_halt_detected_ID_EX_MEM)	
+	);
+
+ 	EXECUTE Execute_stage
+	(
+		.i_function(wire_function_ID_EX),		
+		.i_data_ra(wire_data_ra_ID_EX),
+		.i_data_rb(wire_data_rb_ID_EX),
+		.i_data_inm(wire_inm_ext_ID_EX),
+		.i_shamt(wire_shamt_ID_EX),
+		.i_rs(wire_rs_ID_EX), 
+        .i_rt(wire_rt_ID_EX),
+        .i_rd(wire_rd_ID_EX),
+		.i_EX_control(wire_EX_ctrl_ID_EX),
+		.i_EX_MEM_write_reg(wire_write_reg_MEM_WB),
+		.i_MEM_WB_write_reg(wire_write_reg_WB_ID),
+		.i_EX_MEM_reg_write(wire_reg_write_MEM_EX), 
+		.i_MEM_WB_reg_write(wire_reg_write_WB_EX),
+		.i_EX_MEM_result_alu(wire_result_alu_EX_MEM),
+		.i_MEM_WB_data(wire_data_write_WB_ID),
+		.o_data_write_mem(wire_write_data_mem_EX_MEM),
+		.o_write_register(wire_write_reg_EX),
+		.o_result_alu(wire_result_alu_EX)
+    ); 
+
 endmodule 
