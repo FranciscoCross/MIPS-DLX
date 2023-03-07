@@ -22,9 +22,10 @@ module unit_branch
 		input wire [NB_DATA-1:0] i_data_rb,
 		output wire o_is_equal,
 		output wire [`ADDRWIDTH-1:0] o_branch_address   
-
 	);
 
+	//Salto incondicional para instrucciones tipo I.
+	//Se comparan los valores de rs y rt. Despues se utilizan en INSTRUCTION DECODE para BEQ, BNEQ, JUMP
 	assign o_is_equal = (i_data_ra == i_data_rb) ? 1'b1 : 1'b0;
 	assign o_branch_address = i_pc + i_inm_ext;	
 

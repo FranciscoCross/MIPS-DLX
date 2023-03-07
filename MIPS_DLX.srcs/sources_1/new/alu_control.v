@@ -3,6 +3,7 @@
 
 /*
 Modulo alu_control que tiene TRES puertos:
+Pequeña unidad de control que sirve para generar las señales de control de la ALU
 
 i_function: entrada que especifica la funcion deseada para la ALU.
 i_alu_op: 	entrada que especifica la operacion a realizar por la ALU.
@@ -25,18 +26,23 @@ module alu_control
 
 	)
 	(
-		input wire [NB_FUNCTION-1:0] i_function,
-		input wire [NB_ALU_OP-1:0]   i_alu_op,
-		output wire [NB_OP_ALU-1:0]  o_alu_op
+		input wire [NB_FUNCTION-1:0] i_function, // func
+		input wire [NB_ALU_OP-1:0]   i_alu_op,   // ALUop
+		output wire [NB_OP_ALU-1:0]  o_alu_op    // Operacion de la ALU
 	);
 
 	reg [NB_OP_ALU-1:0] reg_alu_op;
 	assign o_alu_op = reg_alu_op;
-
+	/*
+	R-Type:
+	|	OPCODE	|	RS	|	RT	|	RD	| SHMAT	| FUNCT |
+	I-Type:
+	|	OPCODE	|	RS	|	RT	|	OFFSET  |
+	*/
 	always @(*)
 		begin
 			case (i_alu_op)
-				`R_ALUCODE://R-type
+				`R_ALUCODE:	//Instrucciones de tipo R
 					begin
 						case (i_function)
 							`SLL_FUNCTION    : reg_alu_op    = `SLL; 
@@ -55,6 +61,7 @@ module alu_control
 							default          : reg_alu_op    = 4'b0000;
 						endcase
 					end
+				/*Instrucciones inmediatas Tipo-I que requieren de la ALU*/
 				`L_S_ADDI_ALUCODE : reg_alu_op = `ADD;
 				`ANDI_ALUCODE     : reg_alu_op = `AND;
 				`ORI_ALUCODE      : reg_alu_op = `OR;

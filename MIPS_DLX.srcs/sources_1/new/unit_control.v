@@ -1,5 +1,8 @@
 `include "parameters.vh"
-/*
+/* MIPS Control Unit 
+*
+*  Recibe las instrucciones tipo R, I, J y configura el hardware para la ejecucion de las mismas.
+
 La señal o_EX_control consta de 7 bits, 
 	Los bits o_EX_control [6:5], se utilizan para seleccionar la fuente de los valores de A y B. 
 	Los bits o_EX_control [5:4] indica el tipo de instrucción: I, R, J. 
@@ -20,6 +23,7 @@ La señal o_jump que se genera un salto incondicional:
 La señal o_halt_detected indica que se nesecita un halt por ende pone un 1 en esta salida:
 
 Dichas salidas se ven afectadas en función de la i_funtion y i_op_code que entran a los cases.
+
 */
 module unit_control
 	#(
@@ -33,6 +37,7 @@ module unit_control
 		input wire [NB_OPCODE-1:0] 		i_op_code,
 		input wire [NB_FUNCTION-1:0] 	i_function,
 
+		//Registros que van hacia los LATCH
 		output wire [NB_EX_CTRL-1:0] 	o_EX_control,
 		output wire [NB_MEM_CTRL-1:0] 	o_M_control, 
 		output wire [NB_WB_CTRL-1:0] 	o_WB_control,
@@ -87,6 +92,9 @@ module unit_control
 						reg_WB_control  = 3'b000;
 						reg_EX_control  = 7'b0000000;
 					end
+				/* Aca seteamos los valores de los registros para cada tipo de instruccion
+				*
+				*/
 				`R_TYPE_OPCODE:
 					begin
 						reg_pc_src = 2'b00;
