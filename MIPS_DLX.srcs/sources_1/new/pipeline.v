@@ -15,10 +15,12 @@ module pipeline
 	)
 	(
 		input wire clock,
-		input wire i_reset,		
+		input wire i_reset,
+		input wire [NB_DATA-1:0] i_inst_load,
+		input wire [NB_DATA-1:0] i_addr_inst_load,			
 		input wire i_enable_pipe,
 		input wire [NB_REG-1:0] i_addr_debug_unit, //addr de registro debug
-		output wire [`ADDRWIDTH-1:0] o_data_send_pc,
+		output wire [NB_DATA-1:0] o_data_send_pc,
 		output wire [NB_DATA-1:0] o_data_reg_debug_unit,
 		output wire o_halt
 	);
@@ -27,7 +29,7 @@ module pipeline
 
 
 	wire [`ADDRWIDTH-1:0]   wire_pc_IF_ID; 
-    //wire [`ADDRWIDTH-1:0]   wire_pc_ID_EX;
+    wire [`ADDRWIDTH-1:0]   wire_pc_ID_EX;
     //wire [`ADDRWIDTH-1:0]   wire_pc_EX_MEM; 
     //wire [`ADDRWIDTH-1:0]   wire_pc_MEM_WB;
     //wire [`ADDRWIDTH-1:0]   wire_pc_WB; 
@@ -46,13 +48,13 @@ module pipeline
     wire [NB_DATA-1:0]  wire_data_rb_ID_EX; 
     wire [NB_DATA-1:0]  wire_inm_ext_ID_EX;
 
-	//wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID; 
-	//wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID;
-	//wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID;
+	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID; 
+	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID;
+	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID;
 	/* signal unit control per stage*/
 	/* ------------------------------------------ */
 	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID_EX;
-	//wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID_EX;
+	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID_EX;
 	//wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID_EX;
 	/* ------------------------------------------ */
 	//wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_EX_MEM;
@@ -101,7 +103,7 @@ module pipeline
 	wire [NB_DATA-1:0]  wire_result_alu_EX;
     wire [NB_DATA-1:0]  wire_result_alu_EX_MEM;
 
-	//wire [1:0] wire_pc_src_ID_IF;
+	wire [1:0] wire_pc_src_ID_IF;
 
 	//wire [NB_REG-1:0] wire_EX_rt;
 	//wire wire_ID_EX_mem_read_i;
@@ -115,13 +117,13 @@ module pipeline
 	//wire [NB_REG-1:0] wire_write_reg_WB_EX;
 	/* **************************** */
 
-	//wire forw_branch_A, forw_branch_B;
+	wire forw_branch_A, forw_branch_B;
 
-	//wire wire_pc_write;
+	wire wire_pc_write;
 
 	//wire [1:0] wire_mem_to_reg_WB;
 	//wire [NB_DATA-1:0] wire_alu_result_WB;
-	//wire [NB_DATA-1:0] wire_write_data_MEM;
+	wire [NB_DATA-1:0] wire_write_data_MEM;
 
 	wire [NB_REG-1:0] wire_write_reg_MEM_WB;
 	wire [NB_REG-1:0] wire_write_reg_WB_ID; // registro a escribir en ID
@@ -129,21 +131,32 @@ module pipeline
 	//wire [NB_DATA-1:0] wire_mem_data_WB;
 
 	/* HAZARD */
-	//wire wire_IF_ID_write;
+	wire wire_IF_ID_write;
 
 	/* conexiones halt*/
-	//wire wire_halt_detected_IF_ID_EX;
-	//wire wire_halt_detected_ID_EX_MEM;
+	wire wire_halt_detected_IF_ID_EX;
+	wire wire_halt_detected_ID_EX_MEM;
 	//wire wire_halt_detected_EX_MEM_WB;
-	
-	//assign o_data_send_pc = wire_pc_IF_ID;
-
-    //IMPLEMENTAR FETCH PERO PROBLEMAS CON EL ACTUAL VERLO
     
-/* 	FETCH instruccion_fetch
+ 	FETCH instruccion_fetch
 	(	
+    .i_clk(clock),
+    .i_reset(i_reset),
+    .i_enable(wire_pc_write&&i_enable_pipe),
+    .i_debug_unit(i_debug_unit),
+    .i_Mem_WEn(i_en_write),
+    .i_Mem_REn(i_en_read),
+    .i_Mem_Data(i_inst_load),
+    .i_PCsrc(wire_pc_src_ID_IF),
+    .i_addr_register(wire_addr_reg_ID_IF),
+    .i_addr_branch(wire_addr_branch_ID_IF),
+    .i_addr_jump(wire_addr_jump_ID_IF),
+    .i_jump_or_branch(wire_branch_or_jump_IF_ID),
+    .i_wr_addr(i_addr_inst_load), 
+    .o_instruction(wire_inst_IF),
+    .o_PCAddr(wire_pc_adder)
 	);  
-*/
+
 
 	latch_IF_ID IF_ID
 	(
