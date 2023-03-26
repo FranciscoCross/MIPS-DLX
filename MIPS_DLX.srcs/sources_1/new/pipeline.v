@@ -20,6 +20,8 @@ module pipeline
 		input wire [NB_DATA-1:0] i_addr_inst_load,			
 		input wire i_enable_pipe,
 		input wire [NB_REG-1:0] i_addr_debug_unit, //addr de registro debug
+		input wire i_ctrl_wr_debug_mem, //leyendo para debug mem
+		input wire i_ctrl_addr_debug_mem, 
 		output wire [NB_DATA-1:0] o_data_send_pc,
 		output wire [NB_DATA-1:0] o_data_reg_debug_unit,
 		output wire o_halt
@@ -288,5 +290,22 @@ module pipeline
 		.o_reg_write(wire_reg_write_MEM_EX)
 	);
 
+	MEMORIA memory_stage
+	(
+		.i_clock(clock),
+		.i_reset(i_reset),
+		.i_enable_mem(i_enable_mem),
+		.i_alu_result(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
+		.i_MEM_control(wire_M_ctrl_MEM),
+		.i_data_write(wire_write_data_MEM),
+
+		.i_addr_mem_debug_unit(i_addr_mem_debug_unit),
+		.i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
+		.i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
+		.o_bit_sucio(o_bit_sucio),
+		.o_data_mem_debug_unit(o_data_mem_debug_unit),
+		.o_mem_data(wire_mem_data_MEM_WB)	
+
+	);
 
 endmodule 
