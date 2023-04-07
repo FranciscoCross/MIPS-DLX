@@ -49,14 +49,11 @@ module TOP
 	assign locked_o = locked_wz;
 	assign halt_o = wire_halt;
 
-	clk_wiz_0 clock_wz
-  	(
-	  // Clock out ports  
+	clock_wz clock_wz
+  	(  
 		.clk_out1(clock_w),
-	  // Status and control signals               
 	  	.reset(i_reset_wz), 
 	  	.locked(locked_wz),
-	 // Clock in ports
 	  	.clk_in1(i_clock)
 	 );
 
@@ -66,13 +63,22 @@ module TOP
 		.clock(clock_w),
 		.i_reset(i_reset),
 		.i_inst_load(wire_inst_load),
-		.i_addr_inst_load(wire_addr_load_inst),			
+		.i_addr_inst_load(wire_addr_load_inst),		
+		.i_en_write(wire_en_write),
+		.i_en_read(wire_en_read),
+		.i_enable_mem(wire_enable_mem),
 		.i_enable_pipe(wire_enable_pipe),
+		.i_debug_unit(wire_debug_unit),
 		.i_addr_debug_unit(wire_addr_reg_debug_unit), //addr de registro debug
+		.i_addr_mem_debug_unit(wire_addr_mem_debug_unit),
+		.i_ctrl_read_debug_reg(wire_ctrl_read_debug_reg),
 		.i_ctrl_wr_debug_mem(wire_ctrl_wr_debug_mem), //leyendo para debug mem
 		.i_ctrl_addr_debug_mem(wire_ctrl_addr_debug_mem), 
+		.o_bit_sucio(wire_bit_sucio),
 		.o_data_send_pc(wire_send_program_counter),
 		.o_data_reg_debug_unit(wire_reg_debug_unit),
+		.o_data_mem_debug_unit(wire_mem_debug_unit),
+		.o_count_cycles(wire_cant_cycles),
 		.o_halt(wire_halt)
 	);
 

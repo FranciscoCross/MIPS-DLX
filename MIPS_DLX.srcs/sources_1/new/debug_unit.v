@@ -6,7 +6,7 @@
 
 module debug_unit
 	#(
-		parameter CLK        = 50E6,
+		parameter CLOCK        = 50E6,
 		parameter BAUD_RATE  = 9600,
 		parameter NB_DATA    = 32,
 		parameter NB_REG     = 5,
@@ -127,12 +127,16 @@ module debug_unit
 ############################################################################################## */
 	always @(posedge i_clock) 
 		begin			
-			if (i_reset) //Si se resetea seteamos Number_Instr como estado inicial y deshabilitamos el pipeline	
-				state <= Number_Instr;	
-				o_enable_pipe <= 1'b0;  					
+			if (i_reset) //Si se resetea seteamos Number_Instr como estado inicial y deshabilitamos el pipeline
+				begin
+					state <= Number_Instr;	
+					o_enable_pipe <= 1'b0;
+				end  					
 			else
-				state <= next_state;
-				o_enable_pipe <= enable_pipe_reg;
+				begin
+					state <= next_state;
+					o_enable_pipe <= enable_pipe_reg;
+				end
 		end
 /*
 ##############################################################################################
@@ -675,8 +679,8 @@ module debug_unit
 			endcase
 		end
 	
-
-	uart#(.CLK(CLK), .BAUD_RATE(BAUD_RATE)) uart
+/*
+	uart#(.CLOCK(CLOCK), .BAUD_RATE(BAUD_RATE)) uart
 	(
 		.clock(i_clock),
 		.reset(i_reset),
@@ -687,7 +691,7 @@ module debug_unit
 		.o_tx_data(o_tx_data),
 		.tx_done_ticks(tx_start),
 		.data_o(data_uart)
-	);
+	);*/
 
 	
 endmodule

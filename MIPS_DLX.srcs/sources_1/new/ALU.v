@@ -22,27 +22,27 @@ module ALU
     begin
         case (i_OP)
             `SRL : 
-                O_RES = B >> A;
+                o_RES = i_B >> i_A;
             `SRA : 
-                O_RES = B >>> A;
+                o_RES = i_B >>> i_A;
             `ADD : 
-                O_RES = A + B; 
+                o_RES = i_A + i_B; 
             `SUB : 
-                O_RES = A - B;
+                o_RES = i_A - i_B;
             `AND : 
-                O_RES = A & B; 
+                o_RES = i_A & i_B; 
             `OR  : 
-                O_RES = A | B; 
+                o_RES = i_A | i_B; 
             `XOR : 
-                O_RES = A ^ B;       
+                o_RES = i_A ^ i_B;       
             `NOR : 
-                O_RES = ~(A | B);
+                o_RES = ~(i_A | i_B);
             `SLT:  
-                O_RES = A < B;
+                o_RES = i_A < i_B;
             `LUI:  
-                O_RES = B << 16;
+                o_RES = i_A << 16;
             `SLL: 
-                O_RES = B << A;
+                o_RES = i_B << i_A;
             default:
                 o_RES = 32'b0;
             
