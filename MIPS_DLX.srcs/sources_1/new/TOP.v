@@ -109,6 +109,14 @@ module TOP
 		.o_inst_load(wire_inst_load), //instruccion a cargar en memoria
 		.o_address(wire_addr_load_inst), //direccion donde se carga la instruccion
 		.o_ack_debug(ack_debug_o), //avisa al test que ya puede enviar el comando
-		.o_end_send_data(end_send_data_o) //avisa al test que ya se termino de enviar datos de memoria
+		.o_end_send_data(end_send_data_o), //avisa al test que ya se termino de enviar datos de memoria
+		//DEBUG
+		.o_data_ready(),		
+		.o_en_read_load_inst(),
+		.o_receive_full_inst(),
+		.o_send_inst_finish(),
+		.o_state(),
+		.o_data_receive(),
+		.tx_start_o()	
 	);
 endmodule

@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 `include "parameters.vh"
 
-`define mode_step_to_step 8'b00001111
-`define mode_continue 8'b11110000
+`define mode_step_to_step 	8'b00000100 //4
+`define mode_continue 		8'b00010000 //16
 
 module debug_unit
 	#(
@@ -12,7 +12,7 @@ module debug_unit
 		parameter NB_REG     = 5,
 		parameter N_BITS     = 8,
 		parameter N_BYTES    = 4,		
-		parameter NB_STATE   = 12,
+		parameter NB_STATE   = 11,
 		parameter N_COUNT	 = 10			
 	)
 	(
@@ -25,6 +25,11 @@ module debug_unit
 		input wire [NB_DATA-1:0] i_reg_debug_unit, //viene del banco de registros
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] i_mem_debug_unit,
+		//DEBUG POR FALTA DE UART
+		input wire data_ready_uart,//rx_empty_o,
+		input wire tx_done,			
+		input wire [NB_DATA-1:0] data_uart,
+		//####
 
 		output reg [NB_REG-1:0] o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
@@ -42,34 +47,33 @@ module debug_unit
 		output wire [NB_DATA-1:0] o_inst_load, //instruccion a cargar en memoria
 		output wire [`ADDRWIDTH-1:0] o_address, //direccion donde se carga la instruccion
 		output reg o_ack_debug, //avisa al test que ya puede enviar el comando
-		output reg o_end_send_data //avisa al test que ya se termino de enviar datos de memoria
+		output reg o_end_send_data, //avisa al test que ya se termino de enviar datos de memoria
 
 		/* para DEBUG */
-		/*
 		output wire o_data_ready,		
-		output wire o_en_read_load_inst,
+		output wire o_en_read_cant_instr,
 		output wire o_receive_full_inst,
 		output wire o_send_inst_finish,
 		output wire [NB_STATE-1:0] o_state,
 		output wire [N_BITS-1:0] o_data_receive,
-		output wire tx_start_o		*/	
+		output wire tx_start_o			
 	
 	);
 
 	localparam 	[NB_STATE-1:0]  Number_Instr        	=  11'b00000000001;
 	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  11'b00000000010;
 	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  11'b00000000100;
-	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  11'b00000001000;
-	localparam 	[NB_STATE-1:0]	Check_Operation    		=  11'b00000010000;
-	localparam 	[NB_STATE-1:0]	Step_to_step       		=  11'b00000100000; 
-	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  11'b00001000000; 
-	localparam 	[NB_STATE-1:0]	Send_program_counter    =  11'b00010000000; 
+	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  11'b00000001000;//8
+	localparam 	[NB_STATE-1:0]	Check_Operation    		=  11'b00000010000;//16
+	localparam 	[NB_STATE-1:0]	Step_to_step       		=  11'b00000100000;//32 
+	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  11'b00001000000;//64 
+	localparam 	[NB_STATE-1:0]	Send_program_counter    =  11'b00010000000;//128 
 	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  11'b00100000000; 
 	localparam 	[NB_STATE-1:0]	Send_Registers			=  11'b01000000000; 
 	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000; 
 
 	
-    wire data_ready_uart;
+    //wire data_ready_uart;
 	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, count_one_cycle, read_mode_operate;
 
 	/* Finish send-data*/
@@ -82,10 +86,10 @@ module debug_unit
 	reg [N_BYTES-2:0] count_bytes;
 	
 	reg [N_BITS-1:0] operation_mode;
-	wire [N_BITS-1:0] data_uart;
-	reg [N_COUNT-1:0] number_instructions, count_instruction_now;
+	//wire [N_BITS-1:0] data_uart;
+	reg [N_BITS-1:0] number_instructions, count_instruction_now;
 	reg [`ADDRWIDTH-1:0] address_reg;
-	reg [NB_DATA-1:0] instructions;
+	reg [NB_DATA-1:0] instruction;
 	reg [NB_STATE-1:0] state, next_state;
 	reg [NB_REG-1:0] addr_debug_unit_reg;
     reg [`ADDRWIDTH:0] addr_mem_debug_unit_reg;
@@ -99,7 +103,7 @@ module debug_unit
 		
 	/* ********************************************** */
 	reg tx_start;
-	wire tx_done;
+	//wire tx_done;
 	reg data_ready, ready_number_instr, tx_done_data, bit_end_send_reg;
 
 	reg mode_operate_ready, mode_operate_check;	
@@ -107,24 +111,25 @@ module debug_unit
 		
 	assign o_en_write    = en_write_reg;
 	assign o_en_read     = en_read_reg;
-	assign o_inst_load   = instructions;
+	assign o_inst_load   = instruction;
 	assign o_address     = address_reg;
 	assign o_debug_unit_reg   = debug_unit_reg;		
 	assign o_addr_mem_debug_unit = addr_mem_debug_unit_reg;
 
-	/*
+	/* para DEBUG */
 	assign o_state = state;
 	assign o_data_ready = data_ready_uart;
 	assign o_data_receive = data_uart;
-	assign o_en_read_load_inst = en_read_cant_instr;
+	assign o_en_read_cant_instr = en_read_cant_instr;
 	assign o_receive_full_inst = ready_full_inst;
 	assign o_send_inst_finish = all_instr_send;	
-	*/
+	assign tx_start_o = tx_start;
 
 /* 
 #############################################################################################
 #############---Always para setear estado incial y desabilitar el pipeline---#################
 ############################################################################################## */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	always @(posedge i_clock) 
 		begin			
 			if (i_reset) //Si se resetea seteamos Number_Instr como estado inicial y deshabilitamos el pipeline
@@ -138,6 +143,7 @@ module debug_unit
 					o_enable_pipe <= enable_pipe_reg;
 				end
 		end
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*
 ##############################################################################################
 #######################################---Number_Instr---######################################
@@ -149,7 +155,7 @@ module debug_unit
     		if (i_reset)
     			begin
     				//$display("Reset ok");
-    				number_instructions <= {N_COUNT{1'b0}};
+    				number_instructions <= {N_BITS{1'b0}};
     				ready_number_instr     = 1'b0;
     			end	
     		else
@@ -240,19 +246,19 @@ module debug_unit
     always @(posedge i_clock)
     	begin
     		if (i_reset)
-    			instructions <= {N_COUNT{1'b0}};
+    			instruction <= {N_COUNT{1'b0}};
       		
     		else
     			begin
     				if (read_byte_to_byte)
     					begin
     						if (data_ready_uart)
-   								instructions <= { data_uart, instructions[31:8]};
+   								instruction <= { data_uart, instruction[31:8]};
       						else
-    							instructions <= instructions;
+    							instruction <= instruction;
     					end    			
 		    		else
-		    			instructions <= instructions; 
+		    			instruction <= instruction; 
     			end
     	end
 
@@ -325,17 +331,18 @@ module debug_unit
     			end
     	end
 /* #############---ENVIO DE DATOS A LA COMPUTADORA---############# */     
-   always @(negedge i_clock)
+   always @(posedge i_clock)
     	begin 			
     		if (i_reset)
     			begin
-    				o_addr_reg_debug_unit <= 5'b0;
+    				o_addr_reg_debug_unit <= {NB_REG{1'b0}};
     				end_send_regs <= 1'b0;
     				end_send_cant_cycles <= 1'b0;
-    				addr_mem_debug_unit_reg <= 8'b0;
+    				addr_mem_debug_unit_reg <=  {`ADDRWIDTH{1'b0}};
     				data_send 		  <= 8'b0;
     				cont_byte 		  <= 8'b0;
-    				end_send_program_counter  <= 1'b0;  				   				 				
+    				end_send_program_counter  <= 1'b0;  
+					tx_start = 1'b0;			 				
     			end    			
     		else
     			begin 
@@ -686,7 +693,7 @@ module debug_unit
 		.reset(i_reset),
 		.Alu_Result_i(data_send), //dato a enviar a la PC
 		.i_rx_data(i_rx_data),
-		.tx_done_o(tx_done),
+		.tx_done(tx_done),
 		.rx_empty_o(data_ready_uart),		
 		.o_tx_data(o_tx_data),
 		.tx_done_ticks(tx_start),
