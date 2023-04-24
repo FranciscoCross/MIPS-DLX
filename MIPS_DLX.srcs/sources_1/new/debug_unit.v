@@ -26,9 +26,9 @@ module debug_unit
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] i_mem_debug_unit,
 		//DEBUG POR FALTA DE UART
-		input wire data_ready_uart,//rx_empty_o,
-		input wire tx_done,			
-		input wire [NB_DATA-1:0] data_uart,
+		input wire data_rx_ready_uart,//rx_empty_o,
+		input wire tx_to_pc_done,			
+		input wire [NB_DATA-1:0] data_uart_receive,
 		//####
 
 		output reg [NB_REG-1:0] o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
@@ -73,7 +73,7 @@ module debug_unit
 	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000; 
 
 	
-    //wire data_ready_uart;
+    //wire data_rx_ready_uart;
 	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, count_one_cycle, read_mode_operate;
 
 	/* Finish send-data*/
@@ -86,7 +86,7 @@ module debug_unit
 	reg [N_BYTES-2:0] count_bytes;
 	
 	reg [N_BITS-1:0] operation_mode;
-	//wire [N_BITS-1:0] data_uart;
+	//wire [N_BITS-1:0] data_uart_receive;
 	reg [N_BITS-1:0] number_instructions, count_instruction_now;
 	reg [`ADDRWIDTH-1:0] address_reg;
 	reg [NB_DATA-1:0] instruction;
@@ -103,7 +103,7 @@ module debug_unit
 		
 	/* ********************************************** */
 	reg tx_start;
-	//wire tx_done;
+	//wire tx_to_pc_done;
 	reg data_ready, ready_number_instr, tx_done_data, bit_end_send_reg;
 
 	reg mode_operate_ready, mode_operate_check;	
@@ -118,8 +118,8 @@ module debug_unit
 
 	/* para DEBUG */
 	assign o_state = state;
-	assign o_data_ready = data_ready_uart;
-	assign o_data_receive = data_uart;
+	assign o_data_ready = data_rx_ready_uart;
+	assign o_data_receive = data_uart_receive;
 	assign o_en_read_cant_instr = en_read_cant_instr;
 	assign o_receive_full_inst = ready_full_inst;
 	assign o_send_inst_finish = all_instr_send;	
@@ -162,10 +162,10 @@ module debug_unit
     			begin
     				if (en_read_cant_instr)
     					begin
-    						if (data_ready_uart)
+    						if (data_rx_ready_uart)
     							begin
     								ready_number_instr     = 1'b1;
-    								number_instructions = data_uart;
+    								number_instructions = data_uart_receive;
     								//$display("Cantidad de instrucciones %d", number_instructions);
     							end
     						else
@@ -193,7 +193,7 @@ module debug_unit
     			begin
     				if (read_byte_to_byte)
     					begin    						
-    						if (data_ready_uart)
+    						if (data_rx_ready_uart)
     							begin
     								if (count_bytes == N_BYTES-1)
 		    							begin
@@ -252,8 +252,8 @@ module debug_unit
     			begin
     				if (read_byte_to_byte)
     					begin
-    						if (data_ready_uart)
-   								instruction <= { data_uart, instruction[31:8]};
+    						if (data_rx_ready_uart)
+   								instruction <= { data_uart_receive, instruction[31:8]};
       						else
     							instruction <= instruction;
     					end    			
@@ -271,7 +271,7 @@ module debug_unit
     		else
     			begin
     				if (read_mode_operate)
-    					operation_mode= data_uart;						
+    					operation_mode= data_uart_receive;						
  	    					    			
 		    		else
 		    			operation_mode <= operation_mode;
@@ -289,7 +289,7 @@ module debug_unit
     				if (mode_operate_check)
     					begin
     						mode_operate_ready <= 1'b0;
-    						if (data_ready_uart)
+    						if (data_rx_ready_uart)
   								mode_operate_ready <= 1'b1;
     					end		    			
 		    		else
@@ -350,7 +350,7 @@ module debug_unit
     					begin  
     						end_send_program_counter = 1'b0;    						
 
-    						if (tx_done)
+    						if (tx_to_pc_done)
     							begin 	
 		    						if (cont_byte == 1'b1)
 		    							begin
@@ -373,7 +373,7 @@ module debug_unit
 		    			begin
 							end_send_cant_cycles = 1'b0;
 
-							if (tx_done)
+							if (tx_to_pc_done)
 				    			begin
 				    			    if (cont_byte == 1'b1)
 										begin
@@ -399,7 +399,7 @@ module debug_unit
 							end_send_regs = 1'b0;
 							o_addr_reg_debug_unit <= o_addr_reg_debug_unit;	
 
-							if (tx_done)
+							if (tx_to_pc_done)
 	    						begin	
 	    							if (cont_byte == N_BYTES)
 				    					begin
@@ -426,7 +426,7 @@ module debug_unit
 							end_send_mem = 1'b0;
 							addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg;
 
-							if (tx_done)
+							if (tx_to_pc_done)
 				    			begin				    				
 				    				if (i_bit_sucio)
 				    					begin
@@ -691,13 +691,14 @@ module debug_unit
 	(
 		.clock(i_clock),
 		.reset(i_reset),
-		.Alu_Result_i(data_send), //dato a enviar a la PC
-		.i_rx_data(i_rx_data),
-		.tx_done(tx_done),
-		.rx_empty_o(data_ready_uart),		
-		.o_tx_data(o_tx_data),
-		.tx_done_ticks(tx_start),
-		.data_o(data_uart)
+		.i_tx_data(data_send), ///DATA DE LO QUE VOY A ENVIAR A LA PC
+		.i_tx_start(tx_start), //Inicio la trasmicion del byte al pipeline
+		.i_rx_data(i_rx_data), //DATA DE LO QUE VOY RECIBIENDO DE LA PC
+
+		.o_tx_done(tx_to_pc_done), //TERMINO LA TRASMICION DEL BYTE
+		.o_tx_data(o_tx_data), //por donde se manda el bit a bit
+		.o_rx_finish(data_rx_ready_uart), //SE ALERTA QUE ESTA LISTO EN o_rx_data EL BYTE QUE SE RECIBIO
+		.o_rx_data(data_uart_receive)
 	);*/
 
 	
