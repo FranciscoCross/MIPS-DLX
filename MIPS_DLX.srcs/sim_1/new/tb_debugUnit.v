@@ -129,8 +129,6 @@ module tb_debugUnit;
             $finish;
  
         end
-
-
     
     debug_unit debug_unit
 	(
@@ -143,9 +141,6 @@ module tb_debugUnit;
 		.i_reg_debug_unit(reg_debug_unit), //viene del banco de registros
 		.i_bit_sucio(bit_sucio),
 		.i_mem_debug_unit(mem_debug_unit),
-		.data_ready_uart(data_ready_uart_d),
-		.tx_done(tx_done_d),			
-		.data_uart(data_uart_d),
 		
         .o_addr_reg_debug_unit(o_addr_reg_debug_unit),// direccion a leer del registro para enviar a pc
         .o_addr_mem_debug_unit(o_addr_mem_debug_unit), //direccion a leer en memoria

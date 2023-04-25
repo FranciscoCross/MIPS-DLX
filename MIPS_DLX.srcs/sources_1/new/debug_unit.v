@@ -25,11 +25,6 @@ module debug_unit
 		input wire [NB_DATA-1:0] i_reg_debug_unit, //viene del banco de registros
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] i_mem_debug_unit,
-		//DEBUG POR FALTA DE UART
-		input wire data_rx_ready_uart,//rx_empty_o,
-		input wire tx_to_pc_done,			
-		input wire [NB_DATA-1:0] data_uart_receive,
-		//####
 
 		output reg [NB_REG-1:0] o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
@@ -72,9 +67,10 @@ module debug_unit
 	localparam 	[NB_STATE-1:0]	Send_Registers			=  11'b01000000000; 
 	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000; 
 
-	
-    //wire data_rx_ready_uart;
 	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, count_one_cycle, read_mode_operate;
+    
+	/* UART */
+	wire data_rx_ready_uart;
 
 	/* Finish send-data*/
 	reg end_send_program_counter;
@@ -86,7 +82,7 @@ module debug_unit
 	reg [N_BYTES-2:0] count_bytes;
 	
 	reg [N_BITS-1:0] operation_mode;
-	//wire [N_BITS-1:0] data_uart_receive;
+	wire [N_BITS-1:0] data_uart_receive;
 	reg [N_BITS-1:0] number_instructions, count_instruction_now;
 	reg [`ADDRWIDTH-1:0] address_reg;
 	reg [NB_DATA-1:0] instruction;
@@ -103,7 +99,7 @@ module debug_unit
 		
 	/* ********************************************** */
 	reg tx_start;
-	//wire tx_to_pc_done;
+	wire tx_to_pc_done;
 	reg data_ready, ready_number_instr, tx_done_data, bit_end_send_reg;
 
 	reg mode_operate_ready, mode_operate_check;	
@@ -686,20 +682,20 @@ module debug_unit
 			endcase
 		end
 	
-/*
-	uart#(.CLOCK(CLOCK), .BAUD_RATE(BAUD_RATE)) uart
+	uart#(.CLK(CLOCK), .BAUD_RATE(BAUD_RATE)) uart
 	(
+		//Inputs
 		.clock(i_clock),
-		.reset(i_reset),
-		.i_tx_data(data_send), ///DATA DE LO QUE VOY A ENVIAR A LA PC
-		.i_tx_start(tx_start), //Inicio la trasmicion del byte al pipeline
-		.i_rx_data(i_rx_data), //DATA DE LO QUE VOY RECIBIENDO DE LA PC
-
-		.o_tx_done(tx_to_pc_done), //TERMINO LA TRASMICION DEL BYTE
-		.o_tx_data(o_tx_data), //por donde se manda el bit a bit
-		.o_rx_finish(data_rx_ready_uart), //SE ALERTA QUE ESTA LISTO EN o_rx_data EL BYTE QUE SE RECIBIO
-		.o_rx_data(data_uart_receive)
-	);*/
+        .reset(i_reset),
+        .tx_start(tx_start),
+        .rx(i_rx_data),
+        .tx_data(data_send),
+        //Outputs
+		.rx_data(data_uart_receive),
+        .tx(o_tx_data),
+        .rx_done(data_rx_ready_uart),
+        .tx_done(tx_to_pc_done)
+	);
 
 	
 endmodule
