@@ -97,7 +97,7 @@ module tx
         case(state)
             START:
             begin
-                if(tx_start == 0)
+                if(tx_start == 0 & TxDone)
                 begin
                     next_thr = din;
                     next_tsr = din;
@@ -108,8 +108,11 @@ module tx
                 begin
                     TxDone = 0;
                     next_tx = START_b; 
-                    next_state = SHIFT; 
-                    next_tick_counter = 0;
+                    if(tick_counter == ((N_TICK / 2)-1))
+                    begin
+                        next_state = SHIFT; 
+                        next_tick_counter = 0;
+                    end
                 end
             end
             SHIFT:

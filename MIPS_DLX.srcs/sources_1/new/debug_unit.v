@@ -51,7 +51,7 @@ module debug_unit
 		output wire o_send_inst_finish,
 		output wire [NB_STATE-1:0] o_state,
 		output wire [N_BITS-1:0] o_data_receive,
-		output wire tx_start_o			
+		output wire o_tx_start			
 	
 	);
 
@@ -119,7 +119,7 @@ module debug_unit
 	assign o_en_read_cant_instr = en_read_cant_instr;
 	assign o_receive_full_inst = ready_full_inst;
 	assign o_send_inst_finish = all_instr_send;	
-	assign tx_start_o = tx_start;
+	assign o_tx_start = tx_start;
 
 /* 
 #############################################################################################

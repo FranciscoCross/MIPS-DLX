@@ -25,8 +25,8 @@ module rx
     localparam [2 : 0] STOP_1B   = 3'b011;
    
     //Masks
-    localparam START_BIT  = 1;
-    localparam STOP_BIT   = 0;
+    localparam START_BIT  = 0;
+    localparam STOP_BIT   = 1;
 
     //Memory
     reg [2 : 0] state;
@@ -90,7 +90,7 @@ module rx
         case(state)
             START:
             begin
-                if(start_tick_counter == ((N_TICK / 2)-1)) //We need at least 8 ticks to check START
+                if(start_tick_counter == ((N_TICK / 2)-1)) //We need at least 8 ticks to check START 
                 begin
                     RxDone = 0;
                     next_state = SHIFT; 

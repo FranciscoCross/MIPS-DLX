@@ -8,7 +8,7 @@ module tb_debugUnit;
     reg clock = 0;
     reg reset = 0;
     reg halt = 0;
-    reg rx_data = 0;
+    wire rx_data;
     reg program_counter = 0;
     reg reg_debug_unit = 0;
     reg bit_sucio = 0;
@@ -42,95 +42,45 @@ module tb_debugUnit;
     wire o_send_inst_finish;
     wire [NB_STATE-1:0] o_state;
     wire [NB_BITES-1: 0] o_data_receive;
-    wire tx_start_o;
+    wire o_tx_start;
 
-    
+    /*Auxiliary UART Unit*/
+    reg aux_tx_start;
+    reg [7 : 0]aux_tx_data;
+    wire [7 : 0]aux_rx_data;
+    wire aux_rx_done;
+    wire aux_tx_done;
     always #1 clock = ~clock; // # < timeunit > delay
        initial begin
             #0
             reset = 0;
             #1
             reset = 1;
+            aux_tx_start = 0;            
             #1
             reset = 0;
+            #2
             //ENVIO DE NUMERO DE INSTRUCCIONES
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 2;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL PRIMER BYTE DE INSTRUCCION-1
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000001;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-1
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000010;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL TERCER BYTE DE INSTRUCCION-1
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000100;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL CUARTO BYTE DE INSTRUCCION-1
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00001000;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            #2
-            //ENVIO EL PRIMER BYTE DE INSTRUCCION-2
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000001;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-2
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000010;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL TERCER BYTE DE INSTRUCCION-2
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000100;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL CUARTO BYTE DE INSTRUCCION-2
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00001000;
-            #2
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
-            #2
-            data_ready_uart_d = 1;
-            data_uart_d = 8'b00000100;
-            #6 //ESPERA 6 CICLOS SI NO SE LLEGA A LEER TODO TRANCA
-            data_ready_uart_d = 0;
-            data_uart_d = 0;
-            #10
+            aux_tx_data = 8'b00000001;     
+            #1000 
+            aux_tx_start = 1;
+            #200
+            aux_tx_start = 0;
             
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+                        
+            $display("aux_tx_done is high! Continuing with test...");
+
+            
+
+            #1000000
             $finish;
  
         end
     
-    debug_unit debug_unit
+    debug_unit #(.BAUD_RATE(115200)) debug_unit
 	(
 		.i_clock(clock),
 		.i_reset(reset),
@@ -163,7 +113,93 @@ module tb_debugUnit;
 		.o_send_inst_finish(o_send_inst_finish),
 		.o_state(o_state),
 		.o_data_receive(o_data_receive),
-		.tx_start_o(tx_start_o)	
+		.o_tx_start(o_tx_start)	
 	);
 
+
+    uart #(
+        .CLK(50E6),
+        .BAUD_RATE(115200),
+        .NB_DATA(8)
+    ) instancia_uart (
+        .clock(clock),
+        .reset(reset),
+        .tx_start(aux_tx_start),
+        .rx(tx_data),
+        .tx_data(aux_tx_data),
+        .rx_data(aux_rx_data),
+        .tx(rx_data),
+        .rx_done(aux_rx_done),
+        .tx_done(aux_tx_done)
+    );
+    
 endmodule
+
+/*
+ //ENVIO EL PRIMER BYTE DE INSTRUCCION-1
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000001;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-1
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000010;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL TERCER BYTE DE INSTRUCCION-1
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000100;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL CUARTO BYTE DE INSTRUCCION-1
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00001000;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            #2
+            //ENVIO EL PRIMER BYTE DE INSTRUCCION-2
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000001;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-2
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000010;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL TERCER BYTE DE INSTRUCCION-2
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000100;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL CUARTO BYTE DE INSTRUCCION-2
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00001000;
+            #2
+            aux_tx_start = 0;
+            data_uart_d = 0;
+            //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
+            #2
+            aux_tx_start = 1;
+            data_uart_d = 8'b00000100;
+            #6 //ESPERA 6 CICLOS SI NO SE LLEGA A LEER TODO TRANCA
+            aux_tx_start = 0;
+            data_uart_d = 0;
+*/
