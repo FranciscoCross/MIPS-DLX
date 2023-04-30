@@ -50,7 +50,7 @@ module uart
 
         .rx(rx),
         .dout(rx_data),
-        .RxDone(rx_done)
+        .rx_done(rx_done)
     );
     
 endmodule

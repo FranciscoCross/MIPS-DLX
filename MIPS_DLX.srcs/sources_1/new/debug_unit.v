@@ -70,7 +70,7 @@ module debug_unit
 	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, count_one_cycle, read_mode_operate;
     
 	/* UART */
-	wire data_rx_ready_uart;
+	reg data_rx_ready_uart;
 
 	/* Finish send-data*/
 	reg end_send_program_counter;
@@ -86,7 +86,8 @@ module debug_unit
 	reg [N_BITS-1:0] number_instructions, count_instruction_now;
 	reg [`ADDRWIDTH-1:0] address_reg;
 	reg [NB_DATA-1:0] instruction;
-	reg [NB_STATE-1:0] state, next_state;
+	reg [NB_STATE-1:0] state = Number_Instr;
+	reg [NB_STATE-1:0] next_state = Number_Instr;
 	reg [NB_REG-1:0] addr_debug_unit_reg;
     reg [`ADDRWIDTH:0] addr_mem_debug_unit_reg;
 	reg  debug_unit_reg, enable_pipe_reg;
@@ -140,6 +141,14 @@ module debug_unit
 				end
 		end
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+wire rx_done_uart;
+always @(posedge rx_done_uart)
+begin
+    data_rx_ready_uart <= 1;
+    #2
+    data_rx_ready_uart <= 0;
+end
+
 /*
 ##############################################################################################
 #######################################---Number_Instr---######################################
@@ -693,7 +702,7 @@ module debug_unit
         //Outputs
 		.rx_data(data_uart_receive),
         .tx(o_tx_data),
-        .rx_done(data_rx_ready_uart),
+        .rx_done(rx_done_uart),
         .tx_done(tx_to_pc_done)
 	);
 

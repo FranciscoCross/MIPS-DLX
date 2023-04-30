@@ -3,7 +3,7 @@
 module rx
     #(
         parameter N_BITS = 8,     //cantidad de bits de dato
-        parameter N_TICK = 16 // # ticks para stop bits 
+        parameter N_TICK = 8 // # ticks para stop bits 
     )(
         input wire clock,
         input wire reset,
@@ -12,7 +12,7 @@ module rx
 
         //Receiver interface
         input wire rx,
-        output reg RxDone, //Receiver done
+        output wire rx_done, //Receiver done
         output wire [N_BITS - 1:0] dout
     );
 
@@ -33,7 +33,8 @@ module rx
     reg [2 : 0] next_state;
     reg next_rx;
     reg paridad;
-    reg done;
+    reg parity_rx;
+    reg RxDone;
 
     //Register
     reg [N_BITS - 1 : 0] rsr; //Receiver Shift Register
@@ -90,7 +91,8 @@ module rx
         case(state)
             START:
             begin
-                if(start_tick_counter == ((N_TICK / 2)-1)) //We need at least 8 ticks to check START 
+                next_tick_counter = 0;
+                if(start_tick_counter == N_TICK -1) //We need at least 8 ticks to check START 
                 begin
                     RxDone = 0;
                     next_state = SHIFT; 
@@ -111,20 +113,21 @@ module rx
             end
             SHIFT:
             begin
-                if(tick_counter == (N_TICK - 1)) //Ya queda desfasado por 8
-                begin
+                if (tick_counter == N_TICK - 1) begin
+                    next_rbr = {rx, rbr[N_BITS - 1:1]}; // put the bit in the buffer register
+                end
+                if (tick_counter == (N_TICK*2) - 1) begin
                     next_tick_counter = 0;
                     next_bit_counter = bit_counter + 1;
-                    next_rbr = {rx, rbr[N_BITS - 1:1]}; //ponemos el bit en el registro b 
-                    
-                    if(bit_counter == (N_BITS - 1))
-                    begin
+                    if (bit_counter == N_BITS - 1) begin
                         paridad = (^next_rbr);
-                    
-                        if(parity) 
+                        
+                        if (parity) 
                             next_state = PARITY;
                         else
                             next_state = STOP_1B;
+                    end else begin
+                        next_state = SHIFT; // stay in the SHIFT state
                     end
                 end
             end
@@ -132,10 +135,12 @@ module rx
             begin
                 if(tick_counter == (N_TICK - 1))
                 begin
-                    next_state = STOP_1B;
+                    parity_rx = rx;
+                end
+                if(tick_counter == (N_TICK*2 - 1))
+                begin
                     next_tick_counter = 0;
-                    
-                    if(rx == paridad)
+                    if(parity_rx == paridad)
                         next_state = STOP_1B;
                     else
                         next_state = START;
@@ -143,11 +148,12 @@ module rx
             end
             STOP_1B:
             begin
-                if(tick_counter == (N_TICK - 1))
+                if(tick_counter == (N_TICK*2 - 1))
                 begin
                     RxDone = 1;
                     next_state = START;
                     next_tick_counter = 0;
+                    next_bit_counter = -1;
                 end                
             end
             default: //Fault recovery
@@ -161,4 +167,5 @@ module rx
     end
 
     assign dout = rbr;
+    assign rx_done = RxDone;
 endmodule

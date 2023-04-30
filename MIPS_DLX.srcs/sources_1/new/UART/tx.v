@@ -36,25 +36,25 @@ module tx
     //Masks
 
     //Memory
-    reg [2 : 0] state;
-    reg [2 : 0] next_state;
-    reg tx_reg;
-    reg next_tx;
+    reg [2 : 0] state = START;
+    reg [2 : 0] next_state =START;
+    reg tx_reg = STOP_b;
+    reg next_tx = STOP_b;
     reg paridad;
-    reg done;
+    reg done =1;
 
     //Register
-    reg [N_BITS - 1 : 0] tsr; //Transmit Shift Register
-    reg [N_BITS - 1 : 0] thr; //Transmit Holding Register
-    reg [N_BITS - 1 : 0] next_tsr;
-    reg [N_BITS - 1 : 0] next_thr;
+    reg [N_BITS - 1 : 0] tsr =0; //Transmit Shift Register
+    reg [N_BITS - 1 : 0] thr =0; //Transmit Holding Register
+    reg [N_BITS - 1 : 0] next_tsr =0;
+    reg [N_BITS - 1 : 0] next_thr =0;
 
     //Local
-    reg [4 : 0] tick_counter;
-    reg [2 : 0] bit_counter;
+    reg [4 : 0] tick_counter =0;
+    reg [2 : 0] bit_counter =0;
 
-    reg [4 : 0] next_tick_counter;
-    reg [2 : 0] next_bit_counter;
+    reg [4 : 0] next_tick_counter =0;
+    reg [2 : 0] next_bit_counter = 0;
 
 
 

@@ -46,7 +46,7 @@ module tb_debugUnit;
 
     /*Auxiliary UART Unit*/
     reg aux_tx_start;
-    reg [7 : 0]aux_tx_data;
+    reg [7 : 0]aux_tx_data = 0;
     wire [7 : 0]aux_rx_data;
     wire aux_rx_done;
     wire aux_tx_done;
@@ -54,27 +54,36 @@ module tb_debugUnit;
        initial begin
             #0
             reset = 0;
+            aux_tx_start = 0;     
             #1
-            reset = 1;
-            aux_tx_start = 0;            
+            reset = 1;   
             #1
             reset = 0;
-            #2
-            //ENVIO DE NUMERO DE INSTRUCCIONES
+            #2            
+            $display("Envio numero de instrucciones");
+
             aux_tx_data = 8'b00000001;     
-            #1000 
+            #1000
             aux_tx_start = 1;
-            #200
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2          
+            $display("Envio primer byte de instruccion 1");
+            aux_tx_data = 8'b00001111;     
+            #1000
+            aux_tx_start = 1;
+            #100
             aux_tx_start = 0;
             
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
                         
-            $display("aux_tx_done is high! Continuing with test...");
-
-            
-
+            //$display("Envio primer byte de instruccion 1");
             #1000000
             $finish;
  
