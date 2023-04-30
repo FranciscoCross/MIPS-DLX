@@ -134,6 +134,7 @@ module tb_debugUnit;
         .clock(clock),
         .reset(reset),
         .tx_start(aux_tx_start),
+        .parity(1),
         .rx(tx_data),
         .tx_data(aux_tx_data),
         .rx_data(aux_rx_data),

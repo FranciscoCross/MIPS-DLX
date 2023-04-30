@@ -699,6 +699,7 @@ end
         .tx_start(tx_start),
         .rx(i_rx_data),
         .tx_data(data_send),
+        .parity(1),
         //Outputs
 		.rx_data(data_uart_receive),
         .tx(o_tx_data),

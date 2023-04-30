@@ -9,6 +9,7 @@ module uart
     )(
         input wire clock,
         input wire reset,
+        input wire parity,
         input wire tx_start,
         input wire rx,
         input wire [NB_DATA - 1 : 0] tx_data,
@@ -18,7 +19,6 @@ module uart
         output wire tx_done
     );
     
-    reg parity = 1;
     wire tick;
     
     baudrategen#(.CLK(CLK), .BAUD_RATE(BAUD_RATE)) instancia_bd
@@ -50,7 +50,7 @@ module uart
 
         .rx(rx),
         .dout(rx_data),
-        .rx_done(rx_done)
+        .RxDone(rx_done)
     );
     
 endmodule

@@ -12,7 +12,7 @@ module rx
 
         //Receiver interface
         input wire rx,
-        output wire rx_done, //Receiver done
+        output reg RxDone, //Receiver done
         output wire [N_BITS - 1:0] dout
     );
 
@@ -33,8 +33,8 @@ module rx
     reg [2 : 0] next_state;
     reg next_rx;
     reg paridad;
-    reg parity_rx;
-    reg RxDone;
+    reg parity_rx = 0;
+    reg done;
 
     //Register
     reg [N_BITS - 1 : 0] rsr; //Receiver Shift Register
@@ -119,7 +119,7 @@ module rx
                 if (tick_counter == (N_TICK*2) - 1) begin
                     next_tick_counter = 0;
                     next_bit_counter = bit_counter + 1;
-                    if (bit_counter == N_BITS - 1) begin
+                    if (bit_counter == N_BITS) begin
                         paridad = (^next_rbr);
                         
                         if (parity) 
@@ -140,10 +140,14 @@ module rx
                 if(tick_counter == (N_TICK*2 - 1))
                 begin
                     next_tick_counter = 0;
-                    if(parity_rx == paridad)
+                    if(parity_rx == paridad) begin
                         next_state = STOP_1B;
-                    else
-                        next_state = START;
+                    end else begin
+                        RxDone = 1;
+                        next_state = START; 
+                        next_tick_counter = 0;
+                        next_bit_counter = -1;
+                    end
                 end
             end
             STOP_1B:
@@ -167,5 +171,4 @@ module rx
     end
 
     assign dout = rbr;
-    assign rx_done = RxDone;
 endmodule
