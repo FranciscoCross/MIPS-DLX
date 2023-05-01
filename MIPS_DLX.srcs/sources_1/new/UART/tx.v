@@ -14,7 +14,7 @@ module tx
         input wire [N_BITS - 1 : 0] din, //Data input
 
         //Receiver interface
-        output reg TxDone, //Transmitter done
+        output wire TxDone, //Transmitter done
         output wire tx //Transmitter serial output
     );
 
@@ -41,7 +41,7 @@ module tx
     reg tx_reg;
     reg next_tx;
     reg paridad;
-    reg done;
+    reg done = 0;
 
     //Register
     reg [N_BITS - 1 : 0] tsr; //Transmit Shift Register
@@ -56,7 +56,7 @@ module tx
     reg [4 : 0] next_tick_counter;
     reg [2 : 0] next_bit_counter;
 
-
+    reg done_fix = 1;
 
     always @(posedge clock) //Memory
     begin
@@ -76,7 +76,8 @@ module tx
             next_tick_counter <= 0;
             next_bit_counter <= 0;
             
-            TxDone <= 1;
+            done <= 0;
+            done_fix <= 1;
         end
         else //Update every variable state
         begin
@@ -97,16 +98,15 @@ module tx
         case(state)
             START:
             begin
-                if(tx_start == 0 & TxDone)
+                if(tx_start == 0 & done_fix)
                 begin
                     next_thr = din;
                     next_tsr = din;
                     next_tx = STOP_b;
                     next_state = START; 
-                end
-                else
-                begin
-                    TxDone = 0;
+                end else begin
+                    done = 0;
+                    done_fix = 0;
                     next_tx = START_b; 
                     if(tick_counter == ((N_TICK / 2)-1))
                     begin
@@ -147,8 +147,8 @@ module tx
                 next_tx = STOP_b;
                 if(tick_counter == (N_TICK - 1))
                 begin
-                    TxDone = 1;
-
+                    done = 1;
+                    done_fix = 1;
                     next_thr = 0;
                     next_tsr = 0;
                     next_state = START;
@@ -157,7 +157,8 @@ module tx
             end
             default: //Fault recovery
             begin
-                TxDone = 1;
+                done = 1;
+                done_fix = 1;
                 next_thr = 0;
                 next_tsr = 0;
                 next_state = START; 
@@ -167,4 +168,5 @@ module tx
     end
 
     assign tx = tx_reg;
+    assign TxDone = done;
 endmodule

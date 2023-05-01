@@ -12,7 +12,7 @@ module rx
 
         //Receiver interface
         input wire rx,
-        output reg RxDone, //Receiver done
+        output wire RxDone, //Receiver done
         output wire [N_BITS - 1:0] dout
     );
 
@@ -34,7 +34,7 @@ module rx
     reg next_rx;
     reg paridad;
     reg parity_rx = 0;
-    reg done;
+    reg done = 0;
 
     //Register
     reg [N_BITS - 1 : 0] rsr; //Receiver Shift Register
@@ -54,7 +54,7 @@ module rx
     begin
         if(reset) 
         begin
-            RxDone <= 1;
+            done <= 0;
 
             state <= START;
             rbr <= 0;   
@@ -94,7 +94,7 @@ module rx
                 next_tick_counter = 0;
                 if(start_tick_counter == N_TICK -1) //We need at least 8 ticks to check START 
                 begin
-                    RxDone = 0;
+                    done = 0;
                     next_state = SHIFT; 
                     next_bit_counter = 0;
                     next_rbr = 0; 
@@ -143,7 +143,7 @@ module rx
                     if(parity_rx == paridad) begin
                         next_state = STOP_1B;
                     end else begin
-                        RxDone = 1;
+                        done = 1;
                         next_state = START; 
                         next_tick_counter = 0;
                         next_bit_counter = -1;
@@ -154,7 +154,7 @@ module rx
             begin
                 if(tick_counter == (N_TICK*2 - 1))
                 begin
-                    RxDone = 1;
+                    done = 1;
                     next_state = START;
                     next_tick_counter = 0;
                     next_bit_counter = -1;
@@ -162,7 +162,7 @@ module rx
             end
             default: //Fault recovery
             begin
-                RxDone = 1;
+                done = 1;
                 next_state = START; 
                 next_tick_counter = 0;
                 next_bit_counter = -1;
@@ -171,4 +171,5 @@ module rx
     end
 
     assign dout = rbr;
+    assign RxDone = done;
 endmodule
