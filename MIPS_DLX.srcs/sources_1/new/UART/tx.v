@@ -99,14 +99,13 @@ module tx
         case(state)
             START:
             begin
-                //
-                if(tx_start == 0 & done_fix)
+                if(tx_start == 0 & done_fix) //Si no hay TX start sigo en START
                 begin
-                    next_thr = din;
-                    next_tsr = din;
                     next_tx = STOP_b;
                     next_state = START; 
-                end else begin
+                end else begin //Si hay tx start <=> tx_start = 1 y done_fix = 0
+                    next_thr = din;
+                    next_tsr = din;
                     done = 0;
                     done_fix = 0;
                     next_tx = START_b; 

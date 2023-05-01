@@ -9,7 +9,7 @@ module tb_debugUnit;
     reg reset = 0;
     reg halt = 0;
     wire rx_data;
-    reg [7 : 0] program_counter = 8'b01100001;
+    reg [7 : 0] program_counter = 8'b11111111;
     reg reg_debug_unit = 0;
     reg bit_sucio = 0;
     reg mem_debug_unit = 0;
@@ -185,7 +185,7 @@ module tb_debugUnit;
         .reset(reset),
         .tx_start(aux_tx_start),
         .parity(1),
-        .rx(tx_data),
+        .rx(o_tx_data),
         .tx_data(aux_tx_data),
         .rx_data(aux_rx_data),
         .tx(rx_data),

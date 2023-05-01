@@ -352,7 +352,7 @@ end
     			end    			
     		else
     			begin 
-    				if (en_send_program_counter)
+    				if (en_send_program_counter) //ACA SE ENVIA EL PROGRAM COUNTER
     					begin  
     						end_send_program_counter <= 1'b0;    						
 							
