@@ -55,20 +55,20 @@ module debug_unit
 	
 	);
 
-	localparam 	[NB_STATE-1:0]  Number_Instr        	=  11'b00000000001;
-	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  11'b00000000010;
-	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  11'b00000000100;
+	localparam 	[NB_STATE-1:0]  Number_Instr        	=  11'b00000000001;//1
+	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  11'b00000000010;//2
+	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  11'b00000000100;//4
 	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  11'b00000001000;//8
-	localparam 	[NB_STATE-1:0]	Check_Operation    		=  11'b00000010000;//16
+	localparam 	[NB_STATE-1:0]	Check_Operation    		=  11'b00000010000;//16 To choose between step or continuous mode
 	localparam 	[NB_STATE-1:0]	Step_to_step       		=  11'b00000100000;//32 
-	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  11'b00001000000;//64 
+	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  11'b00001000000;//64 For continuous mode
 	localparam 	[NB_STATE-1:0]	Send_program_counter    =  11'b00010000000;//128 
-	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  11'b00100000000; 
-	localparam 	[NB_STATE-1:0]	Send_Registers			=  11'b01000000000; 
-	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000; 
+	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  11'b00100000000;//256 
+	localparam 	[NB_STATE-1:0]	Send_Registers			=  11'b01000000000;//512 
+	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000;//1024 
 
-	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, count_one_cycle, read_mode_operate;
-    
+	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, read_mode_operate;
+    reg count_one_cycle = 0;
 	/* UART */
 	reg data_rx_ready_uart;
 
@@ -294,7 +294,7 @@ end
     				if (mode_operate_check)
     					begin
     						mode_operate_ready <= 1'b0;
-    						if (data_rx_ready_uart)
+    						if (data_rx_ready_uart) //rx_done
   								mode_operate_ready <= 1'b1;
     					end		    			
 		    		else
@@ -558,7 +558,7 @@ end
 							next_state = Waiting_operation;				
 
 					end					
-				Check_Operation:
+				Check_Operation: //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
 						debug_unit_reg = 1'b0;
 						case (operation_mode)
@@ -573,7 +573,8 @@ end
 				Step_to_step:
 					//Step en donde habilitamos el pipeline para que se corra un ciclo
 					begin
-						if(count_one_cycle == 0)
+						case(count_one_cycle)
+						0:
 							begin
 								en_read_reg = 1'b1;
 								enable_pipe_reg = 1'b1;
@@ -583,8 +584,9 @@ end
 								count_one_cycle = 1;
 								next_state = Step_to_step;
 							end
-						else
+						1:
 							begin
+								count_one_cycle = 0;
 								en_read_reg = 1'b1;	
 								debug_unit_reg = 1'b0;
 								en_write_reg = 1'b0;	
@@ -596,7 +598,10 @@ end
 									enable_pipe_reg = 1'b0;															
 									en_send_program_counter = 1'b1;
 								end
-							end							
+							end	
+						default:
+							count_one_cycle = 0;
+						endcase						
 					end
 				Continue_to_Halt:
 					begin						

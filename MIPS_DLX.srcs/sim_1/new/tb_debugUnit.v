@@ -82,7 +82,51 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-                        
+            #2          
+            $display("Envio segundno byte de instruccion 1");
+            aux_tx_data = 8'b00001111;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2          
+            $display("Envio tercer byte de instruccion 1");
+            aux_tx_data = 8'b00001111;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2          
+            $display("Envio cuarto byte de instruccion 1");
+            aux_tx_data = 8'b00001111;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2
+            $display("Envio modo de operacion step/continuo");
+            //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
+            aux_tx_data = 8'b00000100;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
             //$display("Envio primer byte de instruccion 1");
             #1000000
             $finish;
