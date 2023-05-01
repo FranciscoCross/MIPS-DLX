@@ -91,6 +91,7 @@ module tx
 
     end
 
+
     always @(posedge tick) //Next state logic
     begin
         next_tick_counter = tick_counter + 1;
@@ -98,6 +99,7 @@ module tx
         case(state)
             START:
             begin
+                //
                 if(tx_start == 0 & done_fix)
                 begin
                     next_thr = din;

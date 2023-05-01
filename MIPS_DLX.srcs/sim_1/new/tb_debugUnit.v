@@ -9,11 +9,11 @@ module tb_debugUnit;
     reg reset = 0;
     reg halt = 0;
     wire rx_data;
-    reg program_counter = 0;
+    reg [7 : 0] program_counter = 8'b01100001;
     reg reg_debug_unit = 0;
     reg bit_sucio = 0;
     reg mem_debug_unit = 0;
-    reg cant_cycles_d = 25;
+    reg [7 : 0] cant_cycles_d = 8'b11111111;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;
     reg tx_done_d = 0;	
@@ -118,7 +118,7 @@ module tb_debugUnit;
             #2
             $display("Envio modo de operacion step/continuo");
             //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
-            aux_tx_data = 8'b00000100;     
+            aux_tx_data = 8'b00010000;     
             #1000
             aux_tx_start = 1;
             #100
@@ -127,6 +127,12 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
+             #2
+            $display("Envio un halt");
+            #10000
+            halt = 1;
+            #100
+            halt = 0;
             //$display("Envio primer byte de instruccion 1");
             #1000000
             $finish;

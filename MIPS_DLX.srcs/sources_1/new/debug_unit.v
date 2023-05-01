@@ -12,7 +12,7 @@ module debug_unit
 		parameter NB_REG     = 5,
 		parameter N_BITS     = 8,
 		parameter N_BYTES    = 4,		
-		parameter NB_STATE   = 11,
+		parameter NB_STATE   = 12,
 		parameter N_COUNT	 = 10			
 	)
 	(
@@ -55,17 +55,18 @@ module debug_unit
 	
 	);
 
-	localparam 	[NB_STATE-1:0]  Number_Instr        	=  11'b00000000001;//1
-	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  11'b00000000010;//2
-	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  11'b00000000100;//4
-	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  11'b00000001000;//8
-	localparam 	[NB_STATE-1:0]	Check_Operation    		=  11'b00000010000;//16 To choose between step or continuous mode
-	localparam 	[NB_STATE-1:0]	Step_to_step       		=  11'b00000100000;//32 
-	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  11'b00001000000;//64 For continuous mode
-	localparam 	[NB_STATE-1:0]	Send_program_counter    =  11'b00010000000;//128 
-	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  11'b00100000000;//256 
-	localparam 	[NB_STATE-1:0]	Send_Registers			=  11'b01000000000;//512 
-	localparam 	[NB_STATE-1:0]	Send_Memory				=  11'b10000000000;//1024 
+	localparam 	[NB_STATE-1:0]  Number_Instr        	=  12'b000000000001;//1
+	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  12'b000000000010;//2
+	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  12'b000000000100;//4
+	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  12'b000000001000;//8
+	localparam 	[NB_STATE-1:0]	Check_Operation    		=  12'b000000010000;//16 To choose between step or continuous mode
+	localparam 	[NB_STATE-1:0]	Step_to_step       		=  12'b000000100000;//32 
+	localparam 	[NB_STATE-1:0]	Wait_One_Cicle     		=  12'b000001000000;//64 
+	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  12'b000010000000;//128 For continuous mode
+	localparam 	[NB_STATE-1:0]	Send_program_counter    =  12'b000100000000;//256 
+	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  12'b001000000000;//512
+	localparam 	[NB_STATE-1:0]	Send_Registers			=  12'b010000000000;//1024 
+	localparam 	[NB_STATE-1:0]	Send_Memory				=  12'b100000000000;//2048
 
 	reg en_read_cant_instr, read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, en_send_instr, all_instr_send, read_mode_operate;
     reg count_one_cycle = 0;
@@ -99,9 +100,9 @@ module debug_unit
 	//reg [N_BITS*5-1:0] mem_data;
 		
 	/* ********************************************** */
-	reg tx_start;
-	wire tx_to_pc_done;
-	reg data_ready, ready_number_instr, tx_done_data, bit_end_send_reg;
+	reg tx_start = 0;
+	wire tx_to_computer_done;
+	reg data_ready, ready_number_instr, bit_end_send_reg;
 
 	reg mode_operate_ready, mode_operate_check;	
 	reg [N_BITS-1:0] data_send, data_send_reg;   
@@ -353,58 +354,58 @@ end
     			begin 
     				if (en_send_program_counter)
     					begin  
-    						end_send_program_counter = 1'b0;    						
-
-    						if (tx_to_pc_done)
+    						end_send_program_counter <= 1'b0;    						
+							
+    						if (tx_to_computer_done) //ver si se termino de transmitir el uart
     							begin 	
 		    						if (cont_byte == 1'b1)
 		    							begin
-		    								end_send_program_counter = 1'b1;		    								
+		    								end_send_program_counter <=1'b1;		    								
 		    								cont_byte 		 <= 8'b0;
+											tx_start <= 1'b0;
 		    							end	    						 
 		    						else
-		    							begin
-		    										    						 	
-		    						 		data_send = i_send_program_counter;		    						 		
-		    						 		cont_byte = cont_byte + 1;    						
-    										tx_start = 1'b1;    										
+		    							begin	    						 	   						 		
+		    						 		cont_byte <= cont_byte + 1;    						
+    										tx_start <= 1'b1;    										
 		    						 	end 						  				
 						  		end						    	  							
   
 	    					else
-	    						tx_start = 1'b0;						    	  						
+	    						tx_start <= 1'b1;						    	  						
 		    			end
 		    		else if (en_send_cant_cyles)
 		    			begin
 							end_send_cant_cycles = 1'b0;
 
-							if (tx_to_pc_done)
-				    			begin
-				    			    if (cont_byte == 1'b1)
-										begin
-											end_send_cant_cycles = 1'b1;
-											cont_byte 		 <= 8'b0;											
-										end
-									else
-										begin
-											data_send = i_cant_cycles;
-					    					cont_byte = cont_byte + 1;					    					     								
-					    					tx_start = 1'b1;					    					
-										end	 
-		    					end
-		    				else
-		    					begin
-		    						tx_start = 1'b0;
-						    		data_send <= data_send;
-						    		cont_byte <= cont_byte;
-		    					end 
+							// if (tx_to_computer_done)
+				    		// 	begin
+				    		// 	    if (cont_byte == 1'b1)
+							// 			begin
+							// 				end_send_cant_cycles = 1'b1;
+							// 				cont_byte 		 <= 8'b0;	
+							// 				tx_start = 1'b0;										
+							// 			end
+							// 		else
+							// 			begin
+							// 				data_send = i_cant_cycles;
+					    	// 				cont_byte = cont_byte + 1;					    					     								
+					    	// 				tx_start = 1'b1;					    					
+							// 			end	 
+		    				// 	end
+		    				// else
+		    				// 	begin
+		    				// 		tx_start = 1'b1;
+						    // 		data_send <= data_send;
+						    // 		cont_byte <= cont_byte;
+		    				// 	end 
 		    			end
 		    		else if (en_send_data_reg)
 						begin							
 							end_send_regs = 1'b0;
 							o_addr_reg_debug_unit <= o_addr_reg_debug_unit;	
 
-							if (tx_to_pc_done)
+							if (tx_to_computer_done)
 	    						begin	
 	    							if (cont_byte == N_BYTES)
 				    					begin
@@ -416,7 +417,7 @@ end
 				    					begin
 					    					data_send = i_reg_debug_unit[8*cont_byte+:8]; //8*cont_byte+ -> determinan el inicio de los 8 bits que se toman de los 32 (0, 8, 16, 24) por ende se van a enviar desde el byte menos significativo hasta el mas significativo
 					    					cont_byte = cont_byte + 1;								    		
-								    		tx_start = 1'b1;  								
+								    		tx_start = 1'b0;  								
 					    				end	 
 			    				end
 			    			else
@@ -431,7 +432,7 @@ end
 							end_send_mem = 1'b0;
 							addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg;
 
-							if (tx_to_pc_done)
+							if (tx_to_computer_done)
 				    			begin				    				
 				    				if (i_bit_sucio)
 				    					begin
@@ -445,12 +446,12 @@ end
 				    							begin
 						    						data_send = i_mem_debug_unit[8*cont_byte+:8];				    											    						
 						    						cont_byte = cont_byte + 1;			                                            									    		
-										    		tx_start = 1'b1;										    		
+										    		tx_start = 1'b0;										    		
 										    	end	
 				    					end
 				    				else
 				    					begin
-				    						end_send_mem = 1'b1;
+				    						end_send_mem = 1'b0;
 				    						addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;					    						
 										end
 			    						
@@ -571,37 +572,29 @@ end
 						endcase				
 					end						
 				Step_to_step:
+					begin	
+						en_read_reg = 1'b1;
+						enable_pipe_reg = 1'b1;
+						o_enable_mem = 1'b1;	
+
+						debug_unit_reg = 1'b0;
+						en_write_reg = 1'b0;						
+						next_state = Wait_One_Cicle;
+					end
+				Wait_One_Cicle:
 					//Step en donde habilitamos el pipeline para que se corra un ciclo
 					begin
-						case(count_one_cycle)
-						0:
-							begin
-								en_read_reg = 1'b1;
-								enable_pipe_reg = 1'b1;
-								o_enable_mem = 1'b1;							
-								debug_unit_reg = 1'b0;
-								en_write_reg = 1'b0;						
-								count_one_cycle = 1;
-								next_state = Step_to_step;
-							end
-						1:
-							begin
-								count_one_cycle = 0;
-								en_read_reg = 1'b1;	
-								debug_unit_reg = 1'b0;
-								en_write_reg = 1'b0;	
-								en_send_program_counter = 1'b1;
-								next_state = Send_program_counter;
+						en_read_reg = 1'b1;	
+						debug_unit_reg = 1'b0;
+						en_write_reg = 1'b0;	
+						en_send_program_counter = 1'b1;
+						next_state = Send_program_counter;
 
-								if (i_halt)
-								begin
-									enable_pipe_reg = 1'b0;															
-									en_send_program_counter = 1'b1;
-								end
-							end	
-						default:
-							count_one_cycle = 0;
-						endcase						
+						if (i_halt)
+						begin
+							enable_pipe_reg = 1'b0;															
+							en_send_program_counter = 1'b1;
+						end					
 					end
 				Continue_to_Halt:
 					begin						
@@ -615,10 +608,10 @@ end
 						if (i_halt)
 							begin
 								//$display("salto halt");	
-								enable_pipe_reg = 1'b0;
-								en_send_program_counter = 1'b1;
-								next_state = Send_program_counter;
-								
+								enable_pipe_reg <= 1'b0;
+								en_send_program_counter <= 1'b1;
+								next_state <= Send_program_counter;
+								data_send <= i_send_program_counter;
 							end
 					end				
 				Send_program_counter:
@@ -709,7 +702,7 @@ end
 		.rx_data(data_uart_receive),
         .tx(o_tx_data),
         .rx_done(rx_done_uart),
-        .tx_done(tx_to_pc_done)
+        .tx_done(tx_to_computer_done)
 	);
 
 	
