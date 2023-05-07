@@ -102,7 +102,8 @@ module tx
                 if(tx_start == 0 & done_fix) //Si no hay TX start sigo en START
                 begin
                     next_tx = STOP_b;
-                    next_state = START; 
+                    next_state = START;
+                    next_tick_counter = 0;
                 end else begin //Si hay tx start <=> tx_start = 1 y done_fix = 0
                     next_thr = din;
                     next_tsr = din;

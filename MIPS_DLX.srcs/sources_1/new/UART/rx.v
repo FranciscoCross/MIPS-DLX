@@ -114,15 +114,16 @@ module rx
             end
             SHIFT:
             begin
-                if (tick_counter == N_TICK - 1) begin
+                if (tick_counter == (N_TICK - 1) & (bit_counter < N_BITS )) begin
                     next_rbr = {rx, rbr[N_BITS - 1:1]}; // put the bit in the buffer register
                 end
                 if (tick_counter == (N_TICK*2) - 1) begin
                     next_tick_counter = 0;
                     next_bit_counter = bit_counter + 1;
+
                     if (bit_counter == N_BITS) begin
                         paridad = (^next_rbr);
-                        
+                        next_bit_counter = 0;
                         if (parity) 
                             next_state = PARITY;
                         else
