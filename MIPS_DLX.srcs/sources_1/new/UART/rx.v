@@ -91,7 +91,6 @@ module rx
         case(state)
             START:
             begin
-               
                 next_tick_counter = 0;
                 if(start_tick_counter == N_TICK -1) //We need at least 8 ticks to check START 
                 begin

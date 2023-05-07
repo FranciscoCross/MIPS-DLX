@@ -9,11 +9,11 @@ module tb_debugUnit;
     reg reset = 0;
     reg halt = 0;
     wire rx_data;
-    reg [7 : 0] program_counter = 8'b11111111;
+    reg [7 : 0] program_counter = 8'b00010000;
     reg reg_debug_unit = 0;
     reg bit_sucio = 0;
     reg mem_debug_unit = 0;
-    reg [7 : 0] cant_cycles_d = 8'b11111111;
+    reg [7 : 0] cant_cycles_d = 8'b00100000;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;
     reg tx_done_d = 0;	
@@ -73,7 +73,7 @@ module tb_debugUnit;
             end
             #2          
             $display("Envio primer byte de instruccion 1");
-            aux_tx_data = 8'b00001111;     
+            aux_tx_data = 8'b00100000;     
             #1000
             aux_tx_start = 1;
             #100

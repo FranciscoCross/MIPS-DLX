@@ -11,15 +11,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="16.833334 us"></ZoomStartTime>
-      <ZoomEndTime time="117.833334 us"></ZoomEndTime>
-      <Cursor1Time time="93.397850 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="1,072.266001 us"></ZoomEndTime>
+      <Cursor1Time time="1.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="226"></NameColumnWidth>
-      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="25" />
+   <WVObjectSize size="24" />
+   <wave_markers>
+      <marker time="72167000" label="" />
+      <marker time="91013945" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -27,6 +31,10 @@
    <wvobject fp_name="/tb_debugUnit/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/halt" type="logic">
+      <obj_property name="ElementShortName">halt</obj_property>
+      <obj_property name="ObjectShortName">halt</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_debugUnit/instancia_uart/tx_data" type="array">
       <obj_property name="DisplayName">label</obj_property>
@@ -73,6 +81,215 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="CustomSignalColor">#FFA500</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr" type="array">
+      <obj_property name="ElementShortName">thr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">thr[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tx_start</obj_property>
+      <obj_property name="ObjectShortName">tx_start</obj_property>
+      <obj_property name="label">tx_start_debug_unit</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/tx" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+      <obj_property name="label">tx_debug_unit</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/state" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      <obj_property name="label">state_tx_debug_unit[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/rx_done_uart" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">rx_done_uart</obj_property>
+      <obj_property name="ObjectShortName">rx_done_uart</obj_property>
+      <obj_property name="label">rx_done_debug_unit</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">rx_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_data[7:0]</obj_property>
+      <obj_property name="label">rx_data_debug_unit</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_to_computer_done" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tx_to_computer_done</obj_property>
+      <obj_property name="ObjectShortName">tx_to_computer_done</obj_property>
+      <obj_property name="label">tx_done_debug_unit</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_to_computer_done" type="logic">
+      <obj_property name="ElementShortName">tx_to_computer_done</obj_property>
+      <obj_property name="ObjectShortName">tx_to_computer_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
+      <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
       <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
@@ -94,86 +311,12 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="label">state_debug_unit[11:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_debugUnit/halt" type="logic">
-      <obj_property name="ElementShortName">halt</obj_property>
-      <obj_property name="ObjectShortName">halt</obj_property>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_cant_cycles" type="logic">
+      <obj_property name="ElementShortName">end_send_cant_cycles</obj_property>
+      <obj_property name="ObjectShortName">end_send_cant_cycles</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_debugUnit/program_counter" type="array">
-      <obj_property name="ElementShortName">program_counter[7:0]</obj_property>
-      <obj_property name="ObjectShortName">program_counter[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_program_counter" type="logic">
-      <obj_property name="ElementShortName">en_send_program_counter</obj_property>
-      <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/thr" type="array">
-      <obj_property name="ElementShortName">thr[7:0]</obj_property>
-      <obj_property name="ObjectShortName">thr[7:0]</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">tx_start</obj_property>
-      <obj_property name="ObjectShortName">tx_start</obj_property>
-      <obj_property name="label">tx_start_debug_unit</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/tx" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">tx</obj_property>
-      <obj_property name="ObjectShortName">tx</obj_property>
-      <obj_property name="label">tx_debug_unit</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/rx_done_uart" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">rx_done_uart</obj_property>
-      <obj_property name="ObjectShortName">rx_done_uart</obj_property>
-      <obj_property name="label">rx_done_debug_unit</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_data" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">rx_data[7:0]</obj_property>
-      <obj_property name="ObjectShortName">rx_data[7:0]</obj_property>
-      <obj_property name="label">rx_data_debug_unit</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/state" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">state[2:0]</obj_property>
-      <obj_property name="ObjectShortName">state[2:0]</obj_property>
-      <obj_property name="label">state_tx_debug_unit[2:0]</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_to_computer_done" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">tx_to_computer_done</obj_property>
-      <obj_property name="ObjectShortName">tx_to_computer_done</obj_property>
-      <obj_property name="label">tx_done_debug_unit</obj_property>
-      <obj_property name="CustomSignalColor">#FF0000</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_program_counter" type="logic">
-      <obj_property name="ElementShortName">end_send_program_counter</obj_property>
-      <obj_property name="ObjectShortName">end_send_program_counter</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/tx_to_computer_done" type="logic">
-      <obj_property name="ElementShortName">tx_to_computer_done</obj_property>
-      <obj_property name="ObjectShortName">tx_to_computer_done</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
-      <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
-      <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_cant_cyles" type="logic">
+      <obj_property name="ElementShortName">en_send_cant_cyles</obj_property>
+      <obj_property name="ObjectShortName">en_send_cant_cyles</obj_property>
    </wvobject>
 </wave_config>

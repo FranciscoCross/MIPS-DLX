@@ -20,7 +20,7 @@ module debug_unit
 		input wire i_reset,
 		input wire i_halt,	
 		input wire i_rx_data,	
-		input wire [`ADDRWIDTH-1:0] i_send_program_counter, //pc + 1
+		input wire [`ADDRWIDTH:0] i_send_program_counter, //pc + 1
 		input wire [N_BITS-1:0] i_cant_cycles,
 		input wire [NB_DATA-1:0] i_reg_debug_unit, //viene del banco de registros
 		input wire i_bit_sucio,
@@ -102,6 +102,8 @@ module debug_unit
 	/* ********************************************** */
 	reg tx_start = 0;
 	wire tx_to_computer_done;
+	reg tx_to_computer_done_aux = 0;
+	//reg tx_to_computer_done = 0;
 	reg data_ready, ready_number_instr, bit_end_send_reg;
 
 	reg mode_operate_ready, mode_operate_check;	
@@ -142,6 +144,7 @@ module debug_unit
 				end
 		end
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
 wire rx_done_uart;
 always @(posedge rx_done_uart)
 begin
@@ -150,6 +153,18 @@ begin
     data_rx_ready_uart <= 0;
 end
 
+//wire tx_done_uart;
+//always @(posedge tx_done_uart)
+//begin
+//    tx_to_computer_done <= 1;
+//    #16
+//    tx_to_computer_done <= 0;
+//end
+always @(posedge tx_start)
+begin
+	#100
+	tx_start <= 1'b0;
+end
 /*
 ##############################################################################################
 #######################################---Number_Instr---######################################
@@ -361,44 +376,44 @@ end
 		    						if (cont_byte == 1'b1)
 		    							begin
 		    								end_send_program_counter <=1'b1;		    								
-		    								cont_byte 		 <= 8'b0;
+		    								cont_byte <= 8'b0;
 											tx_start <= 1'b0;
 		    							end	    						 
 		    						else
 		    							begin	    						 	   						 		
 		    						 		cont_byte <= cont_byte + 1;    						
-    										tx_start <= 1'b1;    										
+    										tx_start <= 1'b0;    										
 		    						 	end 						  				
 						  		end						    	  							
   
-	    					else
-	    						tx_start <= 1'b1;						    	  						
+	    					//else
+	    					//	tx_start <= 1'b1;					    	  						
 		    			end
 		    		else if (en_send_cant_cyles)
 		    			begin
 							end_send_cant_cycles = 1'b0;
 
-							// if (tx_to_computer_done)
-				    		// 	begin
-				    		// 	    if (cont_byte == 1'b1)
-							// 			begin
-							// 				end_send_cant_cycles = 1'b1;
-							// 				cont_byte 		 <= 8'b0;	
-							// 				tx_start = 1'b0;										
-							// 			end
-							// 		else
-							// 			begin
-							// 				data_send = i_cant_cycles;
-					    	// 				cont_byte = cont_byte + 1;					    					     								
-					    	// 				tx_start = 1'b1;					    					
-							// 			end	 
-		    				// 	end
-		    				// else
-		    				// 	begin
-		    				// 		tx_start = 1'b1;
-						    // 		data_send <= data_send;
-						    // 		cont_byte <= cont_byte;
-		    				// 	end 
+							if (tx_to_computer_done)
+				    			begin
+				    			    if (cont_byte == 1'b1)
+										begin
+											end_send_cant_cycles = 1'b1;
+											cont_byte 		 <= 8'b0;	
+											tx_start = 1'b0;										
+										end
+									else
+										begin
+											data_send = i_cant_cycles;
+					    					cont_byte = cont_byte + 1;					    					     								
+					    					tx_start = 1'b0;					    					
+										end	 
+		    					end
+		    				else
+		    					begin
+						    		data_send <= data_send;
+						    		cont_byte <= cont_byte;
+		    						//tx_start <= 1'b1;
+		    					end 
 		    			end
 		    		else if (en_send_data_reg)
 						begin							
@@ -612,18 +627,20 @@ end
 								en_send_program_counter <= 1'b1;
 								next_state <= Send_program_counter;
 								data_send <= i_send_program_counter;
+								tx_start = 1'b1;
 							end
 					end				
-				Send_program_counter:
+				Send_program_counter:  //256
 					begin							
 						debug_unit_reg = 1'b0;
 						en_send_program_counter = 1'b1;
 						next_state = Send_program_counter;						
-
+						
 						if (end_send_program_counter)
 							begin																							
 								en_send_program_counter = 1'b0;	
-								next_state = Send_cant_cyles;							
+								next_state = Send_cant_cyles;	
+								tx_start = 1'b0;
 							end	
 					end	
 				Send_cant_cyles:
@@ -631,18 +648,19 @@ end
 						debug_unit_reg = 1'b0;
 						en_send_cant_cyles = 1'b1;						
 						next_state = Send_cant_cyles;
-
+						
 						if (end_send_cant_cycles)
 							begin
 								en_send_cant_cyles = 1'b0;
 								o_ctrl_read_debug_reg = 1'b1;													
 								next_state = Send_Registers;
+								data_send <= i_cant_cycles;
 							end												
 					end				
 				Send_Registers:
 					begin						
 						debug_unit_reg = 1'b0;
-						en_send_data_reg = 1'b1;
+						//en_send_data_reg = 1'b1;
 						o_ctrl_read_debug_reg = 1'b1;
 						next_state = Send_Registers;
 					
@@ -688,7 +706,7 @@ end
 					next_state = Number_Instr;					
 			endcase
 		end
-	
+
 	uart#(.CLK(CLOCK), .BAUD_RATE(BAUD_RATE)) uart
 	(
 		//Inputs
@@ -702,6 +720,7 @@ end
 		.rx_data(data_uart_receive),
         .tx(o_tx_data),
         .rx_done(rx_done_uart),
+        //.tx_done(tx_done_uart)
         .tx_done(tx_to_computer_done)
 	);
 
