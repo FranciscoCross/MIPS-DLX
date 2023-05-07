@@ -122,7 +122,7 @@ module rx
 
                     if (bit_counter == N_BITS) begin
                         paridad = (^next_rbr);
-                        next_bit_counter = 0;
+                        next_bit_counter = -1;
                         if (parity) 
                             next_state = PARITY;
                         else
