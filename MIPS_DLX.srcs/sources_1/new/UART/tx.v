@@ -42,6 +42,7 @@ module tx
     reg next_tx;
     reg paridad;
     reg done = 0;
+    reg next_done = 0;
 
     //Register
     reg [N_BITS - 1 : 0] tsr; //Transmit Shift Register
@@ -57,7 +58,9 @@ module tx
     reg [2 : 0] next_bit_counter;
 
     reg tx_ready = 1;
-
+    reg next_tx_ready = 1;
+    
+    reg transmitir = 1;
     always @(posedge clock) //Memory
     begin
         if(reset) 
@@ -77,7 +80,9 @@ module tx
             next_bit_counter <= 0;
             
             done <= 0;
+            next_done <= 0;
             tx_ready <= 1;
+            next_tx_ready <= 1;
         end
         else //Update every variable state
         begin
@@ -87,8 +92,14 @@ module tx
             bit_counter <= next_bit_counter;
             thr <= next_thr;
             tsr <= next_tsr;
+            tx_ready <= next_tx_ready;
+            done <= next_done;
         end
 
+        if(tx_start & tx_ready)
+        begin
+            transmitir <= 1;
+        end
     end
 
 
@@ -99,7 +110,7 @@ module tx
         case(state)
             START:
             begin
-                if(tx_start == 0 & tx_ready == 0) //Si no hay TX start sigo en START
+                if(!transmitir) //Si no hay TX start sigo en START
                 begin //aca no trasmitp
                     next_tx = STOP_b;
                     next_state = START;
@@ -107,13 +118,14 @@ module tx
                 end else begin //Comienza la transmision
                     next_thr = din;
                     next_tsr = din;
-                    done = 0;
-                    tx_ready = 0;
+                    next_done = 0;
                     next_tx = START_b; 
+                    next_tx_ready = 0;
                     if(tick_counter == ((N_TICK / 2)-1))
                     begin
                         next_state = SHIFT; 
                         next_tick_counter = 0;
+                        transmitir = 0;
                     end
                 end
             end
@@ -149,8 +161,8 @@ module tx
                 next_tx = STOP_b;
                 if(tick_counter == (N_TICK - 1))
                 begin
-                    done = 1;
-                    tx_ready = 1;
+                    next_done = 1;
+                    next_tx_ready = 1;
                     next_thr = 0;
                     next_tsr = 0;
                     next_state = START;
@@ -159,8 +171,8 @@ module tx
             end
             default: //Fault recovery
             begin
-                done = 1;
-                tx_ready = 1;
+                next_done = 1;
+                next_tx_ready = 1;
                 next_thr = 0;
                 next_tsr = 0;
                 next_state = START; 

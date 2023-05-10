@@ -6,7 +6,7 @@
 
 module debug_unit
 	#(
-		parameter CLOCK        = 50E6,
+		parameter CLOCK      = 50E6,
 		parameter BAUD_RATE  = 9600,
 		parameter NB_DATA    = 32,
 		parameter NB_REG     = 5,
@@ -54,7 +54,6 @@ module debug_unit
 		output wire o_tx_start			
 	
 	);
-
 	localparam 	[NB_STATE-1:0]  Number_Instr        	=  12'b000000000001;//1
 	localparam 	[NB_STATE-1:0]	Receive_One_Instr      	=  12'b000000000010;//2
 	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  12'b000000000100;//4
@@ -100,8 +99,13 @@ module debug_unit
 	//reg [N_BITS*5-1:0] mem_data;
 		
 	/* ********************************************** */
+	/* SEND DATA TO THE COMPUTER*/
+	
+	//Este es un delay para tener en cuenta entre la diferencia por TX y RX. 
+	//De esa manera se evita transmitir cuando el receptor no esta listo
+	localparam integer WAIT_TX = 36*(CLOCK / (BAUD_RATE*16)); 
+
 	reg tx_start = 0;
-	//wire tx_to_computer_done;
 	reg tx_to_computer_done_aux = 0;
 	reg tx_to_computer_done = 0;
 	reg data_ready, ready_number_instr, bit_end_send_reg;
@@ -156,6 +160,7 @@ end
 wire tx_done_uart;
 always @(posedge tx_done_uart)
 begin
+	#WAIT_TX
     tx_to_computer_done <= 1;
     #5
     tx_to_computer_done <= 0;
@@ -374,7 +379,7 @@ end
 							
     						if (tx_to_computer_done) //ver si se termino de transmitir el uart
     							begin 	
-		    						if (cont_byte == 1'b1)
+		    						if (cont_byte == 1'b1) 
 		    							begin
 		    								end_send_program_counter <=1'b1;		    								
 		    								cont_byte <= 8'b0;
@@ -656,13 +661,13 @@ end
 								en_send_cant_cyles = 1'b0;
 								o_ctrl_read_debug_reg = 1'b1;													
 								next_state = Send_Registers;
-								data_send <= i_cant_cycles;
+								tx_start <= 1'b1;
 							end												
 					end				
 				Send_Registers:
 					begin						
 						debug_unit_reg = 1'b0;
-						//en_send_data_reg = 1'b1;
+						en_send_data_reg = 1'b1;
 						o_ctrl_read_debug_reg = 1'b1;
 						next_state = Send_Registers;
 					
