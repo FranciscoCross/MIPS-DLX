@@ -56,7 +56,7 @@ module tx
     reg [4 : 0] next_tick_counter;
     reg [2 : 0] next_bit_counter;
 
-    reg done_fix = 1;
+    reg tx_ready = 1;
 
     always @(posedge clock) //Memory
     begin
@@ -77,7 +77,7 @@ module tx
             next_bit_counter <= 0;
             
             done <= 0;
-            done_fix <= 1;
+            tx_ready <= 1;
         end
         else //Update every variable state
         begin
@@ -99,16 +99,16 @@ module tx
         case(state)
             START:
             begin
-                if(tx_start == 0 & done_fix) //Si no hay TX start sigo en START
-                begin
+                if(tx_start == 0 & tx_ready == 0) //Si no hay TX start sigo en START
+                begin //aca no trasmitp
                     next_tx = STOP_b;
                     next_state = START;
                     next_tick_counter = 0;
-                end else begin //Si hay tx start <=> tx_start = 1 y done_fix = 0
+                end else begin //Comienza la transmision
                     next_thr = din;
                     next_tsr = din;
                     done = 0;
-                    done_fix = 0;
+                    tx_ready = 0;
                     next_tx = START_b; 
                     if(tick_counter == ((N_TICK / 2)-1))
                     begin
@@ -150,7 +150,7 @@ module tx
                 if(tick_counter == (N_TICK - 1))
                 begin
                     done = 1;
-                    done_fix = 1;
+                    tx_ready = 1;
                     next_thr = 0;
                     next_tsr = 0;
                     next_state = START;
@@ -160,7 +160,7 @@ module tx
             default: //Fault recovery
             begin
                 done = 1;
-                done_fix = 1;
+                tx_ready = 1;
                 next_thr = 0;
                 next_tsr = 0;
                 next_state = START; 

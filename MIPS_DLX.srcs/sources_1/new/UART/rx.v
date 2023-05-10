@@ -106,7 +106,7 @@ module rx
                     if(rx == START_BIT) 
                         next_start_tick_counter = start_tick_counter + 1;
                     else
-                        next_start_tick_counter = 0;        
+                    next_start_tick_counter = 0;        
                     next_state = START; 
                     next_bit_counter = -1;
                 end
