@@ -428,6 +428,7 @@ end
 
 							if (tx_to_computer_done)
 	    						begin	
+									//ACA ENVIO REGISTRO A REGISTRO PERO POR PARTES, OSEA QUE MANDO 4 bytes de un reg y paso al siguiente
 	    							if (cont_byte == N_BYTES)
 				    					begin
 				    						end_send_regs = 1'b1;
@@ -438,12 +439,12 @@ end
 				    					begin
 					    					data_send = i_reg_debug_unit[8*cont_byte+:8]; //8*cont_byte+ -> determinan el inicio de los 8 bits que se toman de los 32 (0, 8, 16, 24) por ende se van a enviar desde el byte menos significativo hasta el mas significativo
 					    					cont_byte = cont_byte + 1;								    		
-								    		tx_start = 1'b0;  								
+								    		tx_start = 1'b1;  								
 					    				end	 
 			    				end
 			    			else
 			    				begin			    					
-			    					tx_start = 1'b0;
+			    					tx_start <= tx_start;
 						    		data_send <= data_send;
 						    		cont_byte <= cont_byte;
 			    				end
@@ -661,16 +662,16 @@ end
 								en_send_cant_cyles = 1'b0;
 								o_ctrl_read_debug_reg = 1'b1;													
 								next_state = Send_Registers;
-								tx_start <= 1'b1;
+								cont_byte = 1'b0;
 							end												
 					end				
 				Send_Registers:
-					begin						
+					begin					
 						debug_unit_reg = 1'b0;
 						en_send_data_reg = 1'b1;
 						o_ctrl_read_debug_reg = 1'b1;
 						next_state = Send_Registers;
-					
+						tx_start = 1'b1;
 						if (end_send_regs)
 							begin								
 								if (o_addr_reg_debug_unit == 5'b0) //Quiere decir que se llego al numero 32 ya que se envio desde el 0 al 31, (32 == 100000)
