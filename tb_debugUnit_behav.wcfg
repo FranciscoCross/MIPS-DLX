@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="71,667.207 ns"></ZoomStartTime>
-      <ZoomEndTime time="73,508.399 ns"></ZoomEndTime>
-      <Cursor1Time time="72,167.000 ns"></Cursor1Time>
+      <ZoomStartTime time="18.183965 us"></ZoomStartTime>
+      <ZoomEndTime time="87.490845 us"></ZoomEndTime>
+      <Cursor1Time time="34.856389 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="226"></NameColumnWidth>
-      <ValueColumnWidth column_width="94"></ValueColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="25" />
    <wave_markers>
       <marker time="91013945" label="" />
       <marker time="72167000" label="" />
@@ -183,17 +183,9 @@
       <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
       <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
-      <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
-      <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/count_bytes" type="array">
-      <obj_property name="ElementShortName">count_bytes[2:0]</obj_property>
-      <obj_property name="ObjectShortName">count_bytes[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/operation_mode" type="array">
-      <obj_property name="ElementShortName">operation_mode[7:0]</obj_property>
-      <obj_property name="ObjectShortName">operation_mode[7:0]</obj_property>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_reg_debug_unit" type="array">
+      <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+      <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_debugUnit/debug_unit/state" type="array">
@@ -206,9 +198,5 @@
    <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_cant_cycles" type="logic">
       <obj_property name="ElementShortName">end_send_cant_cycles</obj_property>
       <obj_property name="ObjectShortName">end_send_cant_cycles</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_cant_cyles" type="logic">
-      <obj_property name="ElementShortName">en_send_cant_cyles</obj_property>
-      <obj_property name="ObjectShortName">en_send_cant_cyles</obj_property>
    </wvobject>
 </wave_config>
