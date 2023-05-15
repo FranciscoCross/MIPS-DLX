@@ -160,7 +160,7 @@ end
 wire tx_done_uart;
 always @(posedge tx_done_uart)
 begin
-	#WAIT_TX
+	#WAIT_TX  //Para que espere al RX y vuelva a transmitir
     tx_to_computer_done <= 1;
     #5
     tx_to_computer_done <= 0;
@@ -358,145 +358,109 @@ end
     			end
     	end
 /* #############---ENVIO DE DATOS A LA COMPUTADORA---############# */     
-   always @(posedge i_clock)
-    	begin 			
-    		if (i_reset)
-    			begin
-    				o_addr_reg_debug_unit <= {NB_REG{1'b0}};
-    				end_send_regs <= 1'b0;
-    				end_send_cant_cycles <= 1'b0;
-    				addr_mem_debug_unit_reg <=  {`ADDRWIDTH{1'b0}};
-    				data_send 		  <= 8'b0;
-    				cont_byte 		  <= 8'b0;
-    				end_send_program_counter  <= 1'b0;  
-					tx_start = 1'b0;			 				
-    			end    			
-    		else
-    			begin 
-    				if (en_send_program_counter) //ACA SE ENVIA EL PROGRAM COUNTER
-    					begin  
-    						end_send_program_counter <= 1'b0;    						
-							
-    						if (tx_to_computer_done) //ver si se termino de transmitir el uart
-    							begin 	
-		    						if (cont_byte == 1'b1) 
-		    							begin
-		    								end_send_program_counter <=1'b1;		    								
-		    								cont_byte <= 8'b0;
-											tx_start <= 1'b0;
-		    							end	    						 
-		    						else
-		    							begin	    						 	   						 		
-		    						 		cont_byte <= cont_byte + 1;    						
-    										tx_start <= 1'b0;    										
-		    						 	end 						  				
-						  		end						    	  							
-  
-	    					//else
-	    					//	tx_start <= 1'b1;					    	  						
-		    			end
-		    		else if (en_send_cant_cyles)
-		    			begin
-							end_send_cant_cycles = 1'b0;
+    always @(posedge i_clock)
+    begin 			
+        if (i_reset)
+            begin
+                o_addr_reg_debug_unit <= {NB_REG{1'b0}};
+                end_send_regs <= 1'b0;
+                end_send_cant_cycles <= 1'b0;
+                addr_mem_debug_unit_reg <=  {`ADDRWIDTH{1'b0}};
+                data_send 		  <= 8'b0;
+                cont_byte 		  <= 8'b0;
+                end_send_program_counter  <= 1'b0;  
+                tx_start = 1'b0;			 				
+            end    		
+    end
 
-							if (tx_to_computer_done)
-				    			begin
-				    			    if (cont_byte == 1'b1)
-										begin
-											end_send_cant_cycles = 1'b1;
-											cont_byte 		 <= 8'b0;	
-											tx_start = 1'b0;										
-										end
-									else
-										begin
-											data_send = i_cant_cycles;
-					    					cont_byte = cont_byte + 1;					    					     								
-					    					tx_start = 1'b0;					    					
-										end	 
-		    					end
-		    				else
-		    					begin
-						    		data_send <= data_send;
-						    		cont_byte <= cont_byte;
-		    						//tx_start <= 1'b1;
-		    					end 
-		    			end
-		    		else if (en_send_data_reg)
-						begin							
-							end_send_regs = 1'b0;
-							o_addr_reg_debug_unit <= o_addr_reg_debug_unit;	
+   always @(posedge tx_to_computer_done)
+    begin        	
+    if (en_send_program_counter) //ACA SE ENVIA EL PROGRAM COUNTER
+        begin  
+            end_send_program_counter <= 1'b1;    											    								
+			tx_start <= 1'b0;					  								    	  											    	  						
+        end
+    else if (en_send_cant_cyles)
+        begin
+            end_send_cant_cycles = 1'b1;   					     								
+            tx_start = 1'b0;					    					
+        end
+    else if (en_send_data_reg)
+        begin							
+            end_send_regs = 1'b0;
+            o_addr_reg_debug_unit <= o_addr_reg_debug_unit;	
+            //ACA ENVIO REGISTRO A REGISTRO PERO POR PARTES, OSEA QUE MANDO 4 bytes de un reg y paso al siguiente
+            if (cont_byte == N_BYTES)
+            begin
+                end_send_regs = 1'b1;
+                o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;		//ACA AUMENTO A LA SIGUIENTE DIRECCION DEL REGISTRO A ENVIAR		    						
+                cont_byte 		  <= 8'b0;
+            end
+            else 
+            begin
+                data_send = i_reg_debug_unit[8*cont_byte+:8]; //8*cont_byte+ -> determinan el inicio de los 8 bits que se toman de los 32 (0, 8, 16, 24) por ende se van a enviar desde el byte menos significativo hasta el mas significativo
+                cont_byte = cont_byte + 1;								    		
+                tx_start = 1'b1;  								
+            end	 
+        end
+    else if (en_send_data_mem)
+        begin
+            end_send_mem = 1'b0;
+            addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg; 				
+            if (i_bit_sucio)
+                begin
+                    if (cont_byte == N_BYTES - 1)
+                        begin
+                            end_send_mem = 1'b1;
+                            addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;	//ACA AUMENTO A LA SIGUIENTE DIRECCION DE MEMORIA A ENVIAR		    								
+                            cont_byte 		 <= 8'b0;
+                            tx_start = 1'b0;										    		
+                        end
+                    else
+                        begin
+                            data_send = i_mem_debug_unit[8*cont_byte+:8];				    											    						
+                            cont_byte = cont_byte + 1;			                                            									    		
+                            tx_start = 1'b1;										    		
+                        end	
+                end
+            else
+                begin
+                    end_send_mem = 1'b0;
+                    addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;					    						
+                end
+        end 
+    else 
+    begin
+        end_send_program_counter  	= 1'b0;
+        end_send_regs 				= 1'b0;
+        end_send_cant_cycles 		= 1'b0;
+        end_send_mem 				= 1'b0;
+        data_send <= data_send;
+        cont_byte <= cont_byte;  
+    end
+    end
 
-							if (tx_to_computer_done)
-	    						begin	
-									//ACA ENVIO REGISTRO A REGISTRO PERO POR PARTES, OSEA QUE MANDO 4 bytes de un reg y paso al siguiente
-	    							if (cont_byte == N_BYTES)
-				    					begin
-				    						end_send_regs = 1'b1;
-				    						o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;		//ACA AUMENTO A LA SIGUIENTE DIRECCION DEL REGISTRO A ENVIAR		    						
-				    						cont_byte 		  <= 8'b0;
-				    					end
-				    				else 
-				    					begin
-					    					data_send = i_reg_debug_unit[8*cont_byte+:8]; //8*cont_byte+ -> determinan el inicio de los 8 bits que se toman de los 32 (0, 8, 16, 24) por ende se van a enviar desde el byte menos significativo hasta el mas significativo
-					    					cont_byte = cont_byte + 1;								    		
-								    		tx_start = 1'b1;  								
-					    				end	 
-			    				end
-			    			else
-			    				begin			    					
-			    					tx_start <= tx_start;
-						    		data_send <= data_send;
-						    		cont_byte <= cont_byte;
-			    				end
-			    		end
-			    	else if (en_send_data_mem)
-						begin
-							end_send_mem = 1'b0;
-							addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg;
-
-							if (tx_to_computer_done)
-				    			begin				    				
-				    				if (i_bit_sucio)
-				    					begin
-				    						if (cont_byte == N_BYTES)
-				    							begin
-				    								end_send_mem = 1'b1;
-				    								addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;	//ACA AUMENTO A LA SIGUIENTE DIRECCION DE MEMORIA A ENVIAR		    								
-				    								cont_byte 		 <= 8'b0;
-				    							end
-				    						else
-				    							begin
-						    						data_send = i_mem_debug_unit[8*cont_byte+:8];				    											    						
-						    						cont_byte = cont_byte + 1;			                                            									    		
-										    		tx_start = 1'b0;										    		
-										    	end	
-				    					end
-				    				else
-				    					begin
-				    						end_send_mem = 1'b0;
-				    						addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;					    						
-										end
-			    						
-				    			end
-				    		else
-			    				begin			    					
-			    					tx_start = 1'b0;
-						    		data_send <= data_send;
-						    		cont_byte <= cont_byte;
-			    				end
-				    	end 
-		    		else 
-		    			begin
-		    				end_send_program_counter  	= 1'b0;
-		    				end_send_regs 				= 1'b0;
-							end_send_cant_cycles 		= 1'b0;
-		    				end_send_mem 				= 1'b0;
-					    	data_send <= data_send;
-					    	cont_byte <= cont_byte;  
-		    			end
-		    	end
-		end
-   	
+	always @(negedge tx_to_computer_done)
+	begin
+		if (en_send_cant_cyles)
+			begin
+				data_send <= data_send;
+				cont_byte <= cont_byte;
+			end
+		else if (en_send_data_reg)
+			begin		    					
+				tx_start <= tx_start;
+				data_send <= data_send;
+				cont_byte <= cont_byte;
+			end
+		else if (en_send_data_mem)
+			begin			    					
+				tx_start = 1'b0;
+				data_send <= data_send;
+				cont_byte <= cont_byte;
+			end
+	end
+		
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 	always @(*) //logica de cambio de estado
@@ -662,6 +626,7 @@ end
 								en_send_cant_cyles = 1'b0;
 								o_ctrl_read_debug_reg = 1'b1;													
 								next_state = Send_Registers;
+								data_send <= i_reg_debug_unit;
 								cont_byte = 1'b0;
 							end												
 					end				
@@ -683,7 +648,8 @@ end
 										next_state = Send_Memory;										
 										o_ctrl_wr_debug_mem = 1'b1;
 										o_ctrl_addr_debug_mem = 1'b1;
-										o_enable_mem = 1'b1;										
+										o_enable_mem = 1'b1;		
+										data_send <= i_mem_debug_unit;
 	    							end	    							
 							end
 					end				
@@ -696,6 +662,7 @@ end
 						o_enable_mem = 1'b1;
 					
 						next_state = Send_Memory;
+						tx_start = 1'b1;
 						if (end_send_mem)
 							begin
 								if (addr_mem_debug_unit_reg == `N_ELEMENTS-1)

@@ -11,19 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="18.183965 us"></ZoomStartTime>
-      <ZoomEndTime time="87.490845 us"></ZoomEndTime>
-      <Cursor1Time time="34.856389 us"></Cursor1Time>
+      <ZoomStartTime time="1,740.750000 us"></ZoomStartTime>
+      <ZoomEndTime time="1,813.050001 us"></ZoomEndTime>
+      <Cursor1Time time="1,801.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="226"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <NameColumnWidth column_width="210"></NameColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="25" />
-   <wave_markers>
-      <marker time="91013945" label="" />
-      <marker time="72167000" label="" />
-   </wave_markers>
+   <WVObjectSize size="26" />
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -179,6 +175,11 @@
       <obj_property name="ElementShortName">tx_to_computer_done</obj_property>
       <obj_property name="ObjectShortName">tx_to_computer_done</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/uart/tx_data" type="array">
+      <obj_property name="ElementShortName">tx_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_data[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
       <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
       <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
@@ -195,8 +196,8 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="label">state_debug_unit[11:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_cant_cycles" type="logic">
-      <obj_property name="ElementShortName">end_send_cant_cycles</obj_property>
-      <obj_property name="ObjectShortName">end_send_cant_cycles</obj_property>
+   <wvobject fp_name="/tb_debugUnit/bit_sucio" type="logic">
+      <obj_property name="ElementShortName">bit_sucio</obj_property>
+      <obj_property name="ObjectShortName">bit_sucio</obj_property>
    </wvobject>
 </wave_config>
