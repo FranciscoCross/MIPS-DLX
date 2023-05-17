@@ -28,9 +28,8 @@ module rx
     localparam START_BIT  = 0;
     localparam STOP_BIT   = 1;
 
-    //Memory
-    reg [2 : 0] state;
-    reg [2 : 0] next_state;
+    reg [2 : 0] state = START;
+    reg [2 : 0] next_state = START;
     reg next_rx;
     reg paridad;
     reg parity_rx = 0;
@@ -43,12 +42,12 @@ module rx
     reg [N_BITS - 1 : 0] next_rbr; 
 
     //Local
-    reg [4 : 0] tick_counter;
-    reg [3 : 0] bit_counter;
-    reg [2 : 0] start_tick_counter;
-    reg [3 : 0] next_bit_counter;
-    reg [4 : 0] next_tick_counter;
-    reg [2 : 0] next_start_tick_counter;
+    reg [4 : 0] tick_counter =0;
+    reg [3 : 0] bit_counter =-1;
+    reg [2 : 0] start_tick_counter=0;
+    reg [3 : 0] next_bit_counter=0;
+    reg [4 : 0] next_tick_counter=0;
+    reg [2 : 0] next_start_tick_counter=0;
 
     always @(posedge clock) //Memory
     begin

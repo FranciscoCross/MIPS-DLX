@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "parameters.vh"
 
 module tb_ALU;
     localparam NB_DATA = 8;

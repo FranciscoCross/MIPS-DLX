@@ -19,10 +19,10 @@ module TOP
 		input wire i_reset_wz,
 		input wire i_rx_data,
 
-		output wire tx_data_o,
-		output wire locked_o,	
-		output wire ack_debug_o,
-		output wire end_send_data_o
+		output wire o_tx_data,
+		output wire o_locked,	
+		output wire o_ack_debug,
+		output wire o_end_send_data
 	);
 
 
@@ -46,17 +46,16 @@ module TOP
 	wire wire_ctrl_read_debug_reg;
 
 	
-	assign locked_o = locked_wz;
+	assign o_locked = locked_wz;
 	assign halt_o = wire_halt;
 
-	clock_wz clock_wz
+	clk_wz clock_wz
   	(  
 		.clk_out1(clock_w),
 	  	.reset(i_reset_wz), 
 	  	.locked(locked_wz),
 	  	.clk_in1(i_clock)
 	 );
-
 
     pipeline pipeline
 	(
@@ -100,7 +99,7 @@ module TOP
 		.o_ctrl_addr_debug_mem(wire_ctrl_addr_debug_mem),
 		.o_ctrl_wr_debug_mem(wire_ctrl_wr_debug_mem),
 		.o_ctrl_read_debug_reg(wire_ctrl_read_debug_reg),
-		.o_tx_data(tx_data_o),
+		.o_tx_data(o_tx_data),
 		.o_en_write(wire_en_write), //habilitamos la escritura en memoria, sabiendo que el dato ya esta completo formando los 32 bits de la instruccion
 		.o_en_read(wire_en_read),		
 		.o_enable_pipe(wire_enable_pipe),
@@ -108,15 +107,15 @@ module TOP
 		.o_debug_unit_reg(wire_debug_unit),				
 		.o_inst_load(wire_inst_load), //instruccion a cargar en memoria
 		.o_address(wire_addr_load_inst), //direccion donde se carga la instruccion
-		.o_ack_debug(ack_debug_o), //avisa al test que ya puede enviar el comando
-		.o_end_send_data(end_send_data_o), //avisa al test que ya se termino de enviar datos de memoria
+		.o_ack_debug(o_ack_debug), //avisa al test que ya puede enviar el comando
+		.o_end_send_data(o_end_send_data) //avisa al test que ya se termino de enviar datos de memoria
 		//DEBUG
-		.o_data_ready(),		
-		.o_en_read_load_inst(),
-		.o_receive_full_inst(),
-		.o_send_inst_finish(),
-		.o_state(),
-		.o_data_receive(),
-		.tx_start_o()	
+		//.o_data_ready(),		
+		//.o_en_read_load_inst(),
+		//.o_receive_full_inst(),
+		//.o_send_inst_finish(),
+		//.o_state(),
+		//.o_data_receive(),
+		//.tx_start_o()	
 	);
 endmodule

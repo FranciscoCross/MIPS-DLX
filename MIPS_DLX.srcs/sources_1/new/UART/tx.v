@@ -38,8 +38,8 @@ module tx
     //Memory
     reg [2 : 0] state;
     reg [2 : 0] next_state;
-    reg tx_reg;
-    reg next_tx;
+    reg tx_reg = STOP_b;
+    reg next_tx = STOP_b;
     reg paridad;
     reg done = 0;
     reg next_done = 0;
@@ -60,7 +60,7 @@ module tx
     reg tx_ready = 1;
     reg next_tx_ready = 1;
     
-    reg transmitir = 1;
+    reg transmitir = 0;
     always @(posedge clock) //Memory
     begin
         if(reset) 

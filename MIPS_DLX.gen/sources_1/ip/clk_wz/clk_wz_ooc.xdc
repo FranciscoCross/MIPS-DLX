@@ -1,5 +1,5 @@
 
-# file: clock_wz_ooc.xdc
+# file: clk_wz_ooc.xdc
 # 
 # (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 # 
@@ -54,5 +54,5 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
-#create_clock -period 50.000 [get_ports clk_in1]
+#create_clock -period 20.000 [get_ports clk_in1]
 

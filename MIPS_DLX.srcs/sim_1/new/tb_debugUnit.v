@@ -54,7 +54,6 @@ module tb_debugUnit;
     wire aux_rx_done;
     wire aux_tx_done;
 
-    localparam NB_DATA = 32;
     localparam NB_REG = 5;
 
     reg rw = 0;
@@ -200,7 +199,7 @@ module tb_debugUnit;
             #100
             halt = 0;
             //$display("Envio primer byte de instruccion 1");
-            #10000000000
+            #10000000
             $finish;
  
         end

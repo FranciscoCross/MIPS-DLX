@@ -1,11 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-// Date        : Fri Apr  7 13:29:15 2023
-// Host        : Pancho-Legion running 64-bit major release  (build 9200)
+// Date        : Tue May 16 22:40:42 2023
+// Host        : Matias running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/chito/Documents/Arqui/MIPS-DLX/MIPS_DLX.gen/sources_1/ip/clock_wz/clock_wz_sim_netlist.v
-// Design      : clock_wz
+//               c:/Users/matia/Documents/ArquitecturaComputadoras/MIPS-DLX/MIPS_DLX.gen/sources_1/ip/clk_wz/clk_wz_sim_netlist.v
+// Design      : clk_wz
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z010iclg225-1L
@@ -13,7 +13,7 @@
 `timescale 1 ps / 1 ps
 
 (* NotValidForBitStream *)
-module clock_wz
+module clk_wz
    (clk_out1,
     reset,
     locked,
@@ -28,14 +28,14 @@ module clock_wz
   wire locked;
   wire reset;
 
-  clock_wz_clk_wiz inst
+  clk_wz_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .locked(locked),
         .reset(reset));
 endmodule
 
-module clock_wz_clk_wiz
+module clk_wz_clk_wiz
    (clk_out1,
     reset,
     locked,
@@ -46,11 +46,11 @@ module clock_wz_clk_wiz
   input clk_in1;
 
   wire clk_in1;
-  wire clk_in1_clock_wz;
+  wire clk_in1_clk_wz;
   wire clk_out1;
-  wire clk_out1_clock_wz;
-  wire clkfbout_buf_clock_wz;
-  wire clkfbout_clock_wz;
+  wire clk_out1_clk_wz;
+  wire clkfbout_buf_clk_wz;
+  wire clkfbout_clk_wz;
   wire locked;
   wire reset;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
@@ -72,8 +72,8 @@ module clock_wz_clk_wiz
 
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkf_buf
-       (.I(clkfbout_clock_wz),
-        .O(clkfbout_buf_clock_wz));
+       (.I(clkfbout_clk_wz),
+        .O(clkfbout_buf_clk_wz));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* CAPACITANCE = "DONT_CARE" *) 
   (* IBUF_DELAY_VALUE = "0" *) 
@@ -82,20 +82,20 @@ module clock_wz_clk_wiz
     .IOSTANDARD("DEFAULT")) 
     clkin1_ibufg
        (.I(clk_in1),
-        .O(clk_in1_clock_wz));
+        .O(clk_in1_clk_wz));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout1_buf
-       (.I(clk_out1_clock_wz),
+       (.I(clk_out1_clk_wz),
         .O(clk_out1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(42.500000),
+    .CLKFBOUT_MULT_F(20.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
-    .CLKIN1_PERIOD(50.000000),
+    .CLKIN1_PERIOD(20.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(42.500000),
+    .CLKOUT0_DIVIDE_F(20.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -138,15 +138,15 @@ module clock_wz_clk_wiz
     .SS_MOD_PERIOD(10000),
     .STARTUP_WAIT("FALSE")) 
     mmcm_adv_inst
-       (.CLKFBIN(clkfbout_buf_clock_wz),
-        .CLKFBOUT(clkfbout_clock_wz),
+       (.CLKFBIN(clkfbout_buf_clk_wz),
+        .CLKFBOUT(clkfbout_clk_wz),
         .CLKFBOUTB(NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED),
         .CLKFBSTOPPED(NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED),
-        .CLKIN1(clk_in1_clock_wz),
+        .CLKIN1(clk_in1_clk_wz),
         .CLKIN2(1'b0),
         .CLKINSEL(1'b1),
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
-        .CLKOUT0(clk_out1_clock_wz),
+        .CLKOUT0(clk_out1_clk_wz),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
         .CLKOUT1(NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
