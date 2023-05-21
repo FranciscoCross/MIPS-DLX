@@ -28,60 +28,88 @@ module rx
     localparam START_BIT  = 0;
     localparam STOP_BIT   = 1;
 
-    reg [2 : 0] state = START;
-    reg [2 : 0] next_state = START;
-    reg next_rx;
-    reg paridad;
-    reg parity_rx = 0;
-    reg done = 0;
+    //State machine
+    reg [2 : 0] state;
+
+    reg done, paridad, parity_rx;
 
     //Register
     reg [N_BITS - 1 : 0] rsr; //Receiver Shift Register
     reg [N_BITS - 1 : 0] rbr; //Receiver Buffer Register
-    reg [N_BITS - 1 : 0] next_rsr; 
-    reg [N_BITS - 1 : 0] next_rbr; 
 
     //Local
-    reg [4 : 0] tick_counter =0;
-    reg [3 : 0] bit_counter =-1;
-    reg [2 : 0] start_tick_counter=0;
-    reg [3 : 0] next_bit_counter=0;
-    reg [4 : 0] next_tick_counter=0;
-    reg [2 : 0] next_start_tick_counter=0;
+    reg [4 : 0] tick_counter;
+    reg [3 : 0] bit_counter;
+    reg [2 : 0] start_tick_counter;
+
+    //Next states
+    reg next_done, next_paridad, next_parity_rx;
+    reg [N_BITS - 1 : 0] next_rsr; 
+    reg [N_BITS - 1 : 0] next_rbr; 
+    reg [2 : 0] next_state;
+    reg [2 : 0] next_start_tick_counter;
+    reg [3 : 0] next_bit_counter;
+    reg [4 : 0] next_tick_counter;
+
+    //Reset values
+    reg reset_done, reset_paridad, reset_parity_rx;
+    reg [N_BITS - 1 : 0] reset_rsr; 
+    reg [N_BITS - 1 : 0] reset_rbr; 
+    reg [2 : 0] reset_state;
+    reg [2 : 0] reset_start_tick_counter;
+    reg [3 : 0] reset_bit_counter;
+    reg [4 : 0] reset_tick_counter;
+
+    //Initial value initialization
+    initial begin 
+        next_state              = START;
+        next_done               = 0;    
+        next_paridad            = 0;  
+        next_parity_rx          = 0;  
+        next_rsr                = 0; 
+        next_rbr                = 0; 
+        next_bit_counter        =-1;
+        next_tick_counter       = 0;
+        next_start_tick_counter = 0;
+
+        //Reset values
+        reset_state              = START;
+        reset_done               = 0;    
+        reset_paridad            = 0;  
+        reset_parity_rx          = 0;  
+        reset_rsr                = 0; 
+        reset_rbr                = 0; 
+        reset_bit_counter        =-1;
+        reset_tick_counter       = 0;
+        reset_start_tick_counter = 0;
+    end
 
     always @(posedge clock) //Memory
     begin
         if(reset) 
         begin
-            done <= 0;
-
-            state <= START;
-            rbr <= 0;   
-            bit_counter <= -1;
-            tick_counter <= 0;
-            start_tick_counter <= 0;
-            paridad <= 0;
-            rsr <= 0;
-            rbr <= 0;
-            
-            next_rsr <= 0; 
-            next_rbr <= 0; 
-            next_state <= START;
-            next_rx <= 0;   
-            next_bit_counter <= -1;
-            next_tick_counter <= 0;
-            next_start_tick_counter <= 0;
+            state <= reset_state;
+            done <= reset_done;    
+            paridad <= reset_paridad;  
+            parity_rx<= reset_parity_rx;  
+            rsr <= reset_rsr; 
+            rbr <= reset_rbr; 
+            bit_counter  <= reset_bit_counter;
+            tick_counter <= reset_tick_counter;     
+            start_tick_counter <= reset_start_tick_counter;
         end
         else //Update every variable state
         begin
-            rbr <= next_rbr;
-            rsr <= next_rsr;
             state <= next_state;
-            bit_counter <= next_bit_counter;
-            tick_counter <= next_tick_counter;
+            done <= next_done;    
+            paridad <= next_paridad;  
+            parity_rx<= next_parity_rx;  
+            rsr <= next_rsr; 
+            rbr <= next_rbr; 
+            bit_counter  <= next_bit_counter;
+            tick_counter <= next_tick_counter;     
             start_tick_counter <= next_start_tick_counter;
         end
-
     end
 
     always @(posedge tick) //Next state logic
@@ -93,7 +121,7 @@ module rx
                 next_tick_counter = 0;
                 if(start_tick_counter == N_TICK -1) //We need at least 8 ticks to check START 
                 begin
-                    done = 0;
+                    next_done = 0;
                     next_state = SHIFT; 
                     next_bit_counter = 0;
                     next_rbr = 0; 
@@ -120,7 +148,7 @@ module rx
                     next_bit_counter = bit_counter + 1;
 
                     if (bit_counter == N_BITS) begin
-                        paridad = (^next_rbr);
+                        next_paridad = (^next_rbr);
                         next_bit_counter = -1;
                         if (parity) 
                             next_state = PARITY;
@@ -135,7 +163,7 @@ module rx
             begin
                 if(tick_counter == (N_TICK - 1))
                 begin
-                    parity_rx = rx;
+                    next_parity_rx = rx;
                 end
                 if(tick_counter == (N_TICK*2 - 1))
                 begin
@@ -143,7 +171,7 @@ module rx
                     if(parity_rx == paridad) begin
                         next_state = STOP_1B;
                     end else begin
-                        done = 1;
+                        next_done = 1;
                         next_state = START; 
                         next_tick_counter = 0;
                         next_bit_counter = -1;
@@ -154,7 +182,7 @@ module rx
             begin
                 if(tick_counter == (N_TICK*2 - 1))
                 begin
-                    done = 1;
+                    next_done = 1;
                     next_state = START;
                     next_tick_counter = 0;
                     next_bit_counter = -1;
@@ -162,7 +190,7 @@ module rx
             end
             default: //Fault recovery
             begin
-                done = 1;
+                next_done = 1;
                 next_state = START; 
                 next_tick_counter = 0;
                 next_bit_counter = -1;
