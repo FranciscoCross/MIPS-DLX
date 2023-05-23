@@ -153,7 +153,7 @@ wire rx_done_uart;
 always @(posedge rx_done_uart)
 begin
     data_rx_ready_uart <= 1;
-    #2
+    #5
     data_rx_ready_uart <= 0;
 end
 
