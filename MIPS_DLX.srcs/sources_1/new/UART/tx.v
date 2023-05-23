@@ -25,64 +25,80 @@ module tx
     localparam [2 : 0] SHIFT     = 3'b001;
     localparam [2 : 0] PARITY    = 3'b010;
     localparam [2 : 0] STOP_1B   = 3'b011;
-    //Not implemented:
-    //localparam [2 : 0] STOP_2B   = 3'b100;
-    //localparam [2 : 0] STOP_1_5B = 3'b101;
     
     //Transmition params
     localparam START_b = 1'b0;
     localparam STOP_b  = 1'b1;
 
-    //Masks
 
+    reg tx_reg, tx_ready, paridad, transmitir, done;
     //Memory
     reg [2 : 0] state;
-    reg [2 : 0] next_state;
-    reg tx_reg = STOP_b;
-    reg next_tx = STOP_b;
-    reg paridad;
-    reg done = 0;
-    reg next_done = 0;
 
     //Register
     reg [N_BITS - 1 : 0] tsr; //Transmit Shift Register
     reg [N_BITS - 1 : 0] thr; //Transmit Holding Register
-    reg [N_BITS - 1 : 0] next_tsr;
-    reg [N_BITS - 1 : 0] next_thr;
-
     //Local
     reg [4 : 0] tick_counter;
     reg [2 : 0] bit_counter;
 
+
+    //Next values
+    reg next_done, next_tx, next_tx_ready, next_paridad, next_transmitir;
+    reg [2 : 0] next_state;
     reg [4 : 0] next_tick_counter;
     reg [2 : 0] next_bit_counter;
+    reg [N_BITS - 1 : 0] next_tsr;
+    reg [N_BITS - 1 : 0] next_thr;
 
-    reg tx_ready = 1;
-    reg next_tx_ready = 1;
-    
-    reg transmitir = 0;
+    //Reset values
+    reg reset_done, reset_tx, reset_tx_ready, reset_paridad, reset_transmitir;
+    reg [2 : 0] reset_state;
+    reg [4 : 0] reset_tick_counter;
+    reg [2 : 0] reset_bit_counter;
+    reg [N_BITS - 1 : 0] reset_tsr;
+    reg [N_BITS - 1 : 0] reset_thr;
+
+    //Initial value initialization
+    initial begin 
+        next_state = START;
+        next_tx = STOP_b;
+        next_done = 0;
+        next_tsr = 0;
+        next_thr = 0;
+        next_tick_counter = 0;
+        next_bit_counter = 0;
+        next_tx_ready = 1;
+        next_paridad = 0;
+        next_transmitir = 0;
+
+        //Reset values
+        reset_state = START;
+        reset_done = 0;
+        reset_tsr = 0;
+        reset_thr = 0;
+        reset_tick_counter = 0;
+        reset_bit_counter = 0;
+        reset_tx_ready = 1;
+        reset_tx = STOP_b;
+        reset_paridad = 0;
+        reset_transmitir = 0;
+    end
+
     always @(posedge clock) //Memory
     begin
         if(reset) 
         begin
-            state <= START;
-            tx_reg <= STOP_b; 
-            thr <= 0;
-            tsr <= 0;            
-            tick_counter <= 0;
-            bit_counter <= 0;
-            
-            next_thr <= 0;
-            next_tsr <= 0;
-            next_tx <= STOP_b; 
-            next_state <= START;
-            next_tick_counter <= 0;
-            next_bit_counter <= 0;
-            
-            done <= 0;
-            next_done <= 0;
-            tx_ready <= 1;
-            next_tx_ready <= 1;
+            state <= reset_state;
+            tx_reg <= reset_tx;
+            tick_counter <= reset_tick_counter;
+            bit_counter <= reset_bit_counter;
+            thr <= reset_thr;
+            tsr <= reset_tsr;
+            tx_ready <= reset_tx_ready;
+            done <= reset_done;
+            paridad <= reset_paridad;
+            transmitir <= reset_transmitir;
         end
         else //Update every variable state
         begin
@@ -94,11 +110,8 @@ module tx
             tsr <= next_tsr;
             tx_ready <= next_tx_ready;
             done <= next_done;
-        end
-
-        if(tx_start & tx_ready)
-        begin
-            transmitir <= 1;
+            paridad <= next_paridad;
+            transmitir <= next_transmitir;
         end
     end
 
@@ -106,6 +119,11 @@ module tx
     always @(posedge tick) //Next state logic
     begin
         next_tick_counter = tick_counter + 1;
+
+        if(tx_start & tx_ready)
+        begin
+            next_transmitir <= 1;
+        end
 
         case(state)
             START:
@@ -125,7 +143,7 @@ module tx
                     begin
                         next_state = SHIFT; 
                         next_tick_counter = 0;
-                        transmitir = 0;
+                        next_transmitir = 0;
                     end
                 end
             end
@@ -141,7 +159,7 @@ module tx
                         if(parity) next_state = PARITY;
                         else next_state = STOP_1B;
 
-                        paridad = (^thr);
+                        next_paridad = (^thr);
                         next_bit_counter = 0;
                     end
                     next_tick_counter = 0;
