@@ -34,7 +34,6 @@ module rx
     reg done, paridad, parity_rx;
 
     //Register
-    reg [N_BITS - 1 : 0] rsr; //Receiver Shift Register
     reg [N_BITS - 1 : 0] rbr; //Receiver Buffer Register
 
     //Local
@@ -44,7 +43,6 @@ module rx
 
     //Next states
     reg next_done, next_paridad, next_parity_rx;
-    reg [N_BITS - 1 : 0] next_rsr; 
     reg [N_BITS - 1 : 0] next_rbr; 
     reg [2 : 0] next_state;
     reg [2 : 0] next_start_tick_counter;
@@ -53,7 +51,6 @@ module rx
 
     //Reset values
     reg reset_done, reset_paridad, reset_parity_rx;
-    reg [N_BITS - 1 : 0] reset_rsr; 
     reg [N_BITS - 1 : 0] reset_rbr; 
     reg [2 : 0] reset_state;
     reg [2 : 0] reset_start_tick_counter;
@@ -66,7 +63,6 @@ module rx
         next_done               = 0;    
         next_paridad            = 0;  
         next_parity_rx          = 0;  
-        next_rsr                = 0; 
         next_rbr                = 0; 
         next_bit_counter        =-1;
         next_tick_counter       = 0;
@@ -77,7 +73,6 @@ module rx
         reset_done               = 0;    
         reset_paridad            = 0;  
         reset_parity_rx          = 0;  
-        reset_rsr                = 0; 
         reset_rbr                = 0; 
         reset_bit_counter        =-1;
         reset_tick_counter       = 0;
@@ -92,7 +87,6 @@ module rx
             done <= reset_done;    
             paridad <= reset_paridad;  
             parity_rx<= reset_parity_rx;  
-            rsr <= reset_rsr; 
             rbr <= reset_rbr; 
             bit_counter  <= reset_bit_counter;
             tick_counter <= reset_tick_counter;     
@@ -104,7 +98,6 @@ module rx
             done <= next_done;    
             paridad <= next_paridad;  
             parity_rx<= next_parity_rx;  
-            rsr <= next_rsr; 
             rbr <= next_rbr; 
             bit_counter  <= next_bit_counter;
             tick_counter <= next_tick_counter;     

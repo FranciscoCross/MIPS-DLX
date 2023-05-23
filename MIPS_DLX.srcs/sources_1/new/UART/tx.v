@@ -122,7 +122,7 @@ module tx
 
         if(tx_start & tx_ready)
         begin
-            next_transmitir <= 1;
+            next_transmitir = 1;
         end
 
         case(state)
