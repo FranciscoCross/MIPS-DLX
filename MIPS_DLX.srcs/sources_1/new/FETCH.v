@@ -106,6 +106,7 @@ module FETCH#(
     )
     instancia_imem(
         .i_clk(i_clk),
+        .i_reset(i_reset),
         .i_en_write(i_Mem_WEn),
         .i_en_read(i_Mem_REn),
         .i_addr(wire_address_debug),

@@ -12,16 +12,16 @@ module tb_debugUnit;
     reg [7 : 0] program_counter = 8'b00010000;
     reg reg_debug_unit = 0;
     reg bit_sucio = 1;
-    reg mem_debug_unit = 0;
+    wire mem_debug_unit;
     reg [7 : 0] cant_cycles_d = 8'b00100000;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;
     reg tx_done_d = 0;	
     reg [NB_BITES-1: 0] data_uart_d = 0;
 
-    reg [32-1:0] bank_register[32-1:0];  
-    wire [32-1:0]registers;
-    assign registers = bank_register[0];
+ 
+    wire [32-1:0] register;
+
     //Outputs
 
     wire [5-1:0] o_addr_reg_debug_unit; //32 reg
@@ -54,79 +54,19 @@ module tb_debugUnit;
     wire aux_rx_done;
     wire aux_tx_done;
 
-    localparam NB_REG = 5;
 
-    reg rw = 0;
-    
-    reg [NB_REG - 1 : 0] IN_ADDR_RA;
-    reg [NB_REG - 1 : 0] IN_ADDR_RB;
-
-    
-    reg [NB_REG - 1 : 0] IN_ADDR_RW;
-    reg [NB_DATA - 1 : 0] IN_DATA_RW;
-
-
-    wire [NB_DATA - 1 : 0] OUT_DATA_RA;
-    wire [NB_DATA - 1 : 0] OUT_DATA_RB;
-    
-    bank_register #(.NB_DATA (NB_DATA)) bank
-    (
-        .i_clock(clock),
-        .i_reset(reset),
-        .i_rw(rw), 
-        .i_addr_ra(IN_ADDR_RA),
-        .i_addr_rb(IN_ADDR_RB),
-        .i_addr_rw(IN_ADDR_RW),
-        .i_data_rw(IN_DATA_RW),
-        .o_data_ra(OUT_DATA_RA),
-        .o_data_rb(OUT_DATA_RB)
-    );
 
     always #1 clock = ~clock; // # < timeunit > delay
        initial begin
             #0
             reset = 0;
             aux_tx_start = 0;    
-
-            bank_register[0] = 0;  
-            bank_register[1] = 32;  
-            bank_register[2] = 64;  
-            bank_register[3] = 128;  
-            bank_register[4] = 256;  
-            bank_register[5] = 1024;  
-            bank_register[6] = 2048;  
-            bank_register[7] = 4096;  
-            bank_register[8] = 8192;  
-            bank_register[9] = 0;  
-            bank_register[10] = 32;  
-            bank_register[11] = 64;  
-            bank_register[12] = 128;  
-            bank_register[13] = 256;  
-            bank_register[14] = 1024;  
-            bank_register[15] = 2048;  
-            bank_register[16] = 4096;  
-            bank_register[17] = 8192;  
-            bank_register[18] = 0;  
-            bank_register[19] = 32;  
-            bank_register[20] = 64;  
-            bank_register[21] = 128;  
-            bank_register[22] = 256;  
-            bank_register[23] = 1024;  
-            bank_register[24] = 2048;  
-            bank_register[25] = 4096;  
-            bank_register[26] = 8192;  
-            bank_register[27] = 0;  
-            bank_register[28] = 32;  
-            bank_register[29] = 64;  
-            bank_register[30] = 128;  
-            bank_register[31] = 256;  
-            #1
+            #100
             reset = 1;   
-            #1
+            #20
             reset = 0;
             #2            
             $display("Envio numero de instrucciones");
-
             aux_tx_data = 8'b00000001;     
             #1000
             aux_tx_start = 1;
@@ -136,9 +76,13 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2          
+            #2       
+            
+            
+            
+               
             $display("Envio primer byte de instruccion 1");
-            aux_tx_data = 8'b00100000;     
+            aux_tx_data = 8'b00000001;     
             #1000
             aux_tx_start = 1;
             #100
@@ -147,9 +91,14 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2          
-            $display("Envio segundno byte de instruccion 1");
-            aux_tx_data = 8'b00001111;     
+            #2    
+            
+            
+            
+            
+                  
+            $display("Envio segundo byte de instruccion 1");
+            aux_tx_data = 8'b00000001;     
             #1000
             aux_tx_start = 1;
             #100
@@ -158,9 +107,12 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2          
+            #2   
+            
+            
+                   
             $display("Envio tercer byte de instruccion 1");
-            aux_tx_data = 8'b00001111;     
+            aux_tx_data = 8'b00000001;     
             #1000
             aux_tx_start = 1;
             #100
@@ -169,9 +121,12 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2          
+            #2   
+            
+            
+                   
             $display("Envio cuarto byte de instruccion 1");
-            aux_tx_data = 8'b00001111;     
+            aux_tx_data = 8'b00000001;     
             #1000
             aux_tx_start = 1;
             #100
@@ -180,9 +135,8 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2
-            $display("Envio modo de operacion step/continuo");
-            //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
+            #15000
+            $display("Envio modeOperate");
             aux_tx_data = 8'b00010000;     
             #1000
             aux_tx_start = 1;
@@ -192,13 +146,12 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-             #2
+            #10000
             $display("Envio un halt");
             #10000
             halt = 1;
             #100
             halt = 0;
-            //$display("Envio primer byte de instruccion 1");
             #10000000
             $finish;
  
@@ -214,7 +167,7 @@ module tb_debugUnit;
 		.i_rx_data(rx_data),	
 		.i_send_program_counter(program_counter), //pc + 1
 		.i_cant_cycles(cant_cycles_d),
-		.i_reg_debug_unit(registers), //viene del banco de registros
+		.i_reg_debug_unit(register), //viene del banco de registros
 		.i_bit_sucio(bit_sucio),
 		.i_mem_debug_unit(mem_debug_unit),
 		
@@ -260,73 +213,23 @@ module tb_debugUnit;
         .tx_done(aux_tx_done)
     );
     
+bank_register bank_register
+
+	( 
+		.i_clock(clock),
+		.i_reset(reset),
+		.i_rw(o_ctrl_read_debug_reg), 
+		.i_addr_ra(o_addr_reg_debug_unit),
+		.o_data_ra(register)		
+	);
+
+dmem memory_data
+(
+    .i_clk(clock),
+    .i_mem_enable(1),
+    .i_addr(o_addr_mem_debug_unit),		
+    .i_read(1),
+    .o_data(mem_debug_unit)
+);
 endmodule
 
-/*
- //ENVIO EL PRIMER BYTE DE INSTRUCCION-1
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000001;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-1
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000010;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL TERCER BYTE DE INSTRUCCION-1
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000100;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL CUARTO BYTE DE INSTRUCCION-1
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00001000;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            #2
-            //ENVIO EL PRIMER BYTE DE INSTRUCCION-2
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000001;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL SEGUNDO BYTE DE INSTRUCCION-2
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000010;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL TERCER BYTE DE INSTRUCCION-2
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000100;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL CUARTO BYTE DE INSTRUCCION-2
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00001000;
-            #2
-            aux_tx_start = 0;
-            data_uart_d = 0;
-            //ENVIO EL EL MODO DE OPERACION ENTRE STEP TO STEP (8'b00000100) O CONTINUO(b00010000)
-            #2
-            aux_tx_start = 1;
-            data_uart_d = 8'b00000100;
-            #6 //ESPERA 6 CICLOS SI NO SE LLEGA A LEER TODO TRANCA
-            aux_tx_start = 0;
-            data_uart_d = 0;
-*/
