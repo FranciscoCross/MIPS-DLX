@@ -12,7 +12,7 @@ module tb_debugUnit;
     reg [7 : 0] program_counter = 8'b00010000;
     reg reg_debug_unit = 0;
     reg bit_sucio = 1;
-    wire mem_debug_unit;
+    wire [32-1:0] mem_debug_unit;
     reg [7 : 0] cant_cycles_d = 8'b00100000;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;

@@ -284,18 +284,13 @@ end
     begin        	
     if (en_send_program_counter) //ACA SE ENVIA EL PROGRAM COUNTER
 			begin  
-					end_send_program_counter <= 1'b1;    											    								
-					tx_start 								 <= 1'b0;					  								    	  											    	  						
+					end_send_program_counter <= 1'b1;    											    											  								    	  											    	  						
 			end
     else if (en_send_cant_cyles)
 			begin
-					end_send_cant_cycles = 1'b1;   					     								
-					tx_start = 1'b0;					    					
+					end_send_cant_cycles = 1'b1;   					     									    					
 			end
-    
-		
-		
-		
+  
 		else if (en_send_data_reg)
 			begin							
 				end_send_reg 					<= 1'b0;
@@ -339,6 +334,7 @@ end
 					end
 				else
 					begin
+						data_send								<= data_send;	
 						end_send_mem 						<= end_send_mem;
 						addr_mem_debug_unit_reg <= addr_mem_debug_unit_reg + 1;					    						
 					end
@@ -346,7 +342,7 @@ end
     else 
 			begin
 					end_send_program_counter  <= end_send_program_counter;
-					end_send_reg 						<= end_send_reg;
+				end_send_reg 								<= end_send_reg;
 					end_send_cant_cycles 			<= end_send_cant_cycles;
 					end_send_mem 							<= end_send_mem;
 					data_send 								<= data_send;
@@ -361,15 +357,9 @@ end
 					data_send <= data_send;
 					cont_byte <= cont_byte;
 				end
-			else if (en_send_data_reg)
+			else if (en_send_data_reg || en_send_data_mem)
 				begin		    					
-					tx_start <= tx_start;
-					data_send <= data_send;
-					cont_byte <= cont_byte;
-				end
-			else if (en_send_data_mem)
-				begin			    					
-					tx_start = 1'b0;
+					tx_start 	<= tx_start;
 					data_send <= data_send;
 					cont_byte <= cont_byte;
 				end
@@ -571,9 +561,9 @@ end
 						o_ctrl_addr_debug_mem = 1'b1;
 						en_send_data_mem = 1'b1;
 						o_enable_mem = 1'b1;
-					
 						next_state = Send_Memory;
 						tx_start = 1'b1;
+						
 						if (end_send_mem)
 							begin
 								if (addr_mem_debug_unit_reg == `N_ELEMENTS-1)
@@ -610,12 +600,5 @@ end
         .rx_done(rx_done_uart),
         .tx_done(tx_done_uart)
 	);
-
-	
-
-
-
-
-
 
 endmodule
