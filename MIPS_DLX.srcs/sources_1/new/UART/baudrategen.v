@@ -16,15 +16,14 @@ module baudrategen
     localparam N_BITS = $clog2 (N_BCLK_DIV);
 
     reg [N_BITS - 1 : 0] count;
-    wire reset_counter = (count == N_BCLK_DIV) ? 1'b1 : 1'b0;
 
     always @(posedge clock)
     begin
         if(reset) count <= 0;
-        else if(reset_counter) count <= 0;
+        else if(count == N_BCLK_DIV) count <= 0;
         else count = count + 1;
     end
 
-    assign tick = reset_counter;
+    assign tick = (count == N_BCLK_DIV) ? 1'b1 : 1'b0;
 
 endmodule
