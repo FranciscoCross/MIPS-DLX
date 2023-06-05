@@ -72,7 +72,7 @@ module bank_register
 		begin
 			registers[0] = 32'd0;
 			for (i = 1; i < N_REGISTER; i = i + 1)
-				registers[i] = 0; //registers[i] = {NB_DATA{1'b0}}; //registers[i] = registers[i-1] + 1; ACTUALMENTE ES PARA DEBUG
+				registers[i] = registers[i-1] + 1; //ACTUALMENTE ES PARA DEBUG//registers[i] = {NB_DATA{1'b0}}; //
 		end
 
 	endgenerate
