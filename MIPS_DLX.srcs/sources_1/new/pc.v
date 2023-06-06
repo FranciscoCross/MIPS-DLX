@@ -16,6 +16,10 @@ module pc#(
     
     reg [NB_DATA-1:0] reg_addr;
 
+    initial begin
+        reg_addr <= {NB_DATA{1'b0}};
+    end
+
     always @(posedge i_clk)
     begin
         if(i_reset)
