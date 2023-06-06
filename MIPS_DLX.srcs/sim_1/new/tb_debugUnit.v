@@ -9,11 +9,11 @@ module tb_debugUnit;
     reg reset = 0;
     reg halt = 0;
     wire rx_data;
-    reg [7 : 0] program_counter = 8'b00010000;
+    reg [7 : 0] program_counter = 8'b00000011;
     reg reg_debug_unit = 0;
     reg bit_sucio = 1;
     wire [32-1:0] mem_debug_unit;
-    reg [7 : 0] cant_cycles_d = 8'b00100000;
+    reg [7 : 0] cant_cycles_d = 8'b00000100;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;
     reg tx_done_d = 0;	
@@ -36,10 +36,10 @@ module tb_debugUnit;
     wire o_enable_mem;
     wire o_debug_unit_reg;		
     wire [NB_DATA-1:0] o_inst_load;
-    wire [7-1:0] o_address;
+    wire [7-1:0] o_address_du;
     wire o_ack_debug;
     wire o_end_send_data;
-    wire o_data_ready;
+//
     wire o_en_read_cant_instr;
     wire o_receive_full_inst;
     wire o_send_inst_finish;
@@ -67,7 +67,7 @@ module tb_debugUnit;
             reset = 0;
             #2            
             $display("Envio numero de instrucciones");
-            aux_tx_data = 8'b00000001;     
+            aux_tx_data = 8'b00000010;     
             #1000
             aux_tx_start = 1;
             #100
@@ -82,7 +82,7 @@ module tb_debugUnit;
             
                
             $display("Envio primer byte de instruccion 1");
-            aux_tx_data = 8'b00000001;     
+            aux_tx_data = 8'b00000010;     
             #1000
             aux_tx_start = 1;
             #100
@@ -91,14 +91,9 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2    
-            
-            
-            
-            
-                  
+            #2      
             $display("Envio segundo byte de instruccion 1");
-            aux_tx_data = 8'b00000001;     
+            aux_tx_data = 8'b00000011;     
             #1000
             aux_tx_start = 1;
             #100
@@ -107,12 +102,9 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2   
-            
-            
-                   
+            #2      
             $display("Envio tercer byte de instruccion 1");
-            aux_tx_data = 8'b00000001;     
+            aux_tx_data = 8'b00000100;     
             #1000
             aux_tx_start = 1;
             #100
@@ -121,12 +113,9 @@ module tb_debugUnit;
             while (!aux_tx_done) begin
                 #5; // Wait 5 time units before checking again
             end
-            #2   
-            
-            
-                   
+            #2       
             $display("Envio cuarto byte de instruccion 1");
-            aux_tx_data = 8'b00000001;     
+            aux_tx_data = 8'b00000101;     
             #1000
             aux_tx_start = 1;
             #100
@@ -136,6 +125,55 @@ module tb_debugUnit;
                 #5; // Wait 5 time units before checking again
             end
             #15000
+
+            $display("Envio primer byte de instruccion 2");
+            aux_tx_data = 8'b00000110;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2      
+            $display("Envio segundo byte de instruccion 2");
+            aux_tx_data = 8'b00000111;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2      
+            $display("Envio tercer byte de instruccion 2");
+            aux_tx_data = 8'b00001000;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #2       
+            $display("Envio cuarto byte de instruccion 2");
+            aux_tx_data = 8'b00001001;     
+            #1000
+            aux_tx_start = 1;
+            #100
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #5; // Wait 5 time units before checking again
+            end
+            #15000            
+            
+            
+            
+            
             $display("Envio modeOperate");
             aux_tx_data = 8'b00010000;     
             #1000
@@ -183,10 +221,10 @@ module tb_debugUnit;
 		.o_enable_mem(o_enable_mem),
 		.o_debug_unit_reg(o_debug_unit_reg),				
 		.o_inst_load(o_inst_load), //instruccion a cargar en memoria
-		.o_address(o_address), //direccion donde se carga la instruccion
+		.o_address(o_address_du), //direccion donde se carga la instruccion
 		.o_ack_debug(o_ack_debug), //avisa al test que ya puede enviar el comando
 		.o_end_send_data(o_end_send_data), //avisa al test que ya se termino de enviar datos de memoria
-        .o_data_ready(o_data_ready),		
+        //.o_data_ready(o_data_ready),		
 		.o_en_read_cant_instr(o_en_read_cant_instr),
 		.o_receive_full_inst(o_receive_full_inst),
 		.o_send_inst_finish(o_send_inst_finish),
