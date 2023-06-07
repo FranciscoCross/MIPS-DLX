@@ -7,11 +7,11 @@ module mux3
 		parameter NB_SEL = 2
 	)
     (
-        input [NB_SEL-1:0] i_SEL,
-        input [NB_DATA-1:0] i_A,
-        input [NB_DATA-1:0] i_B,
-        input [NB_DATA-1:0] i_C,
-        output [NB_DATA-1:0] o_OUT
+        input wire [NB_SEL-1:0] i_SEL,
+        input wire [NB_DATA-1:0] i_A,
+        input wire [NB_DATA-1:0] i_B,
+        input wire [NB_DATA-1:0] i_C,
+        output wire [NB_DATA-1:0] o_OUT
     );
     
     reg [NB_DATA-1:0] out;

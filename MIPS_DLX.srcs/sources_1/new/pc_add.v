@@ -9,6 +9,6 @@ module pc_add
 		output wire [NB_DATA-1:0] o_nAddr
 	);
 
-	assign o_nAddr = i_nAddr + {{NB_DATA-1{1'b0}}, 1'b1};
+	assign o_nAddr = i_nAddr + 1;
 
 endmodule

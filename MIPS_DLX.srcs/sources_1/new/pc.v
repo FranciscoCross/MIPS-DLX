@@ -7,11 +7,11 @@ Saves the input addres in an internal register and outputs it.
 module pc#(
     parameter NB_DATA = `ADDRWIDTH
     )(
-    input i_clk,
-    input i_reset,
-    input i_enable,
-    input[NB_DATA - 1:0] i_addr,
-    input[NB_DATA - 1:0] o_addr
+    input wire i_clk,
+    input wire i_reset,
+    input wire i_enable,
+    input wire [NB_DATA - 1:0] i_addr,
+    input wire [NB_DATA - 1:0] o_addr
     );
     
     reg [NB_DATA-1:0] reg_addr;

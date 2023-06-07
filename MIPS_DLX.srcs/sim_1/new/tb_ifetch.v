@@ -3,21 +3,21 @@
 module tb_ifetch(
 
     );
-    localparam N_BITS = 32;
+    localparam NB_INST = 32;
     localparam NB_DATA = `ADDRWIDTH;
     localparam MEM_SIZEB = `N_ELEMENTS;
 
     reg clock, i_reset, i_enable_pipe, i_debug_unit, i_en_write, i_en_read, wire_pc_write;
     reg wire_branch_or_jump_IF_ID;
 
-    reg [NB_DATA - 1:0] i_inst_load;                //Address a escribir en PC
-    reg [NB_DATA - 1:0] i_addr_inst_load;           //Address a escribir en PC enviado por debug unit
+    reg [NB_INST - 1:0] i_inst_load;                //Instruccion a escribir en PC
+    reg [NB_DATA - 1:0] i_addr_inst_load;           //Address a escribir en PC 
     reg [NB_DATA - 1:0] wire_pc_src_ID_IF;          //PC source
     reg [NB_DATA - 1:0] wire_addr_reg_ID_IF;        //
     reg [NB_DATA - 1:0] wire_addr_branch_ID_IF;     //
     reg [NB_DATA - 1:0] wire_addr_jump_ID_IF;       //
 
-    wire [NB_DATA - 1:0] wire_inst_IF;               //Instruccion de salida
+    wire [NB_INST - 1:0] wire_inst_IF;               //Instruccion de salida
     wire [NB_DATA - 1:0] wire_pc_adder;              //Siguiente address del PC adder
 
     FETCH instruccion_fetch
@@ -45,9 +45,9 @@ module tb_ifetch(
         i_reset <= 0;
 
         i_enable_pipe <= 1; //Habilitamos la pipeline
-        i_debug_unit <= 1; //Habilitamos modo debug
-        i_en_write <= 1; //Habilitamos escritura
-        i_en_read <= 1;
+        i_debug_unit <= 0; //Habilitamos modo debug
+        i_en_write <= 0; //Habilitamos escritura
+        i_en_read <= 1; //Habilitamos escritura
         wire_pc_write <= 1; //Habilitamos la escritura del PC
         wire_branch_or_jump_IF_ID <= 0;
 
@@ -64,8 +64,25 @@ module tb_ifetch(
     always #1 clock = ~clock; // # < timeunit > delay
     initial begin
         #0
+        #10
+        i_debug_unit = 1;
+        i_en_write = 1;
+        #4 //Cargar informacion
+        i_inst_load = 32'b10001100000000010000000000000000;
+        i_addr_inst_load = 1;
+        #4
+        i_inst_load = 32'b10001100000000010000000000000001;
+        i_addr_inst_load = 2;
+        #4
+        i_inst_load = 32'b10001100000000010000000000000010;
+        i_addr_inst_load = 3;
+        #4
+        i_reset = 1;
+        i_debug_unit = 0;
+        i_en_write = 0;
+        #2 //Desde aca lee con el PC
         i_reset = 0;
-        #10000
+        #100
         $finish;
     end
 
