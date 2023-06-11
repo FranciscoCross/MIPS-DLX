@@ -141,66 +141,55 @@ reg tx_start_aux;
 reg [6:0] pulse_duration = 0;
 reg tx_start_prev;
 
-// always @(posedge i_clock) begin
-//   tx_start_prev <= tx_start;  // Guardar el valor anterior de tx_start
-
-//   if (tx_start && !tx_start_prev) begin  // Flanco de subida de tx_start
-//     tx_start_aux <= 1'b1;
-//     pulse_duration <= 0;  // Reiniciar la duración del pulso
-//   end else if (pulse_duration == 99) begin
-//     tx_start_aux <= 1'b0;
-//     pulse_duration <= 0;
-//   end else begin
-//     if (pulse_duration < 100) begin
-//       pulse_duration <= pulse_duration + 1;
-//     end
-//   end
-// end
-reg [1:0] delay_counter;
+reg [7:0] delay_counter;
 
 always @(posedge i_clock) begin
-  tx_start_prev <= tx_start;  // Guardar el valor anterior de tx_start
+   tx_start_prev <= tx_start;  // Guardar el valor anterior de tx_start
 
-  if (tx_start && !tx_start_prev) begin  // Flanco de subida de tx_start
-    delay_counter <= 2'b11;  // Inicializar el contador de retraso en 2 ciclos de reloj
-    pulse_duration <= 0;  // Reiniciar la duración del pulso
-  end else if (pulse_duration == 99 || delay_counter != 2'b00) begin
-    delay_counter <= delay_counter - 1;  // Decrementar el contador de retraso
-    tx_start_aux <= (delay_counter[1] == 1'b1) ? 1'b1 : 1'b0;  // Activar tx_start_aux después del retraso
-    pulse_duration <= 0;
-  end else begin
-    if (pulse_duration < 100) begin
-      pulse_duration <= pulse_duration + 1;
-    end
-  end
-end
+   if (tx_start && !tx_start_prev) begin  // Flanco de subida de tx_start
+     delay_counter <= 8'd10;  // Establecer el contador de retraso a un valor adecuado
+     pulse_duration <= 0;  // Reiniciar la duración del pulso
+   end else if (pulse_duration == 99 || delay_counter > 0) begin
+     if (delay_counter > 0) begin
+       delay_counter <= delay_counter - 1;  // Decrementar el contador de retraso
+     end else begin
+       tx_start_aux <= 1'b0;  // Establecer tx_start_aux a 0 después del retraso
+       pulse_duration <= 0;
+     end
+   end else begin
+     if (pulse_duration < 100) begin
+       pulse_duration <= pulse_duration + 1;
+     end
+   end
+ end
 
 
-	initial
-		begin
-			reset_data_rx_ready_uart 				<= 1'b0;
-			reset_operation_mode						<= {N_BITS{1'b0}};
-			reset_o_addr_reg_debug_unit 		<= {NB_REG{1'b0}};
-			reset_end_send_reg 			 				<= 1'b0;
-			reset_end_send_mem							<= 1'b0;
-			reset_end_send_cant_cycles 			<= 1'b0;
-			reset_addr_mem_debug_unit_reg 	<=  {`ADDRWIDTH{1'b0}};
-			reset_data_send 		  					<= 8'b0;
-			reset_cont_byte 		  					<= 8'b0;
-			reset_end_send_program_counter  <= 1'b0;  
-			reset_tx_start 									<= 1'b0;		
-			reset_all_instr_send 						<= 1'b0;
-			reset_count_instruction_now 		<= {`ADDRWIDTH{1'b0}};	
-			reset_ready_mode_operate 				<= 1'b0; 	
-			reset_instruction 							<= {N_COUNT{1'b0}};		
-			reset_ready_full_inst 					<= 1'b0;
-			reset_count_bytes 							<= 2'b0;
-			reset_number_instructions 			<= {`ADDRWIDTH{1'b0}};
-			reset_ready_number_instr     		<= 1'b0;	
-			reset_state 										<= Number_Instr;	
-			reset_next_state 								<= Number_Instr;
-			reset_o_enable_pipe 						<= 1'b0;
-		end
+
+initial
+	begin
+		reset_data_rx_ready_uart 				<= 1'b0;
+		reset_operation_mode						<= {N_BITS{1'b0}};
+		reset_o_addr_reg_debug_unit 		<= {NB_REG{1'b0}};
+		reset_end_send_reg 			 				<= 1'b0;
+		reset_end_send_mem							<= 1'b0;
+		reset_end_send_cant_cycles 			<= 1'b0;
+		reset_addr_mem_debug_unit_reg 	<=  {`ADDRWIDTH{1'b0}};
+		reset_data_send 		  					<= 8'b0;
+		reset_cont_byte 		  					<= 8'b0;
+		reset_end_send_program_counter  <= 1'b0;  
+		reset_tx_start 									<= 1'b0;		
+		reset_all_instr_send 						<= 1'b0;
+		reset_count_instruction_now 		<= {`ADDRWIDTH{1'b0}};	
+		reset_ready_mode_operate 				<= 1'b0; 	
+		reset_instruction 							<= {N_COUNT{1'b0}};		
+		reset_ready_full_inst 					<= 1'b0;
+		reset_count_bytes 							<= 2'b0;
+		reset_number_instructions 			<= {`ADDRWIDTH{1'b0}};
+		reset_ready_number_instr     		<= 1'b0;	
+		reset_state 										<= Number_Instr;	
+		reset_next_state 								<= Number_Instr;
+		reset_o_enable_pipe 						<= 1'b0;
+	end
 
 
 
