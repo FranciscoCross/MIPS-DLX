@@ -19,8 +19,6 @@ module tb_MEMORIA;
   wire [NB_DATA-1:0] o_data_mem_debug_unit;
   wire [NB_DATA-1:0] o_mem_data;
 
-  integer i;
-
   MEMORIA #(
     .NB_DATA(NB_DATA),
     .NB_MEM_CTRL(NB_MEM_CTRL)
@@ -38,7 +36,8 @@ module tb_MEMORIA;
     .o_data_mem_debug_unit(o_data_mem_debug_unit),
     .o_mem_data(o_mem_data)
   );
-
+   
+  always #1 i_clock = ~i_clock; // # < timeunit > delay
   initial begin
     // Inicializar las entradas
     i_clock = 0;
@@ -56,28 +55,39 @@ module tb_MEMORIA;
 
     // Test 1
     $display("Test 1");
-    i_clock = 1;
     i_reset = 1;
     i_enable_mem = 1;
-    i_MEM_control = 6'b000001; // Lectura
+    i_MEM_control = 6'b101000; // Lectura
     i_alu_result = 10'b0000000000; // Dirección de memoria
     i_data_write = 0;
     i_addr_mem_debug_unit = 10'b0000000000;
-    i_ctrl_addr_debug_mem = 0;
+    i_ctrl_addr_debug_mem = 1;
     i_ctrl_wr_debug_mem = 0;
 
     #10;
 
     // Test 2
     $display("Test 2");
-    i_clock = 0;
     i_reset = 0;
     i_enable_mem = 1;
-    i_MEM_control = 6'b000010; // Escritura
+    i_MEM_control = 6'b011000; // Escritura
     i_alu_result = 10'b0000000000; // Dirección de memoria
     i_data_write = 32'h12345678; // Dato a escribir
     i_addr_mem_debug_unit = 10'b0000000000;
-    i_ctrl_addr_debug_mem = 0;
+    i_ctrl_addr_debug_mem = 1;
+    i_ctrl_wr_debug_mem = 0;
+
+    #10;
+    
+    // Test 1
+    $display("Test 1");
+    i_reset = 1;
+    i_enable_mem = 1;
+    i_MEM_control = 6'b101000; // Lectura
+    i_alu_result = 10'b0000000000; // Dirección de memoria
+    i_data_write = 0;
+    i_addr_mem_debug_unit = 10'b0000000000;
+    i_ctrl_addr_debug_mem = 1;
     i_ctrl_wr_debug_mem = 0;
 
     #10;

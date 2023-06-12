@@ -11,7 +11,11 @@ module ctrl_bit_sucio
 		output wire o_bit_sucio
 	);
 	reg [`N_ELEMENTS-1:0] bit_sucio_reg;
-
+	
+    initial begin
+        bit_sucio_reg = 0;
+    end
+    
 	assign o_bit_sucio = bit_sucio_reg[i_addr];
 
 	always @(negedge i_clock)
