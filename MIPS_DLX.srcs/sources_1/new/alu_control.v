@@ -32,6 +32,11 @@ module alu_control
 	);
 
 	reg [NB_OP_ALU-1:0] reg_alu_op;
+	
+	initial begin
+	   reg_alu_op = 0;
+	end
+	
 	assign o_alu_op = reg_alu_op;
 	/*
 	R-Type:

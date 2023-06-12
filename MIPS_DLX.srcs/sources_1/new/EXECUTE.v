@@ -62,8 +62,9 @@ module EXECUTE
     Alu en la que se manda el valor A y el valor B 
     en que se aplica una operacion en funcion del OPCODE generado por el alu control 
     */ 
-	ALU alu
-	(
+	ALU#(.N_BITS(NB_DATA),
+	     .N_BITS_OP(NB_OP_ALU)
+	) alu (
 		.i_A(wire_input_alu_A),
 		.i_B(wire_input_alu_B),
 		.i_OP(cod_op_alu),
@@ -89,7 +90,7 @@ module EXECUTE
 	/* 
     MUX es manejado por la unidad de forward
     */
-	mux3 mux_forwardA
+	mux3 #(.NB_DATA(NB_DATA))mux_forwardA
 	(
 		.i_A(i_data_ra), //00
 		.i_B(i_EX_MEM_result_alu), //01
@@ -100,7 +101,7 @@ module EXECUTE
     /* 
     MUX es manejado por la unidad de forward
     */
-	mux3 mux_forwardB
+	mux3 #(.NB_DATA(NB_DATA))mux_forwardB
 	(
 		.i_A(i_data_rb),            //dato que viene derecho
 		.i_B(i_EX_MEM_result_alu),  //dato que se adelanta porque todavia no termino la instruccion por eso el forward
@@ -115,7 +116,7 @@ module EXECUTE
     esto se decide en la UNIDAD DE CONTROL si cabe alguna duda de las posiciones es mejor repasar 
     dichos valores para tener en cuenta 
     */
-	mux2 mux_alu_src_A	
+	mux2 #(.NB_DATA(NB_DATA)) mux_alu_src_A	
 	(
 		.i_A({{27'b0},i_shamt}), // sel = 1
 		.i_B(out_mux_forwardA), 
@@ -123,7 +124,7 @@ module EXECUTE
 		.o_OUT(wire_input_alu_A)
 	);
 
-	mux2 mux_alu_src_B	
+	mux2#(.NB_DATA(NB_DATA)) mux_alu_src_B	
 	(
 		.i_A(out_mux_forwardB), // sel = 1
 		.i_B(i_data_inm),
