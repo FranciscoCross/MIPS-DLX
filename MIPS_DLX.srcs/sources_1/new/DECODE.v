@@ -66,7 +66,7 @@ module DECODE
 	wire wire_bne;     // Señal de control para instrucción BNE (no igualdad)
 	wire wire_jump;     // Señal de control para instrucción de salto
 
-	wire [NB_REG-1:0]       wire_addres_reg_debug;     // Dirección para acceder al registro de depuración
+	wire [NB_REG-1:0]       wire_addr_ra;     // Dirección para acceder al registro de depuración
 	wire [NB_DATA-1:0]      wire_inm_ext;     // Inmediato extendido
 	wire [NB_DATA-1:0]      data_ra_branch;     // Datos del registro fuente A para instrucción de salto
 	wire [NB_DATA-1:0]      data_rb_branch;     // Datos del registro fuente B para instrucción de salto
@@ -94,54 +94,33 @@ module DECODE
 	assign o_WB_control =           (wire_stall) ? {NB_WB_CTRL{1'b0}} : wire_WB_control;
 
 	// Instancias de los módulos y asignaciones de las señales
-	unit_hazard unit_hazard
-	(
-		.i_ID_rs(i_instruction[`RS_BIT]),
-		.i_ID_rt(i_instruction[`RT_BIT]),
-		.i_EX_reg_write(i_EX_reg_write),
-		.i_EX_write_register_usage(i_EX_write_register_usage),
-		.i_EX_rt(i_EX_rt),
-		.i_ID_EX_mem_read(i_ID_EX_mem_read),
-		.i_halt(wire_halt_detected),
-		.o_stall(wire_stall),
-		.o_pc_write(o_pc_write),
-		.o_IF_ID_write(o_IF_ID_write)
-	);
 
 	unit_branch unit_branch
 	(
-		.i_pc(i_pc),
-		.i_inm_ext(wire_inm_ext[`ADDRWIDTH-1:0]),
-
-		.i_data_ra(data_ra_branch),
-		.i_data_rb(data_rb_branch),
+		.i_pc(i_pc), 															//Representa la dirección de la próxima instrucción a ejecutar.
+		.i_inm_ext(wire_inm_ext[`ADDRWIDTH-1:0]), //Representa la dirección de destino del salto condicional.
+		.i_data_ra(data_ra_branch),								//Contiene el valor del registro RA (Registro A).
+		.i_data_rb(data_rb_branch), 							//Contiene el valor del registro RB (Registro B).
 
 		.o_is_equal(is_equal),
-		.o_branch_address(o_addr_branch)
+		.o_branch_address(o_addr_branch) //Contiene la dirección de destino del salto incondicional.
 	);
-
-	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
+	
+	unit_hazard unit_hazard
 	(
-		.i_A(i_addr_debug_unit),
-		.i_B(i_instruction[`RS_BIT]),
-		.i_SEL(i_ctrl_read_debug_reg),
-		.o_OUT(wire_addres_reg_debug)
+		.i_ID_rs(i_instruction[`RS_BIT]),												//RS de instruccion ACTUAL
+		.i_ID_rt(i_instruction[`RT_BIT]),												//RT de instruccion ACTUAL
+		.i_EX_reg_write(i_EX_reg_write), 												//Si la etapa que sigue (EXECUTION) escribe en un registro
+		.i_EX_write_register_usage(i_EX_write_register_usage),	//Registro que escribe la etapa que sigue (EXECUTION) 
+		.i_EX_rt(i_EX_rt),																			//RT de la estapa que sigue (EXECUTION) o instruccion PASADA
+		.i_ID_EX_mem_read(i_ID_EX_mem_read),										//La instruccion PASADA escribira en MEMORIA
+		.i_halt(wire_halt_detected),
+		.o_stall(wire_stall),
+		.o_pc_write(o_pc_write),																//cuando hay un stall aca deshabilita el PC ya que asi no sigue trajento instrucciones
+		.o_IF_ID_write(o_IF_ID_write)
 	);
 
-	bank_register banco_registros
-	(
-		.i_clock(i_clock),
-		.i_reset(i_reset),
-		.i_rw(i_reg_write),
-		.i_addr_ra(wire_addres_reg_debug),
-		.i_addr_rb(i_instruction[`RT_BIT]),
-		.i_addr_rw(i_write_register),
-		.i_data_rw(i_data_rw),
-		.o_data_ra(reg_data_ra),
-		.o_data_rb(reg_data_rb)
-	);
-
-	unit_control unidad_de_control
+	unit_control unit_control
 	(
 		.i_op_code(i_instruction[`OP_CODE]),
 		.i_function(i_instruction[`FUNC_BIT]),
@@ -155,11 +134,28 @@ module DECODE
 		.o_halt_detected(wire_halt_detected)
 	);
 
-	ext_signo ext_signo
+	bank_register bank_register
 	(
-		.i_unextended(i_instruction[`INM_BIT]),
-		.o_extended(wire_inm_ext)
+		.i_clock(i_clock),
+		.i_reset(i_reset),
+		.i_rw(i_reg_write),
+		.i_addr_ra(wire_addr_ra),
+		.i_addr_rb(i_instruction[`RT_BIT]),
+		.i_addr_rw(i_write_register),
+		.i_data_rw(i_data_rw),
+		.o_data_ra(reg_data_ra),
+		.o_data_rb(reg_data_rb)
 	);
+
+	//Con este mux lo que hacemos es elegir si queremos conectar la debug unit para que podamos leer los registros despues de una ejecucion 
+	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
+	(
+		.i_A(i_addr_debug_unit),
+		.i_B(i_instruction[`RS_BIT]),
+		.i_SEL(i_ctrl_read_debug_reg),
+		.o_OUT(wire_addr_ra)
+	);
+
 
 	mux2#(.NB_DATA(NB_DATA)) mux_reg_A
 	(
@@ -176,4 +172,11 @@ module DECODE
 		.i_SEL(i_forward_B),
 		.o_OUT(data_rb_branch)
 	);
+
+	ext_signo ext_signo
+	(
+		.i_unextended(i_instruction[`INM_BIT]),
+		.o_extended(wire_inm_ext)
+	);
+
 endmodule
