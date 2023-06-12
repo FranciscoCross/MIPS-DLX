@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 `include "parameters.vh"
-module tb_ifetch(
+module tb_FETCH(
 
     );
     localparam NB_INST = 32;
