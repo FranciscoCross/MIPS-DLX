@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_DECODE_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_DECODE" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="100,999,993 ps"></ZoomStartTime>
+      <ZoomEndTime time="101,000,003 ps"></ZoomEndTime>
+      <Cursor1Time time="101,000,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="210"></NameColumnWidth>
+      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/tb_DECODE/DECODE/i_clock" type="logic">
+      <obj_property name="ElementShortName">i_clock</obj_property>
+      <obj_property name="ObjectShortName">i_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_DECODE/DECODE/i_reset" type="logic">
+      <obj_property name="ElementShortName">i_reset</obj_property>
+      <obj_property name="ObjectShortName">i_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="group117" type="group">
+      <obj_property name="label">Inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_clock" type="logic">
+         <obj_property name="ElementShortName">i_clock</obj_property>
+         <obj_property name="ObjectShortName">i_clock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_reset" type="logic">
+         <obj_property name="ElementShortName">i_reset</obj_property>
+         <obj_property name="ObjectShortName">i_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_ctrl_read_debug_reg" type="logic">
+         <obj_property name="ElementShortName">i_ctrl_read_debug_reg</obj_property>
+         <obj_property name="ObjectShortName">i_ctrl_read_debug_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_instruction" type="array">
+         <obj_property name="ElementShortName">i_instruction[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_instruction[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_data_rw" type="array">
+         <obj_property name="ElementShortName">i_data_rw[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_data_rw[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_write_register" type="array">
+         <obj_property name="ElementShortName">i_write_register[4:0]</obj_property>
+         <obj_property name="ObjectShortName">i_write_register[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_reg_write" type="logic">
+         <obj_property name="ElementShortName">i_reg_write</obj_property>
+         <obj_property name="ObjectShortName">i_reg_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_pc" type="array">
+         <obj_property name="ElementShortName">i_pc[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_pc[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_addr_debug_unit" type="array">
+         <obj_property name="ElementShortName">i_addr_debug_unit[4:0]</obj_property>
+         <obj_property name="ObjectShortName">i_addr_debug_unit[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_EX_write_register" type="array">
+         <obj_property name="ElementShortName">i_EX_write_register[4:0]</obj_property>
+         <obj_property name="ObjectShortName">i_EX_write_register[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_EX_rt" type="array">
+         <obj_property name="ElementShortName">i_EX_rt[4:0]</obj_property>
+         <obj_property name="ObjectShortName">i_EX_rt[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_ID_EX_mem_read" type="logic">
+         <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
+         <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_EX_reg_write" type="logic">
+         <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
+         <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_forward_A" type="logic">
+         <obj_property name="ElementShortName">i_forward_A</obj_property>
+         <obj_property name="ObjectShortName">i_forward_A</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_forward_B" type="logic">
+         <obj_property name="ElementShortName">i_forward_B</obj_property>
+         <obj_property name="ObjectShortName">i_forward_B</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_data_forward_EX_MEM" type="array">
+         <obj_property name="ElementShortName">i_data_forward_EX_MEM[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_data_forward_EX_MEM[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/i_data_forward_EX_MEM_i" type="logic">
+         <obj_property name="ElementShortName">i_data_forward_EX_MEM_i</obj_property>
+         <obj_property name="ObjectShortName">i_data_forward_EX_MEM_i</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group118" type="group">
+      <obj_property name="label">Outputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_rs" type="array">
+         <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
+         <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_rt" type="array">
+         <obj_property name="ElementShortName">o_rt[4:0]</obj_property>
+         <obj_property name="ObjectShortName">o_rt[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_rd" type="array">
+         <obj_property name="ElementShortName">o_rd[4:0]</obj_property>
+         <obj_property name="ObjectShortName">o_rd[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_data_ra" type="array">
+         <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_data_rb" type="array">
+         <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_shamt" type="array">
+         <obj_property name="ElementShortName">o_shamt[4:0]</obj_property>
+         <obj_property name="ObjectShortName">o_shamt[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_inm_ext" type="array">
+         <obj_property name="ElementShortName">o_inm_ext[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_inm_ext[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_function" type="array">
+         <obj_property name="ElementShortName">o_function[5:0]</obj_property>
+         <obj_property name="ObjectShortName">o_function[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_pc_src" type="array">
+         <obj_property name="ElementShortName">o_pc_src[1:0]</obj_property>
+         <obj_property name="ObjectShortName">o_pc_src[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_branch_or_jump" type="logic">
+         <obj_property name="ElementShortName">o_branch_or_jump</obj_property>
+         <obj_property name="ObjectShortName">o_branch_or_jump</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_addr_register" type="array">
+         <obj_property name="ElementShortName">o_addr_register[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_addr_register[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_addr_branch" type="array">
+         <obj_property name="ElementShortName">o_addr_branch[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_addr_branch[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_addr_jump" type="array">
+         <obj_property name="ElementShortName">o_addr_jump[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_addr_jump[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_pc_write" type="logic">
+         <obj_property name="ElementShortName">o_pc_write</obj_property>
+         <obj_property name="ObjectShortName">o_pc_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_IF_ID_write" type="logic">
+         <obj_property name="ElementShortName">o_IF_ID_write</obj_property>
+         <obj_property name="ObjectShortName">o_IF_ID_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_data_reg_debug_unit" type="array">
+         <obj_property name="ElementShortName">o_data_reg_debug_unit[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_data_reg_debug_unit[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_EX_control" type="array">
+         <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_M_control" type="array">
+         <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
+         <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_WB_control" type="array">
+         <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
+         <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/o_halt" type="logic">
+         <obj_property name="ElementShortName">o_halt</obj_property>
+         <obj_property name="ObjectShortName">o_halt</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group156" type="group">
+      <obj_property name="label">Wires</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_halt_detected" type="logic">
+         <obj_property name="ElementShortName">wire_halt_detected</obj_property>
+         <obj_property name="ObjectShortName">wire_halt_detected</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_stall" type="logic">
+         <obj_property name="ElementShortName">wire_stall</obj_property>
+         <obj_property name="ObjectShortName">wire_stall</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_beq" type="logic">
+         <obj_property name="ElementShortName">wire_beq</obj_property>
+         <obj_property name="ObjectShortName">wire_beq</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_bne" type="logic">
+         <obj_property name="ElementShortName">wire_bne</obj_property>
+         <obj_property name="ObjectShortName">wire_bne</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_jump" type="logic">
+         <obj_property name="ElementShortName">wire_jump</obj_property>
+         <obj_property name="ObjectShortName">wire_jump</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_reg_dest" type="array">
+         <obj_property name="ElementShortName">wire_reg_dest[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_reg_dest[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_addres_reg_debug" type="array">
+         <obj_property name="ElementShortName">wire_addres_reg_debug[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_addres_reg_debug[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_inm_ext" type="array">
+         <obj_property name="ElementShortName">wire_inm_ext[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_inm_ext[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_WB_control" type="array">
+         <obj_property name="ElementShortName">wire_WB_control[2:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_WB_control[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_EX_control" type="array">
+         <obj_property name="ElementShortName">wire_EX_control[6:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_EX_control[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_DECODE/DECODE/wire_M_control" type="array">
+         <obj_property name="ElementShortName">wire_M_control[5:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_M_control[5:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group116" type="group">
+      <obj_property name="label">SubModules</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="group37" type="group">
+         <obj_property name="label">unit_hazard</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_EX_mem_read" type="logic">
+            <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
+            <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_reg_write" type="logic">
+            <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
+            <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rs" type="array">
+            <obj_property name="ElementShortName">i_ID_rs[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_ID_rs[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rt" type="array">
+            <obj_property name="ElementShortName">i_ID_rt[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_ID_rt[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_write_register" type="array">
+            <obj_property name="ElementShortName">i_EX_write_register[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_EX_write_register[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_rt" type="array">
+            <obj_property name="ElementShortName">i_EX_rt[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_EX_rt[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_halt" type="logic">
+            <obj_property name="ElementShortName">i_halt</obj_property>
+            <obj_property name="ObjectShortName">i_halt</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_stall" type="logic">
+            <obj_property name="ElementShortName">o_stall</obj_property>
+            <obj_property name="ObjectShortName">o_stall</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_pc_write" type="logic">
+            <obj_property name="ElementShortName">o_pc_write</obj_property>
+            <obj_property name="ObjectShortName">o_pc_write</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_IF_ID_write" type="logic">
+            <obj_property name="ElementShortName">o_IF_ID_write</obj_property>
+            <obj_property name="ObjectShortName">o_IF_ID_write</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/reg_pc_write" type="logic">
+            <obj_property name="ElementShortName">reg_pc_write</obj_property>
+            <obj_property name="ObjectShortName">reg_pc_write</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/reg_IF_ID_write" type="logic">
+            <obj_property name="ElementShortName">reg_IF_ID_write</obj_property>
+            <obj_property name="ObjectShortName">reg_IF_ID_write</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group38" type="group">
+         <obj_property name="label">unit_branch</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_pc" type="array">
+            <obj_property name="ElementShortName">i_pc[6:0]</obj_property>
+            <obj_property name="ObjectShortName">i_pc[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_inm_ext" type="array">
+            <obj_property name="ElementShortName">i_inm_ext[6:0]</obj_property>
+            <obj_property name="ObjectShortName">i_inm_ext[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_data_ra" type="array">
+            <obj_property name="ElementShortName">i_data_ra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_data_ra[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_data_rb" type="array">
+            <obj_property name="ElementShortName">i_data_rb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_data_rb[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/o_is_equal" type="logic">
+            <obj_property name="ElementShortName">o_is_equal</obj_property>
+            <obj_property name="ObjectShortName">o_is_equal</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/o_branch_address" type="array">
+            <obj_property name="ElementShortName">o_branch_address[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_branch_address[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/NB_DATA" type="array">
+            <obj_property name="ElementShortName">NB_DATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">NB_DATA[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group39" type="group">
+         <obj_property name="label">mux_read_debug</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_read_debug/i_SEL" type="logic">
+            <obj_property name="ElementShortName">i_SEL</obj_property>
+            <obj_property name="ObjectShortName">i_SEL</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_read_debug/i_A" type="array">
+            <obj_property name="ElementShortName">i_A[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_A[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_read_debug/i_B" type="array">
+            <obj_property name="ElementShortName">i_B[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_B[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_read_debug/o_OUT" type="array">
+            <obj_property name="ElementShortName">o_OUT[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_OUT[4:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group40" type="group">
+         <obj_property name="label">banco_registros</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_rw" type="logic">
+            <obj_property name="ElementShortName">i_rw</obj_property>
+            <obj_property name="ObjectShortName">i_rw</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_ra" type="array">
+            <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_ra[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_rb" type="array">
+            <obj_property name="ElementShortName">i_addr_rb[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_rb[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_rw" type="array">
+            <obj_property name="ElementShortName">i_addr_rw[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_rw[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_data_rw" type="array">
+            <obj_property name="ElementShortName">i_data_rw[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_data_rw[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/o_data_ra" type="array">
+            <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/o_data_rb" type="array">
+            <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/registers" type="array">
+            <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i" type="array">
+            <obj_property name="ElementShortName">i[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group41" type="group">
+         <obj_property name="label">unidad_de_control</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/i_op_code" type="array">
+            <obj_property name="ElementShortName">i_op_code[5:0]</obj_property>
+            <obj_property name="ObjectShortName">i_op_code[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/i_function" type="array">
+            <obj_property name="ElementShortName">i_function[5:0]</obj_property>
+            <obj_property name="ObjectShortName">i_function[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_EX_control" type="array">
+            <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_M_control" type="array">
+            <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
+            <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_WB_control" type="array">
+            <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_pc_src" type="array">
+            <obj_property name="ElementShortName">o_pc_src[1:0]</obj_property>
+            <obj_property name="ObjectShortName">o_pc_src[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_beq" type="logic">
+            <obj_property name="ElementShortName">o_beq</obj_property>
+            <obj_property name="ObjectShortName">o_beq</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_bne" type="logic">
+            <obj_property name="ElementShortName">o_bne</obj_property>
+            <obj_property name="ObjectShortName">o_bne</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_jump" type="logic">
+            <obj_property name="ElementShortName">o_jump</obj_property>
+            <obj_property name="ObjectShortName">o_jump</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_halt_detected" type="logic">
+            <obj_property name="ElementShortName">o_halt_detected</obj_property>
+            <obj_property name="ObjectShortName">o_halt_detected</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_EX_control" type="array">
+            <obj_property name="ElementShortName">reg_EX_control[6:0]</obj_property>
+            <obj_property name="ObjectShortName">reg_EX_control[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_M_control" type="array">
+            <obj_property name="ElementShortName">reg_M_control[5:0]</obj_property>
+            <obj_property name="ObjectShortName">reg_M_control[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_WB_control" type="array">
+            <obj_property name="ElementShortName">reg_WB_control[2:0]</obj_property>
+            <obj_property name="ObjectShortName">reg_WB_control[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_pc_src" type="array">
+            <obj_property name="ElementShortName">reg_pc_src[1:0]</obj_property>
+            <obj_property name="ObjectShortName">reg_pc_src[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_beq" type="logic">
+            <obj_property name="ElementShortName">reg_beq</obj_property>
+            <obj_property name="ObjectShortName">reg_beq</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_bne" type="logic">
+            <obj_property name="ElementShortName">reg_bne</obj_property>
+            <obj_property name="ObjectShortName">reg_bne</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_jump" type="logic">
+            <obj_property name="ElementShortName">reg_jump</obj_property>
+            <obj_property name="ObjectShortName">reg_jump</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group42" type="group">
+         <obj_property name="label">ext_signo</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/i_unextended" type="array">
+            <obj_property name="ElementShortName">i_unextended[15:0]</obj_property>
+            <obj_property name="ObjectShortName">i_unextended[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/o_extended" type="array">
+            <obj_property name="ElementShortName">o_extended[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_extended[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group43" type="group">
+         <obj_property name="label">mux_reg_A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_A/i_SEL" type="logic">
+            <obj_property name="ElementShortName">i_SEL</obj_property>
+            <obj_property name="ObjectShortName">i_SEL</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_A/i_A" type="array">
+            <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_A/i_B" type="array">
+            <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_A/o_OUT" type="array">
+            <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group44" type="group">
+         <obj_property name="label">mux_reg_B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_B/i_SEL" type="logic">
+            <obj_property name="ElementShortName">i_SEL</obj_property>
+            <obj_property name="ObjectShortName">i_SEL</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_B/i_A" type="array">
+            <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_B/i_B" type="array">
+            <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/mux_reg_B/o_OUT" type="array">
+            <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>

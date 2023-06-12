@@ -164,17 +164,17 @@ module DECODE
 
 	mux2#(.NB_DATA(NB_DATA)) mux_reg_A
 	(
-		.i_A(i_data_forward_EX_MEM_i),
+		.i_A(i_data_forward_EX_MEM),
 		.i_B(reg_data_ra),
 		.i_SEL(i_forward_A),
-		.o_OUT(o_data_ra)
+		.o_OUT(data_ra_branch)
 	);
 
 	mux2#(.NB_DATA(NB_DATA)) mux_reg_B
 	(
-		.i_A(i_data_forward_EX_MEM_i),
+		.i_A(i_data_forward_EX_MEM),
 		.i_B(reg_data_rb),
 		.i_SEL(i_forward_B),
-		.o_OUT(o_data_rb)
+		.o_OUT(data_rb_branch)
 	);
 endmodule
