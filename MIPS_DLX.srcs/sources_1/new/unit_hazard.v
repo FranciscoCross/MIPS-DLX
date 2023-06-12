@@ -18,9 +18,9 @@ la escritura en el registro hasta que se completen ciertas operaciones previas.
 */
 
 
-`define WR_REG 	i_EX_write_register != 5'b0
-`define OP1   	i_EX_write_register == i_ID_rs
-`define OP2   	i_EX_write_register == i_ID_rt
+`define WR_REG 	i_EX_write_register_usage != 5'b0
+`define OP1   	i_EX_write_register_usage == i_ID_rs
+`define OP2   	i_EX_write_register_usage == i_ID_rt
 
 module unit_hazard
 	#(
@@ -34,7 +34,7 @@ module unit_hazard
 		//input wire beq_i, bne_i,
 		input wire [NB_REG-1:0] i_ID_rs,
 		input wire [NB_REG-1:0] i_ID_rt,
-		input wire [NB_REG-1:0] i_EX_write_register,
+		input wire [NB_REG-1:0] i_EX_write_register_usage,
 		input wire [NB_REG-1:0] i_EX_rt,
 
 		input wire i_halt,

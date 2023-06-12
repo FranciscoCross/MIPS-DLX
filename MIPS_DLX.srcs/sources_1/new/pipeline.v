@@ -194,7 +194,7 @@ module pipeline
 		.i_reg_write(wire_reg_write_WB_EX),		
 		.i_pc(wire_pc_IF_ID),
 		.i_addr_debug_unit(i_addr_debug_unit),
-		.i_EX_write_register(wire_write_reg_EX), 
+		.i_EX_write_register_usage(wire_write_reg_EX), 
 		.i_EX_rt(wire_rt_ID_EX), 
 		.i_ID_EX_mem_read(wire_M_ctrl_EX_MEM[5]), 
 		.i_EX_reg_write(wire_WB_ctrl_EX_MEM[2]),

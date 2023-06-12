@@ -23,7 +23,7 @@ module DECODE
 
 		input wire [NB_REG-1:0] i_addr_debug_unit,     	// Dirección para acceder a la unidad de depuración
 
-		input wire [NB_REG-1:0] i_EX_write_register,    // Registro de escritura desde la etapa EX
+		input wire [NB_REG-1:0] i_EX_write_register_usage,    // Registro de escritura desde la etapa EX
 		input wire [NB_REG-1:0] i_EX_rt,     			// Registro de destino desde la etapa EX
 		input wire i_ID_EX_mem_read,     				// Señal de control desde el registro de la etapa ID/EX para lectura de memoria
 		input wire i_EX_reg_write,     					// Señal de control desde la etapa EX para escritura en registros
@@ -66,7 +66,6 @@ module DECODE
 	wire wire_bne;     // Señal de control para instrucción BNE (no igualdad)
 	wire wire_jump;     // Señal de control para instrucción de salto
 
-	wire [NB_REG-1:0]       wire_reg_dest;     // Registro destino de la instrucción
 	wire [NB_REG-1:0]       wire_addres_reg_debug;     // Dirección para acceder al registro de depuración
 	wire [NB_DATA-1:0]      wire_inm_ext;     // Inmediato extendido
 	wire [NB_DATA-1:0]      data_ra_branch;     // Datos del registro fuente A para instrucción de salto
@@ -100,7 +99,7 @@ module DECODE
 		.i_ID_rs(i_instruction[`RS_BIT]),
 		.i_ID_rt(i_instruction[`RT_BIT]),
 		.i_EX_reg_write(i_EX_reg_write),
-		.i_EX_write_register(i_EX_write_register),
+		.i_EX_write_register_usage(i_EX_write_register_usage),
 		.i_EX_rt(i_EX_rt),
 		.i_ID_EX_mem_read(i_ID_EX_mem_read),
 		.i_halt(wire_halt_detected),
