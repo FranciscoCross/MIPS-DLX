@@ -12,18 +12,18 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="48.000 ns"></ZoomEndTime>
-      <Cursor1Time time="48.000 ns"></Cursor1Time>
+      <ZoomEndTime time="80.007 ns"></ZoomEndTime>
+      <Cursor1Time time="43.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="182"></NameColumnWidth>
-      <ValueColumnWidth column_width="88"></ValueColumnWidth>
+      <NameColumnWidth column_width="208"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="7" />
    <wave_markers>
-      <marker time="23000" label="" />
       <marker time="33000" label="" />
       <marker time="13000" label="" />
+      <marker time="23000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_DECODE/DECODE/i_clock" type="logic">
       <obj_property name="ElementShortName">i_clock</obj_property>
@@ -196,10 +196,6 @@
          <obj_property name="ElementShortName">wire_jump</obj_property>
          <obj_property name="ObjectShortName">wire_jump</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_DECODE/DECODE/wire_addres_reg_debug" type="array">
-         <obj_property name="ElementShortName">wire_addres_reg_debug[4:0]</obj_property>
-         <obj_property name="ObjectShortName">wire_addres_reg_debug[4:0]</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/wire_inm_ext" type="array">
          <obj_property name="ElementShortName">wire_inm_ext[31:0]</obj_property>
          <obj_property name="ObjectShortName">wire_inm_ext[31:0]</obj_property>
@@ -221,57 +217,6 @@
       <obj_property name="label">SubModules</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="group37" type="group">
-         <obj_property name="label">unit_hazard</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_EX_mem_read" type="logic">
-            <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
-            <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_reg_write" type="logic">
-            <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
-            <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rs" type="array">
-            <obj_property name="ElementShortName">i_ID_rs[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_ID_rs[4:0]</obj_property>
-            <obj_property name="Radix">BINARYRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rt" type="array">
-            <obj_property name="ElementShortName">i_ID_rt[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_ID_rt[4:0]</obj_property>
-            <obj_property name="Radix">BINARYRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_rt" type="array">
-            <obj_property name="ElementShortName">i_EX_rt[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_EX_rt[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_halt" type="logic">
-            <obj_property name="ElementShortName">i_halt</obj_property>
-            <obj_property name="ObjectShortName">i_halt</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_stall" type="logic">
-            <obj_property name="ElementShortName">o_stall</obj_property>
-            <obj_property name="ObjectShortName">o_stall</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_pc_write" type="logic">
-            <obj_property name="ElementShortName">o_pc_write</obj_property>
-            <obj_property name="ObjectShortName">o_pc_write</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_IF_ID_write" type="logic">
-            <obj_property name="ElementShortName">o_IF_ID_write</obj_property>
-            <obj_property name="ObjectShortName">o_IF_ID_write</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/reg_pc_write" type="logic">
-            <obj_property name="ElementShortName">reg_pc_write</obj_property>
-            <obj_property name="ObjectShortName">reg_pc_write</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/reg_IF_ID_write" type="logic">
-            <obj_property name="ElementShortName">reg_IF_ID_write</obj_property>
-            <obj_property name="ObjectShortName">reg_IF_ID_write</obj_property>
-         </wvobject>
-      </wvobject>
       <wvobject fp_name="group38" type="group">
          <obj_property name="label">unit_branch</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -283,6 +228,10 @@
             <obj_property name="ElementShortName">i_inm_ext[6:0]</obj_property>
             <obj_property name="ObjectShortName">i_inm_ext[6:0]</obj_property>
          </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
          <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_data_ra" type="array">
             <obj_property name="ElementShortName">i_data_ra[31:0]</obj_property>
             <obj_property name="ObjectShortName">i_data_ra[31:0]</obj_property>
@@ -290,6 +239,10 @@
          <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/i_data_rb" type="array">
             <obj_property name="ElementShortName">i_data_rb[31:0]</obj_property>
             <obj_property name="ObjectShortName">i_data_rb[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/o_is_equal" type="logic">
             <obj_property name="ElementShortName">o_is_equal</obj_property>
@@ -302,6 +255,198 @@
          <wvobject fp_name="/tb_DECODE/DECODE/unit_branch/NB_DATA" type="array">
             <obj_property name="ElementShortName">NB_DATA[31:0]</obj_property>
             <obj_property name="ObjectShortName">NB_DATA[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group37" type="group">
+         <obj_property name="label">unit_hazard</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_EX_mem_read" type="logic">
+            <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
+            <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_rt" type="array">
+            <obj_property name="ElementShortName">i_EX_rt[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_EX_rt[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rs" type="array">
+            <obj_property name="ElementShortName">i_ID_rs[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_ID_rs[4:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_ID_rt" type="array">
+            <obj_property name="ElementShortName">i_ID_rt[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_ID_rt[4:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_halt" type="logic">
+            <obj_property name="ElementShortName">i_halt</obj_property>
+            <obj_property name="ObjectShortName">i_halt</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/i_EX_reg_write" type="logic">
+            <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
+            <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_pc_write" type="logic">
+            <obj_property name="ElementShortName">o_pc_write</obj_property>
+            <obj_property name="ObjectShortName">o_pc_write</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_IF_ID_write" type="logic">
+            <obj_property name="ElementShortName">o_IF_ID_write</obj_property>
+            <obj_property name="ObjectShortName">o_IF_ID_write</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_hazard/o_stall" type="logic">
+            <obj_property name="ElementShortName">o_stall</obj_property>
+            <obj_property name="ObjectShortName">o_stall</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group41" type="group">
+         <obj_property name="label">unit_control</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/i_op_code" type="array">
+            <obj_property name="ElementShortName">i_op_code[5:0]</obj_property>
+            <obj_property name="ObjectShortName">i_op_code[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/i_function" type="array">
+            <obj_property name="ElementShortName">i_function[5:0]</obj_property>
+            <obj_property name="ObjectShortName">i_function[5:0]</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_EX_control" type="array">
+            <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_M_control" type="array">
+            <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
+            <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_WB_control" type="array">
+            <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_pc_src" type="array">
+            <obj_property name="ElementShortName">o_pc_src[1:0]</obj_property>
+            <obj_property name="ObjectShortName">o_pc_src[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_beq" type="logic">
+            <obj_property name="ElementShortName">o_beq</obj_property>
+            <obj_property name="ObjectShortName">o_beq</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_bne" type="logic">
+            <obj_property name="ElementShortName">o_bne</obj_property>
+            <obj_property name="ObjectShortName">o_bne</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_jump" type="logic">
+            <obj_property name="ElementShortName">o_jump</obj_property>
+            <obj_property name="ObjectShortName">o_jump</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/unit_control/o_halt_detected" type="logic">
+            <obj_property name="ElementShortName">o_halt_detected</obj_property>
+            <obj_property name="ObjectShortName">o_halt_detected</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group270" type="group">
+            <obj_property name="label">REGs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="divider" fp_name="divider231">
+               <obj_property name="label">SPACE</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_EX_control" type="array">
+               <obj_property name="ElementShortName">reg_EX_control[6:0]</obj_property>
+               <obj_property name="ObjectShortName">reg_EX_control[6:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_M_control" type="array">
+               <obj_property name="ElementShortName">reg_M_control[5:0]</obj_property>
+               <obj_property name="ObjectShortName">reg_M_control[5:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_WB_control" type="array">
+               <obj_property name="ElementShortName">reg_WB_control[2:0]</obj_property>
+               <obj_property name="ObjectShortName">reg_WB_control[2:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_pc_src" type="array">
+               <obj_property name="ElementShortName">reg_pc_src[1:0]</obj_property>
+               <obj_property name="ObjectShortName">reg_pc_src[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_beq" type="logic">
+               <obj_property name="ElementShortName">reg_beq</obj_property>
+               <obj_property name="ObjectShortName">reg_beq</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_bne" type="logic">
+               <obj_property name="ElementShortName">reg_bne</obj_property>
+               <obj_property name="ObjectShortName">reg_bne</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_DECODE/DECODE/unit_control/reg_jump" type="logic">
+               <obj_property name="ElementShortName">reg_jump</obj_property>
+               <obj_property name="ObjectShortName">reg_jump</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group40" type="group">
+         <obj_property name="label">bank_register</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_rw" type="logic">
+            <obj_property name="ElementShortName">i_rw</obj_property>
+            <obj_property name="ObjectShortName">i_rw</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_addr_ra" type="array">
+            <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_ra[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_addr_rb" type="array">
+            <obj_property name="ElementShortName">i_addr_rb[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_rb[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_addr_rw" type="array">
+            <obj_property name="ElementShortName">i_addr_rw[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_rw[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_data_rw" type="array">
+            <obj_property name="ElementShortName">i_data_rw[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_data_rw[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/o_data_ra" type="array">
+            <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/bank_register/o_data_rb" type="array">
+            <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider231">
+            <obj_property name="label">SPACE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group39" type="group">
@@ -322,130 +467,6 @@
          <wvobject fp_name="/tb_DECODE/DECODE/mux_read_debug/o_OUT" type="array">
             <obj_property name="ElementShortName">o_OUT[4:0]</obj_property>
             <obj_property name="ObjectShortName">o_OUT[4:0]</obj_property>
-         </wvobject>
-      </wvobject>
-      <wvobject fp_name="group40" type="group">
-         <obj_property name="label">banco_registros</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_rw" type="logic">
-            <obj_property name="ElementShortName">i_rw</obj_property>
-            <obj_property name="ObjectShortName">i_rw</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_ra" type="array">
-            <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_addr_ra[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_rb" type="array">
-            <obj_property name="ElementShortName">i_addr_rb[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_addr_rb[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_addr_rw" type="array">
-            <obj_property name="ElementShortName">i_addr_rw[4:0]</obj_property>
-            <obj_property name="ObjectShortName">i_addr_rw[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i_data_rw" type="array">
-            <obj_property name="ElementShortName">i_data_rw[31:0]</obj_property>
-            <obj_property name="ObjectShortName">i_data_rw[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/o_data_ra" type="array">
-            <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
-            <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/o_data_rb" type="array">
-            <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
-            <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/registers" type="array">
-            <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
-            <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/banco_registros/i" type="array">
-            <obj_property name="ElementShortName">i[31:0]</obj_property>
-            <obj_property name="ObjectShortName">i[31:0]</obj_property>
-         </wvobject>
-      </wvobject>
-      <wvobject fp_name="group41" type="group">
-         <obj_property name="label">unidad_de_control</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/i_op_code" type="array">
-            <obj_property name="ElementShortName">i_op_code[5:0]</obj_property>
-            <obj_property name="ObjectShortName">i_op_code[5:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/i_function" type="array">
-            <obj_property name="ElementShortName">i_function[5:0]</obj_property>
-            <obj_property name="ObjectShortName">i_function[5:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_EX_control" type="array">
-            <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
-            <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_M_control" type="array">
-            <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
-            <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_WB_control" type="array">
-            <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
-            <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_pc_src" type="array">
-            <obj_property name="ElementShortName">o_pc_src[1:0]</obj_property>
-            <obj_property name="ObjectShortName">o_pc_src[1:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_beq" type="logic">
-            <obj_property name="ElementShortName">o_beq</obj_property>
-            <obj_property name="ObjectShortName">o_beq</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_bne" type="logic">
-            <obj_property name="ElementShortName">o_bne</obj_property>
-            <obj_property name="ObjectShortName">o_bne</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_jump" type="logic">
-            <obj_property name="ElementShortName">o_jump</obj_property>
-            <obj_property name="ObjectShortName">o_jump</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/o_halt_detected" type="logic">
-            <obj_property name="ElementShortName">o_halt_detected</obj_property>
-            <obj_property name="ObjectShortName">o_halt_detected</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_EX_control" type="array">
-            <obj_property name="ElementShortName">reg_EX_control[6:0]</obj_property>
-            <obj_property name="ObjectShortName">reg_EX_control[6:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_M_control" type="array">
-            <obj_property name="ElementShortName">reg_M_control[5:0]</obj_property>
-            <obj_property name="ObjectShortName">reg_M_control[5:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_WB_control" type="array">
-            <obj_property name="ElementShortName">reg_WB_control[2:0]</obj_property>
-            <obj_property name="ObjectShortName">reg_WB_control[2:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_pc_src" type="array">
-            <obj_property name="ElementShortName">reg_pc_src[1:0]</obj_property>
-            <obj_property name="ObjectShortName">reg_pc_src[1:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_beq" type="logic">
-            <obj_property name="ElementShortName">reg_beq</obj_property>
-            <obj_property name="ObjectShortName">reg_beq</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_bne" type="logic">
-            <obj_property name="ElementShortName">reg_bne</obj_property>
-            <obj_property name="ObjectShortName">reg_bne</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/unidad_de_control/reg_jump" type="logic">
-            <obj_property name="ElementShortName">reg_jump</obj_property>
-            <obj_property name="ObjectShortName">reg_jump</obj_property>
-         </wvobject>
-      </wvobject>
-      <wvobject fp_name="group42" type="group">
-         <obj_property name="label">ext_signo</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/i_unextended" type="array">
-            <obj_property name="ElementShortName">i_unextended[15:0]</obj_property>
-            <obj_property name="ObjectShortName">i_unextended[15:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/o_extended" type="array">
-            <obj_property name="ElementShortName">o_extended[31:0]</obj_property>
-            <obj_property name="ObjectShortName">o_extended[31:0]</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group43" type="group">
@@ -488,33 +509,29 @@
             <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
          </wvobject>
       </wvobject>
+      <wvobject fp_name="group42" type="group">
+         <obj_property name="label">ext_signo</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/i_unextended" type="array">
+            <obj_property name="ElementShortName">i_unextended[15:0]</obj_property>
+            <obj_property name="ObjectShortName">i_unextended[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_DECODE/DECODE/ext_signo/o_extended" type="array">
+            <obj_property name="ElementShortName">o_extended[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_extended[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group168" type="group">
       <obj_property name="label">Other</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_DECODE/DECODE/data_rb_branch" type="array">
-         <obj_property name="ElementShortName">data_rb_branch[31:0]</obj_property>
-         <obj_property name="ObjectShortName">data_rb_branch[31:0]</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/data_ra_branch" type="array">
          <obj_property name="ElementShortName">data_ra_branch[31:0]</obj_property>
          <obj_property name="ObjectShortName">data_ra_branch[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_DECODE/DECODE/reg_data_rb" type="array">
-         <obj_property name="ElementShortName">reg_data_rb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">reg_data_rb[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_DECODE/DECODE/reg_data_ra" type="array">
-         <obj_property name="ElementShortName">reg_data_ra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">reg_data_ra[31:0]</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/data_rb_branch" type="array">
          <obj_property name="ElementShortName">data_rb_branch[31:0]</obj_property>
          <obj_property name="ObjectShortName">data_rb_branch[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_DECODE/DECODE/data_ra_branch" type="array">
-         <obj_property name="ElementShortName">data_ra_branch[31:0]</obj_property>
-         <obj_property name="ObjectShortName">data_ra_branch[31:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

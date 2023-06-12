@@ -118,7 +118,7 @@ always @(posedge i_clock)
       //Los últimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
     i_data_rw = 32'h00000000;
     i_write_register = 5'b00010;  // $2
-    i_reg_write = 1;
+    i_reg_write = 0;
     i_pc = 32'h00000000;
     i_addr_debug_unit = 5'b00000;
     i_EX_write_register_usage = 5'b00000;
@@ -141,7 +141,7 @@ always @(posedge i_clock)
       //Los últimos     6 bits (funct) contienen el código de función específico de la operación "ADD", que es 100000 en binario.
     i_data_rw = 32'h00000000;
     i_write_register = 5'b00100;  // $4
-    i_reg_write = 1;
+    i_reg_write = 0;
     i_pc = 32'h00000000;
     i_addr_debug_unit = 5'b00000;
     i_EX_write_register_usage = 5'b00000;
@@ -175,7 +175,7 @@ always @(posedge i_clock)
     i_forward_B = 0;
     i_data_forward_EX_MEM_i = 32'h00000000;
     
-    #15
+    #10
     $finish;
   end
 
