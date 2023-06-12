@@ -13,8 +13,6 @@ module tb_WRITE_BACK;
   reg [NB_MEM_TO_REG-1:0] i_mem_to_reg;
   wire [NB_DATA-1:0] o_data;
 
-  integer i;
-
   WRITE_BACK #(
     .NB_DATA(NB_DATA),
     .NB_MEM_TO_REG(NB_MEM_TO_REG)

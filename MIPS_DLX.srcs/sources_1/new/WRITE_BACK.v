@@ -15,7 +15,7 @@ module WRITE_BACK
 	);
 
 
-	mux4 mux_write_back
+	mux4#(.NB_DATA(NB_DATA)) mux_write_back
 	(
 		.i_A(i_mem_data), 
 		.i_B(i_alu_result), 
