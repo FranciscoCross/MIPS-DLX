@@ -220,7 +220,7 @@ module pipeline
 		.o_EX_control(wire_EX_ctrl_ID),
 		.o_M_control(wire_M_ctrl_ID), 
 		.o_WB_control(wire_WB_ctrl_ID),
-		.o_halt(wire_i_halt_detectedF_ID_EX)
+		.o_halt(wire_halt_detected_IF_ID_EX)
 	);
 
  	latch_ID_EX ID_EX
@@ -228,7 +228,7 @@ module pipeline
 		.i_clock(clock),   
 		.i_reset(i_reset),
 		.i_enable(i_enable_pipe),
-		.i_halt_detected(wire_i_halt_detectedF_ID_EX),
+		.i_halt_detected(wire_halt_detected_IF_ID_EX),
 		.i_pc(wire_pc_IF_ID),
 		.i_rs(wire_rs_ID), 
 		.i_rt(wire_rt_ID), 
@@ -245,14 +245,14 @@ module pipeline
 		.o_data_rb(wire_data_rb_ID_EX),
 		.o_inm_ext(wire_inm_ext_ID_EX),
 		.o_shamt(wire_shamt_ID_EX),
-		.o_pc(wire_i_pcD_EX),
+		.o_pc(wire_pc_EX_MEM),
 		.o_rs(wire_rs_ID_EX), 
 		.o_rt(wire_rt_ID_EX), 
 		.o_rd(wire_rd_ID_EX),
 		.o_function(wire_function_ID_EX),
 		.o_EX_control(wire_EX_ctrl_ID_EX),
-		.o_M_control(wire_M_ctrl_ID_EX),
-		.o_WB_control(wire_WB_ctrl_ID_EX),
+		.o_M_control(wire_M_ctrl_EX_MEM),
+		.o_WB_control(wire_WB_ctrl_EX_MEM),
 		.o_halt_detected(wire_halt_detected_ID_EX_MEM)	
 	);
 
