@@ -35,7 +35,11 @@ module bank_register
 	
 	);
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
-
+	initial
+	begin
+		o_data_ra <= 32'b0;
+		o_data_rb <= 32'b0;
+	end
     always @(posedge i_clock)
         begin
 	        if (i_reset)
