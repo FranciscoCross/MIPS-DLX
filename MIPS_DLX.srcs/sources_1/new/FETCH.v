@@ -28,7 +28,7 @@ module FETCH#(
     //-------------------------------------------------
     //Debug Unit
     wire [NB_DATA-1:0] wire_address_debug;
-    wire [NB_DATA-1:0] wire_pc_adder;
+    wire [NB_DATA-1:0] wire_pc;
     wire [NB_DATA-1:0] wire_address_jump_pc;
     wire [NB_DATA-1:0] wire_input_pc;
     wire [NB_INST-1:0] wire_instr;
@@ -93,14 +93,14 @@ module FETCH#(
         .i_reset(i_reset),
         .i_enable(i_enable),
         .i_addr(wire_input_pc),
-        .o_addr(wire_pc_adder)
+        .o_addr(wire_pc)
     );
 
     pc_add #(
         .NB_DATA (NB_DATA)
     ) 
     inst_pc_add(
-        .i_nAddr(wire_pc_adder),
+        .i_nAddr(wire_pc),
         .o_nAddr(o_nextAddr_pc)
     );
     

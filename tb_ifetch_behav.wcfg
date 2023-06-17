@@ -3,100 +3,73 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_ifetch_behav.wdb" id="1">
+      <db_ref path="tb_FETCH_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="tb_ifetch" />
+            <top_module name="tb_FETCH" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="23.958 ns"></ZoomStartTime>
-      <ZoomEndTime time="44.804 ns"></ZoomEndTime>
-      <Cursor1Time time="27.000 ns"></Cursor1Time>
+      <ZoomStartTime time="47.300 ns"></ZoomStartTime>
+      <ZoomEndTime time="60.577 ns"></ZoomEndTime>
+      <Cursor1Time time="51.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="211"></NameColumnWidth>
-      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="8" />
+   <wave_markers>
+      <marker time="17000" label="" />
+      <marker time="1000" label="" />
+      <marker time="35000" label="" />
+      <marker time="47000" label="" />
+      <marker time="143000" label="" />
+      <marker time="153000" label="" />
+   </wave_markers>
    <wvobject fp_name="group372" type="group">
       <obj_property name="label">FETCH</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_ifetch/clock" type="logic">
-         <obj_property name="ElementShortName">clock</obj_property>
-         <obj_property name="ObjectShortName">clock</obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc/i_clk" type="logic">
+         <obj_property name="ElementShortName">i_clk</obj_property>
+         <obj_property name="ObjectShortName">i_clk</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_reset" type="logic">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc/i_reset" type="logic">
          <obj_property name="ElementShortName">i_reset</obj_property>
          <obj_property name="ObjectShortName">i_reset</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_enable" type="logic">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc/i_enable" type="logic">
          <obj_property name="ElementShortName">i_enable</obj_property>
          <obj_property name="ObjectShortName">i_enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_debug_unit" type="logic">
-         <obj_property name="ElementShortName">i_debug_unit</obj_property>
-         <obj_property name="ObjectShortName">i_debug_unit</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_PCsrc" type="array">
-         <obj_property name="ElementShortName">i_PCsrc[1:0]</obj_property>
-         <obj_property name="ObjectShortName">i_PCsrc[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_Mem_Data" type="array">
-         <obj_property name="ElementShortName">i_Mem_Data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">i_Mem_Data[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_addr_register" type="array">
-         <obj_property name="ElementShortName">i_addr_register[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_addr_register[6:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_addr_branch" type="array">
-         <obj_property name="ElementShortName">i_addr_branch[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_addr_branch[6:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/i_addr_jump" type="array">
-         <obj_property name="ElementShortName">i_addr_jump[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_addr_jump[6:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/wire_pc_adder" type="array">
-         <obj_property name="ElementShortName">wire_pc_adder[6:0]</obj_property>
-         <obj_property name="ObjectShortName">wire_pc_adder[6:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/o_instruction" type="array">
-         <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
-         <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/o_PCAddr" type="array">
-         <obj_property name="ElementShortName">o_PCAddr[6:0]</obj_property>
-         <obj_property name="ObjectShortName">o_PCAddr[6:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group373" type="group">
       <obj_property name="label">Memoria</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/instancia_imem/i_en_write" type="logic">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/i_en_write" type="logic">
          <obj_property name="ElementShortName">i_en_write</obj_property>
          <obj_property name="ObjectShortName">i_en_write</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/instancia_imem/i_en_read" type="logic">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/i_en_read" type="logic">
          <obj_property name="ElementShortName">i_en_read</obj_property>
          <obj_property name="ObjectShortName">i_en_read</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/instancia_imem/i_addr" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/i_addr" type="array">
          <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
          <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/instancia_imem/i_data" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/i_data" type="array">
          <obj_property name="ElementShortName">i_data[31:0]</obj_property>
          <obj_property name="ObjectShortName">i_data[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/instancia_imem/o_data" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/MEM" type="array">
+         <obj_property name="ElementShortName">MEM[127:0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM[127:0][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/instancia_imem/o_data" type="array">
          <obj_property name="ElementShortName">o_data[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
       </wvobject>
@@ -104,40 +77,121 @@
    <wvobject fp_name="group374" type="group">
       <obj_property name="label">PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/inst_pc/i_addr" type="array">
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc/i_addr" type="array">
+         <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
          <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+         <obj_property name="label">i_Next PC</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/inst_pc/o_addr" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc/o_addr" type="array">
+         <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">o_addr[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_addr[6:0]</obj_property>
+         <obj_property name="label">o_PC</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group378" type="group">
       <obj_property name="label">PC Adder</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/inst_pc_add/o_nAddr" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc_add/i_nAddr" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">i_nAddr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_nAddr[6:0]</obj_property>
+         <obj_property name="label">i_PC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/inst_pc_add/o_nAddr" type="array">
+         <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">o_nAddr[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_nAddr[6:0]</obj_property>
+         <obj_property name="label">o_nextPC</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group395" type="group">
       <obj_property name="label">Mux Addr</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/mux_address_mem/i_SEL" type="logic">
-         <obj_property name="ElementShortName">i_SEL</obj_property>
-         <obj_property name="ObjectShortName">i_SEL</obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_addr_branch_jump/i_SEL" type="array">
+         <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+         <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/mux_address_mem/i_A" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_addr_branch_jump/i_A" type="array">
          <obj_property name="ElementShortName">i_A[6:0]</obj_property>
          <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/mux_address_mem/i_B" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_addr_branch_jump/i_B" type="array">
          <obj_property name="ElementShortName">i_B[6:0]</obj_property>
          <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_ifetch/instruccion_fetch/mux_address_mem/o_OUT" type="array">
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_addr_branch_jump/i_C" type="array">
+         <obj_property name="ElementShortName">i_C[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_C[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_addr_branch_jump/o_OUT" type="array">
+         <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group49" type="group">
+      <obj_property name="label">Mux PCSrc</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_src_PC/i_SEL" type="logic">
+         <obj_property name="ElementShortName">i_SEL</obj_property>
+         <obj_property name="ObjectShortName">i_SEL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_src_PC/i_A" type="array">
+         <obj_property name="ElementShortName">i_A[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_src_PC/i_B" type="array">
+         <obj_property name="ElementShortName">i_B[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_src_PC/o_OUT" type="array">
+         <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
+         <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group54" type="group">
+      <obj_property name="label">Mux IF/ID</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_input_reg_IF_ID/i_SEL" type="logic">
+         <obj_property name="ElementShortName">i_SEL</obj_property>
+         <obj_property name="ObjectShortName">i_SEL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_input_reg_IF_ID/i_A" type="array">
+         <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_input_reg_IF_ID/i_B" type="array">
+         <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_input_reg_IF_ID/o_OUT" type="array">
+         <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group59" type="group">
+      <obj_property name="label">Mux Debug Unit  Mem</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_address_mem/i_SEL" type="logic">
+         <obj_property name="ElementShortName">i_SEL</obj_property>
+         <obj_property name="ObjectShortName">i_SEL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_address_mem/i_A" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">i_A[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
+         <obj_property name="label">Address Debug</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_address_mem/i_B" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">i_B[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
+         <obj_property name="label">PC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FETCH/instruccion_fetch/mux_address_mem/o_OUT" type="array">
          <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
       </wvobject>

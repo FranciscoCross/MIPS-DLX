@@ -23,9 +23,8 @@ module imem#(
   	generate
     integer i;		
 		initial begin
-		MEM[0] <= {NB_INST{1'b0}}; 
-	    for (i = 1; i < MEM_SIZEB; i = i + 1)
-        MEM[i] <= i; 
+	    for (i = 0; i < MEM_SIZEB; i = i + 1)
+        MEM[i] <= {NB_INST{1'b0}}; 
     end
 	endgenerate
 

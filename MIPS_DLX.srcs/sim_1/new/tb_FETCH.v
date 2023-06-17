@@ -64,9 +64,12 @@ module tb_FETCH(
     always #1 clock = ~clock; // # < timeunit > delay
     initial begin
         #0
-        #10
+        #1
+        $display("Test 01: Carga de informacion desde debug unit");
         i_debug_unit = 1;
         i_en_write = 1;
+        i_en_read = 0;
+        wire_branch_or_jump_IF_ID = 0;
         #4 //Cargar informacion
         i_inst_load = 32'b10001100000000010000000000000000;
         i_addr_inst_load = 1;
@@ -77,12 +80,53 @@ module tb_FETCH(
         i_inst_load = 32'b10001100000000010000000000000010;
         i_addr_inst_load = 3;
         #4
+        i_inst_load = 32'b0000000000000000000000000000000;
+        i_addr_inst_load = 0;
+        #10
+        $display("Test 02: Lectura de informacion desde debug unit");
+        i_reset = 1;
+        i_debug_unit = 1;
+        i_en_write = 0;
+        i_en_read = 1;
+        wire_branch_or_jump_IF_ID = 0;
+        #4 //Desde aca lee con el PC
+        i_reset = 0;
+        #4
+        i_addr_inst_load = 1;
+        #4
+        i_addr_inst_load = 2;
+        #4
+        i_addr_inst_load = 3;
+        #4
+        $display("Test 03: Modo continuo");
         i_reset = 1;
         i_debug_unit = 0;
         i_en_write = 0;
-        #2 //Desde aca lee con el PC
+        i_en_read = 1;
+        wire_branch_or_jump_IF_ID = 0;
+        #4
         i_reset = 0;
-        #100
+        #20
+        #4
+        $display("Test 03: Modo branch");
+        i_reset = 1;
+        i_debug_unit = 0;
+        i_en_write = 0;
+        i_en_read = 1;
+        wire_branch_or_jump_IF_ID = 1;
+        
+        wire_addr_reg_ID_IF = 3;
+        wire_addr_branch_ID_IF = 2;
+        wire_addr_jump_ID_IF = 1;
+        #4
+        i_reset = 0;
+        #4
+        wire_pc_src_ID_IF = 2'b00;
+        #4
+        wire_pc_src_ID_IF = 2'b01;
+        #4
+        wire_pc_src_ID_IF = 2'b10;
+        #20
         $finish;
     end
 
