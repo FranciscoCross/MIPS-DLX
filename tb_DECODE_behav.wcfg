@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="43.001 ns"></ZoomEndTime>
-      <Cursor1Time time="1.000 ns"></Cursor1Time>
+      <ZoomStartTime time="10.375 ns"></ZoomStartTime>
+      <ZoomEndTime time="25.512 ns"></ZoomEndTime>
+      <Cursor1Time time="19.154 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="208"></NameColumnWidth>
-      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+      <NameColumnWidth column_width="257"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="7" />
    <wave_markers>
@@ -92,41 +92,51 @@
    <wvobject fp_name="group118" type="group">
       <obj_property name="label">Outputs</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_DECODE/DECODE/o_rs" type="array">
          <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
          <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_rt" type="array">
          <obj_property name="ElementShortName">o_rt[4:0]</obj_property>
          <obj_property name="ObjectShortName">o_rt[4:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_rd" type="array">
          <obj_property name="ElementShortName">o_rd[4:0]</obj_property>
          <obj_property name="ObjectShortName">o_rd[4:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_data_ra" type="array">
          <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_data_rb" type="array">
          <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_shamt" type="array">
          <obj_property name="ElementShortName">o_shamt[4:0]</obj_property>
          <obj_property name="ObjectShortName">o_shamt[4:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_inm_ext" type="array">
          <obj_property name="ElementShortName">o_inm_ext[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_inm_ext[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_function" type="array">
          <obj_property name="ElementShortName">o_function[5:0]</obj_property>
          <obj_property name="ObjectShortName">o_function[5:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_pc_src" type="array">
          <obj_property name="ElementShortName">o_pc_src[1:0]</obj_property>
          <obj_property name="ObjectShortName">o_pc_src[1:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_branch_or_jump" type="logic">
          <obj_property name="ElementShortName">o_branch_or_jump</obj_property>
@@ -135,14 +145,17 @@
       <wvobject fp_name="/tb_DECODE/DECODE/o_addr_register" type="array">
          <obj_property name="ElementShortName">o_addr_register[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_addr_register[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_addr_branch" type="array">
          <obj_property name="ElementShortName">o_addr_branch[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_addr_branch[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_addr_jump" type="array">
          <obj_property name="ElementShortName">o_addr_jump[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_addr_jump[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_pc_write" type="logic">
          <obj_property name="ElementShortName">o_pc_write</obj_property>
@@ -155,18 +168,22 @@
       <wvobject fp_name="/tb_DECODE/DECODE/o_data_reg_debug_unit" type="array">
          <obj_property name="ElementShortName">o_data_reg_debug_unit[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_data_reg_debug_unit[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_EX_control" type="array">
          <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
          <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_M_control" type="array">
          <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
          <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_WB_control" type="array">
          <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
          <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DECODE/DECODE/o_halt" type="logic">
          <obj_property name="ElementShortName">o_halt</obj_property>
@@ -216,7 +233,6 @@
    <wvobject fp_name="group116" type="group">
       <obj_property name="label">SubModules</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group38" type="group">
          <obj_property name="label">unit_branch</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -402,7 +418,6 @@
       <wvobject fp_name="group40" type="group">
          <obj_property name="label">bank_register</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_DECODE/DECODE/bank_register/i_rw" type="logic">
             <obj_property name="ElementShortName">i_rw</obj_property>
             <obj_property name="ObjectShortName">i_rw</obj_property>

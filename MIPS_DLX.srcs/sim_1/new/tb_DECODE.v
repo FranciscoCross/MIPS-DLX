@@ -109,12 +109,12 @@ always @(posedge i_clock)
     #2
     i_reset = 0;
     #10
-    $display("LW $1, 0($2)");
+    $display("LW $7, 0($2)");
     // Configuración de las entradas para la instrucción de carga (LW)
-    i_instruction = 32'h8C410000;  // LW $1, 0($2) //100011  00010  00001  0000000000000000
+    i_instruction = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000
       //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
       //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).
-      //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00001 en binario).
+      //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).
       //Los últimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
     i_data_rw = 32'h00000000;
     i_write_register = 5'b00010;  // $2
@@ -132,7 +132,8 @@ always @(posedge i_clock)
     #10
     $display("ADD $4, $1, $2");
     // Configuración de las entradas para una instrucción específica
-    i_instruction = 32'h01242820;  // ADD $4, $1, $2 //000000 01001 00010 00100 00000 100000
+    i_instruction = 32'b00000001001000100010000000100000;  
+      // ADD $4, $1, $2 //000000 01001 00010 00100 00000 100000
       //Los primeros    6 bits (opcode) indican que es una instrucción de tipo R (opcode = 000000).
       //Los siguientes  5 bits (rs) especifican el registro de origen rs, que en este caso es $1 (rs = 01001 en binario).
       //Los siguientes  5 bits (rt) especifican el segundo registro de origen rt, que en este caso es $2 (rt = 00010 en binario).
