@@ -200,7 +200,7 @@ module pipeline
 		.i_EX_reg_write(wire_WB_ctrl_EX_MEM[2]),
 		.i_forward_A(forw_branch_A), 
 		.i_forward_B(forw_branch_B),
-		.i_data_forward_EX_MEM(),
+		.i_data_forward_EX_MEM(wire_result_alu_EX_MEM),
 		.o_rs(wire_rs_ID),
         .o_rt(wire_rt_ID),
         .o_rd(wire_rd_ID),
