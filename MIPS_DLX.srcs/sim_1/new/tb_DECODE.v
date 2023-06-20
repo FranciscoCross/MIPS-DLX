@@ -146,8 +146,8 @@ always @(posedge i_clock)
     i_pc = 32'h00000000;
     i_addr_debug_unit = 5'b00000;
     i_EX_write_register_usage = 5'b00000;
-    i_EX_rt = 5'b00000;
-    i_ID_EX_mem_read = 0;
+    i_EX_rt = 5'b00001;// 5'b00000; //fuerzo burbuja por coincidencia de registro
+    i_ID_EX_mem_read = 1'b1; //test unidad de riesgo
     i_EX_reg_write = 0;
     i_forward_A = 0;
     i_forward_B = 0;
