@@ -176,6 +176,24 @@ always @(posedge i_clock)
     i_forward_B = 0;
     i_data_forward_EX_MEM_i = 32'h00000000;
     
+        // Caso de prueba 4
+    #10
+    $display("J 4");
+    // Configuración de las entradas para otra instrucción específica
+    i_instruction = 32'b00001000000000000000000000000001;   //000010 00000000000000000001000
+    i_data_rw = 32'h00000000;
+    i_write_register = 5'b00100;  // $4
+    i_reg_write = 0;
+    i_pc = 32'h00000000;
+    i_addr_debug_unit = 5'b00000;
+    i_EX_write_register_usage = 5'b00000;
+    i_EX_rt = 5'b00000;
+    i_ID_EX_mem_read = 0;
+    i_EX_reg_write = 0;
+    i_forward_A = 0;
+    i_forward_B = 0;
+    i_data_forward_EX_MEM_i = 32'h00000000;
+    
     #10
     $finish;
   end
