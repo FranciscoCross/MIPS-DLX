@@ -132,10 +132,10 @@ always @(posedge i_clock)
     #10
     $display("ADD $4, $1, $2");
     // Configuración de las entradas para una instrucción específica
-    i_instruction = 32'b00000001001000100010000000100000;  
-      // ADD $4, $1, $2 //000000 01001 00010 00100 00000 100000
+    i_instruction = 32'b00000000001000100010000000100001;  
+      // ADD $4, $1, $2 //000000 00001 00010 00100 00000 100001
       //Los primeros    6 bits (opcode) indican que es una instrucción de tipo R (opcode = 000000).
-      //Los siguientes  5 bits (rs) especifican el registro de origen rs, que en este caso es $1 (rs = 01001 en binario).
+      //Los siguientes  5 bits (rs) especifican el registro de origen rs, que en este caso es $1 (rs = 00001 en binario).
       //Los siguientes  5 bits (rt) especifican el segundo registro de origen rt, que en este caso es $2 (rt = 00010 en binario).
       //Los siguientes  5 bits (rd) especifican el registro de destino rd, que en este caso es $4 (rd = 00100 en binario).
       //Los siguientes  5 bits (shamt) se reservan para el desplazamiento, que es cero en este caso (shamt = 00000 en binario).
