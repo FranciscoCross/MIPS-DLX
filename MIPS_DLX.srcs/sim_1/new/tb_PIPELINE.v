@@ -63,7 +63,7 @@ module tb_PIPELINE;
         i_inst_load <= 0;
         i <= 0;
       end 
-      else if (i_en_write && i < 2) 
+      else if (i_en_write && i < 3) 
         begin
         // Cargar instrucciones en el arreglo
           if (i_debug_unit) 
@@ -99,12 +99,13 @@ module tb_PIPELINE;
     i_ctrl_read_debug_reg = 0;
     i_ctrl_wr_debug_mem = 0;
     i_ctrl_addr_debug_mem = 0;
-    instrucciones[0] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000
+    instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
+    instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000
     //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
     //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).
     //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).
     //Los últimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
-    instrucciones[1] = 32'b00000000001000100010000000100001;  
+    instrucciones[2] = 32'b00000000001000100010000000100001;  
     // ADD $4, $1, $2 //000000 00001 00010 00100 00000 100001
     //Los primeros    6 bits (opcode) indican que es una instrucción de tipo R (opcode = 000000).
     //Los siguientes  5 bits (rs) especifican el registro de origen rs, que en este caso es $1 (rs = 00001 en binario).
@@ -126,10 +127,10 @@ module tb_PIPELINE;
 
     #2 i_reset = 1; // Apply reset
     #2 i_reset = 0; // Deassert reset
-    #4
+    #6
     i_debug_unit = 1;
     i_en_write = 1;
-    #4
+    #6
     i_debug_unit = 0;
     i_en_write = 0;
     i_inst_load = 0;
