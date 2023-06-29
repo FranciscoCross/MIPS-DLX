@@ -55,12 +55,13 @@ module FETCH#(
     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
 	(
 		.i_A(i_wr_addr),
-		.i_B(o_nextAddr_pc),
+		.i_B(wire_input_pc),
 		.i_SEL(i_debug_unit),
 		.o_OUT(wire_address_debug)
 	);
 
-    mux2#(.NB_DATA(NB_DATA)) mux_src_PC
+    //Address de entrada al Program Counter
+    mux2#(.NB_DATA(NB_DATA)) mux_src_PC  
 	(
 		.i_A(wire_address_jump_pc),
 		.i_B(o_nextAddr_pc),

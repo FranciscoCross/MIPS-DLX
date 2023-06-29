@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="71.801 ns"></ZoomEndTime>
-      <Cursor1Time time="40.000 ns"></Cursor1Time>
+      <ZoomEndTime time="91.916 ns"></ZoomEndTime>
+      <Cursor1Time time="20.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="211"></NameColumnWidth>
-      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="6" />
    <wvobject fp_name="/tb_MEMORIA/i_clock" type="logic">
       <obj_property name="ElementShortName">i_clock</obj_property>
       <obj_property name="ObjectShortName">i_clock</obj_property>
@@ -28,29 +28,34 @@
       <obj_property name="ElementShortName">i_reset</obj_property>
       <obj_property name="ObjectShortName">i_reset</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/i_enable_mem" type="logic">
-      <obj_property name="ElementShortName">i_enable_mem</obj_property>
-      <obj_property name="ObjectShortName">i_enable_mem</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/i_MEM_control" type="array">
-      <obj_property name="ElementShortName">i_MEM_control[5:0]</obj_property>
-      <obj_property name="ObjectShortName">i_MEM_control[5:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/i_alu_result" type="array">
-      <obj_property name="ElementShortName">i_alu_result[6:0]</obj_property>
-      <obj_property name="ObjectShortName">i_alu_result[6:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/i_data_write" type="array">
-      <obj_property name="ElementShortName">i_data_write[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_data_write[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/o_data_mem_debug_unit" type="array">
-      <obj_property name="ElementShortName">o_data_mem_debug_unit[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_data_mem_debug_unit[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_MEMORIA/o_mem_data" type="array">
-      <obj_property name="ElementShortName">o_mem_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mem_data[31:0]</obj_property>
+   <wvobject fp_name="group66" type="group">
+      <obj_property name="label">Memoria</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_MEMORIA/i_enable_mem" type="logic">
+         <obj_property name="ElementShortName">i_enable_mem</obj_property>
+         <obj_property name="ObjectShortName">i_enable_mem</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/i_MEM_control" type="array">
+         <obj_property name="ElementShortName">i_MEM_control[5:0]</obj_property>
+         <obj_property name="ObjectShortName">i_MEM_control[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/i_alu_result" type="array">
+         <obj_property name="ElementShortName">i_alu_result[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_alu_result[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/i_data_write" type="array">
+         <obj_property name="ElementShortName">i_data_write[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_data_write[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/o_data_mem_debug_unit" type="array">
+         <obj_property name="ElementShortName">o_data_mem_debug_unit[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_data_mem_debug_unit[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/o_mem_data" type="array">
+         <obj_property name="ElementShortName">o_mem_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_mem_data[31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group191" type="group">
       <obj_property name="label">Memory Controller</obj_property>
@@ -87,7 +92,6 @@
    <wvobject fp_name="group199" type="group">
       <obj_property name="label">Data Memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_MEMORIA/MEMORIA/memory_data/i_clk" type="logic">
          <obj_property name="ElementShortName">i_clk</obj_property>
          <obj_property name="ObjectShortName">i_clk</obj_property>
@@ -127,6 +131,26 @@
       <wvobject fp_name="/tb_MEMORIA/MEMORIA/memory_data/i" type="array">
          <obj_property name="ElementShortName">i[31:0]</obj_property>
          <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group67" type="group">
+      <obj_property name="label">Bit Sucio</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_MEMORIA/MEMORIA/ctrl_bit_sucio/i_addr" type="array">
+         <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/MEMORIA/ctrl_bit_sucio/i_mem_write" type="logic">
+         <obj_property name="ElementShortName">i_mem_write</obj_property>
+         <obj_property name="ObjectShortName">i_mem_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/MEMORIA/ctrl_bit_sucio/o_bit_sucio" type="logic">
+         <obj_property name="ElementShortName">o_bit_sucio</obj_property>
+         <obj_property name="ObjectShortName">o_bit_sucio</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_MEMORIA/MEMORIA/ctrl_bit_sucio/bit_sucio_reg" type="array">
+         <obj_property name="ElementShortName">bit_sucio_reg[127:0]</obj_property>
+         <obj_property name="ObjectShortName">bit_sucio_reg[127:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

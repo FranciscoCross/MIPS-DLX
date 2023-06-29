@@ -113,14 +113,13 @@ module tb_FETCH(
         i_debug_unit = 0;
         i_en_write = 0;
         i_en_read = 1;
-        wire_branch_or_jump_IF_ID = 1;
         
         wire_addr_reg_ID_IF = 3;
         wire_addr_branch_ID_IF = 2;
         wire_addr_jump_ID_IF = 1;
-        #4
+        #1
         i_reset = 0;
-        #4
+        wire_branch_or_jump_IF_ID = 1;
         wire_pc_src_ID_IF = 2'b00;
         #4
         wire_pc_src_ID_IF = 2'b01;

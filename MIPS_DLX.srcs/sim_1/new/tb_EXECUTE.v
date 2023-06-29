@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "parameters.vh"
 
 module tb_EXECUTE;
 
@@ -82,7 +83,7 @@ module tb_EXECUTE;
 
     // Test 1
     $display("Test 1");
-    i_function = 6'b000000; // ADD
+    i_function = `ADDU_FUNCTION; // ADD
     i_data_ra = 32'h00000001;
     i_data_rb = 32'h00000002;
     i_data_inm = 0;
@@ -90,7 +91,7 @@ module tb_EXECUTE;
     i_rs = 0;
     i_rt = 0;
     i_rd = 0;
-    i_EX_control = 7'b0010000; // ADD
+    i_EX_control = 7'b0110000; // ADD
     i_EX_MEM_write_reg = 0;
     i_MEM_WB_write_reg = 0;
     i_EX_MEM_reg_write = 0;
@@ -102,7 +103,7 @@ module tb_EXECUTE;
 
     // Test 2
     $display("Test 2");
-    i_function = 6'b100000; // ADD
+    i_function = `SLL_FUNCTION; // ADD
     i_data_ra = 32'h00000003;
     i_data_rb = 32'h00000004;
     i_data_inm = 0;
@@ -110,7 +111,7 @@ module tb_EXECUTE;
     i_rs = 0;
     i_rt = 0;
     i_rd = 0;
-    i_EX_control = 7'b0010000; // ADD
+    i_EX_control = 7'b0110000; // ADD
     i_EX_MEM_write_reg = 0;
     i_MEM_WB_write_reg = 0;
     i_EX_MEM_reg_write = 0;

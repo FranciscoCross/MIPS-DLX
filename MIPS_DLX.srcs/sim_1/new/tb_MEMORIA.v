@@ -50,24 +50,9 @@ module tb_MEMORIA;
     i_ctrl_addr_debug_mem = 0;
     i_ctrl_wr_debug_mem = 0;
 
-    // Inicio de la simulación
+    // Inicio de la simulacion
     #10;
-
-    // Test 1
-    $display("Test 1");
-    i_reset = 1;
-    i_enable_mem = 1;
-    i_MEM_control = 6'b101000; // Lectura
-    i_alu_result = 10'b0000000000; // Dirección de memoria
-    i_data_write = 0;
-    i_addr_mem_debug_unit = 10'b0000000000;
-    i_ctrl_addr_debug_mem = 1;
-    i_ctrl_wr_debug_mem = 0;
-
-    #10;
-
-    // Test 2
-    $display("Test 2");
+    $display("Test 1: Escritura con debug unit");
     i_reset = 0;
     i_enable_mem = 1;
     i_MEM_control = 6'b011000; // Escritura
@@ -76,11 +61,9 @@ module tb_MEMORIA;
     i_addr_mem_debug_unit = 10'b0000000000;
     i_ctrl_addr_debug_mem = 1;
     i_ctrl_wr_debug_mem = 0;
-
     #10;
     
-    // Test 1
-    $display("Test 1");
+    $display("Test 2: Lectura con debug unit");
     i_reset = 1;
     i_enable_mem = 1;
     i_MEM_control = 6'b101000; // Lectura
@@ -89,10 +72,8 @@ module tb_MEMORIA;
     i_addr_mem_debug_unit = 10'b0000000000;
     i_ctrl_addr_debug_mem = 1;
     i_ctrl_wr_debug_mem = 0;
-
     #10;
-
-    // Finalizar simulación
+    // Finalizar simulacion
     $finish;
   end
 
