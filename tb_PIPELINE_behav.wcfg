@@ -11,18 +11,21 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="19.887 ns"></ZoomStartTime>
-      <ZoomEndTime time="44.567 ns"></ZoomEndTime>
-      <Cursor1Time time="25.656 ns"></Cursor1Time>
+      <ZoomStartTime time="22.713 ns"></ZoomStartTime>
+      <ZoomEndTime time="36.704 ns"></ZoomEndTime>
+      <Cursor1Time time="25.323 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="217"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <NameColumnWidth column_width="309"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
       <marker time="23000" label="" />
-      <marker time="24000" label="" />
+      <marker time="25000" label="" />
+      <marker time="27000" label="" />
+      <marker time="29000" label="" />
+      <marker time="31000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -131,9 +134,11 @@
       <wvobject fp_name="group31" type="group">
          <obj_property name="label">branch_forward_unit</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/branch_forward_unit/i_ID_rs" type="array">
                <obj_property name="ElementShortName">i_ID_rs[4:0]</obj_property>
                <obj_property name="ObjectShortName">i_ID_rs[4:0]</obj_property>
@@ -221,6 +226,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/o_instruction" type="array">
                <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
@@ -233,6 +239,7 @@
          <wvobject fp_name="group398" type="group">
             <obj_property name="label">Submodules</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group401" type="group">
                <obj_property name="label">Inst_Mem</obj_property>
                <obj_property name="DisplayName">label</obj_property>
@@ -302,6 +309,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/IF_ID/o_pc" type="array">
                <obj_property name="ElementShortName">o_pc[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_pc[6:0]</obj_property>
@@ -315,11 +323,9 @@
       <wvobject fp_name="group26" type="group">
          <obj_property name="label">Decode</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
                <obj_property name="ElementShortName">clock</obj_property>
                <obj_property name="ObjectShortName">clock</obj_property>
@@ -384,7 +390,6 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/o_rs" type="array">
                <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
@@ -455,14 +460,17 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/o_EX_control" type="array">
                <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/o_M_control" type="array">
                <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
                <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/o_WB_control" type="array">
                <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
                <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/o_halt" type="logic">
                <obj_property name="ElementShortName">o_halt</obj_property>
@@ -536,6 +544,10 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
+               <obj_property name="ElementShortName">clock</obj_property>
+               <obj_property name="ObjectShortName">clock</obj_property>
+            </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_data_ra" type="array">
                <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
@@ -555,14 +567,17 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_pc" type="array">
                <obj_property name="ElementShortName">o_pc[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_pc[6:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_rs" type="array">
                <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_rt" type="array">
                <obj_property name="ElementShortName">o_rt[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_rt[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_rd" type="array">
                <obj_property name="ElementShortName">o_rd[4:0]</obj_property>
@@ -575,14 +590,17 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_EX_control" type="array">
                <obj_property name="ElementShortName">o_EX_control[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_EX_control[6:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_M_control" type="array">
                <obj_property name="ElementShortName">o_M_control[5:0]</obj_property>
                <obj_property name="ObjectShortName">o_M_control[5:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_WB_control" type="array">
                <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
                <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/ID_EX/o_halt_detected" type="logic">
                <obj_property name="ElementShortName">o_halt_detected</obj_property>
@@ -619,18 +637,22 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/i_rs" type="array">
                <obj_property name="ElementShortName">i_rs[4:0]</obj_property>
                <obj_property name="ObjectShortName">i_rs[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/i_rt" type="array">
                <obj_property name="ElementShortName">i_rt[4:0]</obj_property>
                <obj_property name="ObjectShortName">i_rt[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/i_rd" type="array">
                <obj_property name="ElementShortName">i_rd[4:0]</obj_property>
                <obj_property name="ObjectShortName">i_rd[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/i_EX_control" type="array">
                <obj_property name="ElementShortName">i_EX_control[6:0]</obj_property>
                <obj_property name="ObjectShortName">i_EX_control[6:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/i_EX_MEM_write_reg" type="array">
                <obj_property name="ElementShortName">i_EX_MEM_write_reg[4:0]</obj_property>
@@ -660,6 +682,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/o_data_write_mem" type="array">
                <obj_property name="ElementShortName">o_data_write_mem[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_data_write_mem[31:0]</obj_property>
@@ -667,10 +690,197 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/o_write_register" type="array">
                <obj_property name="ElementShortName">o_write_register[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_write_register[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/o_result_alu" type="array">
                <obj_property name="ElementShortName">o_result_alu[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_result_alu[31:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group1383" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">AluControl</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu_control/i_function" type="array">
+                     <obj_property name="ElementShortName">i_function[5:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_function[5:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu_control/i_alu_op" type="array">
+                     <obj_property name="ElementShortName">i_alu_op[2:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_alu_op[2:0]</obj_property>
+                     <obj_property name="Radix">BINARYRADIX</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu_control/o_alu_op" type="array">
+                     <obj_property name="ElementShortName">o_alu_op[3:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_alu_op[3:0]</obj_property>
+                     <obj_property name="Radix">BINARYRADIX</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">ALU</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu/i_OP" type="array">
+                     <obj_property name="ElementShortName">i_OP[3:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_OP[3:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/alu/o_RES" type="array">
+                     <obj_property name="ElementShortName">o_RES[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_RES[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">Mux_A</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardA/i_SEL" type="array">
+                     <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+                     <obj_property name="Radix">BINARYRADIX</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardA/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardA/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardA/i_C" type="array">
+                     <obj_property name="ElementShortName">i_C[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_C[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardA/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">Mux_B</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardB/i_SEL" type="array">
+                     <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+                     <obj_property name="Radix">BINARYRADIX</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardB/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardB/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardB/i_C" type="array">
+                     <obj_property name="ElementShortName">i_C[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_C[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_forwardB/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">ALU Src A</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_A/i_SEL" type="logic">
+                     <obj_property name="ElementShortName">i_SEL</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_A/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_A/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_A/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group1384" type="group">
+               <obj_property name="label">ALU Src B</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_B/i_SEL" type="logic">
+                     <obj_property name="ElementShortName">i_SEL</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_B/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_B/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group1385" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Execute_stage/mux_alu_src_B/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
             </wvobject>
          </wvobject>
       </wvobject>
@@ -720,6 +930,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_alu_result" type="array">
                <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
@@ -735,14 +946,17 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_write_register" type="array">
                <obj_property name="ElementShortName">o_write_register[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_write_register[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_MEM_control" type="array">
                <obj_property name="ElementShortName">o_MEM_control[5:0]</obj_property>
                <obj_property name="ObjectShortName">o_MEM_control[5:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_WB_control" type="array">
                <obj_property name="ElementShortName">o_WB_control[2:0]</obj_property>
                <obj_property name="ObjectShortName">o_WB_control[2:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_pc" type="array">
                <obj_property name="ElementShortName">o_pc[6:0]</obj_property>
@@ -761,17 +975,10 @@
       <wvobject fp_name="group30" type="group">
          <obj_property name="label">Memory</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="/tb_PIPELINE/pipeline/memory_stage/i_clock" type="logic">
-               <obj_property name="ElementShortName">i_clock</obj_property>
-               <obj_property name="ObjectShortName">i_clock</obj_property>
-            </wvobject>
-            <wvobject fp_name="/tb_PIPELINE/pipeline/memory_stage/i_reset" type="logic">
-               <obj_property name="ElementShortName">i_reset</obj_property>
-               <obj_property name="ObjectShortName">i_reset</obj_property>
-            </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/memory_stage/i_enable_mem" type="logic">
                <obj_property name="ElementShortName">i_enable_mem</obj_property>
                <obj_property name="ObjectShortName">i_enable_mem</obj_property>
@@ -779,6 +986,7 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/memory_stage/i_MEM_control" type="array">
                <obj_property name="ElementShortName">i_MEM_control[5:0]</obj_property>
                <obj_property name="ObjectShortName">i_MEM_control[5:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/memory_stage/i_alu_result" type="array">
                <obj_property name="ElementShortName">i_alu_result[6:0]</obj_property>
@@ -821,6 +1029,7 @@
       <wvobject fp_name="group29" type="group">
          <obj_property name="label">     MEM_WB</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -860,9 +1069,11 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_write_register" type="array">
                <obj_property name="ElementShortName">o_write_register[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_write_register[4:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_mem_to_reg" type="array">
                <obj_property name="ElementShortName">o_mem_to_reg[1:0]</obj_property>
@@ -875,10 +1086,12 @@
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_alu_result" type="array">
                <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_pc" type="array">
                <obj_property name="ElementShortName">o_pc[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_pc[6:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_inm_ext" type="array">
                <obj_property name="ElementShortName">o_inm_ext[31:0]</obj_property>
@@ -897,9 +1110,11 @@
       <wvobject fp_name="group31" type="group">
          <obj_property name="label">Write Back</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/stage_write_back/i_mem_data" type="array">
                <obj_property name="ElementShortName">i_mem_data[31:0]</obj_property>
                <obj_property name="ObjectShortName">i_mem_data[31:0]</obj_property>
@@ -924,9 +1139,11 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/stage_write_back/o_data" type="array">
                <obj_property name="ElementShortName">o_data[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>

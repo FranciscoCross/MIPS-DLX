@@ -54,7 +54,7 @@ module EXECUTE
     alu_control alu_control
 	(
 		.i_function(i_function),
-		.i_alu_op(i_EX_control[2:0]),
+		.i_alu_op(i_EX_control[2:0]), //ALU OPERATION
 		.o_alu_op(cod_op_alu) //basicamente me da un bit mas de alu opcode
 	);	
 
@@ -118,7 +118,7 @@ module EXECUTE
     */
 	mux2 #(.NB_DATA(NB_DATA)) mux_alu_src_A	
 	(
-		.i_A(out_mux_forwardA), 
+		.i_A(out_mux_forwardA), //0
 		.i_B({{27'b0},i_shamt}), // sel = 1
 		.i_SEL(i_EX_control[6]),
 		.o_OUT(wire_input_alu_A)

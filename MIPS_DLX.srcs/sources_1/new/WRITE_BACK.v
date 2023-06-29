@@ -17,10 +17,10 @@ module WRITE_BACK
 
 	mux4#(.NB_DATA(NB_DATA)) mux_write_back
 	(
-		.i_A(i_mem_data), 
-		.i_B(i_alu_result), 
-		.i_C({{25'b0}, i_pc}), 
-		.i_D(i_inm_ext), 
+		.i_A(i_mem_data), 		//00
+		.i_B(i_alu_result), 	//01
+		.i_C({{25'b0}, i_pc}), 	//10
+		.i_D(i_inm_ext), 		//11
 		.i_SEL(i_mem_to_reg),
 		.o_OUT(o_data)
 	);
