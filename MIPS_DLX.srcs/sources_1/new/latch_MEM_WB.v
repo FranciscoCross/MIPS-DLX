@@ -51,6 +51,18 @@ module latch_MEM_WB
 	assign o_pc             = pc_reg;
 	assign o_inm_ext        = inm_ext_reg;
 
+	initial begin
+		mem_to_reg = 0;
+		write_reg  = 0;
+		reg_write  = 0;
+		mem_data_reg = 0;
+		alu_result_reg = 0;
+		inm_ext_reg  = 0;
+
+		pc_reg = 0;
+		halt_detected = 0;
+	end
+
 	always @(negedge i_clock)
 		begin
 			if (i_reset)
