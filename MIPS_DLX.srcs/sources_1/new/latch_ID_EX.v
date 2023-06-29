@@ -68,6 +68,23 @@ module latch_ID_EX
 
 	assign o_halt_detected = halt_detected;
 
+	initial begin
+		pc_reg     	 	= {`ADDRWIDTH{1'b0}};
+		data_ra_reg  	= 0;
+		data_rb_reg  	= 0;
+		inm_ext_reg  	= 0;
+		shamt_reg    	= 0;
+		function_reg	= 0;
+		rs_reg			= 0;
+		rt_reg 			= 0;
+		rd_reg 			= 0;
+		EX_control_reg	= 0;
+		M_control_reg	= 0;
+		WB_control_reg	= 0;
+		halt_detected	= 0;
+	end
+
+
 	always @(negedge i_clock)
 		begin
 			if (i_reset)
