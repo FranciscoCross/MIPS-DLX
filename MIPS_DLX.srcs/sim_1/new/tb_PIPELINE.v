@@ -100,7 +100,7 @@ module tb_PIPELINE;
     i_ctrl_wr_debug_mem = 0;
     i_ctrl_addr_debug_mem = 0;
     instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
-    instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000
+    instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000 //8C470000
     //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
     //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).
     //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).
@@ -127,10 +127,10 @@ module tb_PIPELINE;
 
     #2 i_reset = 1; // Apply reset
     #2 i_reset = 0; // Deassert reset
-    #6
+    #4
     i_debug_unit = 1;
     i_en_write = 1;
-    #6
+    #4
     i_debug_unit = 0;
     i_en_write = 0;
     i_inst_load = 0;

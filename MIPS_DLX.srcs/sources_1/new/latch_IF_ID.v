@@ -5,7 +5,8 @@ module latch_IF_ID
 		parameter NB_DATA = 32		
 	)
 	(
-		input wire i_clock,  
+		input wire i_clock,
+		input wire i_reset,  
 		input wire i_enable,		
 		input wire [`ADDRWIDTH-1:0] i_pc,
 		input wire [NB_DATA-1:0] i_instruction,
@@ -14,12 +15,17 @@ module latch_IF_ID
 		output reg [NB_DATA-1:0] o_instruction			
 	);
 	initial begin
-		o_pc <= 0;
-		o_instruction <= 0;
+		o_pc = 0;
+		o_instruction = 0;
 	end
 	always @(negedge i_clock)
 		begin
-			if (i_enable)
+			if (i_reset)
+				begin
+					o_pc          <= 0;
+					o_instruction <= 0;		
+				end
+			else if (i_enable)
 				begin					
 					o_pc          <= i_pc;
 					o_instruction <= i_instruction;		

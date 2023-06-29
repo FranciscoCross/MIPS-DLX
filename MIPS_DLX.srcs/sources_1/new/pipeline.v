@@ -174,7 +174,8 @@ module pipeline
 
 	latch_IF_ID IF_ID
 	(
-		.i_clock(clock),		
+		.i_clock(clock),
+		.i_reset(i_reset),		
 		.i_enable(wire_IF_ID_write&&i_enable_pipe),					
 		.i_instruction(wire_inst_IF),
 		.i_pc(wire_pc_adder),		
