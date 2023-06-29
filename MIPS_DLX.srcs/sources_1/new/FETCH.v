@@ -38,7 +38,7 @@ module FETCH#(
     wire [NB_DATA - 1:0] o_addr_pc;
       
     //PC Addr
-    wire [NB_DATA - 1:0] o_nextAddr_pc; 
+    wire [NB_DATA - 1:0] nextAddr_pc; 
     
     //Instruction memory
     reg imem_en_wr;
@@ -50,12 +50,12 @@ module FETCH#(
         imem_en_rd = 1;
     end
 
-    assign o_PCAddr = o_nextAddr_pc;
+    assign o_PCAddr = nextAddr_pc;
     
     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
 	(
 		.i_A(i_wr_addr),
-		.i_B(o_nextAddr_pc),
+		.i_B(nextAddr_pc),
 		.i_SEL(i_debug_unit),
 		.o_OUT(wire_address_debug)
 	);
@@ -63,15 +63,15 @@ module FETCH#(
     mux2#(.NB_DATA(NB_DATA)) mux_src_PC
 	(
 		.i_A(wire_address_jump_pc),
-		.i_B(o_nextAddr_pc),
+		.i_B(nextAddr_pc),
 		.i_SEL(i_jump_or_branch),
 		.o_OUT(wire_input_pc)
 	);
 
     mux2#(.NB_DATA(NB_INST)) mux_input_reg_IF_ID
 	(
-		.i_A(32'hF8000000),
-		.i_B(wire_instr),
+		.i_A(32'hF8000000),//1
+		.i_B(wire_instr),//0
 		.i_SEL(i_jump_or_branch),
 		.o_OUT(o_instruction)
 	);
@@ -101,7 +101,7 @@ module FETCH#(
     ) 
     inst_pc_add(
         .i_nAddr(wire_pc),
-        .o_nAddr(o_nextAddr_pc)
+        .o_nAddr(nextAddr_pc)
     );
     
     

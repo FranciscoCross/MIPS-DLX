@@ -126,16 +126,17 @@ module tb_PIPELINE;
 
     #2 i_reset = 1; // Apply reset
     #2 i_reset = 0; // Deassert reset
-    #2
+    #4
     i_debug_unit = 1;
     i_en_write = 1;
-    #2
+    #4
     i_debug_unit = 0;
     i_en_write = 0;
-    #20
-    i_enable_pipe = 1;
+    i_inst_load = 0;
     // TODO: Provide test stimulus here
-
+    #10
+    i_enable_pipe = 1;
+    i_en_read = 1;
     #100 $finish; // End simulation
   end
 

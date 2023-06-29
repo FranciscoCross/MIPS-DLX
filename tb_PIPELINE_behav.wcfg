@@ -11,15 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="26.011 ns"></ZoomStartTime>
-      <ZoomEndTime time="43.947 ns"></ZoomEndTime>
-      <Cursor1Time time="30.057 ns"></Cursor1Time>
+      <ZoomStartTime time="21.101 ns"></ZoomStartTime>
+      <ZoomEndTime time="29.732 ns"></ZoomEndTime>
+      <Cursor1Time time="22.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="217"></NameColumnWidth>
       <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
+   <wave_markers>
+      <marker time="22000" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -215,10 +218,6 @@
                <obj_property name="ElementShortName">i_wr_addr[6:0]</obj_property>
                <obj_property name="ObjectShortName">i_wr_addr[6:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/i_addr_pc" type="array">
-               <obj_property name="ElementShortName">i_addr_pc[6:0]</obj_property>
-               <obj_property name="ObjectShortName">i_addr_pc[6:0]</obj_property>
-            </wvobject>
          </wvobject>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
@@ -232,19 +231,10 @@
                <obj_property name="ElementShortName">o_PCAddr[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_PCAddr[6:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/o_addr_pc" type="array">
-               <obj_property name="ElementShortName">o_addr_pc[6:0]</obj_property>
-               <obj_property name="ObjectShortName">o_addr_pc[6:0]</obj_property>
-            </wvobject>
-            <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/o_nextAddr_pc" type="array">
-               <obj_property name="ElementShortName">o_nextAddr_pc[6:0]</obj_property>
-               <obj_property name="ObjectShortName">o_nextAddr_pc[6:0]</obj_property>
-            </wvobject>
          </wvobject>
          <wvobject fp_name="group398" type="group">
             <obj_property name="label">Submodules</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group401" type="group">
                <obj_property name="label">Inst_Mem</obj_property>
                <obj_property name="DisplayName">label</obj_property>
