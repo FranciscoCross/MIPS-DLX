@@ -36,15 +36,15 @@ module MEMORIA
 
 	mux2#(.NB_DATA(`ADDRWIDTH)) mux_addr_debug_mem
 	(
-		.i_A(i_addr_mem_debug_unit),
-		.i_B(i_alu_result),
+		.i_A(i_alu_result),
+		.i_B(i_addr_mem_debug_unit),
 		.i_SEL(i_ctrl_addr_debug_mem),
 		.o_OUT(wire_addr_mem)
 	);
 	mux2#(.NB_DATA(NB_MEM_CTRL)) mux_wr_debug_mem
 	(
-		.i_A(6'b101001), //lectura signed para debug
-		.i_B(i_MEM_control),
+		.i_A(i_MEM_control),
+		.i_B(6'b101001), //lectura signed para debug
 		.i_SEL(i_ctrl_wr_debug_mem),
 		.o_OUT(MEM_control)
 	);

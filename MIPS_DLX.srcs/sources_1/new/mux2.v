@@ -12,6 +12,6 @@ module mux2
     output [NB_DATA-1:0] o_OUT
     );
 
-    assign o_OUT = (i_SEL) ? i_A : i_B;
+    assign o_OUT = (i_SEL) ? i_B : i_A;
 
 endmodule

@@ -54,8 +54,8 @@ module FETCH#(
     
     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
 	(
-		.i_A(i_wr_addr),
-		.i_B(wire_input_pc),
+		.i_A(wire_input_pc),
+		.i_B(i_wr_addr),
 		.i_SEL(i_debug_unit),
 		.o_OUT(wire_address_debug)
 	);
@@ -63,16 +63,16 @@ module FETCH#(
     //Address de entrada al Program Counter
     mux2#(.NB_DATA(NB_DATA)) mux_src_PC  
 	(
-		.i_A(wire_address_jump_pc),
-		.i_B(nextAddr_pc),
+		.i_A(nextAddr_pc),
+		.i_B(wire_address_jump_pc),
 		.i_SEL(i_jump_or_branch),
 		.o_OUT(wire_input_pc)
 	);
 
     mux2#(.NB_DATA(NB_INST)) mux_input_reg_IF_ID
 	(
-		.i_A(32'hF8000000),//1
-		.i_B(wire_instr),//0
+		.i_A(wire_instr),//0
+		.i_B(32'hF8000000),//1
 		.i_SEL(i_jump_or_branch),
 		.o_OUT(o_instruction)
 	);

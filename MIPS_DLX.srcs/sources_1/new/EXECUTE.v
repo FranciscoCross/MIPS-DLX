@@ -118,16 +118,16 @@ module EXECUTE
     */
 	mux2 #(.NB_DATA(NB_DATA)) mux_alu_src_A	
 	(
-		.i_A({{27'b0},i_shamt}), // sel = 1
-		.i_B(out_mux_forwardA), 
+		.i_A(out_mux_forwardA), 
+		.i_B({{27'b0},i_shamt}), // sel = 1
 		.i_SEL(i_EX_control[6]),
 		.o_OUT(wire_input_alu_A)
 	);
 
 	mux2#(.NB_DATA(NB_DATA)) mux_alu_src_B	
 	(
-		.i_A(out_mux_forwardB), // sel = 1
-		.i_B(i_data_inm),
+		.i_A(i_data_inm),
+		.i_B(out_mux_forwardB), // sel = 1
 		.i_SEL(i_EX_control[5]),
 		.o_OUT(wire_input_alu_B)
 	);
