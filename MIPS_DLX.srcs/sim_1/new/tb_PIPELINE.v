@@ -102,8 +102,8 @@ module tb_PIPELINE;
     instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
     instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000 //8C470000
     //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
-    //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).
-    //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).
+    //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).//2
+    //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).//7
     //Los últimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
     instrucciones[2] = 32'b00000000001000100010000000100001;  
     // ADD $4, $1, $2 //000000 00001 00010 00100 00000 100001
@@ -135,7 +135,7 @@ module tb_PIPELINE;
     i_en_write = 0;
     i_inst_load = 0;
     // TODO: Provide test stimulus here
-    #10
+    #11
     i_enable_pipe = 1;
     i_en_read = 1;
     #100 $finish; // End simulation
