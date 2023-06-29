@@ -56,6 +56,20 @@ module latch_EX_MEM
 	
 	assign o_halt_detected = halt_detected;
 
+	initial begin
+		write_reg = 0;	
+		mem_data_reg = 0;
+		alu_result_reg = 0;
+		data_inm_reg = 0;
+
+		MEM_control_reg = 0;
+		WB_control_reg = 0;	
+		pc_reg = 0;
+		
+		reg_write = 0;
+		halt_detected = 0;
+	end
+
 	always @(negedge i_clock)
 		begin
 			if (i_reset)
