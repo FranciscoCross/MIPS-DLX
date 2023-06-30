@@ -353,6 +353,8 @@ module pipeline
 
 	WRITE_BACK stage_write_back
 	(		
+		.i_clock(clock),   
+		.i_reset(i_reset),
 		.i_alu_result(wire_alu_result_WB),
 		.i_pc(wire_pc_WB),
 		.i_mem_data(wire_mem_data_WB),
