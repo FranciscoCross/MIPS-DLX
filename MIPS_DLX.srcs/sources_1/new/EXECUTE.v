@@ -8,6 +8,8 @@ module EXECUTE
 		parameter NB_OP_ALU     = 4
 	)
 	(
+		input wire i_clock,
+		input wire i_reset,
 		input wire [NB_FUNCTION-1:0] i_function,		
 		input wire [NB_DATA-1:0]    i_data_ra,
 		input wire [NB_DATA-1:0]    i_data_rb,

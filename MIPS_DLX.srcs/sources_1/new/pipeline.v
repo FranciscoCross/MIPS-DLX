@@ -259,6 +259,8 @@ module pipeline
 
  	EXECUTE Execute_stage
 	(
+		.i_clock(clock),   
+		.i_reset(i_reset),
 		.i_function(wire_function_ID_EX),		
 		.i_data_ra(wire_data_ra_ID_EX),
 		.i_data_rb(wire_data_rb_ID_EX),
