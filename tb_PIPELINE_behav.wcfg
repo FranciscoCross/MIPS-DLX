@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="112.845 ns"></ZoomStartTime>
-      <ZoomEndTime time="125.032 ns"></ZoomEndTime>
-      <Cursor1Time time="123.000 ns"></Cursor1Time>
+      <ZoomStartTime time="120,875 ps"></ZoomStartTime>
+      <ZoomEndTime time="123,426 ps"></ZoomEndTime>
+      <Cursor1Time time="123,000 ps"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="309"></NameColumnWidth>
@@ -547,6 +547,10 @@
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/i_addr_rw" type="array">
                      <obj_property name="ElementShortName">i_addr_rw[4:0]</obj_property>
                      <obj_property name="ObjectShortName">i_addr_rw[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/reg_addr_rw" type="array">
+                     <obj_property name="ElementShortName">reg_addr_rw[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">reg_addr_rw[4:0]</obj_property>
                   </wvobject>
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/i_data_rw" type="array">
                      <obj_property name="ElementShortName">i_data_rw[31:0]</obj_property>
@@ -1401,6 +1405,7 @@
       <wvobject fp_name="group31" type="group">
          <obj_property name="label">Write Back</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
