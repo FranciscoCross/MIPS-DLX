@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="30,623 ps"></ZoomStartTime>
-      <ZoomEndTime time="31,235 ps"></ZoomEndTime>
-      <Cursor1Time time="31,048 ps"></Cursor1Time>
+      <ZoomStartTime time="112.845 ns"></ZoomStartTime>
+      <ZoomEndTime time="125.032 ns"></ZoomEndTime>
+      <Cursor1Time time="123.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="309"></NameColumnWidth>
@@ -21,11 +21,11 @@
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
-      <marker time="25000" label="" />
       <marker time="29000" label="" />
       <marker time="23000" label="" />
-      <marker time="31000" label="" />
+      <marker time="25000" label="" />
       <marker time="27000" label="" />
+      <marker time="31000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -323,6 +323,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/IF_ID/o_pc" type="array">
                <obj_property name="ElementShortName">o_pc[6:0]</obj_property>
                <obj_property name="ObjectShortName">o_pc[6:0]</obj_property>
@@ -526,6 +527,11 @@
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
+                     <obj_property name="ElementShortName">clock</obj_property>
+                     <obj_property name="ObjectShortName">clock</obj_property>
+                  </wvobject>
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/i_rw" type="logic">
                      <obj_property name="ElementShortName">i_rw</obj_property>
                      <obj_property name="ObjectShortName">i_rw</obj_property>
@@ -678,6 +684,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
                <obj_property name="ElementShortName">clock</obj_property>
                <obj_property name="ObjectShortName">clock</obj_property>
@@ -1156,6 +1163,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/reg_EX_MEM/o_MEM_control" type="array">
                <obj_property name="ElementShortName">o_MEM_control[5:0]</obj_property>
                <obj_property name="ObjectShortName">o_MEM_control[5:0]</obj_property>
@@ -1321,6 +1329,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/latch_MEM_WB/o_write_register" type="array">
                <obj_property name="ElementShortName">o_write_register[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_write_register[4:0]</obj_property>
@@ -1392,10 +1401,10 @@
       <wvobject fp_name="group31" type="group">
          <obj_property name="label">Write Back</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/stage_write_back/i_mem_data" type="array">
                <obj_property name="ElementShortName">i_mem_data[31:0]</obj_property>
                <obj_property name="ObjectShortName">i_mem_data[31:0]</obj_property>
