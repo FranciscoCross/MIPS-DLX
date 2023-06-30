@@ -42,10 +42,38 @@ module EXECUTE
 	wire [1:0]  src_forwardA;
 	wire [1:0]  src_forwardB;
 
-	assign o_data_write_mem = out_mux_forwardB;
-
+	wire [NB_REG-1:0]   wire_write_register;
+	wire [NB_DATA-1:0]  wire_result_alu;
 	wire [3:0] cod_op_alu;
 
+	reg [NB_DATA-1:0]  reg_data_write_mem;
+	reg [NB_REG-1:0]   reg_write_register;
+	reg [NB_DATA-1:0]  reg_result_alu;
+
+	assign o_data_write_mem = reg_data_write_mem; 
+	assign o_write_register = reg_write_register; 
+	assign o_result_alu = reg_result_alu; 
+
+	initial begin
+		reg_data_write_mem = 0;
+		reg_write_register = 0;
+		reg_result_alu = 0;
+	end
+	always @(posedge i_clock)
+	begin
+		if(i_reset)
+		begin
+			reg_data_write_mem <= 0;
+			reg_write_register <= 0;
+			reg_result_alu <= 0;
+		end
+		else
+		begin
+			reg_data_write_mem <= out_mux_forwardB;
+			reg_write_register <= wire_write_register;
+			reg_result_alu <= wire_result_alu;	
+		end
+	end
     /*
     El alu control me ayuda a generar un ALU OPCODE (4bits)
     en funcion de codigo de FUNCION(6bits) y  condigo de ALU OPCODE (3 bits) 
@@ -68,7 +96,7 @@ module EXECUTE
 		.i_A(wire_input_alu_A),
 		.i_B(wire_input_alu_B),
 		.i_OP(cod_op_alu),
-		.o_RES(o_result_alu)		
+		.o_RES(wire_result_alu)		
 	);
     /*
     Unidad de cortocircuito que se encarga de elegir la fuente de fordward en 
@@ -141,7 +169,7 @@ module EXECUTE
 		.i_B(i_rd), // tipo R 01
 		.i_C(5'd31), // jumps and link 10		
 		.i_SEL(i_EX_control[4:3]),
-		.o_OUT(o_write_register)
+		.o_OUT(wire_write_register)
 	);
 
 endmodule
