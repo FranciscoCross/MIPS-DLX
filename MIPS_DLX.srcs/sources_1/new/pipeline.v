@@ -61,6 +61,9 @@ module pipeline
 	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID; 
 	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID;
 	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_ID;
+
+	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_EX;
+	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_EX;
 	/* signal unit control per stage*/
 	/* ------------------------------------------ */
 	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID_EX;
@@ -72,6 +75,7 @@ module pipeline
 	/* ------------------------------------------ */
 	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_MEM;
 	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_MEM_WB;
+	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_MEM;
 	/* ------------------------------------------ */
 
 
@@ -252,8 +256,8 @@ module pipeline
 		.o_rd(wire_rd_ID_EX),
 		.o_function(wire_function_ID_EX),
 		.o_EX_control(wire_EX_ctrl_ID_EX),
-		.o_M_control(wire_M_ctrl_EX_MEM),
-		.o_WB_control(wire_WB_ctrl_EX_MEM),
+		.o_M_control(wire_M_ctrl_ID_EX),		//.o_M_control(wire_M_ctrl_EX_MEM),
+		.o_WB_control(wire_WB_ctrl_ID_EX),		//.o_WB_control(wire_WB_ctrl_EX_MEM),
 		.o_halt_detected(wire_halt_detected_ID_EX_MEM)	
 	);
 
@@ -270,6 +274,8 @@ module pipeline
         .i_rt(wire_rt_ID_EX),
         .i_rd(wire_rd_ID_EX),
 		.i_EX_control(wire_EX_ctrl_ID_EX),
+		.i_M_control(wire_M_ctrl_ID_EX),//
+		.i_WB_control(wire_WB_ctrl_ID_EX),//
 		.i_EX_MEM_write_reg(wire_write_reg_MEM_WB),
 		.i_MEM_WB_write_reg(wire_write_reg_WB_ID),
 		.i_EX_MEM_reg_write(wire_reg_write_MEM_EX), 
@@ -278,6 +284,8 @@ module pipeline
 		.i_MEM_WB_data(wire_data_write_WB_ID),
 		.o_data_write_mem(wire_write_data_mem_EX_MEM),
 		.o_write_register(wire_write_reg_EX),
+		.o_M_control(wire_M_ctrl_EX),//
+		.o_WB_control(wire_WB_ctrl_EX),//
 		.o_result_alu(wire_result_alu_EX)
     ); 
 
@@ -287,23 +295,25 @@ module pipeline
 		.i_reset(i_reset),
 		.i_enable_pipe(i_enable_pipe),
 		.i_halt_detected(wire_halt_detected_ID_EX_MEM),
-		.i_WB_control(wire_WB_ctrl_EX_MEM),
-		.i_MEM_control(wire_M_ctrl_EX_MEM),
+		.i_MEM_control(wire_M_ctrl_EX),
+		.i_WB_control(wire_WB_ctrl_EX),
 		.i_alu_result(wire_result_alu_EX), //salida de la ALU de la etapa EX		
 		.i_data_inm(wire_inm_ext_ID_EX), //LUI
 		.i_data_write(wire_write_data_mem_EX_MEM), //store	
 		.i_pc(wire_pc_EX_MEM),		
 		.i_write_register(wire_write_reg_EX), //registro a escribir
 	
-		.o_WB_control(wire_WB_ctrl_MEM_WB),
-		.o_MEM_control(wire_M_ctrl_MEM),
+
 		.o_write_register(wire_write_reg_MEM_WB), //registro a escribir
 		.o_pc(wire_pc_MEM_WB),
 		.o_alu_result(wire_result_alu_EX_MEM),	
 		.o_data_write(wire_write_data_MEM), 
 		.o_data_inm(wire_inm_ext_MEM_WB), //dato inmediato a escribir en memoria	*/
 		.o_halt_detected(wire_halt_detected_EX_MEM_WB),
-		.o_reg_write(wire_reg_write_MEM_EX)
+		.o_reg_write(wire_reg_write_MEM_EX),
+
+		.o_MEM_control(wire_M_ctrl_MEM),
+		.o_WB_control(wire_WB_ctrl_MEM_WB)
 	);
 
 	MEMORIA memory_stage
@@ -311,17 +321,21 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_mem),
-		.i_alu_result(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
 		.i_MEM_control(wire_M_ctrl_MEM),
+		.i_WB_control(wire_WB_ctrl_MEM_WB),
+
+		.i_alu_result(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
 		.i_data_write(wire_write_data_MEM),
 
 		.i_addr_mem_debug_unit(i_addr_mem_debug_unit),
 		.i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
 		.i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
 		.o_bit_sucio(o_bit_sucio),
-		.o_data_mem_debug_unit(o_data_mem_debug_unit),
-		.o_mem_data(wire_mem_data_MEM_WB)	
 
+		.o_data_mem_debug_unit(o_data_mem_debug_unit),
+		.o_mem_data(wire_mem_data_MEM_WB),	
+
+		.o_WB_control(wire_WB_ctrl_MEM)
 	);
 
 	latch_MEM_WB latch_MEM_WB
@@ -330,7 +344,7 @@ module pipeline
 		.i_reset(i_reset),
 		.i_enable_pipe(i_enable_pipe),
 		.i_halt_detected(wire_halt_detected_EX_MEM_WB),
-		.i_WB_control(wire_WB_ctrl_MEM_WB),
+		.i_WB_control(wire_WB_ctrl_MEM),		
 
 
 		.i_pc(wire_pc_MEM_WB),
