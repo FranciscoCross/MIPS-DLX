@@ -320,7 +320,7 @@ module pipeline
 	(
 		.i_clock(clock),
 		.i_reset(i_reset),
-		.i_enable_mem(i_enable_mem),
+		.i_enable_mem(i_enable_pipe),
 		.i_MEM_control(wire_M_ctrl_MEM),
 		.i_WB_control(wire_WB_ctrl_MEM_WB),
 

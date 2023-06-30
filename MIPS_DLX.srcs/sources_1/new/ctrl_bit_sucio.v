@@ -10,8 +10,7 @@ module ctrl_bit_sucio
 
 		output wire o_bit_sucio
 	);
-	reg [`N_ELEMENTS-1:0] bit_sucio_reg; // Arreglo con 1 bit por cada registro de memoria
-	
+	reg [`N_ELEMENTS-1:0] bit_sucio_reg; // 1 elemento y 128 ancho 
     initial begin
         bit_sucio_reg = 0;
     end
@@ -23,12 +22,12 @@ module ctrl_bit_sucio
 		    if (i_reset)
 		    	begin
 		    		bit_sucio_reg    <= 0; //Inicializa todo en 0. O sea en  "Clean"
-		    		bit_sucio_reg[0] <= 1'b1; //Dirty
-		    		bit_sucio_reg[1] <= 1'b1; //Dirty
-		    		bit_sucio_reg[2] <= 1'b1; //Dirty
-		    		bit_sucio_reg[3] <= 1'b1; //Dirty
-		    		bit_sucio_reg[4] <= 1'b1; //Dirty
-		    		bit_sucio_reg[5] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[0] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[1] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[2] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[3] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[4] <= 1'b1; //Dirty
+		    		//bit_sucio_reg[5] <= 1'b1; //Dirty
 		    	end
 		    else
 			    begin

@@ -29,9 +29,9 @@ module dmem
       initial 
       begin
         data_reg = 0;
-        RAM[0] = {NB_DATA{1'b0}};
+        RAM[0] = 1;//{NB_DATA{1'b0}};
         for (i = 1; i < 128; i = i + 1)
-            RAM[i] = {NB_DATA{1'b0}}; 
+            RAM[i] = RAM[i-1] + 1; //RAM[i] = {NB_DATA{1'b0}}; 
       end
     endgenerate
     
@@ -46,7 +46,7 @@ module dmem
         RAM[i_addr] <= RAM[i_addr];
     end
 
-  always @(negedge i_clk)
+  always @(posedge i_clk)
     begin
       if (i_mem_enable)
         begin          
