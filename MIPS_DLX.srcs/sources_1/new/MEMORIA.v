@@ -21,9 +21,9 @@ module MEMORIA
 		input wire [`ADDRWIDTH-1:0] i_addr_mem_debug_unit,
 		input wire i_ctrl_addr_debug_mem,                           //addres para mem or debug
 		input wire i_ctrl_wr_debug_mem,                             //selector si es debug o no 
+
 		output wire o_bit_sucio,
 		output wire [NB_DATA-1:0] o_data_mem_debug_unit,
-	
 		output wire [NB_DATA-1:0] o_mem_data		
 	);		
 	wire [NB_DATA-1:0] wire_data_mem_read;
@@ -32,7 +32,37 @@ module MEMORIA
 	wire [`ADDRWIDTH-1:0] wire_addr_mem;
 	wire [NB_MEM_CTRL-1:0] MEM_control;
 
-	assign o_data_mem_debug_unit = wire_data_mem_read;
+	wire wire_bit_sucio;
+	wire [NB_DATA-1:0] wire_mem_data;
+
+	reg reg_bit_sucio;
+	reg [NB_DATA-1:0] reg_mem_data;
+	reg [NB_DATA-1:0] reg_data_mem_debug_unit;
+
+	assign o_data_mem_debug_unit = reg_data_mem_debug_unit;
+	assign o_bit_sucio = reg_bit_sucio;
+	assign o_mem_data = reg_mem_data;
+
+	initial begin
+		reg_bit_sucio = 0;
+		reg_data_mem_debug_unit = 0;
+		reg_mem_data = 0;
+	end
+	always @(posedge i_clock)
+	begin
+		if(i_reset)
+		begin
+			reg_bit_sucio <= 0;
+			reg_data_mem_debug_unit <= 0;
+			reg_mem_data <= 0;
+		end
+		else
+		begin
+			reg_bit_sucio <= wire_bit_sucio;
+			reg_data_mem_debug_unit <= wire_data_mem_read;
+			reg_mem_data <= wire_mem_data;
+		end
+	end
 
 	mux2#(.NB_DATA(`ADDRWIDTH)) mux_addr_debug_mem
 	(
@@ -54,7 +84,7 @@ module MEMORIA
 		.i_reset(i_reset),
 		.i_addr(wire_addr_mem),
 		.i_mem_write(MEM_control[`MEM_WRITE]),
-		.o_bit_sucio(o_bit_sucio)
+		.o_bit_sucio(wire_bit_sucio)
 
 	);
 	mem_controller mem_controller
@@ -63,7 +93,7 @@ module MEMORIA
 		.i_data_read(wire_data_mem_read),
 		.i_MEM_control(MEM_control),
 		.o_data_write(wire_data_mem_write),
-		.o_data_read(o_mem_data)		
+		.o_data_read(wire_mem_data)		
 	);
 
 	dmem memory_data
