@@ -40,32 +40,33 @@ module bank_register
 		o_data_ra <= 32'b0;
 		o_data_rb <= 32'b0;
 	end
-    always @(posedge i_clock)
-        begin
-	        if (i_reset)
-	        		begin	        			
-								o_data_ra <= 32'b0;
-								o_data_rb <= 32'b0;
-	        		end        	
-        	else if (i_rw) //ESCRITURA
-        		begin
-        			registers[i_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
-							if (i_addr_ra == i_addr_rw)					//SI LA ADDR que se uso para escribir coincide con RA o RB actualizo salida de estas si no, mantengo valores
-								o_data_ra <= i_data_rw;
-							else if (i_addr_rb == i_addr_rw)
-								o_data_rb <= i_data_rw;
-							else
-								begin
-									o_data_ra <= registers[i_addr_ra];
-									o_data_rb <= registers[i_addr_rb];
-								end
-        		end
-        	else
-        		begin    			
-        			o_data_ra <= registers[i_addr_ra];
-		    			o_data_rb <= registers[i_addr_rb];	
-  					end
-        end
+    always @(posedge i_clock) //Lectura
+	begin
+		o_data_ra <= registers[i_addr_ra];
+		o_data_rb <= registers[i_addr_rb];	
+	end
+
+    always @(negedge i_clock)
+	begin
+		if (i_reset)
+		begin	        			
+			o_data_ra <= 32'b0;
+			o_data_rb <= 32'b0;
+		end        	
+		else if (i_rw) //ESCRITURA
+			begin
+				registers[i_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
+				if (i_addr_ra == i_addr_rw)					//SI LA ADDR que se uso para escribir coincide con RA o RB actualizo salida de estas si no, mantengo valores
+					o_data_ra <= i_data_rw;
+				else if (i_addr_rb == i_addr_rw)
+					o_data_rb <= i_data_rw;
+				else
+				begin
+					o_data_ra <= registers[i_addr_ra];
+					o_data_rb <= registers[i_addr_rb];
+				end
+			end
+	end
 
 	    // Inicializacion de registros. 
 	generate
