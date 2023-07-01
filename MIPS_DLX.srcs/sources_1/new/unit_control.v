@@ -103,28 +103,47 @@ module unit_control
 						
 
 						case (i_function)
-							`SLL_FUNCTION,`SRL_FUNCTION,`SRA_FUNCTION:    //6'b000000, 6'b000010, 6'b000011								
-								reg_EX_control = 7'b1101000;					
-								
+							`SLL_FUNCTION,`SRL_FUNCTION,`SRA_FUNCTION:    //6'b000000, 6'b000010, 6'b000011		
+								begin	
+									reg_pc_src = 2'b00;					
+									reg_EX_control = 7'b1101000;
+									reg_M_control  = 6'b000000;
+									reg_WB_control = 3'b101;					
+								end
 							`SLLV_FUNCTION,`SRLV_FUNCTION,`SRAV_FUNCTION: //6'b000100, 6'b000110, 6'b000111							
-								reg_EX_control = 7'b0101000;							
+								begin
+									reg_pc_src = 2'b00;
+									reg_EX_control = 7'b0101000;		
+									reg_M_control  = 6'b000000;
+									reg_WB_control = 3'b101;					
+								end
 							`JR_FUNCTION: //Jump Register //6'b001000
 								begin
-									reg_pc_src     = 2'b00; 	//00 -> i_addr_register, 01 -> i_addr_branch, 10 -> i_addr_jump						
-									reg_EX_control = 7'bx;		//Es un salto por ende no afecta a EX						
-									reg_WB_control = 3'bxxx;	//Mismo que arriba, no afecta a WB
-									reg_jump       = 1'b1;		//SE INDICA QUE SE HACE UN JUMP
+									reg_pc_src     	= 2'b00; 	//00 -> i_addr_register, 01 -> i_addr_branch, 10 -> i_addr_jump						
+									reg_EX_control 	= 7'bx;		//Es un salto por ende no afecta a EX						
+									reg_WB_control 	= 3'bxxx;	//Mismo que arriba, no afecta a WB
+									reg_jump       	= 1'b1;		//SE INDICA QUE SE HACE UN JUMP
 								end
 							`JALR_FUNCTION: // Jump and Link register
 								begin
-									reg_pc_src     = 2'b00;			// 00 -> i_addr_register
-									reg_EX_control = 7'bxx10xxx; 	// 00 -> tipo I, 01 -> tipo R, 10 ->jumps and link 							
-									reg_WB_control = 3'b110;		//  reg_write[2] mem_to_reg[1:0] -> selecciona entre (i_mem_data(00)), (i_alu_result(01)), ({{25'b0}, i_pc}(10)), (i_inm_ext(11))
-									reg_jump       = 1'b1;		
+									reg_pc_src     	= 2'b00;			// 00 -> i_addr_register
+									reg_EX_control 	= 7'bxx10xxx; 	// 00 -> tipo I, 01 -> tipo R, 10 ->jumps and link 							
+									reg_WB_control 	= 3'b110;		//  reg_write[2] mem_to_reg[1:0] -> selecciona entre (i_mem_data(00)), (i_alu_result(01)), ({{25'b0}, i_pc}(10)), (i_inm_ext(11))
+									reg_jump       	= 1'b1;		
+								end
+							`ADDU_FUNCTION, `SUBU_FUNCTION, `AND_FUNCTION, `OR_FUNCTION, `NOR_FUNCTION, `SLT_FUNCTION:
+								begin
+									reg_pc_src 		= 2'b00;
+									reg_EX_control 	= 7'b0101000;
+									reg_M_control  	= 6'b000000;
+									reg_WB_control 	= 3'b101;
 								end
 							default:
 								begin								
-									reg_EX_control = 7'b0101000;									
+									reg_pc_src 		= 2'b00;
+									reg_EX_control 	= 7'b0000000;
+									reg_M_control  	= 6'b000000;
+									reg_WB_control 	= 3'b000;									
 
 								end																
 						endcase					
