@@ -101,7 +101,7 @@ module tb_PIPELINE;
     i_ctrl_addr_debug_mem = 0;
     instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
     //LW COMMENT
-    instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000 //8C470000
+    //instrucciones[1] = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000 //8C470000
     //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
     //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).//2
     //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).//7
@@ -115,6 +115,13 @@ module tb_PIPELINE;
     //Los siguientes  5 bits (rd) especifican el registro de destino rd, que en este caso es $4 (rd = 00100 en binario).
     //Los siguientes  5 bits (shamt) se reservan para el desplazamiento, que es cero en este caso (shamt = 00000 en binario).
     //Los ultimos     6 bits (funct) contienen el código de función específico de la operación "ADD", que es 100001 en binario.
+
+    //SW COMMENT
+    instrucciones[1] = 32'b10101100010001110000000000000000;  // LW $7, 0($2) //101011  00010  00111  0000000000000000 //AC470000
+    //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 101011).
+    //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).//2
+    //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).//7
+    //Los ultimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
     
     // instrucciones[1] = 32'h00000002;
     // instrucciones[2] = 32'h00000003;
