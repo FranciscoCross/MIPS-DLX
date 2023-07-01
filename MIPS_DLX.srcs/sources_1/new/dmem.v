@@ -35,7 +35,7 @@ module dmem
       end
     endgenerate
     
-  always @(negedge i_clk)
+  always @(posedge i_clk)
     begin
       if (i_mem_enable)
         begin
@@ -46,7 +46,7 @@ module dmem
         RAM[i_addr] <= RAM[i_addr];
     end
 
-  always @(posedge i_clk)
+  always @(negedge i_clk)
     begin
       if (i_mem_enable)
         begin          

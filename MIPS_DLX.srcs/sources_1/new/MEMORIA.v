@@ -21,7 +21,7 @@ module MEMORIA
 		input wire [NB_DATA-1:0] i_data_write,                      //dato a escribir en memoria
 
 		input wire [`ADDRWIDTH-1:0] i_addr_mem_debug_unit,
-		input wire i_ctrl_addr_debug_mem,                           //addres para mem or debug
+		input wire i_ctrl_addr_debug_mem,                           //addres para seleccionar mem or debug
 		input wire i_ctrl_wr_debug_mem,                             //selector si es debug o no 
 
 		output wire o_bit_sucio,
@@ -76,8 +76,8 @@ module MEMORIA
 
 	mux2#(.NB_DATA(`ADDRWIDTH)) mux_addr_debug_mem
 	(
-		.i_A(i_alu_result),
-		.i_B(i_addr_mem_debug_unit),
+		.i_A(i_alu_result),         //0
+		.i_B(i_addr_mem_debug_unit),//1
 		.i_SEL(i_ctrl_addr_debug_mem),
 		.o_OUT(wire_addr_mem)
 	);

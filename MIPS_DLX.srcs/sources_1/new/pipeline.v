@@ -321,10 +321,10 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_pipe),
-		.i_MEM_control(wire_M_ctrl_MEM),
+		.i_MEM_control(wire_M_ctrl_EX),//(wire_M_ctrl_MEM),
 		.i_WB_control(wire_WB_ctrl_MEM_WB),
 
-		.i_alu_result(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
+		.i_alu_result(wire_result_alu_EX[`ADDRWIDTH-1:0]),//(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
 		.i_data_write(wire_write_data_MEM),
 
 		.i_addr_mem_debug_unit(i_addr_mem_debug_unit),

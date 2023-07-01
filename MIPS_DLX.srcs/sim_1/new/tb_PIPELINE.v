@@ -140,7 +140,7 @@ module tb_PIPELINE;
     #11
     i_enable_pipe = 1;
     i_en_read = 1;
-    #100 $finish; // End simulation
+    #20 $finish; // End simulation
   end
 
 endmodule
