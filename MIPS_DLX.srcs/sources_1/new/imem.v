@@ -24,7 +24,7 @@ module imem#(
     integer i;		
 		initial begin
 	    for (i = 0; i < MEM_SIZEB; i = i + 1)
-        MEM[i] <= {NB_INST{1'b0}}; 
+        MEM[i] <= 32'b11111000000000000000000000000000; //NOP 
     end
 	endgenerate
 
