@@ -77,17 +77,12 @@ module tb_PIPELINE;
     
     //instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
     
-    //lw R1, 0(0)
-    //lw R2, 1(0)
-    //addu R3, R2, R1
-    //sw R3, 2(0)
-    //halt
 
-    instrucciones[1] = 32'b10001100000000010000000000000000;
-    //instrucciones[2] = 32'b10001100000000100000000000000001;
-    //instrucciones[3] = 32'b00000000010000010001100000100001;
-    //instrucciones[4] = 32'b10101100000000110000000000000010;
-    //instrucciones[5] = 32'b11111100000000000000000000000000;
+    //instrucciones[1] = 32'b10001100000000010000000000000000; //lw R1, 0(0)
+    //instrucciones[2] = 32'b10001100000000100000000000000001; //lw R2, 1(0)
+    //instrucciones[3] = 32'b00000000010000010001100000100001; //addu R3, R2, R1
+    //instrucciones[4] = 32'b10101100000000110000000000000010; //sw R3, 2(0)
+    //instrucciones[5] = 32'b11111100000000000000000000000000; //halt
 
     #2 i_reset = 1; // Apply reset
     #2 i_reset = 0; // Deassert reset
@@ -98,7 +93,20 @@ module tb_PIPELINE;
     i_debug_unit = 1;
     i_addr_inst_load = i_addr_inst_load + 1;
     #2
-    i_inst_load = 32'b10001100000000010000000000000000;
+    i_inst_load = 32'b10001100010000100000000000000000; // LW R2, 0($2) //100011 00010 00010 0000000000000000 //8C420000
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    
+    //CARGAR UNA INSTRUCCION
+    #2
+    i_debug_unit = 1;
+    #2
+    i_inst_load = 32'b00000000010000010001100000100001; //addu R3, R2, R1 //000000 00010 00001 00011 00000 100001 //00411821
     #2
     i_en_write = 1;
     #2

@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="12.925 ns"></ZoomStartTime>
-      <ZoomEndTime time="32.405 ns"></ZoomEndTime>
-      <Cursor1Time time="21.000 ns"></Cursor1Time>
+      <ZoomStartTime time="21.900 ns"></ZoomStartTime>
+      <ZoomEndTime time="44.371 ns"></ZoomEndTime>
+      <Cursor1Time time="31.835 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="309"></NameColumnWidth>
@@ -21,12 +21,12 @@
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
-      <marker time="24000" label="" />
+      <marker time="28000" label="" />
+      <marker time="30000" label="" />
+      <marker time="32000" label="" />
+      <marker time="34000" label="" />
+      <marker time="36000" label="" />
       <marker time="26000" label="" />
-      <marker time="16000" label="" />
-      <marker time="18000" label="" />
-      <marker time="22000" label="" />
-      <marker time="20000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -176,6 +176,7 @@
       <wvobject fp_name="group24" type="group">
          <obj_property name="label">Fetch</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -228,6 +229,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/o_instruction" type="array">
                <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
                <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
@@ -243,7 +245,6 @@
             <wvobject fp_name="group401" type="group">
                <obj_property name="label">Inst_Mem</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="/tb_PIPELINE/pipeline/instruccion_fetch/instancia_imem/i_clk" type="logic">
                   <obj_property name="ElementShortName">i_clk</obj_property>
                   <obj_property name="ObjectShortName">i_clk</obj_property>
@@ -300,6 +301,7 @@
       <wvobject fp_name="group25" type="group">
          <obj_property name="label">     IF_ID</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -518,14 +520,18 @@
                <obj_property name="ElementShortName">o_halt</obj_property>
                <obj_property name="ObjectShortName">o_halt</obj_property>
             </wvobject>
+            <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/o_stall" type="logic">
+               <obj_property name="ElementShortName">o_stall</obj_property>
+               <obj_property name="ObjectShortName">o_stall</obj_property>
+            </wvobject>
          </wvobject>
          <wvobject fp_name="group398" type="group">
             <obj_property name="label">Submodules</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group398" type="group">
                <obj_property name="label">BankRegister</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
@@ -573,11 +579,82 @@
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Regs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/registers" type="array">
                      <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
                      <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
                      <obj_property name="isExpanded"></obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group398" type="group">
+               <obj_property name="label">Unit Hazard</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group398" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
+                     <obj_property name="ElementShortName">clock</obj_property>
+                     <obj_property name="ObjectShortName">clock</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_ID_EX_mem_read" type="logic">
+                     <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
+                     <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_EX_reg_write" type="logic">
+                     <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
+                     <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_ID_rs" type="array">
+                     <obj_property name="ElementShortName">i_ID_rs[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_ID_rs[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_ID_rt" type="array">
+                     <obj_property name="ElementShortName">i_ID_rt[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_ID_rt[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_EX_write_register_usage" type="array">
+                     <obj_property name="ElementShortName">i_EX_write_register_usage[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_EX_write_register_usage[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_EX_rt" type="array">
+                     <obj_property name="ElementShortName">i_EX_rt[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_EX_rt[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/i_halt" type="logic">
+                     <obj_property name="ElementShortName">i_halt</obj_property>
+                     <obj_property name="ObjectShortName">i_halt</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group398" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/o_stall" type="logic">
+                     <obj_property name="ElementShortName">o_stall</obj_property>
+                     <obj_property name="ObjectShortName">o_stall</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/o_pc_write" type="logic">
+                     <obj_property name="ElementShortName">o_pc_write</obj_property>
+                     <obj_property name="ObjectShortName">o_pc_write</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/o_IF_ID_write" type="logic">
+                     <obj_property name="ElementShortName">o_IF_ID_write</obj_property>
+                     <obj_property name="ObjectShortName">o_IF_ID_write</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group398" type="group">
+                  <obj_property name="label">Regs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/reg_pc_write" type="logic">
+                     <obj_property name="ElementShortName">reg_pc_write</obj_property>
+                     <obj_property name="ObjectShortName">reg_pc_write</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/unit_hazard/reg_IF_ID_write" type="logic">
+                     <obj_property name="ElementShortName">reg_IF_ID_write</obj_property>
+                     <obj_property name="ObjectShortName">reg_IF_ID_write</obj_property>
                   </wvobject>
                </wvobject>
             </wvobject>
