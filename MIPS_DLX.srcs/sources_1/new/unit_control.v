@@ -33,7 +33,8 @@ module unit_control
 		parameter NB_MEM_CTRL = 6,
 		parameter NB_WB_CTRL  = 3
 	)
-	(		
+	(	
+		input wire 						i_enable,	
 		input wire [NB_OPCODE-1:0] 		i_op_code,
 		input wire [NB_FUNCTION-1:0] 	i_function,
 
@@ -69,245 +70,252 @@ module unit_control
 
 	initial
 		begin
-			reg_beq  = 1'b0;
-			reg_bne  = 1'b0;
-			reg_jump = 1'b0;
-			reg_pc_src = 2'b00;
+			reg_beq  		= 0;
+			reg_bne  		= 0;
+			reg_jump 		= 0;
+			reg_pc_src 		= 0;
+			reg_EX_control	= 0;
+			reg_M_control	= 0;
+			reg_WB_control	= 0;
+			o_halt_detected = 0;
 		end
 
 	always@(*)
 		begin
-			reg_beq  = 1'b0;
-			reg_bne  = 1'b0;
-			reg_jump = 1'b0;			
-			o_halt_detected = 1'b0;	
-			reg_pc_src = 2'b00;
+			if (i_enable)
+			begin
+				reg_beq  = 1'b0;
+				reg_bne  = 1'b0;
+				reg_jump = 1'b0;			
+				o_halt_detected = 1'b0;	
+				reg_pc_src = 2'b00;
 
-			case (i_op_code)
-				`HALT_OPCODE://6'b111111   //Halt
-					begin
-						o_halt_detected = 1'b1;
-						reg_pc_src      = 2'b00;
-						reg_M_control   = 6'b000000;
-						reg_WB_control  = 3'b000;
-						reg_EX_control  = 7'b0000000;
-					end
-				/* Aca seteamos los valores de los registros para cada tipo de instruccion
-				*
-				*/
-				`R_TYPE_OPCODE://6'b000000  
-					begin
-						reg_pc_src = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
+				case (i_op_code)
+					`HALT_OPCODE://6'b111111   //Halt
+						begin
+							o_halt_detected = 1'b1;
+							reg_pc_src      = 2'b00;
+							reg_M_control   = 6'b000000;
+							reg_WB_control  = 3'b000;
+							reg_EX_control  = 7'b0000000;
+						end
+					/* Aca seteamos los valores de los registros para cada tipo de instruccion
+					*
+					*/
+					`R_TYPE_OPCODE://6'b000000  
+						begin
+							reg_pc_src = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							
+
+							case (i_function)
+								`SLL_FUNCTION,`SRL_FUNCTION,`SRA_FUNCTION:    //6'b000000, 6'b000010, 6'b000011		
+									begin	
+										reg_pc_src = 2'b00;					
+										reg_EX_control = 7'b1101000;
+										reg_M_control  = 6'b000000;
+										reg_WB_control = 3'b101;					
+									end
+								`SLLV_FUNCTION,`SRLV_FUNCTION,`SRAV_FUNCTION: //6'b000100, 6'b000110, 6'b000111							
+									begin
+										reg_pc_src = 2'b00;
+										reg_EX_control = 7'b0101000;		
+										reg_M_control  = 6'b000000;
+										reg_WB_control = 3'b101;					
+									end
+								`JR_FUNCTION: //Jump Register //6'b001000
+									begin
+										reg_pc_src     	= 2'b00; 	//00 -> i_addr_register, 01 -> i_addr_branch, 10 -> i_addr_jump						
+										reg_EX_control 	= 7'bx;		//Es un salto por ende no afecta a EX						
+										reg_WB_control 	= 3'bxxx;	//Mismo que arriba, no afecta a WB
+										reg_jump       	= 1'b1;		//SE INDICA QUE SE HACE UN JUMP
+									end
+								`JALR_FUNCTION: // Jump and Link register
+									begin
+										reg_pc_src     	= 2'b00;			// 00 -> i_addr_register
+										reg_EX_control 	= 7'bxx10xxx; 	// 00 -> tipo I, 01 -> tipo R, 10 ->jumps and link 							
+										reg_WB_control 	= 3'b110;		//  reg_write[2] mem_to_reg[1:0] -> selecciona entre (i_mem_data(00)), (i_alu_result(01)), ({{25'b0}, i_pc}(10)), (i_inm_ext(11))
+										reg_jump       	= 1'b1;		
+									end
+								`ADDU_FUNCTION, `SUBU_FUNCTION, `AND_FUNCTION, `OR_FUNCTION, `NOR_FUNCTION, `SLT_FUNCTION:
+									begin
+										reg_pc_src 		= 2'b00;
+										reg_EX_control 	= 7'b0101000;
+										reg_M_control  	= 6'b000000;
+										reg_WB_control 	= 3'b101;
+									end
+								default:
+									begin								
+										reg_pc_src 		= 2'b00;
+										reg_EX_control 	= 7'b0000000;
+										reg_M_control  	= 6'b000000;
+										reg_WB_control 	= 3'b000;									
+
+									end																
+							endcase					
+						end
+					/* TYPE I*/
+					/* Load */ 				
+					`LW_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b101001;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;
+						end					
+					`LWU_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b101000;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;						
+						end
+					`LH_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b100101;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;
+						end
+					`LHU_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b100100;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;						
+						end
+					`LB_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b100011;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;						
+						end
 						
-
-						case (i_function)
-							`SLL_FUNCTION,`SRL_FUNCTION,`SRA_FUNCTION:    //6'b000000, 6'b000010, 6'b000011		
-								begin	
-									reg_pc_src = 2'b00;					
-									reg_EX_control = 7'b1101000;
-									reg_M_control  = 6'b000000;
-									reg_WB_control = 3'b101;					
-								end
-							`SLLV_FUNCTION,`SRLV_FUNCTION,`SRAV_FUNCTION: //6'b000100, 6'b000110, 6'b000111							
-								begin
-									reg_pc_src = 2'b00;
-									reg_EX_control = 7'b0101000;		
-									reg_M_control  = 6'b000000;
-									reg_WB_control = 3'b101;					
-								end
-							`JR_FUNCTION: //Jump Register //6'b001000
-								begin
-									reg_pc_src     	= 2'b00; 	//00 -> i_addr_register, 01 -> i_addr_branch, 10 -> i_addr_jump						
-									reg_EX_control 	= 7'bx;		//Es un salto por ende no afecta a EX						
-									reg_WB_control 	= 3'bxxx;	//Mismo que arriba, no afecta a WB
-									reg_jump       	= 1'b1;		//SE INDICA QUE SE HACE UN JUMP
-								end
-							`JALR_FUNCTION: // Jump and Link register
-								begin
-									reg_pc_src     	= 2'b00;			// 00 -> i_addr_register
-									reg_EX_control 	= 7'bxx10xxx; 	// 00 -> tipo I, 01 -> tipo R, 10 ->jumps and link 							
-									reg_WB_control 	= 3'b110;		//  reg_write[2] mem_to_reg[1:0] -> selecciona entre (i_mem_data(00)), (i_alu_result(01)), ({{25'b0}, i_pc}(10)), (i_inm_ext(11))
-									reg_jump       	= 1'b1;		
-								end
-							`ADDU_FUNCTION, `SUBU_FUNCTION, `AND_FUNCTION, `OR_FUNCTION, `NOR_FUNCTION, `SLT_FUNCTION:
-								begin
-									reg_pc_src 		= 2'b00;
-									reg_EX_control 	= 7'b0101000;
-									reg_M_control  	= 6'b000000;
-									reg_WB_control 	= 3'b101;
-								end
-							default:
-								begin								
-									reg_pc_src 		= 2'b00;
-									reg_EX_control 	= 7'b0000000;
-									reg_M_control  	= 6'b000000;
-									reg_WB_control 	= 3'b000;									
-
-								end																
-						endcase					
-					end
-				/* TYPE I*/
-				/* Load */ 				
-				`LW_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b101001;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;
-					end					
-				`LWU_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b101000;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;						
-					end
-				`LH_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b100101;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;
-					end
-				`LHU_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b100100;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;						
-					end
-				`LB_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b100011;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;						
-					end
+					`LBU_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b100010;
+							reg_WB_control = 3'b100;
+							reg_EX_control = 7'b0000001;						
+						end				
+					/* CARGA */					 				
+					`SW_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b011001;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'b00xx001;
+							;						
+						end
+					`SH_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b010101;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'b00xx001;					
+						end
+					`SB_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b010011;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'b00xx001;					
+						end				
 					
-				`LBU_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b100010;
-						reg_WB_control = 3'b100;
-						reg_EX_control = 7'b0000001;						
-					end				
-				/* CARGA */					 				
-				`SW_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b011001;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'b00xx001;
-						;						
-					end
-				`SH_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b010101;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'b00xx001;					
-					end
-				`SB_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b010011;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'b00xx001;					
-					end				
-				
-				`ADDI_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000001;						
-					end	
-				`ANDI_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000010;
-					end					
-				`ORI_OPCODE:
-					begin						
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000011;						
-					end	
-				`XORI_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000100;						
-					end					
-				`LUI_OPCODE:
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000101;						
-					end
-				`SLTI_OPCODE: 
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b101;
-						reg_EX_control = 7'b0000110;						
-					end
-				
-				`BEQ_OPCODE:
-					begin
-						reg_pc_src     = 2'b01;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'bxxxxxxx;
-						reg_beq        = 1'b1;
-					end				
-				`BNE_OPCODE:
-					begin
-						reg_pc_src     = 2'b01;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'bxxxxxxx;						
-						reg_bne        = 1'b1;
-												
-					end
-				`J_OPCODE:
-					begin
-						reg_pc_src     = 2'b10;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'bxxxxxxx;						
-						reg_jump       = 1'b1;						
-					end
-				`JAL_OPCODE:
-					begin
-						reg_pc_src     = 2'b10;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b110;
-						reg_EX_control = 7'bxx10xxx;
-						reg_jump       = 1'b1;											
-					end	
-				`NOP_OPCODE:
-					begin
-						//reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'bxxx;
-						reg_EX_control = 7'bxxxxxxx;								
-					end
-				default: 
-					begin
-						reg_pc_src     = 2'b00;
-						reg_M_control  = 6'b000000;
-						reg_WB_control = 3'b000;
-						reg_EX_control = 7'b0000000;												
-					end
-			endcase
+					`ADDI_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000001;						
+						end	
+					`ANDI_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000010;
+						end					
+					`ORI_OPCODE:
+						begin						
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000011;						
+						end	
+					`XORI_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000100;						
+						end					
+					`LUI_OPCODE:
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000101;						
+						end
+					`SLTI_OPCODE: 
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b101;
+							reg_EX_control = 7'b0000110;						
+						end
+					
+					`BEQ_OPCODE:
+						begin
+							reg_pc_src     = 2'b01;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'bxxxxxxx;
+							reg_beq        = 1'b1;
+						end				
+					`BNE_OPCODE:
+						begin
+							reg_pc_src     = 2'b01;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'bxxxxxxx;						
+							reg_bne        = 1'b1;
+													
+						end
+					`J_OPCODE:
+						begin
+							reg_pc_src     = 2'b10;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'bxxxxxxx;						
+							reg_jump       = 1'b1;						
+						end
+					`JAL_OPCODE:
+						begin
+							reg_pc_src     = 2'b10;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b110;
+							reg_EX_control = 7'bxx10xxx;
+							reg_jump       = 1'b1;											
+						end	
+					`NOP_OPCODE:
+						begin
+							//reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'bxxx;
+							reg_EX_control = 7'bxxxxxxx;								
+						end
+					default: 
+						begin
+							reg_pc_src     = 2'b00;
+							reg_M_control  = 6'b000000;
+							reg_WB_control = 3'b000;
+							reg_EX_control = 7'b0000000;												
+						end
+				endcase
+			end
 		end
 	
 endmodule

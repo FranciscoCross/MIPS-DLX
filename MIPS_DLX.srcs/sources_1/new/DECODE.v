@@ -12,6 +12,7 @@ module DECODE
 	(
 		input wire i_clock,     // Señal de reloj
 		input wire i_reset,     // Señal de reinicio
+		input wire i_enable,     // Señal de enable
 
 		input wire  i_ctrl_read_debug_reg,     		// Señal de control para leer el registro de depuración
 		input wire [NB_DATA-1:0] i_instruction,     // Bus de datos que contiene la instrucción
@@ -203,6 +204,7 @@ module DECODE
 
 	unit_control unit_control
 	(
+		.i_enable(i_enable),
 		.i_op_code(i_instruction[`OP_CODE]),
 		.i_function(i_instruction[`FUNC_BIT]),
 		.o_EX_control(wire_EX_control),

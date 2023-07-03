@@ -191,7 +191,8 @@ module pipeline
 	DECODE Decode_stage
 	(
 		.i_clock(clock),
-		.i_reset(i_reset),    
+		.i_reset(i_reset),
+		.i_enable(i_enable_pipe),    
 		.i_ctrl_read_debug_reg(i_ctrl_read_debug_reg),
 		.i_instruction(wire_inst_IF_ID),		
 		.i_data_rw(wire_data_write_WB_ID),

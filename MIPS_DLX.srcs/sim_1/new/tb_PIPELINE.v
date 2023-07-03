@@ -53,33 +53,7 @@ module tb_PIPELINE;
     .o_halt(o_halt)
   );
 
-  // Proceso para cargar las instrucciones en el arreglo
 
-  always @(posedge clock) begin
-    if (i_reset) 
-      begin
-        // Reiniciar el índice de carga
-        i_addr_inst_load <= 0;
-        i_inst_load <= 0;
-        i <= 0;
-      end 
-      else if (i_en_write && i < 2) 
-        begin
-        // Cargar instrucciones en el arreglo
-          if (i_debug_unit) 
-            begin
-              i_inst_load = instrucciones[i];
-              i_addr_inst_load = i_addr_inst_load+ 1;  
-              i = i + 1;
-            end 
-          else 
-            begin
-              i_addr_inst_load <= i_addr_inst_load;
-              i_inst_load <= i_inst_load;
-            end
-
-        end
-  end
   // Clock generation
   always #1 clock = ~clock;
 
@@ -99,8 +73,9 @@ module tb_PIPELINE;
     i_ctrl_read_debug_reg = 0;
     i_ctrl_wr_debug_mem = 0;
     i_ctrl_addr_debug_mem = 0;
+ 
     
-    instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
+    //instrucciones[0] = 32'b11111000000000000000000000000000;  // NOP
     
     //lw R1, 0(0)
     //lw R2, 1(0)
@@ -116,15 +91,25 @@ module tb_PIPELINE;
 
     #2 i_reset = 1; // Apply reset
     #2 i_reset = 0; // Deassert reset
-    #4
+    
+    
+    //CARGAR UNA INSTRUCCION
+    #2
     i_debug_unit = 1;
+    i_addr_inst_load = i_addr_inst_load + 1;
+    #2
+    i_inst_load = 32'b10001100000000010000000000000000;
+    #2
     i_en_write = 1;
-    #12 // 2 x n instrucciones
-    i_debug_unit = 0;
+    #2
     i_en_write = 0;
     i_inst_load = 0;
-    // TODO: Provide test stimulus here
-    #11
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    
+    
+    #3 // 2 x n instrucciones
+    i_debug_unit = 0;
     i_enable_pipe = 1;
     i_en_read = 1;
     #200 $finish; // End simulation
