@@ -207,7 +207,7 @@ module unit_control
 							reg_M_control  = 6'b011001;
 							reg_WB_control = 3'bxxx;
 							reg_EX_control = 7'b00xx001;
-							;						
+												
 						end
 					`SH_OPCODE:
 						begin

@@ -23,7 +23,8 @@ module FETCH#(
     input wire [NB_DATA-1:0] i_wr_addr, // enviado por debug_unit para cargar instruccion
     
     output [NB_INST - 1:0] o_instruction,
-    output [NB_DATA - 1:0] o_PCAddr
+    output [NB_DATA - 1:0] o_PCAddr,
+    output [NB_DATA - 1:0] o_next_PCAddr
     );
     //-------------------------------------------------
     //Debug Unit
@@ -50,12 +51,14 @@ module FETCH#(
         imem_en_rd = 1;
     end
 
-    assign o_PCAddr = nextAddr_pc;
-    
+    assign o_PCAddr = wire_pc;
+    assign o_next_PCAddr = nextAddr_pc;
+
+
     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
 	(
-		.i_A(wire_input_pc),
-		.i_B(i_wr_addr),
+		.i_A(wire_input_pc), //0
+		.i_B(i_wr_addr),    //1
 		.i_SEL(i_debug_unit),
 		.o_OUT(wire_address_debug)
 	);
@@ -101,6 +104,8 @@ module FETCH#(
         .NB_DATA (NB_DATA)
     ) 
     inst_pc_add(
+        .i_clk(i_clk),
+        .i_enable(i_enable),
         .i_nAddr(wire_pc),
         .o_nAddr(nextAddr_pc)
     );
@@ -112,6 +117,7 @@ module FETCH#(
     )
     instancia_imem(
         .i_clk(i_clk),
+        .i_enable(i_enable),
         .i_reset(i_reset),
         .i_en_write(i_Mem_WEn),
         .i_en_read(i_Mem_REn),

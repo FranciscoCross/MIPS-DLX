@@ -45,6 +45,8 @@ module pipeline
     wire [`ADDRWIDTH-1:0]   wire_pc_MEM_WB;
     wire [`ADDRWIDTH-1:0]   wire_pc_WB; 
     wire [`ADDRWIDTH-1:0]   wire_pc_adder;
+	wire [`ADDRWIDTH-1:0]   wire_pc;
+
 	wire [NB_DATA-1:0]  wire_inst_IF; 
     wire [NB_DATA-1:0]  wire_inst_IF_ID;
 
@@ -133,6 +135,7 @@ module pipeline
 	wire [NB_DATA-1:0] wire_alu_result_WB;
 	wire [NB_DATA-1:0] wire_write_data_MEM;
 
+	wire [NB_REG-1:0] wire_write_reg_MEM;
 	wire [NB_REG-1:0] wire_write_reg_MEM_WB;
 	wire [NB_REG-1:0] wire_write_reg_WB_ID; // registro a escribir en ID
 	wire [NB_DATA-1:0] wire_mem_data_MEM_WB;
@@ -173,7 +176,8 @@ module pipeline
     .i_jump_or_branch(wire_branch_or_jump_IF_ID),
     .i_wr_addr(i_addr_inst_load), 
     .o_instruction(wire_inst_IF),
-    .o_PCAddr(wire_pc_adder)
+    .o_PCAddr(wire_pc),
+	.o_next_PCAddr(wire_pc_adder)
 	);  
 
 	latch_IF_ID IF_ID
@@ -322,7 +326,7 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_pipe),
-		.i_MEM_control(wire_M_ctrl_EX_MEM),//(wire_M_ctrl_MEM),
+		.i_MEM_control(wire_M_ctrl_EX),//(wire_M_ctrl_MEM),
 		.i_WB_control(wire_WB_ctrl_EX_MEM),
 
 		.i_alu_result(wire_result_alu_EX[`ADDRWIDTH-1:0]),//(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
@@ -331,11 +335,10 @@ module pipeline
 		.i_addr_mem_debug_unit(i_addr_mem_debug_unit),
 		.i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
 		.i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
+		
 		.o_bit_sucio(o_bit_sucio),
-
 		.o_data_mem_debug_unit(o_data_mem_debug_unit),
 		.o_mem_data(wire_mem_data_MEM_WB),	
-
 		.o_WB_control(wire_WB_ctrl_MEM)
 	);
 

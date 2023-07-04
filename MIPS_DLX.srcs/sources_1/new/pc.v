@@ -20,7 +20,7 @@ module pc#(
         reg_addr <= {NB_DATA{1'b0}};
     end
 
-    always @(posedge i_clk)
+    always @(negedge i_clk)
     begin
         if(i_reset)
             reg_addr <= {NB_DATA{1'b0}};
