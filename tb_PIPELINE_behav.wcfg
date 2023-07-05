@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="14.842 ns"></ZoomStartTime>
-      <ZoomEndTime time="36.262 ns"></ZoomEndTime>
-      <Cursor1Time time="17.529 ns"></Cursor1Time>
+      <ZoomStartTime time="196.186 ns"></ZoomStartTime>
+      <ZoomEndTime time="221.163 ns"></ZoomEndTime>
+      <Cursor1Time time="217.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="309"></NameColumnWidth>
@@ -23,10 +23,10 @@
    <wave_markers>
       <marker time="20000" label="" />
       <marker time="22000" label="" />
-      <marker time="24000" label="" />
-      <marker time="26000" label="" />
       <marker time="28000" label="" />
       <marker time="18006" label="" />
+      <marker time="24000" label="" />
+      <marker time="26000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -366,6 +366,7 @@
          <wvobject fp_name="group32" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
                <obj_property name="ElementShortName">clock</obj_property>
                <obj_property name="ObjectShortName">clock</obj_property>
@@ -546,9 +547,11 @@
             <wvobject fp_name="group398" type="group">
                <obj_property name="label">BankRegister</obj_property>
                <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_PIPELINE/clock" type="logic">
                      <obj_property name="ElementShortName">clock</obj_property>
                      <obj_property name="ObjectShortName">clock</obj_property>
@@ -556,6 +559,10 @@
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/i_rw" type="logic">
                      <obj_property name="ElementShortName">i_rw</obj_property>
                      <obj_property name="ObjectShortName">i_rw</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/reg_rw" type="logic">
+                     <obj_property name="ElementShortName">reg_rw</obj_property>
+                     <obj_property name="ObjectShortName">reg_rw</obj_property>
                   </wvobject>
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/i_addr_ra" type="array">
                      <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
@@ -593,6 +600,7 @@
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Regs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_PIPELINE/pipeline/Decode_stage/bank_register/registers" type="array">
                      <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
                      <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
@@ -603,7 +611,6 @@
             <wvobject fp_name="group398" type="group">
                <obj_property name="label">Unit Hazard</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="group398" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>

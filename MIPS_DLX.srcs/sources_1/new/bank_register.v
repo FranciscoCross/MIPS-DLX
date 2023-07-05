@@ -37,17 +37,21 @@ module bank_register
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
 	
 	reg [NB_REG-1:0] reg_addr_rw;
+	reg reg_rw;
 	
 	initial
 	begin
 		o_data_ra = 32'b0;
 		o_data_rb = 32'b0;
 		reg_addr_rw = 0;
+		reg_rw = 0;
 	end
 
     always @(posedge i_clock) //Lectura
 	begin
 		reg_addr_rw <= i_addr_rw;
+		reg_rw <= i_rw;
+
 	end
 
     always @(posedge i_clock) //Lectura
@@ -64,7 +68,7 @@ module bank_register
 			o_data_rb <= 32'b0;
 			reg_addr_rw <= 0;
 		end        	
-		else if (i_rw) //ESCRITURA
+		else if (reg_rw) //ESCRITURA
 			begin
 				registers[reg_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
 				if (i_addr_ra == reg_addr_rw)					//SI LA ADDR que se uso para escribir coincide con RA o RB actualizo salida de estas si no, mantengo valores
