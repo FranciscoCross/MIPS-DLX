@@ -91,7 +91,20 @@ module tb_PIPELINE;
     i_debug_unit = 1;
     #2
     
-    
+     //LW COMMENT
+    //i_inst_load = 32'b10001100010001110000000000000000;  // LW $7, 0($2) //100011  00010  00111  0000000000000000 //8C470000
+    //Los primeros 6 bits (opcode) indican que es una instrucción de carga (opcode = 100011).
+    //Los siguientes 5 bits (rs) especifican el registro de origen rs, que en este caso es $2 (rs = 00010 en binario).//2
+    //Los siguientes 5 bits (rt) especifican el registro de destino rt, que en este caso es $1 (rt = 00111 en binario).//7
+    //Los ultimos 16 bits (offset) representan el desplazamiento (offset) de 16 bits para acceder a la dirección de memoria, que en este caso es 0 (offset = 0000000000000000 en binario).
+   
+    //#2
+    //i_en_write = 1;
+    //#2
+    //i_en_write = 0;
+    //i_inst_load = 0;
+    //#2
+    //i_addr_inst_load = i_addr_inst_load + 1;    
     
         
      //ADD COMMENT

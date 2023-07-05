@@ -200,7 +200,7 @@ module pipeline
 		.i_ctrl_read_debug_reg(i_ctrl_read_debug_reg),
 		.i_instruction(wire_inst_IF_ID),		
 		.i_data_rw(wire_data_write_WB_ID),
-		.i_write_register(wire_write_reg_EX),//(wire_write_reg_WB_ID),
+		.i_write_register(wire_write_reg_WB_ID),//(wire_write_reg_WB_ID),
 		.i_reg_write(wire_reg_write_WB_EX),		
 		.i_pc(wire_pc_IF_ID),
 		.i_addr_debug_unit(i_addr_debug_unit),
