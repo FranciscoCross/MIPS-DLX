@@ -80,8 +80,9 @@ module tb_PIPELINE;
     //CARGAR UNA INSTRUCCION
     #2
     i_debug_unit = 1;
+    i_addr_inst_load = i_addr_inst_load + 1;
     #2
-    i_inst_load = 32'b10001100010001010000000000000000;  // LW $5, 0($2) //100011  00010  00111  0000000000000000 //8C470000
+    i_inst_load = 32'b10001100010001010000000000000000;  // LW $5, 0($2) //100011  00010  00101  0000000000000000 //8C450000
     #2
     i_en_write = 1;
     #2

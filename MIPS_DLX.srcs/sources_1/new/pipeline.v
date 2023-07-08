@@ -286,7 +286,7 @@ module pipeline
 		.i_EX_MEM_reg_write(wire_reg_write_MEM_EX), 
 		.i_MEM_WB_reg_write(wire_reg_write_WB_EX),
 		.i_EX_MEM_result_alu(wire_result_alu_EX_MEM),
-		.i_MEM_WB_data(wire_data_write_WB_ID),
+		.i_MEM_WB_data(wire_mem_data_WB),
 		.o_data_write_mem(wire_write_data_mem_EX_MEM),
 		.o_write_register(wire_write_reg_EX),
 		.o_M_control(wire_M_ctrl_EX),//
