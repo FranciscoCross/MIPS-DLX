@@ -117,7 +117,7 @@ module debug_unit
 	assign o_en_write    = en_write_reg;
 	assign o_en_read     = en_read_reg;
 	assign o_inst_load   = instruction;
-	assign o_address     = count_instruction_now-1;
+	assign o_address     = count_instruction_now;
 	assign o_debug_unit_reg   = debug_unit_reg;		
 	assign o_addr_mem_debug_unit = addr_mem_debug_unit_reg;
 
@@ -138,7 +138,7 @@ wire tx_done_uart;
 reg tx_done_uart_prev = 0;
 
 reg tx_start_aux;
-reg [6:0] pulse_duration = 0;
+reg [8:0] pulse_duration = 0;
 reg tx_start_prev;
 
 reg [7:0] delay_counter;
@@ -146,22 +146,26 @@ reg [7:0] delay_counter;
 always @(posedge i_clock) begin
    tx_start_prev <= tx_start;  // Guardar el valor anterior de tx_start
 
-   if (tx_start && !tx_start_prev) begin  // Flanco de subida de tx_start
-     delay_counter <= 8'd10;  // Establecer el contador de retraso a un valor adecuado
-     pulse_duration <= 0;  // Reiniciar la duración del pulso
-   end else if (pulse_duration == 99 || delay_counter > 0) begin
-     if (delay_counter > 0) begin
-       delay_counter <= delay_counter - 1;  // Decrementar el contador de retraso
-     end else begin
-       tx_start_aux <= 1'b0;  // Establecer tx_start_aux a 0 después del retraso
-       pulse_duration <= 0;
-     end
-   end else begin
-     if (pulse_duration < 100) begin
-       pulse_duration <= pulse_duration + 1;
-     end
-   end
+   	if (tx_start && !tx_start_prev) 
+		begin  // Flanco de subida de tx_start
+			delay_counter <= 10;  // Establecer el contador de retraso a un valor adecuado
+			pulse_duration <= 0;  // Reiniciar la duración del pulso
+		end 
+	else if (delay_counter > 0)
+		begin
+     		delay_counter <= delay_counter - 1;  // Decrementar el contador de retraso
+     		tx_start_aux <= (delay_counter == 1) ? 1'b1 : 1'b0; 
+   		end 
+	else 
+	begin
+    	if (pulse_duration < 100) 
+			begin
+       			pulse_duration <= pulse_duration + 1;
+       			tx_start_aux <= (pulse_duration == 99) ? 1'b0 : 1'b1;  // Establecer tx_start_aux en 0 después de que pulse_duration llegue a 99
+    		end
+   	end
  end
+
 
 
 
@@ -379,10 +383,9 @@ end
 						enable_read_byte_to_byte = 1'b1;					
 						if (ready_full_inst) //Cuando esta lista la instruccion, la manda y pasa al siguiente estado
 							begin	
-																										
+																
 								next_state = Check_Send_All_Instr;
 								enable_read_instr = 1'b1;
-								en_write_reg = 1'b1;	 //habilito la escritura en memoria del pipeline															
 							end								      
 						  					
 					end				
@@ -390,6 +393,7 @@ end
 				Check_Send_All_Instr:			//4		//Estado con el que verificamos si se termino el envio de instrucciones		
 					begin					
 						enable_read_instr = 1'b0;
+						en_write_reg = 1'b1;	 //habilito la escritura en memoria del pipeline															
 						if (all_instr_send)
 							begin	
 								o_ack_debug = 1'b1; //mando a la pc que esta todo ok por el momento
@@ -408,7 +412,6 @@ end
 						if (ready_mode_operate)
 							begin								
 								next_state = Check_Operation;
-								en_read_mode_operate = 1'b0;
 							end													
 
 					end					
@@ -416,6 +419,7 @@ end
 				Check_Operation: 					//16 //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
 						debug_unit_reg = 1'b0;
+						en_read_mode_operate = 1'b0;
 						case (operation_mode)
 							`mode_step_to_step:
 								next_state = Step_to_step;	
