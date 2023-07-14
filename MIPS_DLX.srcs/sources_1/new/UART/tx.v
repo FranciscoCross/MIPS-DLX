@@ -40,14 +40,14 @@ module tx
     reg [N_BITS - 1 : 0] thr; //Transmit Holding Register
     //Local
     reg [4 : 0] tick_counter;
-    reg [2 : 0] bit_counter;
+    reg [3 : 0] bit_counter;
 
 
     //Next values
     reg next_done, next_tx, next_tx_ready, next_paridad, next_transmitir;
     reg [2 : 0] next_state;
     reg [4 : 0] next_tick_counter;
-    reg [2 : 0] next_bit_counter;
+    reg [3 : 0] next_bit_counter;
     reg [N_BITS - 1 : 0] next_tsr;
     reg [N_BITS - 1 : 0] next_thr;
 
@@ -158,20 +158,19 @@ module tx
                     begin
                         if(parity) next_state = PARITY;
                         else next_state = STOP_1B;
-
                         next_paridad = (^thr);
-                        next_bit_counter = 0;
                     end
                     next_tick_counter = 0;
                 end
             end
-            PARITY:
+            PARITY: //Bit 8
             begin
                 next_tx = paridad;
                 if(tick_counter == (N_TICK - 1))
                 begin
                     next_state = STOP_1B;
                     next_tick_counter = 0;
+                    next_bit_counter = -1;
                 end
             end
             STOP_1B:
@@ -185,6 +184,7 @@ module tx
                     next_tsr = 0;
                     next_state = START;
                     next_tick_counter = 0;
+                    next_bit_counter = 0;
                 end                
             end
             default: //Fault recovery
@@ -195,6 +195,7 @@ module tx
                 next_tsr = 0;
                 next_state = START; 
                 next_tick_counter = 0;
+                next_bit_counter = 0;
             end
         endcase
     end

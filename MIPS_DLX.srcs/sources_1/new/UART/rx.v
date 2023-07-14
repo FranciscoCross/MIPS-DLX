@@ -140,7 +140,7 @@ module rx
                     next_tick_counter = 0;
                     next_bit_counter = bit_counter + 1;
 
-                    if (bit_counter == N_BITS) begin
+                    if (bit_counter == N_BITS - 1) begin
                         next_paridad = (^next_rbr);
                         next_bit_counter = -1;
                         if (parity) 
@@ -152,7 +152,7 @@ module rx
                     end
                 end
             end
-            PARITY:
+            PARITY: //010
             begin
                 if(tick_counter == (N_TICK - 1))
                 begin

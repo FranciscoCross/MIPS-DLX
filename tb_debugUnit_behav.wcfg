@@ -11,17 +11,23 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="141.100359 us"></ZoomStartTime>
-      <ZoomEndTime time="163.391329 us"></ZoomEndTime>
-      <Cursor1Time time="142.891086 us"></Cursor1Time>
+      <ZoomStartTime time="121.021800 us"></ZoomStartTime>
+      <ZoomEndTime time="197.321801 us"></ZoomEndTime>
+      <Cursor1Time time="238.941940 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="210"></NameColumnWidth>
-      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="27" />
    <wave_markers>
+      <marker time="164089000" label="" />
+      <marker time="679000" label="" />
+      <marker time="156527000" label="" />
+      <marker time="136255000" label="" />
+      <marker time="145719000" label="" />
       <marker time="154627000" label="" />
+      <marker time="145165000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -196,6 +202,20 @@
             <obj_property name="CustomSignalColor">#FFFF00</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/tick_counter" type="array">
+            <obj_property name="ElementShortName">tick_counter[4:0]</obj_property>
+            <obj_property name="ObjectShortName">tick_counter[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/bit_counter" type="array">
+            <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
+            <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/state" type="array">
+            <obj_property name="ElementShortName">state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">state[2:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/rx" type="logic">
             <obj_property name="ElementShortName">rx</obj_property>
@@ -309,6 +329,18 @@
             <obj_property name="ObjectShortName">tx_done</obj_property>
             <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/tick_counter" type="array">
+            <obj_property name="ElementShortName">tick_counter[4:0]</obj_property>
+            <obj_property name="ObjectShortName">tick_counter[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/bit_counter" type="array">
+            <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
+            <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/state" type="array">
+            <obj_property name="ElementShortName">state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">state[2:0]</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
