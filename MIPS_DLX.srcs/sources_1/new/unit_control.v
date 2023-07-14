@@ -256,7 +256,7 @@ module unit_control
 						begin
 							reg_pc_src     = 2'b00;
 							reg_M_control  = 6'b000000;
-							reg_WB_control = 3'b101;
+							reg_WB_control = 3'b111;
 							reg_EX_control = 7'b0000101;						
 						end
 					`SLTI_OPCODE: 
