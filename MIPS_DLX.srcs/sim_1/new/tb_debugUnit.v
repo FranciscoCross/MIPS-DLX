@@ -190,7 +190,7 @@ module tb_debugUnit;
             halt = 1;
             #100
             halt = 0;
-            #10000000
+            #100000000
             $finish;
  
         end

@@ -81,7 +81,7 @@ module debug_unit
 	/******************/
 	
 	reg [N_BITS-1:0]  reset_count_instruction_now, operation_mode, reset_operation_mode;
-	reg [`ADDRWIDTH-1:0] reset_addr_mem_debug_unit, count_instruction_now, number_instructions, reset_number_instructions;
+	reg [`ADDRWIDTH-1:0] count_instruction_now, number_instructions, reset_number_instructions, reset_o_addr_mem_debug_unit;
 	reg [NB_DATA-1:0] instruction, reset_instruction;
 	reg [NB_STATE-1:0] state, reset_state, next_state, reset_next_state;
 	reg [NB_REG-1:0] addr_debug_unit_reg, reset_o_addr_reg_debug_unit;
@@ -173,10 +173,10 @@ initial
 		reset_data_rx_ready_uart 				<= 1'b0;
 		reset_operation_mode						<= {N_BITS{1'b0}};
 		reset_o_addr_reg_debug_unit 		<= {NB_REG{1'b0}};
+		reset_o_addr_mem_debug_unit 		<= {`N_ELEMENTS{1'b0}};
 		reset_end_send_reg 			 				<= 1'b0;
 		reset_end_send_mem							<= 1'b0;
 		reset_end_send_cant_cycles 			<= 1'b0;
-		reset_addr_mem_debug_unit 	<=  {`ADDRWIDTH{1'b0}};
 		reset_data_send 		  					<= 8'b0;
 		reset_cont_byte 		  					<= 8'b0;
 		reset_end_send_program_counter  <= 1'b0;  
@@ -210,7 +210,7 @@ begin
 			end_send_reg <= reset_end_send_reg;
 			end_send_mem <= reset_end_send_mem;
 			end_send_cant_cycles <= reset_end_send_cant_cycles;
-			o_addr_mem_debug_unit <= reset_addr_mem_debug_unit;
+			o_addr_mem_debug_unit <= reset_o_addr_mem_debug_unit;
 			data_send <= reset_data_send;
 			cont_byte <= reset_cont_byte;
 			end_send_program_counter <= reset_end_send_program_counter;
@@ -314,18 +314,36 @@ begin
 									data_send <= i_reg_debug_unit[8*cont_byte+:8];
 								end
 						end 
+					if (!en_send_data_reg && en_send_data_mem) 
+						begin
+							cont_byte <= cont_byte + 1;
+							en_send_data_mem <= 1'b0;
+							end_send_mem <= 1'b1;
+							end_send_mem <= 1'b0;
+							o_addr_mem_debug_unit <= o_addr_mem_debug_unit;
+							if (cont_byte == N_BYTES) 
+								begin
+									end_send_mem <= 1'b1;
+									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+									cont_byte <= 8'b0;
+								end 
+							else 
+								begin
+									data_send <= i_mem_debug_unit[8*cont_byte+:8];
+								end
+						end 
 				end 
-			else if (en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg)
+			else if (en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && !en_send_data_mem)
 				begin
 					data_send <= i_send_program_counter;
 					tx_start <= 1'b1;
 				end	
-			else if (!en_send_program_counter && en_send_cant_cyles && !en_send_data_reg)
+			else if (!en_send_program_counter && en_send_cant_cyles && !en_send_data_reg && !en_send_data_mem)
 				begin
 					data_send <= i_cant_cycles;
 					tx_start <= 1'b1;
 				end	
-			else if (!en_send_program_counter && !en_send_cant_cyles && en_send_data_reg)
+			else if (!en_send_program_counter && !en_send_cant_cyles && en_send_data_reg && !en_send_data_mem)
 				begin
 					if(cont_byte == 0)
 						begin
@@ -334,7 +352,15 @@ begin
 						end
 					tx_start <= 1'b1;
 				end	
-			
+			else if (!en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && en_send_data_mem)
+				begin
+					if(cont_byte == 0)
+						begin
+							data_send <= i_mem_debug_unit[8*cont_byte+:8];
+							cont_byte <= cont_byte + 1;
+						end
+					tx_start <= 1'b1;
+				end	
 			else	
 				tx_start <= 1'b0;							
   		
