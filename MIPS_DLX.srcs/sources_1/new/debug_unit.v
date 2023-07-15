@@ -28,7 +28,7 @@ module debug_unit
 
 		output reg [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
-		output wire [`ADDRWIDTH:0] o_addr_mem_debug_unit, //direccion a leer en memoria
+		output reg [`ADDRWIDTH:0] o_addr_mem_debug_unit, //direccion a leer en memoria
 		output reg o_ctrl_addr_debug_mem,
 		output reg o_ctrl_wr_debug_mem,
 		output reg o_ctrl_read_debug_reg,
@@ -81,7 +81,7 @@ module debug_unit
 	/******************/
 	
 	reg [N_BITS-1:0]  reset_count_instruction_now, operation_mode, reset_operation_mode;
-	reg [`ADDRWIDTH-1:0] addr_mem_debug_unit_reg, reset_addr_mem_debug_unit_reg, count_instruction_now, number_instructions, reset_number_instructions;
+	reg [`ADDRWIDTH-1:0] reset_addr_mem_debug_unit, count_instruction_now, number_instructions, reset_number_instructions;
 	reg [NB_DATA-1:0] instruction, reset_instruction;
 	reg [NB_STATE-1:0] state, reset_state, next_state, reset_next_state;
 	reg [NB_REG-1:0] addr_debug_unit_reg, reset_o_addr_reg_debug_unit;
@@ -119,7 +119,6 @@ module debug_unit
 	assign o_inst_load   = instruction;
 	assign o_address     = count_instruction_now;
 	assign o_debug_unit_reg   = debug_unit_reg;		
-	assign o_addr_mem_debug_unit = addr_mem_debug_unit_reg;
 
 	/* para DEBUG */
 	assign o_state = state;
@@ -177,7 +176,7 @@ initial
 		reset_end_send_reg 			 				<= 1'b0;
 		reset_end_send_mem							<= 1'b0;
 		reset_end_send_cant_cycles 			<= 1'b0;
-		reset_addr_mem_debug_unit_reg 	<=  {`ADDRWIDTH{1'b0}};
+		reset_addr_mem_debug_unit 	<=  {`ADDRWIDTH{1'b0}};
 		reset_data_send 		  					<= 8'b0;
 		reset_cont_byte 		  					<= 8'b0;
 		reset_end_send_program_counter  <= 1'b0;  
@@ -211,7 +210,7 @@ begin
 			end_send_reg <= reset_end_send_reg;
 			end_send_mem <= reset_end_send_mem;
 			end_send_cant_cycles <= reset_end_send_cant_cycles;
-			addr_mem_debug_unit_reg <= reset_addr_mem_debug_unit_reg;
+			o_addr_mem_debug_unit <= reset_addr_mem_debug_unit;
 			data_send <= reset_data_send;
 			cont_byte <= reset_cont_byte;
 			end_send_program_counter <= reset_end_send_program_counter;
@@ -540,7 +539,7 @@ end
 						
 						if (end_send_mem)
 							begin
-								if (addr_mem_debug_unit_reg == `N_ELEMENTS-1)
+								if (o_addr_mem_debug_unit == `N_ELEMENTS-1)
 									begin
 										o_end_send_data = 1'b1;										
 										en_send_data_mem = 1'b1;										
