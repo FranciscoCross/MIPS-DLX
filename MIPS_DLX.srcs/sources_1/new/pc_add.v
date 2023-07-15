@@ -23,7 +23,7 @@ module pc_add
 		if(i_enable)
 			PC_reg <= i_nAddr + 1;
 		else 
-			PC_reg <= 0;
+			PC_reg <= PC_reg;
 	end
 
 endmodule
