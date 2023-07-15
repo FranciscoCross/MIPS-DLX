@@ -71,7 +71,7 @@ module debug_unit
 	reg enable_read_cant_instr, enable_read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, enable_read_instr, all_instr_send, read_mode_operate;
   reg count_one_cycle = 0;
 	/* UART */
-	reg data_rx_ready_uart, data_rx_ready_uart_prev;
+	reg data_rx_ready_uart, rx_ready_uart_prev;
 	/* Finish send-data*/
 	reg end_send_program_counter;
 	reg end_send_cant_cycles;
@@ -197,14 +197,15 @@ initial
 
 
 
-always @(posedge i_clock) begin
+always @(posedge i_clock) 
+begin
   state <= next_state;
   o_enable_pipe <= enable_pipe_reg;
   if (i_reset) 
 		begin
 			// Asignaciones durante el reset
 			data_rx_ready_uart <= reset_data_rx_ready_uart;
-			data_rx_ready_uart_prev <= reset_data_rx_ready_uart;
+			rx_ready_uart_prev <= reset_data_rx_ready_uart;
 			operation_mode <= reset_operation_mode;
 			o_addr_reg_debug_unit <= reset_o_addr_reg_debug_unit;
 			end_send_reg <= reset_end_send_reg;
@@ -229,7 +230,9 @@ always @(posedge i_clock) begin
 		end 
 	else 
 		begin
-			if (rx_done_uart && !data_rx_ready_uart_prev) 
+			//RECEPCION
+			rx_ready_uart_prev <= rx_done_uart;
+			if (rx_done_uart && !rx_ready_uart_prev) 
 				begin
 					if (enable_read_cant_instr) 
 						begin
@@ -277,8 +280,8 @@ always @(posedge i_clock) begin
 					number_instructions <= number_instructions;
 					operation_mode <= operation_mode;
 				end
-
-  		data_rx_ready_uart_prev <= rx_done_uart;
+			//ENVIO
+  		tx_done_uart_prev <= tx_done_uart;
 			if (tx_done_uart && !tx_done_uart_prev) 
 				begin
 					tx_start <= 1'b0;
@@ -332,9 +335,10 @@ always @(posedge i_clock) begin
 						end
 					tx_start <= 1'b1;
 				end	
+			
 			else	
 				tx_start <= 1'b0;							
-  		tx_done_uart_prev <= tx_done_uart;
+  		
 		end
 end
 
