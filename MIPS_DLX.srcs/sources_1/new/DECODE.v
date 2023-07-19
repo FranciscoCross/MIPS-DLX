@@ -192,7 +192,7 @@ module DECODE
 	(
 		.i_ID_rs(i_instruction[`RS_BIT]),												//RS de instruccion ACTUAL
 		.i_ID_rt(i_instruction[`RT_BIT]),												//RT de instruccion ACTUAL
-		.i_EX_reg_write(i_EX_reg_write), 												//Si la etapa que sigue (EXECUTION) escribe en un registro
+		.i_EX_reg_write(i_reg_write), 												//Si la etapa que sigue (EXECUTION) escribe en un registro
 		.i_EX_write_register_usage(i_EX_write_register_usage),	//Registro que escribe la etapa que sigue (EXECUTION) 
 		.i_EX_rt(i_EX_rt),																			//RT de la estapa que sigue (EXECUTION) o instruccion PASADA
 		.i_ID_EX_mem_read(i_ID_EX_mem_read),										//La instruccion PASADA escribira en MEMORIA

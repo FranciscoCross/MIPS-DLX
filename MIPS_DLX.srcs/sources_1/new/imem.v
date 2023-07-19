@@ -41,7 +41,7 @@ module imem#(
          reg_addr <= i_addr;
       end
 
-
+   //Write
     always @(posedge i_clk)
         begin
            if(i_reset)
@@ -51,6 +51,7 @@ module imem#(
            else
               data = data; //Any case show latest instruction
         end
+   //Read
    always @(negedge i_clk)
       begin
          if(i_enable)
@@ -61,7 +62,21 @@ module imem#(
                data = data; //Any case show latest instruction
          end
       end
-    assign o_data = data;
+
+   always @(negedge i_enable)
+   begin
+      if(i_en_read)
+         if(reg_addr > 0)
+         data = MEM[reg_addr-1];    
+   end
+
+   always @(posedge i_enable)
+   begin
+      if(i_en_read)
+         data = MEM[reg_addr];    
+   end
+   
+   assign o_data = data;
     	    // Inicializacion de registros.
 
 endmodule

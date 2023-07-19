@@ -204,10 +204,10 @@ module pipeline
 		.i_reg_write(wire_reg_write_WB_EX),		
 		.i_pc(wire_pc_IF_ID),
 		.i_addr_debug_unit(i_addr_debug_unit),
-		.i_EX_write_register_usage(wire_write_reg_EX), 
+		.i_EX_write_register_usage(wire_write_reg_WB_ID), 
 		.i_EX_rt(wire_rt_ID_EX), 
 		.i_ID_EX_mem_read(wire_M_ctrl_ID_EX[5]), 
-		.i_EX_reg_write(wire_M_ctrl_ID_EX[2]),
+		.i_EX_reg_write(wire_WB_ctrl_ID_EX[2]),
 		.i_forward_A(forw_branch_A), 
 		.i_forward_B(forw_branch_B),
 		.i_data_forward_EX_MEM(wire_result_alu_EX_MEM),
@@ -387,7 +387,7 @@ module pipeline
 		.i_ID_rs(wire_rs_ID),
 		.i_ID_rt(wire_rt_ID),
 
-		.i_EX_MEM_write_reg(wire_reg_write_MEM_EX),//write 
+		.i_EX_MEM_write_reg(wire_reg_write_WB_EX),//write 
 		.i_EX_MEM_reg_write(wire_write_reg_MEM_WB),//registro a escribir
 
 

@@ -29,8 +29,24 @@ module pc#(
                 if(i_enable)
                     reg_addr <= i_addr;
                 else 
-                    reg_addr <= reg_addr;
+                begin
+                    $display("PC %d disabled", reg_addr);
+                    
+                end
             end
     end
+    always @(posedge i_enable)
+    begin
+        $display("PC %d enabled", reg_addr);
+        reg_addr <= i_addr;
+    end
+
+    always @(negedge i_enable)
+    begin
+        $display("PC %d disabled", reg_addr);
+        if(reg_addr > 0)
+            reg_addr <= reg_addr - 1 ;
+    end
+    
     assign o_addr = reg_addr;
 endmodule
