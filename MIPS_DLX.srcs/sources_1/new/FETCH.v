@@ -57,7 +57,7 @@ module FETCH#(
 
     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
 	(
-		.i_A(wire_input_pc), //0
+		.i_A(wire_pc), //0
 		.i_B(i_wr_addr),    //1
 		.i_SEL(i_debug_unit),
 		.o_OUT(wire_address_debug)
