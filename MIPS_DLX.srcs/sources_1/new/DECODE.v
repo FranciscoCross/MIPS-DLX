@@ -163,7 +163,7 @@ module DECODE
 			reg_shamt <=    i_instruction[`SHAMT_BIT];
 			reg_function <= i_instruction[`FUNC_BIT];
 			
-			reg_addr_jump <= i_pc + i_instruction[`ADDRWIDTH-1:0];
+			reg_addr_jump <=   i_instruction[`ADDRWIDTH-1:0];
 			reg_addr_branch <= wire_addr_branch;
 
 			reg_EX_control <=  (wire_stall) ? {NB_EX_CTRL{1'b0}} : wire_EX_control;
