@@ -49,7 +49,7 @@ module TOP
 	assign o_locked = locked_wz;
 	assign halt_o = wire_halt;
 
-	clk_wz clock_wz
+	clock_wz clock_wz
   	(  
 		.clk_out1(clock_w),
 	  	.reset(i_reset_wz), 
