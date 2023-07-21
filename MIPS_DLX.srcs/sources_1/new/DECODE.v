@@ -89,8 +89,6 @@ module DECODE
 	reg [NB_MEM_CTRL-1:0]  reg_M_control;     // Bus de control para la etapa MEM
 	reg [`ADDRWIDTH-1:0] reg_addr_branch;   // Dirección de salto para instrucción de rama
 	reg [`ADDRWIDTH-1:0] reg_addr_jump;     // Dirección de salto para instrucción de salto
-		
-	reg [NB_DATA-1:0]   reg_inm_ext;     	// Inmediato extendido
 	reg reg_branch_or_jump;   // Señal de control para rama o salto
 	reg reg_halt;   // Señal de control para rama o salto
 
