@@ -42,7 +42,7 @@ module tb_TOP(
         .BAUD_RATE(BAUD_RATE),
         .NB_DATA(NB_BYTES)
     ) uart_PC (
-        .clock(clock),
+        .clock(clock_w),
         .reset(reset),
         .tx_start(tx_start),
         .parity(1),
@@ -53,6 +53,14 @@ module tb_TOP(
         .rx_done(wire_rx_done),
         .tx_done(wire_tx_done)
     );
+    
+   	clock_wz clock_wz_pc
+  	(  
+		.clk_out1(clock_w),
+	  	.reset(reset), 
+	  	.locked(),
+	  	.clk_in1(clock)
+	 );
 
   // Clock generation    
     always @* 
@@ -72,14 +80,13 @@ module tb_TOP(
             #10
             reset_wz = 0;
             reset = 0;
-            
-            wait(wire_locked == 1'b1); 
-
             $display("Envio numero de instrucciones");
-
-            tx_data = 8'b00000001;     
+            
+            #100
+            tx_data = 8'b00001011;     
+            #2
             tx_start = 1;
-            #10
+            #1000
             tx_start = 0;
             
             while (!wire_tx_done) begin
@@ -87,7 +94,7 @@ module tb_TOP(
             end
 
             $display("Recibio numero de instrucciones");
-            #1000
+            #2000
             $finish;
  
         end

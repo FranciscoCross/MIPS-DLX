@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="843575419fs"></ZoomStartTime>
-      <ZoomEndTime time="1032122906fs"></ZoomEndTime>
-      <Cursor1Time time="931564000fs"></Cursor1Time>
+      <ZoomStartTime time="72565000000fs"></ZoomStartTime>
+      <ZoomEndTime time="1466275000001fs"></ZoomEndTime>
+      <Cursor1Time time="233874028000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="255"></NameColumnWidth>
@@ -30,6 +30,7 @@
    <wvobject fp_name="group119" type="group">
       <obj_property name="label">ClockWizard</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/clock_wz/clk_in1" type="logic">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">clk_in1</obj_property>
@@ -54,7 +55,6 @@
    <wvobject fp_name="group492" type="group">
       <obj_property name="label">PIPELINE (TOP)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group863" type="group">
          <obj_property name="label">branch_fordward_unit</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -1490,12 +1490,12 @@
             <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/uart/rx_data" type="array">
                <obj_property name="ElementShortName">rx_data[7:0]</obj_property>
                <obj_property name="ObjectShortName">rx_data[7:0]</obj_property>
+               <obj_property name="Radix">BINARYRADIX</obj_property>
             </wvobject>
          </wvobject>
          <wvobject fp_name="group551" type="group">
             <obj_property name="label">TX</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/uart/tx" type="logic">
                <obj_property name="ElementShortName">tx</obj_property>
                <obj_property name="ObjectShortName">tx</obj_property>
@@ -1517,6 +1517,7 @@
       <wvobject fp_name="group50" type="group">
          <obj_property name="label">Number_Instr (1)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/ready_number_instr" type="logic">
             <obj_property name="ElementShortName">ready_number_instr</obj_property>
             <obj_property name="ObjectShortName">ready_number_instr</obj_property>
@@ -1524,10 +1525,7 @@
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/number_instructions" type="array">
             <obj_property name="ElementShortName">number_instructions[6:0]</obj_property>
             <obj_property name="ObjectShortName">number_instructions[6:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/data_uart_receive" type="array">
-            <obj_property name="ElementShortName">data_uart_receive[7:0]</obj_property>
-            <obj_property name="ObjectShortName">data_uart_receive[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group51" type="group">
@@ -1836,9 +1834,19 @@
       </wvobject>
    </wvobject>
    <wvobject fp_name="group494" type="group">
-      <obj_property name="label">UART Aux</obj_property>
+      <obj_property name="label">UART PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP/instancia_TOP/clock_wz/clkfb_out" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">clkfb_out</obj_property>
+         <obj_property name="ObjectShortName">clkfb_out</obj_property>
+         <obj_property name="label">clock_w</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uart_PC/clock" type="logic">
+         <obj_property name="ElementShortName">clock</obj_property>
+         <obj_property name="ObjectShortName">clock</obj_property>
+      </wvobject>
       <wvobject fp_name="group506" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -1851,9 +1859,17 @@
             <obj_property name="ElementShortName">tx</obj_property>
             <obj_property name="ObjectShortName">tx</obj_property>
          </wvobject>
+         <wvobject fp_name="/tb_TOP/uart_PC/instancia_tx/state" type="array">
+            <obj_property name="ElementShortName">state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">state[2:0]</obj_property>
+         </wvobject>
          <wvobject fp_name="/tb_TOP/uart_PC/tx_done" type="logic">
             <obj_property name="ElementShortName">tx_done</obj_property>
             <obj_property name="ObjectShortName">tx_done</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP/uart_PC/tx_start" type="logic">
+            <obj_property name="ElementShortName">tx_start</obj_property>
+            <obj_property name="ObjectShortName">tx_start</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/uart_PC/instancia_tx/tx_start" type="logic">
             <obj_property name="ElementShortName">tx_start</obj_property>
@@ -1863,7 +1879,6 @@
       <wvobject fp_name="group507" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/uart_PC/rx" type="logic">
             <obj_property name="ElementShortName">rx</obj_property>
             <obj_property name="ObjectShortName">rx</obj_property>
