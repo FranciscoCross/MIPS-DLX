@@ -147,13 +147,52 @@ module tb_PIPELINE;
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
     #2    
-    i_inst_load = 32'b00001000000000000000000000000000; //j 1
+    i_inst_load = 32'b00001000000000000000000000001000; //j 1
     #2
     i_en_write = 1;
     #2
     i_en_write = 0;
     i_inst_load = 0;
-    
+    //---------------------------------------------------     
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    #2    
+    i_inst_load = 32'b00100000000000110000000000001010; //addi R3, 10
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
+        //--------------------------------------------------- 
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    #2    
+    i_inst_load = 32'b10001100000001010000000000000000; //lw R5, 0(0)
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
+        //--------------------------------------------------- 
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    #2    
+    i_inst_load = 32'b10101100000001000000000000000001; //sw R4, 1(0)
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
+        //--------------------------------------------------- 
+    #2
+    i_addr_inst_load = i_addr_inst_load + 1;
+    #2    
+    i_inst_load = 32'b11111100000000000000000000000000; //halt
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
 
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
