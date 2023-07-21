@@ -147,7 +147,7 @@ module tb_PIPELINE;
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
     #2    
-    i_inst_load = 32'b00001000000000000000000000000001; //j 1
+    i_inst_load = 32'b00001000000000000000000000000000; //j 1
     #2
     i_en_write = 1;
     #2
