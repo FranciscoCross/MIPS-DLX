@@ -189,7 +189,6 @@ module pipeline
 		.i_pc(wire_pc_adder),		
 		.o_instruction(wire_inst_IF_ID),	
 		.o_pc(wire_pc_IF_ID)	
-
 	);
 	
 	DECODE Decode_stage
@@ -210,7 +209,7 @@ module pipeline
 		.i_EX_reg_write(wire_WB_ctrl_ID_EX[2]),
 		.i_forward_A(forw_branch_A), 
 		.i_forward_B(forw_branch_B),
-		.i_data_forward_EX_MEM(wire_result_alu_EX_MEM),
+		.i_data_forward_EX_MEM(wire_result_alu_EX),
 		.o_rs(wire_rs_ID),
         .o_rt(wire_rt_ID),
         .o_rd(wire_rd_ID),
@@ -386,11 +385,8 @@ module pipeline
 	(
 		.i_ID_rs(wire_rs_ID),
 		.i_ID_rt(wire_rt_ID),
-
-		.i_EX_MEM_write_reg(wire_reg_write_WB_EX),//write 
-		.i_EX_MEM_reg_write(wire_write_reg_MEM_WB),//registro a escribir
-
-
+		.i_EX_MEM_write_reg(wire_write_reg_EX),//Registro a escribir 
+		.i_EX_MEM_reg_write(wire_WB_ctrl_ID_EX[2]),//Estoy escribiendo un registro?
 		.o_forward_A(forw_branch_A),
 		.o_forward_B(forw_branch_B)
 	);

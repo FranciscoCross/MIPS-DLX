@@ -90,7 +90,6 @@ module DECODE
 	reg [`ADDRWIDTH-1:0] reg_addr_branch;   // Dirección de salto para instrucción de rama
 	reg [`ADDRWIDTH-1:0] reg_addr_jump;     // Dirección de salto para instrucción de salto
 		
-	reg [NB_DATA-1:0]   reg_inm_ext;     	// Inmediato extendido
 	reg reg_branch_or_jump;   // Señal de control para rama o salto
 	reg reg_halt;   // Señal de control para rama o salto
 
@@ -171,9 +170,13 @@ module DECODE
 			reg_WB_control <=  (wire_stall) ? {NB_WB_CTRL{1'b0}} : wire_WB_control;
 			
 			reg_inm_ext <=  wire_inm_ext;
-			reg_branch_or_jump <= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
+			
 			reg_halt <= wire_halt_detected;
 		end
+	end
+
+	always @(*) begin
+		reg_branch_or_jump <= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
 	end
 
 	// Instancias de los módulos y asignaciones de las señales

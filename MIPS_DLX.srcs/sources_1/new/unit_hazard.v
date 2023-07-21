@@ -10,7 +10,7 @@ datos erroneos en la ejecucion de la instruccion. Si la senial i_ID_EX_mem_read 
 la senial i_halt es 1, se establece una serie de seniales de control que impiden la carga de la siguiente instruccion y detienen la escritura de la direccion 
 siguiente del contador de programa.
 
-Por otro lado, si se intenta escribir en un registro que se esta¡ leyendo en la etapa anterior, tambien se establecen estas seniales de control para evitar 
+Por otro lado, si se intenta escribir en un registro que se estaï¿½ leyendo en la etapa anterior, tambien se establecen estas seniales de control para evitar 
 la escritura y permitir que se complete la lectura antes de continuar con la siguiente instruccion. Si no se cumplen ninguna de estas condiciones, las 
 seniales de control se establecen para permitir el flujo normal de instrucciones y datos a traves del procesador.
 En resumen, el modulo se utiliza para detectar y evitar peligros en un procesador al detener la carga de la siguiente instruccion o

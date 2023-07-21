@@ -71,14 +71,17 @@ module FETCH#(
 		.i_SEL(i_jump_or_branch),
 		.o_OUT(wire_input_pc)
 	);
-
+    
+    
+    //No es necesario en el salto retardado
     mux2#(.NB_DATA(NB_INST)) mux_input_reg_IF_ID
 	(
 		.i_A(wire_instr),//0
-		.i_B(32'hF8000000),//1
-		.i_SEL(i_jump_or_branch),
+		.i_B(32'hF8000000),//1: NOP
+		.i_SEL(0), //jump_or_branch
 		.o_OUT(o_instruction)
 	);
+    
 
     mux3#(.NB_DATA(NB_DATA)) mux_addr_branch_jump
 	(

@@ -15,10 +15,10 @@ module branch_forward_unit
 	);
 
 	initial 
-		begin
-			o_forward_A = 0;
-			o_forward_B = 0;
-		end
+	begin
+		o_forward_A = 0;
+		o_forward_B = 0;
+	end
 
 	always @(*)
 		begin

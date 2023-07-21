@@ -82,7 +82,7 @@ module tb_PIPELINE;
     i_debug_unit = 1;
     
     //---------------------------------------------------
-    i_addr_inst_load = i_addr_inst_load + 1;
+    //i_addr_inst_load = i_addr_inst_load + 1;
     #2
     i_inst_load = 32'b00111100000000010000000000001010;  // lui R1, 10
     #2
@@ -110,29 +110,7 @@ module tb_PIPELINE;
     #2
     i_en_write = 0;
     i_inst_load = 0;
-    /*
     //--------------------------------------------------- 
-    #2
-    i_addr_inst_load = i_addr_inst_load + 1;
-    #2    
-    i_inst_load = 32'b11111000000000000000000000000000; //NOP
-    #2
-    i_en_write = 1;
-    #2
-    i_en_write = 0;
-    i_inst_load = 0;
-    //--------------------------------------------------- 
-    #2
-    i_addr_inst_load = i_addr_inst_load + 1;
-    #2    
-    i_inst_load = 32'b11111000000000000000000000000000; //NOP
-    #2
-    i_en_write = 1;
-    #2
-    i_en_write = 0;
-    i_inst_load = 0;
-    //--------------------------------------------------- 
-    */
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
     #2    
@@ -142,20 +120,29 @@ module tb_PIPELINE;
     #2
     i_en_write = 0;
     i_inst_load = 0;
-  
+    
     //--------------------------------------------------- 
+    
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
     #2    
-    i_inst_load = 32'b00010000011001000000000000000010; //beq R3, R4, 7
+    i_inst_load = 32'b00010000011001000000000000000111; //beq R3, R4, 3
     #2
     i_en_write = 1;
     #2
     i_en_write = 0;
     i_inst_load = 0;    
+    //--------------------------------------------------- 
+    
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
-    i_debug_unit = 0;   
+    #2    
+    i_inst_load = 32'b00100000000000110000000000001010; //addi R3, 10
+    #2
+    i_en_write = 1;
+    #2
+    i_en_write = 0;
+    i_inst_load = 0;
     //--------------------------------------------------- 
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
@@ -166,11 +153,11 @@ module tb_PIPELINE;
     #2
     i_en_write = 0;
     i_inst_load = 0;
-  
+    
+
     #2
     i_addr_inst_load = i_addr_inst_load + 1;
     i_debug_unit = 0;   
-    
     //FIN DE CARGA DE INSTRUCCIONES
     #2
     i_enable_pipe = 1;
@@ -181,14 +168,13 @@ module tb_PIPELINE;
 endmodule
 
 
-
 /*
 lui R1, 10
 lui R2, 20
 lui R3, 30
 addu R4, R1, R2
-beq R3, R4, 7
-j 1
+beq R3, R4, 2
+j 0
 addi R3, 10
 lw R5, 0(0)
 sw R4, 1(0)
@@ -199,7 +185,7 @@ halt
 00111100000000110000000000011110
 00000000001000100010000000100001
 00010000011001000000000000000010
-00001000000000000000000000000001
+00001000000000000000000000000000
 00100000000000110000000000001010
 10001100000001010000000000000000
 10101100000001000000000000000001
