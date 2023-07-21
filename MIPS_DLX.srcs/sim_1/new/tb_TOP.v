@@ -86,15 +86,55 @@ module tb_TOP(
             tx_data = 8'b00001011;     
             #2
             tx_start = 1;
-            #1000
+            #6000
             tx_start = 0;
-            
-            while (!wire_tx_done) begin
-                #5; // Wait 5 time units before checking again
-            end
 
-            $display("Recibio numero de instrucciones");
-            #2000
+            #200000
+
+
+
+            $display("Envio primer byte de instruccion lui R1, 10 "); //32'b00111100000000010000000000001010;  // lui R1, 10
+            #20
+            tx_data = 8'b00001010;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+
+            #200000
+
+
+            $display("Envio segundo byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+
+            #200000
+            
+
+
+            $display("Envio tercer byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            #20
+            tx_data = 8'b00000001;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+
+            #200000
+
+
+            $display("Envio cuarto byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            #20
+            tx_data = 8'b00111100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
             $finish;
  
         end
