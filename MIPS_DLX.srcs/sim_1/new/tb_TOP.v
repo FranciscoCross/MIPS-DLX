@@ -90,9 +90,6 @@ module tb_TOP(
             tx_start = 0;
 
             #200000
-
-
-
             $display("Envio primer byte de instruccion lui R1, 10 "); //32'b00111100000000010000000000001010;  // lui R1, 10
             #20
             tx_data = 8'b00001010;     
@@ -100,10 +97,7 @@ module tb_TOP(
             tx_start = 1;
             #6000
             tx_start = 0;
-
             #200000
-
-
             $display("Envio segundo byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
             #20
             tx_data = 8'b00000000;     
@@ -111,11 +105,7 @@ module tb_TOP(
             tx_start = 1;
             #6000
             tx_start = 0;
-
             #200000
-            
-
-
             $display("Envio tercer byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
             #20
             tx_data = 8'b00000001;     
@@ -123,10 +113,7 @@ module tb_TOP(
             tx_start = 1;
             #6000
             tx_start = 0;
-
             #200000
-
-
             $display("Envio cuarto byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
             #20
             tx_data = 8'b00111100;     
@@ -135,6 +122,355 @@ module tb_TOP(
             #6000
             tx_start = 0;
             #200000
+            
+            
+            $display("Envio primer byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            #20
+            tx_data = 8'b00010100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            #20
+            tx_data = 8'b00000010;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            #20
+            tx_data = 8'b00111100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion lui R3, 30"); //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            #20
+            tx_data = 8'b00011110;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            #20
+            tx_data = 8'b00000011;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            #20
+            tx_data = 8'b00111100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            $display("Envio primer byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            #20
+            tx_data = 8'b00100001;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            #20
+            tx_data = 8'b00100000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            #20
+            tx_data = 8'b00100010;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            $display("Envio primer byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            #20
+            tx_data = 8'b00000111;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            #20
+            tx_data = 8'b01100100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            #20
+            tx_data = 8'b00010000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00001010;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00000011;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00100000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            #20
+            tx_data = 8'b00001000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            #20
+            tx_data = 8'b00001000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00001010;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00000011;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            #20
+            tx_data = 8'b00100000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            #20
+            tx_data = 8'b00000101;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion lw R5, 0(0)");//32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            #20
+            tx_data = 8'b10001100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            
+            $display("Envio primer byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            #20
+            tx_data = 8'b00000001;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            #20
+            tx_data = 8'b00000100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            #20
+            tx_data = 8'b10101100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            
+            
+            $display("Envio primer byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio segundo byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio tercer byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            #20
+            tx_data = 8'b00000000;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            $display("Envio cuarto byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            #20
+            tx_data = 8'b11111100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+
             $finish;
  
         end

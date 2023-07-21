@@ -26,7 +26,7 @@ module TOP
 	);
 
 
-	wire [NB_DATA-1:0] wire_inst_load;
+	wire [31:0] wire_inst_load;
 	wire [`ADDRWIDTH-1:0] wire_addr_load_inst; // instruccion a cargar y su direccion
 
 	wire wire_en_write, wire_en_read, wire_debug_unit;	
