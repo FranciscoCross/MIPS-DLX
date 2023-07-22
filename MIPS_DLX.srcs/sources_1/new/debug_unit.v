@@ -318,25 +318,19 @@ begin
 						begin
 							if(i_bit_sucio)
 								begin
-									cont_byte <= cont_byte + 1;
-									en_send_data_mem <= 1'b0;
-									end_send_mem <= 1'b1;
-									end_send_mem <= 1'b0;
-									o_addr_mem_debug_unit <= o_addr_mem_debug_unit;
-									if (cont_byte == N_BYTES) 
+									data_send <= i_mem_debug_unit[8*cont_byte+:8];
+									if (cont_byte == N_BYTES-1) 
 										begin
 											end_send_mem <= 1'b1;
 											o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
 											cont_byte <= 8'b0;
 										end 
-									else 
+									else
 										begin
-											end_send_mem <= 1'b1;
-											o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-											cont_byte <= 8'b0;
+											cont_byte <= cont_byte + 1;
 										end
 								end
-							else
+							else if(!i_bit_sucio && cont_byte == N_BYTES-1)
 								begin
 									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
 								end
@@ -365,19 +359,12 @@ begin
 				begin
 					if(i_bit_sucio)
 					begin
-						if(cont_byte == 0)
-							begin
-								data_send <= i_mem_debug_unit[8*cont_byte+:8];
-								cont_byte <= cont_byte + 1;
-							end
 						tx_start <= 1'b1;
 					end
-					else
-						begin
-							end_send_mem <= 1'b1;
-							o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-							cont_byte <= 8'b0;
-						end
+					else	
+					begin
+						o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+					end
 				end	
 			else	
 				tx_start <= 1'b0;							
@@ -423,7 +410,6 @@ end
 								enable_read_cant_instr = 1'b0;
 							end								    						      					
 					end	
-				
 				Receive_One_Instr: 				//2
 					begin
 						next_state = Receive_One_Instr;
@@ -436,7 +422,6 @@ end
 							end								      
 						  					
 					end				
-				
 				Check_Send_All_Instr:			//4		//Estado con el que verificamos si se termino el envio de instrucciones		
 					begin					
 						enable_read_instr = 1'b0;
@@ -449,7 +434,6 @@ end
 						else
 							next_state  = Receive_One_Instr;	
 					end	
-				
 				Waiting_operation: 				//8	
 					begin
 						next_state  = Waiting_operation;	
@@ -461,8 +445,7 @@ end
 								next_state = Check_Operation;
 							end													
 
-					end					
-				
+					end									
 				Check_Operation: 					//16 //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
 						debug_unit_reg = 1'b0;
@@ -475,8 +458,7 @@ end
 							default:
 								next_state = Waiting_operation;
 						endcase				
-					end						
-				
+					end										
 				Step_to_step:							//32
 					begin	
 						en_read_reg = 1'b1;
@@ -485,8 +467,7 @@ end
 						debug_unit_reg = 1'b0;
 						en_write_reg = 1'b0;						
 						next_state = Wait_One_Cicle;
-					end
-				
+					end				
 				Wait_One_Cicle:						//64	
 					//Step en donde habilitamos el pipeline para que se corra un ciclo
 					begin
@@ -500,8 +481,7 @@ end
 							enable_pipe_reg = 1'b0;															
 							en_send_program_counter = 1'b1;
 						end					
-					end
-				
+					end				
 				Continue_to_Halt:					//128	
 					begin						
 						en_read_reg = 1'b1;
@@ -518,8 +498,7 @@ end
 								en_send_program_counter <= 1'b1;
 								next_state <= Send_program_counter;
 							end
-					end				
-				
+					end								
 				Send_program_counter:  		//256
 					begin							
 						debug_unit_reg = 1'b0;
@@ -531,8 +510,7 @@ end
 								en_send_program_counter = 1'b0;	
 								next_state = Send_cant_cyles;
 							end	
-					end	
-				
+					end					
 				Send_cant_cyles:					//512	
 					begin						
 						debug_unit_reg = 1'b0;
@@ -547,7 +525,6 @@ end
 								next_state = Send_Registers;
 							end												
 					end				
-				
 				Send_Registers:						//1024		
 					begin					
 						debug_unit_reg = 1'b0;
@@ -568,8 +545,7 @@ end
 											o_enable_mem = 1'b1;		
 	    							end	    							
 							end
-					end				
-				
+					end								
 				Send_Memory:							//2048	
 					begin	
 						debug_unit_reg = 1'b0;
@@ -586,7 +562,7 @@ end
 								if (o_addr_mem_debug_unit == `N_ELEMENTS-1)
 									begin
 										o_end_send_data = 1'b1;										
-										en_send_data_mem = 1'b1;										
+										en_send_data_mem = 1'b0;										
 										o_ack_debug = 1'b1;
 										next_state = Waiting_operation;
 										//$display("FINISH ENVIO DE DATOS");	

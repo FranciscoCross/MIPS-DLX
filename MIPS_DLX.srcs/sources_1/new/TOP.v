@@ -42,7 +42,7 @@ module TOP
 	wire wire_ctrl_addr_debug_mem;
 	wire wire_ctrl_wr_debug_mem;
 	wire [`ADDRWIDTH:0] wire_addr_mem_debug_unit;
-	wire [NB_DATA-1:0] wire_mem_debug_unit;
+	wire [31:0] wire_mem_debug_unit;
 	wire wire_ctrl_read_debug_reg;
 
 	

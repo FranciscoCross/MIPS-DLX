@@ -77,7 +77,7 @@ module tb_TOP(
             #10
             reset_wz = 1;
             reset = 1;
-            #10
+            #60
             reset_wz = 0;
             reset = 0;
             $display("Envio numero de instrucciones");
