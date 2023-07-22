@@ -2,11 +2,11 @@
   "design": {
     "design_info": {
       "boundary_crc": "0x0",
-      "gen_directory": "../../../../MIPS_DLX.gen/sources_1/new/clock_wz",
+      "device": "xc7a35tcpg236-1",
       "name": "clock_wz",
-      "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2022.1"
+      "tool_version": "2019.1",
+      "validated": "true"
     },
     "design_tree": {}
   }

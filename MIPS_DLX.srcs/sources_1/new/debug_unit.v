@@ -316,20 +316,29 @@ begin
 						end 
 					if (!en_send_data_reg && en_send_data_mem) 
 						begin
-							cont_byte <= cont_byte + 1;
-							en_send_data_mem <= 1'b0;
-							end_send_mem <= 1'b1;
-							end_send_mem <= 1'b0;
-							o_addr_mem_debug_unit <= o_addr_mem_debug_unit;
-							if (cont_byte == N_BYTES) 
+							if(i_bit_sucio)
 								begin
+									cont_byte <= cont_byte + 1;
+									en_send_data_mem <= 1'b0;
 									end_send_mem <= 1'b1;
-									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-									cont_byte <= 8'b0;
-								end 
-							else 
+									end_send_mem <= 1'b0;
+									o_addr_mem_debug_unit <= o_addr_mem_debug_unit;
+									if (cont_byte == N_BYTES) 
+										begin
+											end_send_mem <= 1'b1;
+											o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+											cont_byte <= 8'b0;
+										end 
+									else 
+										begin
+											end_send_mem <= 1'b1;
+											o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+											cont_byte <= 8'b0;
+										end
+								end
+							else
 								begin
-									data_send <= i_mem_debug_unit[8*cont_byte+:8];
+									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
 								end
 						end 
 				end 
@@ -354,12 +363,21 @@ begin
 				end	
 			else if (!en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && en_send_data_mem)
 				begin
-					if(cont_byte == 0)
+					if(i_bit_sucio)
+					begin
+						if(cont_byte == 0)
+							begin
+								data_send <= i_mem_debug_unit[8*cont_byte+:8];
+								cont_byte <= cont_byte + 1;
+							end
+						tx_start <= 1'b1;
+					end
+					else
 						begin
-							data_send <= i_mem_debug_unit[8*cont_byte+:8];
-							cont_byte <= cont_byte + 1;
+							end_send_mem <= 1'b1;
+							o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+							cont_byte <= 8'b0;
 						end
-					tx_start <= 1'b1;
 				end	
 			else	
 				tx_start <= 1'b0;							
