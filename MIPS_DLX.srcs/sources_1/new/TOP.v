@@ -35,7 +35,7 @@ module TOP
 	wire wire_enable_mem;
 
 	wire [`ADDRWIDTH-1:0] wire_send_program_counter;
-	wire [NB_DATA-1:0] wire_reg_debug_unit;
+	wire [31:0] wire_reg_debug_unit;
 	wire [N_BITS-1:0] wire_cant_cycles;
 	wire [NB_REG-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
 	wire wire_bit_sucio;

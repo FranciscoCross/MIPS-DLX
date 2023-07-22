@@ -90,7 +90,7 @@ module tb_TOP(
             tx_start = 0;
 
             #200000
-            $display("Envio primer byte de instruccion lui R1, 10 "); //32'b00111100000000010000000000001010;  // lui R1, 10
+            $display("Envio primer byte de instruccion lui R1, 10 "); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
             #20
             tx_data = 8'b00001010;     
             #2
@@ -465,6 +465,15 @@ module tb_TOP(
             $display("Envio cuarto byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
             #20
             tx_data = 8'b11111100;     
+            #2
+            tx_start = 1;
+            #6000
+            tx_start = 0;
+            #200000
+            
+            $display("Envio ModeOperate"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            #20
+            tx_data = 8'b00010000;     
             #2
             tx_start = 1;
             #6000

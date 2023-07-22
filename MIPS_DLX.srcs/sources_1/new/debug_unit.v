@@ -20,7 +20,7 @@ module debug_unit
 		input wire i_reset,
 		input wire i_halt,	
 		input wire i_rx_data,	
-		input wire [`ADDRWIDTH:0] i_send_program_counter, //pc + 1
+		input wire [`ADDRWIDTH-1:0] i_send_program_counter, //pc + 1
 		input wire [N_BITS-1:0] 	i_cant_cycles,
 		input wire [NB_DATA-1:0] 	i_reg_debug_unit, //viene del banco de registros
 		input wire i_bit_sucio,
@@ -117,7 +117,7 @@ module debug_unit
 	assign o_en_write    = en_write_reg;
 	assign o_en_read     = en_read_reg;
 	assign o_inst_load   = instruction;
-	assign o_address     = count_instruction_now;
+	assign o_address     = count_instruction_now-1;
 	assign o_debug_unit_reg   = debug_unit_reg;		
 
 	/* para DEBUG */
