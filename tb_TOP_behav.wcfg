@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="33065214655623fs"></ZoomStartTime>
-      <ZoomEndTime time="39861653557106fs"></ZoomEndTime>
-      <Cursor1Time time="39203933663000fs"></Cursor1Time>
+      <ZoomStartTime time="37193480931266fs"></ZoomStartTime>
+      <ZoomEndTime time="39684307813747fs"></ZoomEndTime>
+      <Cursor1Time time="34148030455000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="275"></NameColumnWidth>
@@ -24,6 +24,8 @@
       <marker time="125100000" label="" />
       <marker time="201764854000" label="" />
       <marker time="9460850000000" label="" />
+      <marker time="9840410000000" label="" />
+      <marker time="34068330000000" label="" />
    </wave_markers>
    <wvobject fp_name="group119" type="group">
       <obj_property name="label">ClockWizard</obj_property>
@@ -1542,7 +1544,6 @@
          <wvobject fp_name="group687" type="group">
             <obj_property name="label">memory_data</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group687" type="group">
                <obj_property name="label">Inputs</obj_property>
                <obj_property name="DisplayName">label</obj_property>
@@ -1742,6 +1743,7 @@
    <wvobject fp_name="group493" type="group">
       <obj_property name="label">Debug Unit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
          <obj_property name="ElementShortName">state[11:0]</obj_property>
          <obj_property name="ObjectShortName">state[11:0]</obj_property>
@@ -1984,6 +1986,7 @@
       <wvobject fp_name="group58" type="group">
          <obj_property name="label">Send_program_counter (256)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/en_send_program_counter" type="logic">
             <obj_property name="ElementShortName">en_send_program_counter</obj_property>
             <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
@@ -2013,6 +2016,7 @@
       <wvobject fp_name="group59" type="group">
          <obj_property name="label">Send_cant_cyles (512)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/tx_start" type="logic">
             <obj_property name="ElementShortName">tx_start</obj_property>
             <obj_property name="ObjectShortName">tx_start</obj_property>
@@ -2046,6 +2050,16 @@
       <wvobject fp_name="group60" type="group">
          <obj_property name="label">Send_Registers (1024)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
+            <obj_property name="ElementShortName">state[11:0]</obj_property>
+            <obj_property name="ObjectShortName">state[11:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/en_send_data_reg" type="logic">
+            <obj_property name="ElementShortName">en_send_data_reg</obj_property>
+            <obj_property name="ObjectShortName">en_send_data_reg</obj_property>
+         </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/end_send_reg" type="logic">
             <obj_property name="ElementShortName">end_send_reg</obj_property>
             <obj_property name="ObjectShortName">end_send_reg</obj_property>
@@ -2127,17 +2141,19 @@
             <obj_property name="ElementShortName">tx_start</obj_property>
             <obj_property name="ObjectShortName">tx_start</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/data_send" type="array">
-            <obj_property name="ElementShortName">data_send[7:0]</obj_property>
-            <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/i_mem_debug_unit" type="array">
+            <obj_property name="ElementShortName">i_mem_debug_unit[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_mem_debug_unit[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/cont_byte" type="array">
             <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
             <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/i_mem_debug_unit" type="array">
-            <obj_property name="ElementShortName">i_mem_debug_unit[31:0]</obj_property>
-            <obj_property name="ObjectShortName">i_mem_debug_unit[31:0]</obj_property>
+         <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/data_send" type="array">
+            <obj_property name="ElementShortName">data_send[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/o_addr_mem_debug_unit" type="array">
             <obj_property name="ElementShortName">o_addr_mem_debug_unit[7:0]</obj_property>
