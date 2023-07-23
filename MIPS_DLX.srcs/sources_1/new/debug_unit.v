@@ -194,12 +194,14 @@ initial
 		reset_o_enable_pipe 						<= 1'b0;
 	end
 
-
+always @(negedge i_clock) 
+begin
+  o_enable_pipe <= enable_pipe_reg;
+end
 
 always @(posedge i_clock) 
 begin
   state <= next_state;
-  o_enable_pipe <= enable_pipe_reg;
   if (i_reset) 
 		begin
 			// Asignaciones durante el reset
@@ -297,13 +299,7 @@ begin
 						end 
 					if (!en_send_cant_cyles && en_send_data_reg) 
 						begin
-							
-							cont_byte <= cont_byte + 1;
-							en_send_data_reg <= 1'b0;
-							end_send_reg <= 1'b1;
-							end_send_reg <= 1'b0;
-							o_addr_reg_debug_unit <= o_addr_reg_debug_unit;
-							if (cont_byte == N_BYTES) 
+							if (cont_byte == N_BYTES-1) 
 								begin
 									end_send_reg <= 1'b1;
 									o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;
@@ -311,14 +307,13 @@ begin
 								end 
 							else 
 								begin
-									data_send <= i_reg_debug_unit[8*cont_byte+:8];
+									cont_byte <= cont_byte + 1;
 								end
 						end 
 					if (!en_send_data_reg && en_send_data_mem) 
 						begin
 							if(i_bit_sucio)
 								begin
-									data_send <= i_mem_debug_unit[8*cont_byte+:8];
 									if (cont_byte == N_BYTES-1) 
 										begin
 											end_send_mem <= 1'b1;
@@ -348,17 +343,14 @@ begin
 				end	
 			else if (!en_send_program_counter && !en_send_cant_cyles && en_send_data_reg && !en_send_data_mem)
 				begin
-					if(cont_byte == 0)
-						begin
-							data_send <= i_reg_debug_unit[8*cont_byte+:8];
-							cont_byte <= cont_byte + 1;
-						end
+					data_send <= i_reg_debug_unit[8*cont_byte+:8];
 					tx_start <= 1'b1;
 				end	
 			else if (!en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && en_send_data_mem)
 				begin
 					if(i_bit_sucio)
 					begin
+						data_send <= i_mem_debug_unit[8*cont_byte+:8];
 						tx_start <= 1'b1;
 					end
 					else	
@@ -538,11 +530,11 @@ end
 								if (o_addr_reg_debug_unit == 5'b0) //Quiere decir que se llego al numero 32 ya que se envio desde el 0 al 31, (32 == 100000)
 	    							begin
 	    								o_ctrl_read_debug_reg = 1'b0;
-	      							en_send_data_reg = 1'b0;
-											next_state = Send_Memory;										
-											o_ctrl_wr_debug_mem = 1'b1;
-											o_ctrl_addr_debug_mem = 1'b1;
-											o_enable_mem = 1'b1;		
+										en_send_data_reg = 1'b0;
+										next_state = Send_Memory;										
+										o_ctrl_wr_debug_mem = 1'b1;
+										o_ctrl_addr_debug_mem = 1'b1;
+										o_enable_mem = 1'b1;		
 	    							end	    							
 							end
 					end								

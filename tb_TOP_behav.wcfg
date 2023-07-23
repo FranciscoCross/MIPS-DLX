@@ -11,33 +11,24 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="33431669494800fs"></ZoomStartTime>
-      <ZoomEndTime time="35657800124190fs"></ZoomEndTime>
-      <Cursor1Time time="34068250000000fs"></Cursor1Time>
+      <ZoomStartTime time="33065214655623fs"></ZoomStartTime>
+      <ZoomEndTime time="39861653557106fs"></ZoomEndTime>
+      <Cursor1Time time="39203933663000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="275"></NameColumnWidth>
-      <ValueColumnWidth column_width="99"></ValueColumnWidth>
+      <ValueColumnWidth column_width="95"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="4" />
    <wave_markers>
       <marker time="125100000" label="" />
       <marker time="201764854000" label="" />
+      <marker time="9460850000000" label="" />
    </wave_markers>
-   <wvobject fp_name="/tb_TOP/instancia_TOP/i_clock" type="logic">
-      <obj_property name="ElementShortName">i_clock</obj_property>
-      <obj_property name="ObjectShortName">i_clock</obj_property>
-   </wvobject>
    <wvobject fp_name="group119" type="group">
       <obj_property name="label">ClockWizard</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_TOP/instancia_TOP/clock_wz/clk_in1" type="logic">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">clk_in1</obj_property>
-         <obj_property name="ObjectShortName">clk_in1</obj_property>
-         <obj_property name="label">i_clock</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_TOP/instancia_TOP/clock_wz/clkfb_out" type="logic">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">clkfb_out</obj_property>
@@ -56,6 +47,7 @@
    <wvobject fp_name="group492" type="group">
       <obj_property name="label">PIPELINE (TOP)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/i_enable_mem" type="logic">
          <obj_property name="ElementShortName">i_enable_mem</obj_property>
          <obj_property name="ObjectShortName">i_enable_mem</obj_property>
@@ -127,247 +119,310 @@
       <wvobject fp_name="group854" type="group">
          <obj_property name="label">FETCH</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/wire_inst_load" type="array">
-            <obj_property name="ElementShortName">wire_inst_load[31:0]</obj_property>
-            <obj_property name="ObjectShortName">wire_inst_load[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/i_inst_load" type="array">
-            <obj_property name="ElementShortName">i_inst_load[31:0]</obj_property>
-            <obj_property name="ObjectShortName">i_inst_load[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_Mem_Data" type="array">
-            <obj_property name="ElementShortName">i_Mem_Data[31:0]</obj_property>
-            <obj_property name="ObjectShortName">i_Mem_Data[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">mux_address_mem</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group655" type="group">
+            <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_SEL" type="logic">
-                  <obj_property name="ElementShortName">i_SEL</obj_property>
-                  <obj_property name="ObjectShortName">i_SEL</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_A" type="array">
-                  <obj_property name="ElementShortName">i_A[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_B" type="array">
-                  <obj_property name="ElementShortName">i_B[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_clk" type="logic">
+               <obj_property name="ElementShortName">i_clk</obj_property>
+               <obj_property name="ObjectShortName">i_clk</obj_property>
             </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/o_OUT" type="array">
-                  <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
             </wvobject>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">mux_src_PC</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_SEL" type="logic">
-                  <obj_property name="ElementShortName">i_SEL</obj_property>
-                  <obj_property name="ObjectShortName">i_SEL</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_A" type="array">
-                  <obj_property name="ElementShortName">i_A[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_B" type="array">
-                  <obj_property name="ElementShortName">i_B[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_enable" type="logic">
+               <obj_property name="ElementShortName">i_enable</obj_property>
+               <obj_property name="ObjectShortName">i_enable</obj_property>
             </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/o_OUT" type="array">
-                  <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_debug_unit" type="logic">
+               <obj_property name="ElementShortName">i_debug_unit</obj_property>
+               <obj_property name="ObjectShortName">i_debug_unit</obj_property>
             </wvobject>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">mux_input_reg_IF_ID</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_SEL" type="logic">
-                  <obj_property name="ElementShortName">i_SEL</obj_property>
-                  <obj_property name="ObjectShortName">i_SEL</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_A" type="array">
-                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_B" type="array">
-                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_Mem_WEn" type="logic">
+               <obj_property name="ElementShortName">i_Mem_WEn</obj_property>
+               <obj_property name="ObjectShortName">i_Mem_WEn</obj_property>
             </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/o_OUT" type="array">
-                  <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_Mem_REn" type="logic">
+               <obj_property name="ElementShortName">i_Mem_REn</obj_property>
+               <obj_property name="ObjectShortName">i_Mem_REn</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_Mem_Data" type="array">
+               <obj_property name="ElementShortName">i_Mem_Data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_Mem_Data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_PCsrc" type="array">
+               <obj_property name="ElementShortName">i_PCsrc[1:0]</obj_property>
+               <obj_property name="ObjectShortName">i_PCsrc[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_addr_register" type="array">
+               <obj_property name="ElementShortName">i_addr_register[6:0]</obj_property>
+               <obj_property name="ObjectShortName">i_addr_register[6:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_addr_branch" type="array">
+               <obj_property name="ElementShortName">i_addr_branch[6:0]</obj_property>
+               <obj_property name="ObjectShortName">i_addr_branch[6:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_addr_jump" type="array">
+               <obj_property name="ElementShortName">i_addr_jump[6:0]</obj_property>
+               <obj_property name="ObjectShortName">i_addr_jump[6:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_jump_or_branch" type="logic">
+               <obj_property name="ElementShortName">i_jump_or_branch</obj_property>
+               <obj_property name="ObjectShortName">i_jump_or_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/i_wr_addr" type="array">
+               <obj_property name="ElementShortName">i_wr_addr[6:0]</obj_property>
+               <obj_property name="ObjectShortName">i_wr_addr[6:0]</obj_property>
             </wvobject>
          </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">mux_addr_branch_jump</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_SEL" type="array">
-                  <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_A" type="array">
-                  <obj_property name="ElementShortName">i_A[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_B" type="array">
-                  <obj_property name="ElementShortName">i_B[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_C" type="array">
-                  <obj_property name="ElementShortName">i_C[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_C[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/o_OUT" type="array">
-                  <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">inst_pc</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_clk" type="logic">
-                  <obj_property name="ElementShortName">i_clk</obj_property>
-                  <obj_property name="ObjectShortName">i_clk</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_reset" type="logic">
-                  <obj_property name="ElementShortName">i_reset</obj_property>
-                  <obj_property name="ObjectShortName">i_reset</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_enable" type="logic">
-                  <obj_property name="ElementShortName">i_enable</obj_property>
-                  <obj_property name="ObjectShortName">i_enable</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_addr" type="array">
-                  <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/o_addr" type="array">
-                  <obj_property name="ElementShortName">o_addr[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_addr[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">inst_pc_add</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_clk" type="logic">
-                  <obj_property name="ElementShortName">i_clk</obj_property>
-                  <obj_property name="ObjectShortName">i_clk</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_enable" type="logic">
-                  <obj_property name="ElementShortName">i_enable</obj_property>
-                  <obj_property name="ObjectShortName">i_enable</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_nAddr" type="array">
-                  <obj_property name="ElementShortName">i_nAddr[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_nAddr[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/o_nAddr" type="array">
-                  <obj_property name="ElementShortName">o_nAddr[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_nAddr[6:0]</obj_property>
-               </wvobject>
-            </wvobject>
-         </wvobject>
-         <wvobject fp_name="group687" type="group">
-            <obj_property name="label">Memory instruccion</obj_property>
+         <wvobject fp_name="group655" type="group">
+            <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="isExpanded"></obj_property>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Inputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_clk" type="logic">
-                  <obj_property name="ElementShortName">i_clk</obj_property>
-                  <obj_property name="ObjectShortName">i_clk</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_enable" type="logic">
-                  <obj_property name="ElementShortName">i_enable</obj_property>
-                  <obj_property name="ObjectShortName">i_enable</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_reset" type="logic">
-                  <obj_property name="ElementShortName">i_reset</obj_property>
-                  <obj_property name="ObjectShortName">i_reset</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_en_write" type="logic">
-                  <obj_property name="ElementShortName">i_en_write</obj_property>
-                  <obj_property name="ObjectShortName">i_en_write</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_en_read" type="logic">
-                  <obj_property name="ElementShortName">i_en_read</obj_property>
-                  <obj_property name="ObjectShortName">i_en_read</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_addr" type="array">
-                  <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
-               </wvobject>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_data" type="array">
-                  <obj_property name="ElementShortName">i_data[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">i_data[31:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/o_instruction" type="array">
+               <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="group687" type="group">
-               <obj_property name="label">Outputs</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/o_data" type="array">
-                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
-               </wvobject>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/o_PCAddr" type="array">
+               <obj_property name="ElementShortName">o_PCAddr[6:0]</obj_property>
+               <obj_property name="ObjectShortName">o_PCAddr[6:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="group754" type="group">
-               <obj_property name="label">Regs</obj_property>
+            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/o_next_PCAddr" type="array">
+               <obj_property name="ElementShortName">o_next_PCAddr[6:0]</obj_property>
+               <obj_property name="ObjectShortName">o_next_PCAddr[6:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group655" type="group">
+            <obj_property name="label">submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">mux_address_mem</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/MEM" type="array">
-                  <obj_property name="ElementShortName">MEM[127:0][31:0]</obj_property>
-                  <obj_property name="ObjectShortName">MEM[127:0][31:0]</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
                   <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_SEL" type="logic">
+                     <obj_property name="ElementShortName">i_SEL</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_address_mem/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">mux_src_PC</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_SEL" type="logic">
+                     <obj_property name="ElementShortName">i_SEL</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_src_PC/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">mux_input_reg_IF_ID</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_SEL" type="logic">
+                     <obj_property name="ElementShortName">i_SEL</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_input_reg_IF_ID/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">mux_addr_branch_jump</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_SEL" type="array">
+                     <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_A" type="array">
+                     <obj_property name="ElementShortName">i_A[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_A[6:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_B" type="array">
+                     <obj_property name="ElementShortName">i_B[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_B[6:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/i_C" type="array">
+                     <obj_property name="ElementShortName">i_C[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_C[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/mux_addr_branch_jump/o_OUT" type="array">
+                     <obj_property name="ElementShortName">o_OUT[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_OUT[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">inst_pc</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_clk" type="logic">
+                     <obj_property name="ElementShortName">i_clk</obj_property>
+                     <obj_property name="ObjectShortName">i_clk</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_reset" type="logic">
+                     <obj_property name="ElementShortName">i_reset</obj_property>
+                     <obj_property name="ObjectShortName">i_reset</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_enable" type="logic">
+                     <obj_property name="ElementShortName">i_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/i_addr" type="array">
+                     <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc/o_addr" type="array">
+                     <obj_property name="ElementShortName">o_addr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_addr[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">inst_pc_add</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_clk" type="logic">
+                     <obj_property name="ElementShortName">i_clk</obj_property>
+                     <obj_property name="ObjectShortName">i_clk</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_enable" type="logic">
+                     <obj_property name="ElementShortName">i_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/i_nAddr" type="array">
+                     <obj_property name="ElementShortName">i_nAddr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_nAddr[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/inst_pc_add/o_nAddr" type="array">
+                     <obj_property name="ElementShortName">o_nAddr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_nAddr[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group687" type="group">
+               <obj_property name="label">Memory instruccion</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_clk" type="logic">
+                     <obj_property name="ElementShortName">i_clk</obj_property>
+                     <obj_property name="ObjectShortName">i_clk</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_enable" type="logic">
+                     <obj_property name="ElementShortName">i_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_reset" type="logic">
+                     <obj_property name="ElementShortName">i_reset</obj_property>
+                     <obj_property name="ObjectShortName">i_reset</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_en_write" type="logic">
+                     <obj_property name="ElementShortName">i_en_write</obj_property>
+                     <obj_property name="ObjectShortName">i_en_write</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_en_read" type="logic">
+                     <obj_property name="ElementShortName">i_en_read</obj_property>
+                     <obj_property name="ObjectShortName">i_en_read</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_addr" type="array">
+                     <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/i_data" type="array">
+                     <obj_property name="ElementShortName">i_data[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_data[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group687" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/o_data" type="array">
+                     <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group754" type="group">
+                  <obj_property name="label">Regs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/instruccion_fetch/instancia_imem/MEM" type="array">
+                     <obj_property name="ElementShortName">MEM[127:0][31:0]</obj_property>
+                     <obj_property name="ObjectShortName">MEM[127:0][31:0]</obj_property>
+                  </wvobject>
                </wvobject>
             </wvobject>
          </wvobject>
@@ -1524,6 +1579,7 @@
                <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/memory_stage/memory_data/o_data" type="array">
                   <obj_property name="ElementShortName">o_data[31:0]</obj_property>
                   <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+                  <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
                </wvobject>
             </wvobject>
             <wvobject fp_name="group687" type="group">
@@ -1686,7 +1742,6 @@
    <wvobject fp_name="group493" type="group">
       <obj_property name="label">Debug Unit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
          <obj_property name="ElementShortName">state[11:0]</obj_property>
          <obj_property name="ObjectShortName">state[11:0]</obj_property>
@@ -1991,7 +2046,6 @@
       <wvobject fp_name="group60" type="group">
          <obj_property name="label">Send_Registers (1024)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/end_send_reg" type="logic">
             <obj_property name="ElementShortName">end_send_reg</obj_property>
             <obj_property name="ObjectShortName">end_send_reg</obj_property>
