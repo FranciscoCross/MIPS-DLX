@@ -29,7 +29,6 @@ module tb_TOP(
     ) instancia_TOP	(
 		.i_clock(clock),
 		.i_reset(reset),
-		.i_reset_wz(reset_wz),
 		.i_rx(wire_tx),
 
 		.o_tx(wire_rx),

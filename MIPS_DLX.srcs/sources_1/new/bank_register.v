@@ -35,16 +35,21 @@ module bank_register
 	
 	);
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
-	
-	reg [NB_REG-1:0] reg_addr_rw;
-	reg reg_rw;
+	reg [NB_DATA-1:0] reset_data_ra;
+	reg [NB_DATA-1:0] reset_data_rb;
+	reg [NB_REG-1:0] reg_addr_rw, reset_reg_addr_rw;
+	reg reg_rw, reset_reg_rw;
 	
 	initial
 	begin
 		o_data_ra = 32'b0;
 		o_data_rb = 32'b0;
+		reset_data_ra = 32'b0;
+		reset_data_rb = 32'b0;
 		reg_addr_rw = 0;
+		reset_reg_addr_rw = 0;
 		reg_rw = 0;
+		reset_reg_rw = 0;
 	end
 
     always @(posedge i_clock) //Lectura
@@ -64,9 +69,10 @@ module bank_register
 	begin
 		if (i_reset)
 		begin	        			
-			o_data_ra <= 32'b0;
-			o_data_rb <= 32'b0;
-			reg_addr_rw <= 0;
+			o_data_ra <= reset_data_ra;
+			o_data_rb <= reset_data_rb;
+			reg_addr_rw <= reset_reg_addr_rw;
+			reg_rw <= reset_reg_rw;
 		end        	
 		else if (reg_rw) //ESCRITURA
 			begin
