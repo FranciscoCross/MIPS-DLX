@@ -11,7 +11,7 @@ module pc#(
     input wire i_reset,
     input wire i_enable,
     input wire [NB_DATA - 1:0] i_addr,
-    input wire [NB_DATA - 1:0] o_addr
+    output wire [NB_DATA - 1:0] o_addr
     );
     
     reg [NB_DATA-1:0] reg_addr;

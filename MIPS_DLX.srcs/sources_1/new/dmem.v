@@ -28,10 +28,8 @@ module dmem
       integer i;		
       initial 
       begin
-        data_reg = 0;
-        RAM[0] = 1;//{NB_DATA{1'b0}};
-        for (i = 1; i < 128; i = i + 1)
-            RAM[i] = RAM[i-1] + 1; //RAM[i] = {NB_DATA{1'b0}}; 
+        for (i = 0; i < 128; i = i + 1)
+            RAM[i] = 0; 
       end
     endgenerate
     

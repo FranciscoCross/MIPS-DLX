@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1579527000000fs"></ZoomStartTime>
-      <ZoomEndTime time="11056689000001fs"></ZoomEndTime>
-      <Cursor1Time time="9477162000000fs"></Cursor1Time>
+      <ZoomStartTime time="9085752658889fs"></ZoomStartTime>
+      <ZoomEndTime time="10381905144811fs"></ZoomEndTime>
+      <Cursor1Time time="9686383256000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="275"></NameColumnWidth>
-      <ValueColumnWidth column_width="87"></ValueColumnWidth>
+      <ValueColumnWidth column_width="83"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
+   <WVObjectSize size="6" />
    <wave_markers>
       <marker time="125100000" label="" />
       <marker time="201764854000" label="" />
@@ -45,6 +45,7 @@
    <wvobject fp_name="group492" type="group">
       <obj_property name="label">PIPELINE (TOP)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/i_enable_mem" type="logic">
          <obj_property name="ElementShortName">i_enable_mem</obj_property>
          <obj_property name="ObjectShortName">i_enable_mem</obj_property>
@@ -64,8 +65,8 @@
             <obj_property name="label">PC</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/o_data_send_pc" type="array">
-               <obj_property name="ElementShortName">o_data_send_pc[31:0]</obj_property>
-               <obj_property name="ObjectShortName">o_data_send_pc[31:0]</obj_property>
+               <obj_property name="ElementShortName">o_data_send_pc[6:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_send_pc[6:0]</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_TOP/instancia_TOP/wire_send_program_counter" type="array">
                <obj_property name="ElementShortName">wire_send_program_counter[6:0]</obj_property>
@@ -116,7 +117,6 @@
       <wvobject fp_name="group854" type="group">
          <obj_property name="label">FETCH</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group655" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -1539,10 +1539,10 @@
          <wvobject fp_name="group687" type="group">
             <obj_property name="label">memory_data</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group687" type="group">
                <obj_property name="label">Inputs</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/memory_stage/memory_data/i_clk" type="logic">
                   <obj_property name="ElementShortName">i_clk</obj_property>
                   <obj_property name="ObjectShortName">i_clk</obj_property>
@@ -1571,7 +1571,6 @@
             <wvobject fp_name="group687" type="group">
                <obj_property name="label">Outputs</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/memory_stage/memory_data/o_data" type="array">
                   <obj_property name="ElementShortName">o_data[31:0]</obj_property>
                   <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
@@ -1581,6 +1580,7 @@
             <wvobject fp_name="group687" type="group">
                <obj_property name="label">Regs</obj_property>
                <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/memory_stage/memory_data/RAM" type="array">
                   <obj_property name="ElementShortName">RAM[127:0][31:0]</obj_property>
                   <obj_property name="ObjectShortName">RAM[127:0][31:0]</obj_property>
@@ -1975,6 +1975,7 @@
       <wvobject fp_name="group58" type="group">
          <obj_property name="label">Send_program_counter (256)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/en_send_program_counter" type="logic">
             <obj_property name="ElementShortName">en_send_program_counter</obj_property>
             <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
@@ -1999,6 +2000,7 @@
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/data_send" type="array">
             <obj_property name="ElementShortName">data_send[7:0]</obj_property>
             <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group59" type="group">
@@ -2141,8 +2143,8 @@
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/o_addr_mem_debug_unit" type="array">
-            <obj_property name="ElementShortName">o_addr_mem_debug_unit[7:0]</obj_property>
-            <obj_property name="ObjectShortName">o_addr_mem_debug_unit[7:0]</obj_property>
+            <obj_property name="ElementShortName">o_addr_mem_debug_unit[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_addr_mem_debug_unit[6:0]</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/o_ctrl_addr_debug_mem" type="logic">
@@ -2234,20 +2236,8 @@
       <obj_property name="ObjectShortName">state[11:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_TOP/instancia_TOP/o_tx_data" type="logic">
-      <obj_property name="ElementShortName">o_tx_data</obj_property>
-      <obj_property name="ObjectShortName">o_tx_data</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_TOP/instancia_TOP/o_ack_debug" type="logic">
-      <obj_property name="ElementShortName">o_ack_debug</obj_property>
-      <obj_property name="ObjectShortName">o_ack_debug</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_TOP/instancia_TOP/o_state" type="array">
       <obj_property name="ElementShortName">o_state[11:0]</obj_property>
       <obj_property name="ObjectShortName">o_state[11:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_TOP/instancia_TOP/o_end_send_data" type="logic">
-      <obj_property name="ElementShortName">o_end_send_data</obj_property>
-      <obj_property name="ObjectShortName">o_end_send_data</obj_property>
    </wvobject>
 </wave_config>

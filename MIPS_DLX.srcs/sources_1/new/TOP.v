@@ -19,7 +19,7 @@ module TOP
 		input wire i_rx,
 
 		output wire o_tx,
-		output wire [NB_STATE-1:0] o_state
+		output wire [11:0] o_state
 	);
 
 
@@ -38,7 +38,7 @@ module TOP
 	wire wire_bit_sucio;
 	wire wire_ctrl_addr_debug_mem;
 	wire wire_ctrl_wr_debug_mem;
-	wire [`ADDRWIDTH:0] wire_addr_mem_debug_unit;
+	wire [`ADDRWIDTH-1:0] wire_addr_mem_debug_unit;
 	wire [31:0] wire_mem_debug_unit;
 	wire wire_ctrl_read_debug_reg;
 	assign halt_o = wire_halt;

@@ -17,7 +17,7 @@ module pipeline
 		input wire clock,
 		input wire i_reset,
 		input wire [NB_DATA-1:0] i_inst_load,
-		input wire [NB_DATA-1:0] i_addr_inst_load,
+		input wire [`ADDRWIDTH-1:0] i_addr_inst_load,
 		input wire i_en_write,	
 		input wire i_en_read,	
 		input wire i_enable_mem,	
@@ -29,7 +29,7 @@ module pipeline
 		input wire i_ctrl_wr_debug_mem, //leyendo para debug mem
 		input wire i_ctrl_addr_debug_mem, 
 		output wire o_bit_sucio,
-		output wire [NB_DATA-1:0] o_data_send_pc,
+		output wire [`ADDRWIDTH-1:0] o_data_send_pc,
 		output wire [NB_DATA-1:0] o_data_reg_debug_unit,
 		output wire [NB_DATA-1:0] o_data_mem_debug_unit,
 		output wire [N_BITS-1:0] o_count_cycles,

@@ -316,6 +316,16 @@ module unit_control
 						end
 				endcase
 			end
+			else
+			begin
+				reg_pc_src 		= 	reg_pc_src;
+				reg_EX_control 	= 	reg_EX_control; 
+				reg_M_control 	= 	reg_M_control;   
+				reg_WB_control 	= 	reg_WB_control; 
+				reg_beq 		=	reg_beq;
+				reg_bne 		= 	reg_bne;
+				reg_jump 		= 	reg_jump;
+			end
 		end
 	
 endmodule

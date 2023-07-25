@@ -28,7 +28,7 @@ module debug_unit
 
 		output reg [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
-		output reg [`ADDRWIDTH:0] o_addr_mem_debug_unit, //direccion a leer en memoria
+		output reg [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
 		output reg o_ctrl_addr_debug_mem,
 		output reg o_ctrl_wr_debug_mem,
 		output reg o_ctrl_read_debug_reg,
