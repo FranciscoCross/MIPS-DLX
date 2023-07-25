@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="37193480931266fs"></ZoomStartTime>
-      <ZoomEndTime time="39684307813747fs"></ZoomEndTime>
-      <Cursor1Time time="34148030455000fs"></Cursor1Time>
+      <ZoomStartTime time="1579527000000fs"></ZoomStartTime>
+      <ZoomEndTime time="11056689000001fs"></ZoomEndTime>
+      <Cursor1Time time="9477162000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="275"></NameColumnWidth>
-      <ValueColumnWidth column_width="95"></ValueColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
+   <WVObjectSize size="9" />
    <wave_markers>
       <marker time="125100000" label="" />
       <marker time="201764854000" label="" />
@@ -41,15 +41,10 @@
          <obj_property name="ElementShortName">reset</obj_property>
          <obj_property name="ObjectShortName">reset</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/instancia_TOP/clock_wz/locked" type="logic">
-         <obj_property name="ElementShortName">locked</obj_property>
-         <obj_property name="ObjectShortName">locked</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="group492" type="group">
       <obj_property name="label">PIPELINE (TOP)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/i_enable_mem" type="logic">
          <obj_property name="ElementShortName">i_enable_mem</obj_property>
          <obj_property name="ObjectShortName">i_enable_mem</obj_property>
@@ -1743,12 +1738,6 @@
    <wvobject fp_name="group493" type="group">
       <obj_property name="label">Debug Unit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
-         <obj_property name="ElementShortName">state[11:0]</obj_property>
-         <obj_property name="ObjectShortName">state[11:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="group549" type="group">
          <obj_property name="label">UART</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -1986,7 +1975,6 @@
       <wvobject fp_name="group58" type="group">
          <obj_property name="label">Send_program_counter (256)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/en_send_program_counter" type="logic">
             <obj_property name="ElementShortName">en_send_program_counter</obj_property>
             <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
@@ -2016,7 +2004,6 @@
       <wvobject fp_name="group59" type="group">
          <obj_property name="label">Send_cant_cyles (512)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/tx_start" type="logic">
             <obj_property name="ElementShortName">tx_start</obj_property>
             <obj_property name="ObjectShortName">tx_start</obj_property>
@@ -2050,7 +2037,6 @@
       <wvobject fp_name="group60" type="group">
          <obj_property name="label">Send_Registers (1024)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
             <obj_property name="ElementShortName">state[11:0]</obj_property>
             <obj_property name="ObjectShortName">state[11:0]</obj_property>
@@ -2119,7 +2105,6 @@
       <wvobject fp_name="group61" type="group">
          <obj_property name="label">Send_Memory (2048)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
             <obj_property name="ElementShortName">state[11:0]</obj_property>
             <obj_property name="ObjectShortName">state[11:0]</obj_property>
@@ -2201,7 +2186,6 @@
    <wvobject fp_name="group494" type="group">
       <obj_property name="label">UART PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group506" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -2230,7 +2214,6 @@
       <wvobject fp_name="group507" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/uart_PC/rx" type="logic">
             <obj_property name="ElementShortName">rx</obj_property>
             <obj_property name="ObjectShortName">rx</obj_property>
@@ -2245,5 +2228,26 @@
             <obj_property name="ObjectShortName">rx_done</obj_property>
          </wvobject>
       </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
+      <obj_property name="ElementShortName">state[11:0]</obj_property>
+      <obj_property name="ObjectShortName">state[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/o_tx_data" type="logic">
+      <obj_property name="ElementShortName">o_tx_data</obj_property>
+      <obj_property name="ObjectShortName">o_tx_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/o_ack_debug" type="logic">
+      <obj_property name="ElementShortName">o_ack_debug</obj_property>
+      <obj_property name="ObjectShortName">o_ack_debug</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/o_state" type="array">
+      <obj_property name="ElementShortName">o_state[11:0]</obj_property>
+      <obj_property name="ObjectShortName">o_state[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/o_end_send_data" type="logic">
+      <obj_property name="ElementShortName">o_end_send_data</obj_property>
+      <obj_property name="ObjectShortName">o_end_send_data</obj_property>
    </wvobject>
 </wave_config>

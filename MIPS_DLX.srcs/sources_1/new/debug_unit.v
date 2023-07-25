@@ -580,7 +580,7 @@ end
         .tx_data(data_send),
         .parity(1),
         //Outputs
-				.rx_data(data_uart_receive),
+		.rx_data(data_uart_receive),
         .tx(o_tx_data),
         .rx_done(rx_done_uart),
         .tx_done(tx_done_uart)

@@ -9,9 +9,10 @@ module tb_TOP(
     localparam NB_DATA  = 32;
     localparam NB_BYTES = 8;
     localparam NB_BITS = 8;
-    localparam NB_STATE  = 11;
+    localparam NB_STATE = 12;
 
-    wire wire_rx, wire_tx, wire_rx_done, wire_tx_done, wire_locked, wire_ack, wire_end_send_data;
+    wire wire_rx, wire_tx, wire_rx_done, wire_tx_done, wire_locked;
+    wire [NB_STATE-1:0] wire_state;
     wire [NB_BITS -1 : 0] wire_rx_data;
 
     reg clock = 0;
@@ -29,12 +30,10 @@ module tb_TOP(
 		.i_clock(clock),
 		.i_reset(reset),
 		.i_reset_wz(reset_wz),
-		.i_rx_data(wire_tx),
+		.i_rx(wire_tx),
 
-		.o_tx_data(wire_rx),
-		.o_locked(wire_locked),	
-		.o_ack_debug(wire_ack),
-		.o_end_send_data(wire_end_send_data)
+		.o_tx(wire_rx),
+    .o_state(wire_state)
 	);
 
     uart #(
