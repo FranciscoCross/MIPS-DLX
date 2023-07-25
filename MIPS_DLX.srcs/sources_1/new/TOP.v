@@ -16,7 +16,6 @@ module TOP
 	(
 		input wire i_clock,
 		input wire i_reset,
-		input wire i_reset_wz,
 		input wire i_rx,
 
 		output wire o_tx,
@@ -50,7 +49,7 @@ module TOP
 	clock_wz clock_wz
   	(  
 		.clk_out1(clock_w),
-	  	.reset(i_reset_wz), 
+	  	.reset(i_reset), 
 	  	.locked(locked_wz),
 	  	.clk_in1(i_clock)
 	 );
@@ -105,16 +104,6 @@ module TOP
 		.o_debug_unit_reg(wire_debug_unit),				
 		.o_inst_load(wire_inst_load), //instruccion a cargar en memoria
 		.o_address(wire_addr_load_inst), //direccion donde se carga la instruccion
-		//.o_ack_debug(o_ack_debug), //avisa al test que ya puede enviar el comando
-		//.o_end_send_data(o_end_send_data), //avisa al test que ya se termino de enviar datos de memoria
-		//DEBUG
 		.o_state(o_state)
-		//.o_data_ready(),		
-		//.o_en_read_load_inst(),
-		//.o_receive_full_inst(),
-		//.o_send_inst_finish(),
-		//.o_state(),
-		//.o_data_receive(),
-		//.tx_start_o()	
 	);
 endmodule

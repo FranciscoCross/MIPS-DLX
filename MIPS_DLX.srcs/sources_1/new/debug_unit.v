@@ -136,37 +136,6 @@ module debug_unit
 wire tx_done_uart;
 reg tx_done_uart_prev = 0;
 
-reg tx_start_aux;
-reg [8:0] pulse_duration = 0;
-reg tx_start_prev;
-
-reg [7:0] delay_counter;
-
-always @(posedge i_clock) begin
-   tx_start_prev <= tx_start;  // Guardar el valor anterior de tx_start
-
-   	if (tx_start && !tx_start_prev) 
-		begin  // Flanco de subida de tx_start
-			delay_counter <= 10;  // Establecer el contador de retraso a un valor adecuado
-			pulse_duration <= 0;  // Reiniciar la duración del pulso
-		end 
-	else if (delay_counter > 0)
-		begin
-     		delay_counter <= delay_counter - 1;  // Decrementar el contador de retraso
-     		tx_start_aux <= (delay_counter == 1) ? 1'b1 : 1'b0; 
-   		end 
-	else 
-	begin
-    	if (pulse_duration < 100) 
-			begin
-       			pulse_duration <= pulse_duration + 1;
-       			tx_start_aux <= (pulse_duration == 99) ? 1'b0 : 1'b1;  // Establecer tx_start_aux en 0 después de que pulse_duration llegue a 99
-    		end
-   	end
- end
-
-
-
 
 initial
 	begin
@@ -567,23 +536,17 @@ end
 			endcase
 		end
 
-
-
-
-	uart#(.CLK(CLOCK), .BAUD_RATE(BAUD_RATE)) uart
-	(
-		//Inputs
-		.clock(i_clock),
-        .reset(i_reset),
-        .tx_start(tx_start_aux),
-        .rx(i_rx_data),
-        .tx_data(data_send),
-        .parity(1),
-        //Outputs
-		.rx_data(data_uart_receive),
-        .tx(o_tx_data),
-        .rx_done(rx_done_uart),
-        .tx_done(tx_done_uart)
-	);
+	UART2 uart2
+        (
+        .i_clock(i_clock),
+        .i_reset(i_reset),
+        .i_rx(i_rx_data),
+        .i_tx(data_send), 
+        .i_tx_start(tx_start),
+        .o_rx(data_uart_receive),
+        .o_rx_done_tick(rx_done_uart),
+        .o_tx(o_tx_data),
+        .o_tx_done_tick(tx_done_uart)
+        );
 
 endmodule
