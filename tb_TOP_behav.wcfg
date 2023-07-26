@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9085752658889fs"></ZoomStartTime>
-      <ZoomEndTime time="10381905144811fs"></ZoomEndTime>
-      <Cursor1Time time="9686383256000fs"></Cursor1Time>
+      <ZoomStartTime time="34336740928000fs"></ZoomStartTime>
+      <ZoomEndTime time="35583740928001fs"></ZoomEndTime>
+      <Cursor1Time time="35064740928000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="275"></NameColumnWidth>
-      <ValueColumnWidth column_width="83"></ValueColumnWidth>
+      <ValueColumnWidth column_width="79"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
@@ -45,7 +45,6 @@
    <wvobject fp_name="group492" type="group">
       <obj_property name="label">PIPELINE (TOP)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/i_enable_mem" type="logic">
          <obj_property name="ElementShortName">i_enable_mem</obj_property>
          <obj_property name="ObjectShortName">i_enable_mem</obj_property>
@@ -1409,7 +1408,6 @@
       <wvobject fp_name="group860" type="group">
          <obj_property name="label">MEMORY</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group687" type="group">
             <obj_property name="label">mux_addre_debug_mem</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -1738,6 +1736,7 @@
    <wvobject fp_name="group493" type="group">
       <obj_property name="label">Debug Unit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group549" type="group">
          <obj_property name="label">UART</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -2030,6 +2029,7 @@
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/data_send" type="array">
             <obj_property name="ElementShortName">data_send[7:0]</obj_property>
             <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/debug_unit_reg" type="logic">
             <obj_property name="ElementShortName">debug_unit_reg</obj_property>
@@ -2107,6 +2107,7 @@
       <wvobject fp_name="group61" type="group">
          <obj_property name="label">Send_Memory (2048)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/state" type="array">
             <obj_property name="ElementShortName">state[11:0]</obj_property>
             <obj_property name="ObjectShortName">state[11:0]</obj_property>
@@ -2188,6 +2189,7 @@
    <wvobject fp_name="group494" type="group">
       <obj_property name="label">UART PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group506" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -2216,6 +2218,7 @@
       <wvobject fp_name="group507" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/uart_PC/rx" type="logic">
             <obj_property name="ElementShortName">rx</obj_property>
             <obj_property name="ObjectShortName">rx</obj_property>

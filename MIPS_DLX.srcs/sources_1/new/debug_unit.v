@@ -71,7 +71,7 @@ module debug_unit
 	reg enable_read_cant_instr, enable_read_byte_to_byte, ready_full_inst, en_read_reg, en_write_reg, enable_read_instr, all_instr_send, read_mode_operate;
   reg count_one_cycle = 0;
 	/* UART */
-	reg data_rx_ready_uart, rx_ready_uart_prev;
+	reg rx_ready_uart_prev;
 	/* Finish send-data*/
 	reg end_send_program_counter;
 	reg end_send_cant_cycles;
@@ -122,7 +122,6 @@ module debug_unit
 
 	/* para DEBUG */
 	assign o_state = state;
-	//assign o_data_ready = data_rx_ready_uart;
 	assign o_data_receive = data_uart_receive;
 	assign o_en_read_cant_instr = enable_read_cant_instr;
 	assign o_receive_full_inst = ready_full_inst;
@@ -205,7 +204,6 @@ begin
   if (i_reset) 
 		begin
 			// Asignaciones durante el reset
-			data_rx_ready_uart <= reset_data_rx_ready_uart;
 			rx_ready_uart_prev <= reset_data_rx_ready_uart;
 			operation_mode <= reset_operation_mode;
 			o_addr_reg_debug_unit <= reset_o_addr_reg_debug_unit;
@@ -486,9 +484,9 @@ end
 						if (i_halt)
 							begin
 								//$display("salto halt");	
-								enable_pipe_reg <= 1'b0;
-								en_send_program_counter <= 1'b1;
-								next_state <= Send_program_counter;
+								enable_pipe_reg = 1'b0;
+								en_send_program_counter = 1'b1;
+								next_state = Send_program_counter;
 							end
 					end								
 				Send_program_counter:  		//256

@@ -176,7 +176,14 @@ module DECODE
 	end
 
 	always @(*) begin
-		reg_branch_or_jump <= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
+		if(i_reset)
+		begin	
+			reg_branch_or_jump <= 0;
+		end
+		else
+		begin
+			reg_branch_or_jump <= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
+		end
 	end
 
 	// Instancias de los módulos y asignaciones de las señales
