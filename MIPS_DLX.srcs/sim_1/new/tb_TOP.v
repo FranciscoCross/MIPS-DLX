@@ -52,7 +52,6 @@ module tb_TOP(
   	(  
 		.clk_out1(clock_w),
 	  	.reset(reset), 
-	  	.locked(),
 	  	.clk_in1(clock)
 	 );
 

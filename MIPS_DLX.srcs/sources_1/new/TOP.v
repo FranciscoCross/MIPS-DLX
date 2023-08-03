@@ -49,8 +49,7 @@ module TOP
 	clock_wz clock_wz
   	(  
 		.clk_out1(clock_w),
-	  	.reset(i_reset), 
-	  	.locked(locked_wz),
+	  	.reset(i_reset),
 	  	.clk_in1(i_clock)
 	 );
 

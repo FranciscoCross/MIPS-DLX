@@ -45,14 +45,7 @@ module debug_unit
 		output reg o_end_send_data, //avisa al test que ya se termino de enviar datos de memoria
 
 		/* para DEBUG */
-		//output wire o_data_ready,		
-		output wire o_en_read_cant_instr,
-		output wire o_receive_full_inst,
-		output wire o_send_inst_finish,
-		output wire [NB_STATE-1:0] o_state,
-		output wire [N_BITS-1:0] o_data_receive,
-		output wire o_tx_start			
-	
+		output wire [NB_STATE-1:0] o_state
 	);
 	localparam 	[NB_STATE-1:0]  Number_Instr        	=  12'b000000000001;//1
 	localparam 	[NB_STATE-1:0]	Receive_One_Instr     =  12'b000000000010;//2
@@ -122,15 +115,6 @@ module debug_unit
 
 	/* para DEBUG */
 	assign o_state = state;
-	//assign o_data_ready = data_rx_ready_uart;
-	assign o_data_receive = data_uart_receive;
-	assign o_en_read_cant_instr = enable_read_cant_instr;
-	assign o_receive_full_inst = ready_full_inst;
-	assign o_send_inst_finish = all_instr_send;	
-	assign o_tx_start = tx_start;
-
-
-
 
 
 wire tx_done_uart;
@@ -201,8 +185,7 @@ begin
 	else 
 		begin
 			//RECEPCION
-			rx_ready_uart_prev <= rx_done_uart;
-			if (rx_done_uart && !rx_ready_uart_prev) 
+			if (rx_done_uart) 
 				begin
 					if (enable_read_cant_instr) 
 						begin
@@ -251,86 +234,56 @@ begin
 					operation_mode <= operation_mode;
 				end
 			//ENVIO
-  		tx_done_uart_prev <= tx_done_uart;
-			if (tx_done_uart && !tx_done_uart_prev) 
+			if (en_send_program_counter && tx_done_uart) 
 				begin
-					tx_start <= 1'b0;
-					if (en_send_program_counter) 
+					end_send_program_counter <= 1'b1;
+					en_send_program_counter		<= 1'b0;
+				end 
+			if (en_send_cant_cyles && tx_done_uart) 
+				begin
+					en_send_cant_cyles 	<= 1'b0;
+					end_send_cant_cycles <= 1'b1;
+					data_send <= i_cant_cycles;
+					tx_start <= 1'b1;
+				end 
+			if (en_send_data_reg && tx_done_uart) 
+				begin
+					if (cont_byte == N_BYTES-1) 
 						begin
-							en_send_program_counter		<= 1'b0;
-							end_send_program_counter <= 1'b1;
+							end_send_reg <= 1'b1;
+							o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;
+							cont_byte <= 8'b0;
 						end 
-					if (!end_send_program_counter && en_send_cant_cyles) 
+					else 
 						begin
-							en_send_cant_cyles 	<= 1'b0;
-							end_send_cant_cycles <= 1'b1;
-							data_send <= i_reg_debug_unit[8*cont_byte+:8];
-						end 
-					if (!en_send_cant_cyles && en_send_data_reg) 
+							cont_byte <= cont_byte + 1;
+						end
+				end 
+			if (en_send_data_mem && tx_done_uart) 
+				begin
+					if(i_bit_sucio)
 						begin
 							if (cont_byte == N_BYTES-1) 
 								begin
-									end_send_reg <= 1'b1;
-									o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;
+									end_send_mem <= 1'b1;
+									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
 									cont_byte <= 8'b0;
 								end 
-							else 
+							else
 								begin
 									cont_byte <= cont_byte + 1;
 								end
-						end 
-					if (!en_send_data_reg && en_send_data_mem) 
+						end
+					else if(!i_bit_sucio && cont_byte == N_BYTES-1)
 						begin
-							if(i_bit_sucio)
-								begin
-									if (cont_byte == N_BYTES-1) 
-										begin
-											end_send_mem <= 1'b1;
-											o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-											cont_byte <= 8'b0;
-										end 
-									else
-										begin
-											cont_byte <= cont_byte + 1;
-										end
-								end
-							else if(!i_bit_sucio && cont_byte == N_BYTES-1)
-								begin
-									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
-								end
-						end 
+							o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
+						end
 				end 
-			else if (en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && !en_send_data_mem)
+			else
 				begin
-					data_send <= i_send_program_counter;
-					tx_start <= 1'b1;
-				end	
-			else if (!en_send_program_counter && en_send_cant_cyles && !en_send_data_reg && !en_send_data_mem)
-				begin
-					data_send <= i_cant_cycles;
-					tx_start <= 1'b1;
-				end	
-			else if (!en_send_program_counter && !en_send_cant_cyles && en_send_data_reg && !en_send_data_mem)
-				begin
-					data_send <= i_reg_debug_unit[8*cont_byte+:8];
-					tx_start <= 1'b1;
-				end	
-			else if (!en_send_program_counter && !en_send_cant_cyles && !en_send_data_reg && en_send_data_mem)
-				begin
-					if(i_bit_sucio)
-					begin
-						data_send <= i_mem_debug_unit[8*cont_byte+:8];
-						tx_start <= 1'b1;
-					end
-					else	
-					begin
-						o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-					end
-				end	
-			else	
-				tx_start <= 1'b0;							
-  		
-		end
+					tx_start <= 1'b0;
+				end
+		end 
 end
 
 	
@@ -464,8 +417,9 @@ end
 					begin							
 						debug_unit_reg = 1'b0;
 						en_send_program_counter = 1'b1;
-						next_state = Send_program_counter;						
-						
+						next_state = Send_program_counter;	
+						data_send = i_send_program_counter;
+						tx_start = 1'b1;				
 						if (end_send_program_counter)
 							begin																							
 								en_send_program_counter = 1'b0;	
@@ -540,13 +494,13 @@ end
         (
         .i_clock(i_clock),
         .i_reset(i_reset),
-        .i_rx(i_rx_data),
-        .i_tx(data_send), 
-        .i_tx_start(tx_start),
-        .o_rx(data_uart_receive),
-        .o_rx_done_tick(rx_done_uart),
-        .o_tx(o_tx_data),
-        .o_tx_done_tick(tx_done_uart)
+        .i_rx(i_rx_data), //wire para rx bit a bit
+        .i_tx(data_send), //data to transfer
+        .i_tx_start(tx_start), //start transfer
+        .o_rx(data_uart_receive), //data complete recive
+        .o_rx_done_tick(rx_done_uart), //rx done
+        .o_tx(o_tx_data), //wire para tx bit a bit
+        .o_tx_done_tick(tx_done_uart) //tx done
         );
 
 endmodule

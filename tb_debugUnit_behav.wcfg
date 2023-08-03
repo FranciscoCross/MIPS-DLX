@@ -11,23 +11,17 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,222.623501 us"></ZoomStartTime>
-      <ZoomEndTime time="2,562.806956 us"></ZoomEndTime>
-      <Cursor1Time time="7,359.253000 us"></Cursor1Time>
+      <ZoomStartTime time="5025916639730fs"></ZoomStartTime>
+      <ZoomEndTime time="7170526020203fs"></ZoomEndTime>
+      <Cursor1Time time="5776890968000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
-      <ValueColumnWidth column_width="115"></ValueColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="27" />
+   <WVObjectSize size="28" />
    <wave_markers>
-      <marker time="164089000" label="" />
       <marker time="679000" label="" />
-      <marker time="156527000" label="" />
-      <marker time="136255000" label="" />
-      <marker time="145719000" label="" />
-      <marker time="154627000" label="" />
-      <marker time="145165000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -55,10 +49,6 @@
          <obj_property name="ElementShortName">rx_done_uart</obj_property>
          <obj_property name="ObjectShortName">rx_done_uart</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_done" type="logic">
-         <obj_property name="ElementShortName">rx_done</obj_property>
-         <obj_property name="ObjectShortName">rx_done</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="group98" type="group">
       <obj_property name="label">Inputs</obj_property>
@@ -68,8 +58,8 @@
          <obj_property name="ObjectShortName">i_rx_data</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/i_send_program_counter" type="array">
-         <obj_property name="ElementShortName">i_send_program_counter[7:0]</obj_property>
-         <obj_property name="ObjectShortName">i_send_program_counter[7:0]</obj_property>
+         <obj_property name="ElementShortName">i_send_program_counter[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_send_program_counter[6:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/i_cant_cycles" type="array">
          <obj_property name="ElementShortName">i_cant_cycles[7:0]</obj_property>
@@ -135,25 +125,9 @@
          <obj_property name="ElementShortName">o_end_send_data</obj_property>
          <obj_property name="ObjectShortName">o_end_send_data</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_en_read_cant_instr" type="logic">
-         <obj_property name="ElementShortName">o_en_read_cant_instr</obj_property>
-         <obj_property name="ObjectShortName">o_en_read_cant_instr</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_receive_full_inst" type="logic">
-         <obj_property name="ElementShortName">o_receive_full_inst</obj_property>
-         <obj_property name="ObjectShortName">o_receive_full_inst</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_send_inst_finish" type="logic">
-         <obj_property name="ElementShortName">o_send_inst_finish</obj_property>
-         <obj_property name="ObjectShortName">o_send_inst_finish</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/o_state" type="array">
          <obj_property name="ElementShortName">o_state[11:0]</obj_property>
          <obj_property name="ObjectShortName">o_state[11:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_tx_start" type="logic">
-         <obj_property name="ElementShortName">o_tx_start</obj_property>
-         <obj_property name="ObjectShortName">o_tx_start</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group415" type="group">
@@ -175,85 +149,51 @@
          <obj_property name="ElementShortName">o_inst_load[31:0]</obj_property>
          <obj_property name="ObjectShortName">o_inst_load[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_data_receive" type="array">
-         <obj_property name="ElementShortName">o_data_receive[7:0]</obj_property>
-         <obj_property name="ObjectShortName">o_data_receive[7:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider213">
    </wvobject>
    <wvobject fp_name="group76" type="group">
-      <obj_property name="label">UART_AUX</obj_property>
+      <obj_property name="label">UART_PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group89" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/dout" type="array">
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="ElementShortName">dout[7:0]</obj_property>
-            <obj_property name="ObjectShortName">dout[7:0]</obj_property>
-            <obj_property name="label">rx_data_recivida[7:0]</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/rx_uart_instance/i_rx" type="logic">
+            <obj_property name="ElementShortName">i_rx</obj_property>
+            <obj_property name="ObjectShortName">i_rx</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/tick_counter" type="array">
-            <obj_property name="ElementShortName">tick_counter[4:0]</obj_property>
-            <obj_property name="ObjectShortName">tick_counter[4:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/rx_uart_instance/state" type="array">
+            <obj_property name="ElementShortName">state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">state[1:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/bit_counter" type="array">
-            <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
-            <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/rx_uart_instance/o_rx_done_tick" type="logic">
+            <obj_property name="ElementShortName">o_rx_done_tick</obj_property>
+            <obj_property name="ObjectShortName">o_rx_done_tick</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/state" type="array">
-            <obj_property name="ElementShortName">state[2:0]</obj_property>
-            <obj_property name="ObjectShortName">state[2:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_rx/rx" type="logic">
-            <obj_property name="ElementShortName">rx</obj_property>
-            <obj_property name="ObjectShortName">rx</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/rx_done" type="logic">
-            <obj_property name="ElementShortName">rx_done</obj_property>
-            <obj_property name="ObjectShortName">rx_done</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/rx_uart_instance/o_data" type="array">
+            <obj_property name="ElementShortName">o_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data[7:0]</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group35" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_tx/din" type="array">
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="ElementShortName">din[7:0]</obj_property>
-            <obj_property name="ObjectShortName">din[7:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-            <obj_property name="label">tx_data_send[7:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/tx_uart_instance_2/i_data" type="array">
+            <obj_property name="ElementShortName">i_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_data[7:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/tx_start" type="logic">
-            <obj_property name="ElementShortName">tx_start</obj_property>
-            <obj_property name="ObjectShortName">tx_start</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/i_tx_start" type="logic">
+            <obj_property name="ElementShortName">i_tx_start</obj_property>
+            <obj_property name="ObjectShortName">i_tx_start</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/instancia_tx/tx" type="logic">
-            <obj_property name="ElementShortName">tx</obj_property>
-            <obj_property name="ObjectShortName">tx</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/o_tx_done_tick" type="logic">
+            <obj_property name="ElementShortName">o_tx_done_tick</obj_property>
+            <obj_property name="ObjectShortName">o_tx_done_tick</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/instancia_uart/tx_done" type="logic">
-            <obj_property name="ElementShortName">tx_done</obj_property>
-            <obj_property name="ObjectShortName">tx_done</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/uart_pc/o_tx" type="logic">
+            <obj_property name="ElementShortName">o_tx</obj_property>
+            <obj_property name="ObjectShortName">o_tx</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
@@ -264,78 +204,43 @@
       <wvobject fp_name="group93" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_rx/dout" type="array">
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="ElementShortName">dout[7:0]</obj_property>
-            <obj_property name="ObjectShortName">dout[7:0]</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-            <obj_property name="label">rx_data_recibida[7:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/i_rx" type="logic">
+            <obj_property name="ElementShortName">i_rx</obj_property>
+            <obj_property name="ObjectShortName">i_rx</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_rx/rx" type="logic">
-            <obj_property name="ElementShortName">rx</obj_property>
-            <obj_property name="ObjectShortName">rx</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_rx_done_tick" type="logic">
+            <obj_property name="ElementShortName">o_rx_done_tick</obj_property>
+            <obj_property name="ObjectShortName">o_rx_done_tick</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/rx_done" type="logic">
-            <obj_property name="ElementShortName">rx_done</obj_property>
-            <obj_property name="ObjectShortName">rx_done</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/data_rx_ready_uart" type="logic">
-            <obj_property name="ElementShortName">data_rx_ready_uart</obj_property>
-            <obj_property name="ObjectShortName">data_rx_ready_uart</obj_property>
-            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_rx" type="array">
+            <obj_property name="ElementShortName">o_rx[7:0]</obj_property>
+            <obj_property name="ObjectShortName">o_rx[7:0]</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group49" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/din" type="array">
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="ElementShortName">din[7:0]</obj_property>
-            <obj_property name="ObjectShortName">din[7:0]</obj_property>
-            <obj_property name="label">tx_data_send[7:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/i_tx_start" type="logic">
+            <obj_property name="ElementShortName">i_tx_start</obj_property>
+            <obj_property name="ObjectShortName">i_tx_start</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start_aux" type="logic">
-            <obj_property name="ElementShortName">tx_start_aux</obj_property>
-            <obj_property name="ObjectShortName">tx_start_aux</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/tx_uart_instance_2/state" type="array">
+            <obj_property name="ElementShortName">state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">state[1:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/tx" type="logic">
-            <obj_property name="ElementShortName">tx</obj_property>
-            <obj_property name="ObjectShortName">tx</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/i_tx" type="array">
+            <obj_property name="ElementShortName">i_tx[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx[7:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_done_uart_prev" type="logic">
-            <obj_property name="ElementShortName">tx_done_uart_prev</obj_property>
-            <obj_property name="ObjectShortName">tx_done_uart_prev</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_tx" type="logic">
+            <obj_property name="ElementShortName">o_tx</obj_property>
+            <obj_property name="ObjectShortName">o_tx</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/tx_done" type="logic">
-            <obj_property name="ElementShortName">tx_done</obj_property>
-            <obj_property name="ObjectShortName">tx_done</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/tick_counter" type="array">
-            <obj_property name="ElementShortName">tick_counter[4:0]</obj_property>
-            <obj_property name="ObjectShortName">tick_counter[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/bit_counter" type="array">
-            <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
-            <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/state" type="array">
-            <obj_property name="ElementShortName">state[2:0]</obj_property>
-            <obj_property name="ObjectShortName">state[2:0]</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_tx_done_tick" type="logic">
+            <obj_property name="ElementShortName">o_tx_done_tick</obj_property>
+            <obj_property name="ObjectShortName">o_tx_done_tick</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
@@ -344,6 +249,13 @@
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_debugUnit/debug_unit/state" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">state[11:0]</obj_property>
+      <obj_property name="ObjectShortName">state[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="label">state_debug_unit[11:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group50" type="group">
       <obj_property name="label">Number_Instr (1)</obj_property>
@@ -363,11 +275,6 @@
       <wvobject fp_name="/tb_debugUnit/debug_unit/count_bytes" type="array">
          <obj_property name="ElementShortName">count_bytes[1:0]</obj_property>
          <obj_property name="ObjectShortName">count_bytes[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_data_receive" type="array">
-         <obj_property name="ElementShortName">o_data_receive[7:0]</obj_property>
-         <obj_property name="ObjectShortName">o_data_receive[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/instruction" type="array">
          <obj_property name="ElementShortName">instruction[31:0]</obj_property>
@@ -503,40 +410,19 @@
          <obj_property name="ElementShortName">end_send_program_counter</obj_property>
          <obj_property name="ObjectShortName">end_send_program_counter</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_cant_cycles" type="array">
-         <obj_property name="ElementShortName">i_cant_cycles[7:0]</obj_property>
-         <obj_property name="ObjectShortName">i_cant_cycles[7:0]</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/i_send_program_counter" type="array">
-         <obj_property name="ElementShortName">i_send_program_counter[7:0]</obj_property>
-         <obj_property name="ObjectShortName">i_send_program_counter[7:0]</obj_property>
+         <obj_property name="ElementShortName">i_send_program_counter[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i_send_program_counter[6:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
          <obj_property name="ElementShortName">tx_start</obj_property>
          <obj_property name="ObjectShortName">tx_start</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start_prev" type="logic">
-         <obj_property name="ElementShortName">tx_start_prev</obj_property>
-         <obj_property name="ObjectShortName">tx_start_prev</obj_property>
-      </wvobject>
       <wvobject fp_name="group422" type="group">
          <obj_property name="label">TxAux</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/pulse_duration" type="array">
-            <obj_property name="ElementShortName">pulse_duration[8:0]</obj_property>
-            <obj_property name="ObjectShortName">pulse_duration[8:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start_aux" type="logic">
-            <obj_property name="ElementShortName">tx_start_aux</obj_property>
-            <obj_property name="ObjectShortName">tx_start_aux</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_debugUnit/debug_unit/delay_counter" type="array">
-            <obj_property name="ElementShortName">delay_counter[7:0]</obj_property>
-            <obj_property name="ObjectShortName">delay_counter[7:0]</obj_property>
-         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group59" type="group">
@@ -586,12 +472,6 @@
          <obj_property name="ElementShortName">end_send_cant_cycles</obj_property>
          <obj_property name="ObjectShortName">end_send_cant_cycles</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/instancia_tx/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
          <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
          <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
@@ -613,7 +493,6 @@
    <wvobject fp_name="group61" type="group">
       <obj_property name="label">Send_Memory (2048)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_data_mem" type="logic">
          <obj_property name="ElementShortName">en_send_data_mem</obj_property>
          <obj_property name="ObjectShortName">en_send_data_mem</obj_property>
@@ -634,10 +513,6 @@
       <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_mem" type="logic">
          <obj_property name="ElementShortName">end_send_mem</obj_property>
          <obj_property name="ObjectShortName">end_send_mem</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/uart/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/o_addr_mem_debug_unit" type="array">
          <obj_property name="DisplayName">label</obj_property>
@@ -672,7 +547,6 @@
       <wvobject fp_name="/tb_debugUnit/memory_data/RAM" type="array">
          <obj_property name="ElementShortName">RAM[127:0][31:0]</obj_property>
          <obj_property name="ObjectShortName">RAM[127:0][31:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/memory_data/i_addr" type="array">
          <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
