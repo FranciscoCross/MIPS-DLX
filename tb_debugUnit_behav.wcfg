@@ -11,17 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="5025916639730fs"></ZoomStartTime>
-      <ZoomEndTime time="7170526020203fs"></ZoomEndTime>
-      <Cursor1Time time="5776890968000fs"></Cursor1Time>
+      <ZoomStartTime time="4696901095771fs"></ZoomStartTime>
+      <ZoomEndTime time="4697373978075fs"></ZoomEndTime>
+      <Cursor1Time time="4697012483000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
-      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="29" />
    <wave_markers>
       <marker time="679000" label="" />
+      <marker time="4697030000000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -41,6 +42,99 @@
       <obj_property name="ObjectShortName">state[11:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="label">state_debug_unit[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group98" type="group">
+      <obj_property name="label">DU_reciever</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_clock" type="logic">
+         <obj_property name="ElementShortName">i_clock</obj_property>
+         <obj_property name="ObjectShortName">i_clock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_reset" type="logic">
+         <obj_property name="ElementShortName">i_reset</obj_property>
+         <obj_property name="ObjectShortName">i_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_enable" type="logic">
+         <obj_property name="ElementShortName">i_enable</obj_property>
+         <obj_property name="ObjectShortName">i_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_rx_done_uart" type="logic">
+         <obj_property name="ElementShortName">i_rx_done_uart</obj_property>
+         <obj_property name="ObjectShortName">i_rx_done_uart</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_recieve_state" type="array">
+         <obj_property name="ElementShortName">i_recieve_state[3:0]</obj_property>
+         <obj_property name="ObjectShortName">i_recieve_state[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/count_bytes" type="array">
+         <obj_property name="ElementShortName">count_bytes[1:0]</obj_property>
+         <obj_property name="ObjectShortName">count_bytes[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/i_data_uart_receive" type="array">
+         <obj_property name="ElementShortName">i_data_uart_receive[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_data_uart_receive[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_number_instructions" type="array">
+         <obj_property name="ElementShortName">o_number_instructions[7:0]</obj_property>
+         <obj_property name="ObjectShortName">o_number_instructions[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_ready_number_instr" type="logic">
+         <obj_property name="ElementShortName">o_ready_number_instr</obj_property>
+         <obj_property name="ObjectShortName">o_ready_number_instr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_instruction" type="array">
+         <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_ready_full_inst" type="logic">
+         <obj_property name="ElementShortName">o_ready_full_inst</obj_property>
+         <obj_property name="ObjectShortName">o_ready_full_inst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_ready_all_instr_send" type="logic">
+         <obj_property name="ElementShortName">o_ready_all_instr_send</obj_property>
+         <obj_property name="ObjectShortName">o_ready_all_instr_send</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_mode_operate" type="array">
+         <obj_property name="ElementShortName">o_mode_operate[7:0]</obj_property>
+         <obj_property name="ObjectShortName">o_mode_operate[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/o_ready_mode_operate" type="logic">
+         <obj_property name="ElementShortName">o_ready_mode_operate</obj_property>
+         <obj_property name="ObjectShortName">o_ready_mode_operate</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/number_instructions" type="array">
+         <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
+         <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/ready_number_instr" type="logic">
+         <obj_property name="ElementShortName">ready_number_instr</obj_property>
+         <obj_property name="ObjectShortName">ready_number_instr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/ready_full_inst" type="logic">
+         <obj_property name="ElementShortName">ready_full_inst</obj_property>
+         <obj_property name="ObjectShortName">ready_full_inst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/instruction" type="array">
+         <obj_property name="ElementShortName">instruction[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/count_bytes" type="array">
+         <obj_property name="ElementShortName">count_bytes[1:0]</obj_property>
+         <obj_property name="ObjectShortName">count_bytes[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/count_instruction_now" type="array">
+         <obj_property name="ElementShortName">count_instruction_now[7:0]</obj_property>
+         <obj_property name="ObjectShortName">count_instruction_now[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/all_instr_send" type="logic">
+         <obj_property name="ElementShortName">all_instr_send</obj_property>
+         <obj_property name="ObjectShortName">all_instr_send</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_debugUnit/debug_unit/du_recieve/mode_operate" type="array">
+         <obj_property name="ElementShortName">mode_operate[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mode_operate[7:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group98" type="group">
       <obj_property name="label">DB Aux</obj_property>
@@ -133,6 +227,7 @@
    <wvobject fp_name="group415" type="group">
       <obj_property name="label">EnvioInstru</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/o_debug_unit_reg" type="logic">
          <obj_property name="ElementShortName">o_debug_unit_reg</obj_property>
          <obj_property name="ObjectShortName">o_debug_unit_reg</obj_property>
@@ -260,26 +355,23 @@
    <wvobject fp_name="group50" type="group">
       <obj_property name="label">Number_Instr (1)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/ready_number_instr" type="logic">
          <obj_property name="ElementShortName">ready_number_instr</obj_property>
          <obj_property name="ObjectShortName">ready_number_instr</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
-         <obj_property name="ElementShortName">number_instructions[6:0]</obj_property>
-         <obj_property name="ObjectShortName">number_instructions[6:0]</obj_property>
+         <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
+         <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group51" type="group">
       <obj_property name="label">Receive_One_Instr (2)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/count_bytes" type="array">
          <obj_property name="ElementShortName">count_bytes[1:0]</obj_property>
          <obj_property name="ObjectShortName">count_bytes[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/instruction" type="array">
-         <obj_property name="ElementShortName">instruction[31:0]</obj_property>
-         <obj_property name="ObjectShortName">instruction[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/o_address_du" type="array">
          <obj_property name="ElementShortName">o_address_du[6:0]</obj_property>
@@ -293,13 +385,14 @@
    <wvobject fp_name="group52" type="group">
       <obj_property name="label">Check_Send_All_Instr (4)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/count_instruction_now" type="array">
          <obj_property name="ElementShortName">count_instruction_now[6:0]</obj_property>
          <obj_property name="ObjectShortName">count_instruction_now[6:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
-         <obj_property name="ElementShortName">number_instructions[6:0]</obj_property>
-         <obj_property name="ObjectShortName">number_instructions[6:0]</obj_property>
+         <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
+         <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/all_instr_send" type="logic">
          <obj_property name="ElementShortName">all_instr_send</obj_property>
