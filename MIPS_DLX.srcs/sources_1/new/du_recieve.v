@@ -20,6 +20,7 @@ module du_recieve
 		output wire [N_BITS-1:0] o_number_instructions,
 		output wire o_ready_number_instr,
 		output wire [NB_DATA-1:0] o_instruction,
+		output wire [`ADDRWIDTH-1:0] o_addr_instruction,
 		output wire o_ready_full_inst,
 		output wire o_ready_all_instr_send,
 		output wire [N_BITS-1:0] o_mode_operate,
@@ -51,6 +52,7 @@ assign o_ready_full_inst = ready_full_inst;
 assign o_ready_all_instr_send = all_instr_send;
 assign o_mode_operate = mode_operate;
 assign o_ready_mode_operate = ready_mode_operate;
+assign o_addr_instruction = count_instruction_now;
 
 always @(posedge i_clock)
 begin

@@ -28,7 +28,7 @@ module debug_unit
 
 		output reg [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
-		output reg [`ADDRWIDTH:0] o_addr_mem_debug_unit, //direccion a leer en memoria
+		output reg [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
 		output reg o_ctrl_addr_debug_mem,
 		output reg o_ctrl_wr_debug_mem,
 		output reg o_ctrl_read_debug_reg,
@@ -66,12 +66,11 @@ module debug_unit
 	wire [N_BITS-1:0] operation_mode;
 	wire ready_mode_operate;
 	wire [N_BITS-1:0] number_instructions;
+	wire [`ADDRWIDTH-1:0] addr_instruction;
 
 	wire [N_BITS-1:0] data_uart_receive;
-	reg enable_read_cant_instr, enable_read_byte_to_byte, en_read_reg, en_write_reg, enable_read_instr, read_mode_operate;
-  	reg count_one_cycle = 0;
-	/* UART */
-	reg data_rx_ready_uart, rx_ready_uart_prev;
+	reg enable_read_cant_instr, enable_read_byte_to_byte, en_read_reg, en_write_reg, enable_read_instr;
+
 	/* Finish send-data*/
 	reg end_send_program_counter;
 	reg end_send_cant_cycles;
@@ -80,41 +79,22 @@ module debug_unit
 
 	/******************/
 	
-	reg [N_BITS-1:0]  reset_count_instruction_now;
-	reg [`ADDRWIDTH-1:0] count_instruction_now, reset_o_addr_mem_debug_unit;
-	reg [NB_STATE-1:0] state, reset_state, next_state, reset_next_state;
-	reg [NB_REG-1:0] addr_debug_unit_reg, reset_o_addr_reg_debug_unit;
+	reg [NB_STATE-1:0] state, next_state;
 	reg  debug_unit_reg, enable_pipe_reg, en_send_program_counter, en_send_data_reg, en_send_data_mem, en_send_cant_cyles;	
 	
 	
-	reg [1:0] count_bytes, reset_count_bytes;
-	reg [N_BITS-1:0] cont_byte, reset_cont_byte;
+	reg [1:0] count_bytes;
+	reg [N_BITS-1:0] cont_byte;
 	
 
-
-
-
-	reg reset_data_rx_ready_uart,reset_end_send_reg, reset_end_send_mem, reset_end_send_cant_cycles, reset_o_enable_pipe, reset_ready_number_instr;     		
-	reg	reset_end_send_program_counter, reset_tx_start, reset_all_instr_send, reset_ready_full_inst; 					
-	
-
-
-	/* ********************************************** */
-	/* SEND DATA TO THE COMPUTER*/
-	
-	//Este es un delay para tener en cuenta entre la diferencia por TX y RX. 
-	//De esa manera se evita transmitir cuando el receptor no esta listo
-	localparam integer WAIT_TX = 36*(CLOCK / (BAUD_RATE*16)); 
-
-	reg tx_start = 0;
-	reg next_tx_start = 0;
-	reg data_ready, bit_end_send_reg;
+	reg tx_start;
+	reg next_tx_start;
 	reg en_read_mode_operate;	
-	reg [N_BITS-1:0] data_send, data_send_reg, reset_data_send;   
+	reg [N_BITS-1:0] data_send;   
 		
 	assign o_en_write    = en_write_reg;
 	assign o_en_read     = en_read_reg;
-	assign o_address     = count_instruction_now-1;
+	assign o_address     = addr_instruction-1;
 	assign o_debug_unit_reg   = debug_unit_reg;		
 
 	/* para DEBUG */
@@ -122,30 +102,7 @@ module debug_unit
 
 
 wire tx_done_uart;
-reg tx_done_uart_prev = 0;
 
-
-initial
-	begin
-		reset_data_rx_ready_uart 				<= 1'b0;
-		reset_o_addr_reg_debug_unit 		<= {NB_REG{1'b0}};
-		reset_o_addr_mem_debug_unit 		<= {`N_ELEMENTS{1'b0}};
-		reset_end_send_reg 			 				<= 1'b0;
-		reset_end_send_mem							<= 1'b0;
-		reset_end_send_cant_cycles 			<= 1'b0;
-		reset_data_send 		  					<= 8'b0;
-		reset_cont_byte 		  					<= 8'b0;
-		reset_end_send_program_counter  <= 1'b0;  
-		reset_tx_start 									<= 1'b0;		
-		reset_all_instr_send 						<= 1'b0;
-		reset_count_instruction_now 		<= {`ADDRWIDTH{1'b0}};	
-		reset_ready_full_inst 					<= 1'b0;
-		reset_count_bytes 							<= 2'b0;
-		reset_ready_number_instr     		<= 1'b0;	
-		reset_state 										<= Number_Instr;	
-		reset_next_state 								<= Number_Instr;
-		reset_o_enable_pipe 						<= 1'b0;
-	end
 
 always @(negedge i_clock) 
 begin
@@ -158,74 +115,22 @@ begin
   if (i_reset) 
 		begin
 			// Asignaciones durante el reset
-			data_rx_ready_uart <= reset_data_rx_ready_uart;
-			rx_ready_uart_prev <= reset_data_rx_ready_uart;
-			o_addr_reg_debug_unit <= reset_o_addr_reg_debug_unit;
-			end_send_reg <= reset_end_send_reg;
-			end_send_mem <= reset_end_send_mem;
-			end_send_cant_cycles <= reset_end_send_cant_cycles;
-			o_addr_mem_debug_unit <= reset_o_addr_mem_debug_unit;
-			data_send <= reset_data_send;
-			cont_byte <= reset_cont_byte;
-			end_send_program_counter <= reset_end_send_program_counter;
-			tx_start <= reset_tx_start;
-			count_instruction_now <= reset_count_instruction_now;
-			count_bytes <= reset_count_bytes;
-			state <= reset_state;
-			next_state <= reset_next_state;
-			o_enable_pipe <= reset_o_enable_pipe;
+			o_addr_reg_debug_unit <= {NB_REG{1'b0}};
+			end_send_reg <= 1'b0;
+			end_send_mem <= 1'b0;
+			end_send_cant_cycles <= 1'b0;
+			o_addr_mem_debug_unit <= {`ADDRWIDTH{1'b0}};
+			data_send <= {N_BITS{1'b0}};
+			cont_byte <= {N_BITS{1'b0}};
+			end_send_program_counter <= 1'b0;
+			tx_start <= 1'b0;
+			count_bytes <= {2{1'b0}};
+			state <= {NB_STATE{1'b0}};
+			next_state <= {NB_STATE{1'b0}};
+			o_enable_pipe <= 1'b0;
 		end 
 	else 
 		begin
-			// //RECEPCION
-			// if (rx_done_uart) 
-			// 	begin
-			// 		if (enable_read_cant_instr) 
-			// 			begin
-			// 				ready_number_instr <= 1'b1;
-			// 				number_instructions <= data_uart_receive;
-			// 			end
-			// 		if (enable_read_byte_to_byte) 
-			// 			begin
-			// 				instruction <= {data_uart_receive, instruction[31:8]};
-			// 				if (count_bytes == N_BYTES-1) 
-			// 					begin
-			// 						ready_full_inst <= 1'b1;
-			// 						count_instruction_now <= count_instruction_now + 1;
-			// 						count_bytes <= 2'b0;
-			// 					end 
-			// 				else 
-			// 					begin
-			// 						ready_full_inst <= 1'b0;
-			// 						count_bytes <= count_bytes + 1'b1;
-			// 					end
-			// 			end
-			// 		if (en_read_mode_operate) 
-			// 			begin
-			// 				ready_mode_operate <= 1'b1;
-			// 				operation_mode <= data_uart_receive;
-			// 			end
-			// 	end
-			// else if (enable_read_instr) 
-			// 	begin
-			// 		if (count_instruction_now == number_instructions) 
-			// 			begin
-			// 				all_instr_send <= 1'b1;
-			// 			end 
-			// 		else 
-			// 			begin
-			// 				all_instr_send <= 1'b0;
-			// 			end
-			// 	end
-			// else 
-			// 	begin
-			// 		ready_number_instr <= 1'b0; 
-			// 		ready_full_inst <= 1'b0;
-			// 		ready_mode_operate <= 1'b0;
-			// 		count_bytes <= count_bytes;
-			// 		number_instructions <= number_instructions;
-			// 		operation_mode <= operation_mode;
-			// 	end
 			//ENVIO
 			if (en_send_program_counter && tx_done_uart) 
 				begin
@@ -286,7 +191,6 @@ end
 		begin: next_state_logic		    
 			next_state 								= state;
 			enable_pipe_reg	 					= 1'b0;			
-			read_mode_operate 				= 1'b0;
 			en_write_reg 							= 1'b0;
 			en_read_reg								= 1'b0;
 			enable_read_cant_instr 				= 1'b0; // habilita leer la cantidad de instrucciones a cargar en memoria
@@ -476,8 +380,7 @@ end
 										//$display("FINISH ENVIO DE DATOS");	
 									end	
 							end		
-					end
-											
+					end					
 				default:
 					next_state = Number_Instr;					
 			endcase
@@ -510,8 +413,9 @@ du_recieve du_recieve
 		.o_ready_number_instr(ready_number_instr),
 		.o_instruction(o_inst_load),
 		.o_ready_full_inst(ready_full_inst),
+		.o_addr_instruction(addr_instruction),
 		.o_ready_all_instr_send(all_instr_send),
-		.o_mode_operate(mode_operate),
+		.o_mode_operate(operation_mode),
 		.o_ready_mode_operate(ready_mode_operate)
 	);
 
