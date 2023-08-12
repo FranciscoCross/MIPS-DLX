@@ -148,6 +148,7 @@ begin
 				cont_byte = cont_byte + 1;
 				if (cont_byte > N_BYTES-1)
 				begin
+					
 					end_send_one_reg  <= 1'b1;
 					cont_byte <= 3'b0;
 				end
@@ -322,6 +323,7 @@ end
 					if(end_send_one_reg)
 					begin
 						next_state = Check_send_all_regs;
+						o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
 						enable_send_one_reg = 1'b0;
 					end	
 					else
@@ -335,13 +337,12 @@ end
 				Check_send_all_regs:
 					begin
 						end_send_one_reg = 1'b0;
-						if(o_addr_reg_debug_unit == 31)
+						if(o_addr_reg_debug_unit == 5'b0)
 						begin
 							next_state = Waiting_operation;
 						end
 						else
 						begin
-							o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
 							next_state = Send_one_reg;
 						end
 					end

@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="85.666960000 ms"></ZoomEndTime>
-      <Cursor1Time time="33.004021441 ms"></Cursor1Time>
+      <ZoomStartTime time="68,644.206979 us"></ZoomStartTime>
+      <ZoomEndTime time="73,953.807759 us"></ZoomEndTime>
+      <Cursor1Time time="69,787.060748 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
@@ -23,7 +23,7 @@
    <wave_markers>
       <marker time="679000" label="" />
       <marker time="4697030000000" label="" />
-      <marker time="5248090000" label="" />
+      <marker time="6297640000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -552,6 +552,12 @@
          <obj_property name="label">Send_one_reg (1024)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/clock" type="logic">
+            <obj_property name="ElementShortName">clock</obj_property>
+            <obj_property name="ObjectShortName">clock</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
          <wvobject fp_name="/tb_debugUnit/debug_unit/enable_send_one_reg" type="logic">
             <obj_property name="ElementShortName">enable_send_one_reg</obj_property>
             <obj_property name="ObjectShortName">enable_send_one_reg</obj_property>
@@ -581,6 +587,10 @@
             <obj_property name="ElementShortName">cont_byte[2:0]</obj_property>
             <obj_property name="ObjectShortName">cont_byte[2:0]</obj_property>
          </wvobject>
+         <wvobject fp_name="/tb_debugUnit/bank_register/o_data_ra" type="array">
+            <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject fp_name="group61" type="group">
          <obj_property name="label">Check_send_all_regs (2048)</obj_property>
@@ -589,6 +599,7 @@
          <wvobject fp_name="/tb_debugUnit/o_addr_reg_debug_unit" type="array">
             <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
             <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group61" type="group">
@@ -660,6 +671,7 @@
             <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
             <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_debugUnit/bank_register/registers[31]" type="array">
                <obj_property name="ElementShortName">[31][31:0]</obj_property>
                <obj_property name="ObjectShortName">[31][31:0]</obj_property>
