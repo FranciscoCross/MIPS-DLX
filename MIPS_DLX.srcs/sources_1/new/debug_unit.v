@@ -190,42 +190,46 @@ end
 						next_state  = Number_Instr;	
 						enable_read_cant_instr = 1'b1;
 						if (ready_number_instr)
-							begin								
-								next_state  = Receive_One_Instr;
-								enable_read_cant_instr = 1'b0;
-							end								    						      					
+						begin								
+							next_state  = Receive_One_Instr;
+							enable_read_cant_instr = 1'b0;
+						end
+						else
+						begin
+							next_state  = next_state;
+							enable_read_cant_instr = enable_read_cant_instr;
+						end								    						      					
 					end	
 				Receive_One_Instr: 				//2
 					begin
-						next_state = Receive_One_Instr;
 						if (ready_full_inst) //Cuando esta lista la instruccion, la manda y pasa al siguiente estado
-							begin	
-																
-								next_state = Check_Send_All_Instr;
-							end								      
-						  					
+						begin									
+							next_state = Check_Send_All_Instr;
+						end	
+						else
+							next_state  = Receive_One_Instr;
 					end				
 				Check_Send_All_Instr:			//4		//Estado con el que verificamos si se termino el envio de instrucciones		
 					begin					
 						en_write_reg = 1'b1;	 //habilito la escritura en memoria del pipeline															
 						if (all_instr_send)
-							begin	
-								next_state  = Waiting_operation;								
-							end
+						begin	
+							next_state  = Waiting_operation;								
+						end
 						else
 							next_state  = Receive_One_Instr;	
 					end	
 				Waiting_operation: 				//8	
 					begin
-						next_state  = Waiting_operation;	
+							
 						enable_read_mode_operate = 1'b1;
 						debug_unit_reg = 1'b0;						
-
 						if (ready_mode_operate)
-							begin								
-								next_state = Check_Operation;
-							end													
-
+						begin								
+							next_state = Check_Operation;
+						end	
+						else
+							next_state  = Waiting_operation;
 					end									
 				Check_Operation: 					//16 //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
@@ -260,7 +264,10 @@ end
 						if (i_halt)
 						begin
 							enable_pipe_reg = 1'b0;															
-						end					
+						end
+						else
+							enable_pipe_reg = enable_pipe_reg;
+
 					end				
 				Continue_to_Halt:					//128	
 					begin						
@@ -272,11 +279,16 @@ end
 						en_write_reg = 1'b0;						
 						
 						if (i_halt)
-							begin
-								//$display("salto halt");	
-								enable_pipe_reg = 1'b0;
-								next_state = Send_program_counter;
-							end
+						begin
+							//$display("salto halt");	
+							enable_pipe_reg = 1'b0;
+							next_state = Send_program_counter;
+						end
+						else
+						begin
+							enable_pipe_reg = enable_pipe_reg;
+							next_state = Continue_to_Halt;
+						end
 					end								
 				Send_program_counter:  		//256
 					begin	
@@ -379,7 +391,7 @@ end
 				Check_send_all_mems:
 					begin
 						end_send_mem = 1'b0;
-						if(o_addr_mem_debug_unit == `N_ELEMENTS-1)
+						if(o_addr_mem_debug_unit == 7'b0)
 						begin
 							next_state = Waiting_operation;
 						end

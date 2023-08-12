@@ -40,11 +40,11 @@ module pipeline
 
 
 	wire [`ADDRWIDTH-1:0]   wire_pc_IF_ID; 
-    wire [`ADDRWIDTH-1:0]   wire_pc_ID_EX;
-    wire [`ADDRWIDTH-1:0]   wire_pc_EX_MEM; 
-    wire [`ADDRWIDTH-1:0]   wire_pc_MEM_WB;
-    wire [`ADDRWIDTH-1:0]   wire_pc_WB; 
-    wire [`ADDRWIDTH-1:0]   wire_pc_adder;
+	wire [`ADDRWIDTH-1:0]   wire_pc_ID_EX;
+	wire [`ADDRWIDTH-1:0]   wire_pc_EX_MEM; 
+	wire [`ADDRWIDTH-1:0]   wire_pc_MEM_WB;
+	wire [`ADDRWIDTH-1:0]   wire_pc_WB; 
+	wire [`ADDRWIDTH-1:0]   wire_pc_adder;
 	wire [`ADDRWIDTH-1:0]   wire_pc;
 
 	wire [NB_DATA-1:0]  wire_inst_IF; 
@@ -53,12 +53,12 @@ module pipeline
 
 	/* output data stage ID */
 	wire [NB_DATA-1:0]  wire_data_ra_ID; 
-    wire [NB_DATA-1:0]  wire_data_rb_ID; 
-    wire [NB_DATA-1:0]  wire_inm_ext_ID;
-    /* output data latch ID-EX */
-    wire [NB_DATA-1:0]  wire_data_ra_ID_EX; 
-    wire [NB_DATA-1:0]  wire_data_rb_ID_EX; 
-    wire [NB_DATA-1:0]  wire_inm_ext_ID_EX;
+	wire [NB_DATA-1:0]  wire_data_rb_ID; 
+	wire [NB_DATA-1:0]  wire_inm_ext_ID;
+	/* output data latch ID-EX */
+	wire [NB_DATA-1:0]  wire_data_ra_ID_EX; 
+	wire [NB_DATA-1:0]  wire_data_rb_ID_EX; 
+	wire [NB_DATA-1:0]  wire_inm_ext_ID_EX;
 
 	wire [NB_EX_CTRL-1:0]   wire_EX_ctrl_ID; 
 	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_ID;
@@ -86,11 +86,11 @@ module pipeline
 	/* registros operandos */
 
 	wire [NB_REG-1:0]   wire_rt_ID; 
-    wire [NB_REG-1:0]   wire_rs_ID; 
-    wire [NB_REG-1:0]   wire_rd_ID;
+	wire [NB_REG-1:0]   wire_rs_ID; 
+	wire [NB_REG-1:0]   wire_rd_ID;
 	wire [NB_REG-1:0]   wire_rt_ID_EX; 
-    wire [NB_REG-1:0]   wire_rs_ID_EX; 
-    wire [NB_REG-1:0]   wire_rd_ID_EX;
+	wire [NB_REG-1:0]   wire_rs_ID_EX; 
+	wire [NB_REG-1:0]   wire_rd_ID_EX;
 
 	wire [NB_REG-1:0]   wire_shamt_ID;
 	wire [NB_REG-1:0]   wire_shamt_ID_EX;
@@ -105,18 +105,18 @@ module pipeline
 	wire [`ADDRWIDTH-1:0]   wire_addr_branch_ID_IF;
 	wire [`ADDRWIDTH-1:0]   wire_addr_jump_ID_IF;
 
-    /* Instruccion LUI */    
-    wire [NB_DATA-1:0]  wire_inm_ext_MEM_WB;
-    wire [NB_DATA-1:0]  wire_inm_ext_WB;
+	/* Instruccion LUI */    
+	wire [NB_DATA-1:0]  wire_inm_ext_MEM_WB;
+	wire [NB_DATA-1:0]  wire_inm_ext_WB;
 
-    /* STORE */
-    wire [NB_DATA-1:0]  wire_write_data_mem_EX_MEM;
+	/* STORE */
+	wire [NB_DATA-1:0]  wire_write_data_mem_EX_MEM;
 
 	wire [NB_DATA-1:0]  wire_data_write_WB_ID;
 
 	/* wireion entre EX y reg_EX_MEM */
 	wire [NB_DATA-1:0]  wire_result_alu_EX;
-    wire [NB_DATA-1:0]  wire_result_alu_EX_MEM;
+	wire [NB_DATA-1:0]  wire_result_alu_EX_MEM;
 
 	wire [1:0] wire_pc_src_ID_IF;
 
