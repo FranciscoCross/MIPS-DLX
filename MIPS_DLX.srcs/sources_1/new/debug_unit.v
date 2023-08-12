@@ -12,7 +12,7 @@ module debug_unit
 		parameter NB_REG     = 5,
 		parameter N_BITS     = 8,
 		parameter N_BYTES    = 4,		
-		parameter NB_STATE   = 12,
+		parameter NB_STATE   = 16,
 		parameter N_COUNT	 	 = 10			
 	)
 	(
@@ -79,7 +79,8 @@ module debug_unit
 	reg end_send_pc, enable_send_pc;
 	reg end_send_cant_cycles, enable_send_cant_cycles;
 	reg end_send_one_reg, enable_send_one_reg;
-	reg end_send_mem;
+	reg end_send_addr_mem, enable_send_addr_mem;
+	reg end_send_mem, enable_send_mem;
 
 	/******************/
 	
@@ -132,7 +133,7 @@ begin
 		end 
 	else
 	begin
-		if(enable_send_pc || enable_send_cant_cycles || enable_send_one_reg)
+		if(enable_send_pc || enable_send_cant_cycles || enable_send_one_reg || enable_send_addr_mem || enable_send_mem)
 		begin
 			tx_start <= 1'b1;
 		end
@@ -154,7 +155,18 @@ begin
 				end
 						
 			end
-				
+			if(enable_send_addr_mem)
+				end_send_addr_mem <= 1'b1;
+			if(enable_send_mem)
+			begin
+				cont_byte = cont_byte + 1;
+				if (cont_byte > N_BYTES-1)
+				begin
+					end_send_mem  <= 1'b1;
+					cont_byte <= 3'b0;
+				end
+						
+			end
 		end
 	end
 end		
@@ -186,6 +198,8 @@ end
 			o_ctrl_addr_debug_mem 		= 1'b0;
 			o_ctrl_wr_debug_mem 			= 1'b0;	
 			enable_send_one_reg = 1'b0;
+			enable_send_addr_mem = 1'b0;
+			enable_send_mem = 1'b0;
 					
 			
 			case (state)
@@ -330,7 +344,6 @@ end
 					begin
 						data_send = i_reg_debug_unit[8*cont_byte+:8];	
 						end_send_cant_cycles	= 1'b0;		
-						debug_unit_reg = 1'b0;
 						next_state = Send_one_reg;	
 						enable_send_one_reg = 1'b1;																									
 					end
@@ -339,14 +352,66 @@ end
 						end_send_one_reg = 1'b0;
 						if(o_addr_reg_debug_unit == 5'b0)
 						begin
-							next_state = Waiting_operation;
+							next_state = Check_bit_sucio;
 						end
 						else
 						begin
 							next_state = Send_one_reg;
 						end
 					end
-
+				Check_bit_sucio:
+					begin
+						if(i_bit_sucio)
+						begin
+							next_state = Send_addr_mem;
+						end
+						else
+						begin
+							next_state = Check_bit_sucio;
+						end
+					end
+				Send_addr_mem:
+					begin	
+						if(end_send_addr_mem)
+						begin
+							next_state = Send_data_mem;
+							enable_send_addr_mem = 1'b0;
+						end	
+						else
+						begin					
+							next_state = Send_addr_mem;	
+							data_send = o_addr_mem_debug_unit;
+							enable_send_addr_mem = 1'b1;																									
+						end
+					end	
+				Send_data_mem:
+					begin
+						if(end_send_mem)
+						begin
+							o_addr_mem_debug_unit = o_addr_mem_debug_unit + 1;
+							next_state = Check_send_all_mems;
+							enable_send_mem = 1'b0;
+						end	
+						else
+						begin
+							data_send = i_mem_debug_unit[8*cont_byte+:8];	
+							end_send_addr_mem	= 1'b0;		
+							next_state = Send_data_mem;	
+							enable_send_mem = 1'b1;																									
+						end
+					end
+				Check_send_all_mems:
+					begin
+						end_send_mem = 1'b0;
+						if(o_addr_mem_debug_unit == `N_ELEMENTS-1)
+						begin
+							next_state = Waiting_operation;
+						end
+						else
+						begin
+							next_state = Check_bit_sucio;
+						end
+					end
 				default:
 					next_state = Number_Instr;					
 			endcase
