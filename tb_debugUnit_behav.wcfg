@@ -11,18 +11,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="5772575774695fs"></ZoomStartTime>
-      <ZoomEndTime time="5773337101225fs"></ZoomEndTime>
-      <Cursor1Time time="5772830000000fs"></Cursor1Time>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="85.666960000 ms"></ZoomEndTime>
+      <Cursor1Time time="33.004021441 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
-      <ValueColumnWidth column_width="95"></ValueColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="30" />
+   <WVObjectSize size="18" />
    <wave_markers>
       <marker time="679000" label="" />
       <marker time="4697030000000" label="" />
+      <marker time="5248090000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -268,6 +269,7 @@
          <wvobject fp_name="/tb_debugUnit/uart_pc/rx_uart_instance/o_data" type="array">
             <obj_property name="ElementShortName">o_data[7:0]</obj_property>
             <obj_property name="ObjectShortName">o_data[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group35" type="group">
@@ -342,6 +344,8 @@
    <wvobject fp_name="/tb_debugUnit/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_debugUnit/debug_unit/state" type="array">
       <obj_property name="DisplayName">label</obj_property>
@@ -350,308 +354,442 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="label">state_debug_unit[11:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="group50" type="group">
-      <obj_property name="label">Number_Instr (1)</obj_property>
+   <wvobject fp_name="group508" type="group">
+      <obj_property name="label">Stage1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/ready_number_instr" type="logic">
-         <obj_property name="ElementShortName">ready_number_instr</obj_property>
-         <obj_property name="ObjectShortName">ready_number_instr</obj_property>
+      <wvobject fp_name="group50" type="group">
+         <obj_property name="label">Number_Instr (1)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/ready_number_instr" type="logic">
+            <obj_property name="ElementShortName">ready_number_instr</obj_property>
+            <obj_property name="ObjectShortName">ready_number_instr</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
+            <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
+            <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
-         <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
-         <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
+      <wvobject fp_name="group51" type="group">
+         <obj_property name="label">Receive_One_Instr (2)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/o_address" type="array">
+            <obj_property name="ElementShortName">o_address[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_address[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/o_address_du" type="array">
+            <obj_property name="ElementShortName">o_address_du[6:0]</obj_property>
+            <obj_property name="ObjectShortName">o_address_du[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/o_inst_load" type="array">
+            <obj_property name="ElementShortName">o_inst_load[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_inst_load[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/ready_full_inst" type="logic">
+            <obj_property name="ElementShortName">ready_full_inst</obj_property>
+            <obj_property name="ObjectShortName">ready_full_inst</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group52" type="group">
+         <obj_property name="label">Check_Send_All_Instr (4)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
+            <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
+            <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/all_instr_send" type="logic">
+            <obj_property name="ElementShortName">all_instr_send</obj_property>
+            <obj_property name="ObjectShortName">all_instr_send</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_read_instr" type="logic">
+            <obj_property name="ElementShortName">enable_read_instr</obj_property>
+            <obj_property name="ObjectShortName">enable_read_instr</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group54" type="group">
+         <obj_property name="label">Waiting_Operation (8)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/ready_mode_operate" type="logic">
+            <obj_property name="ElementShortName">ready_mode_operate</obj_property>
+            <obj_property name="ObjectShortName">ready_mode_operate</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/en_read_mode_operate" type="logic">
+            <obj_property name="ElementShortName">en_read_mode_operate</obj_property>
+            <obj_property name="ObjectShortName">en_read_mode_operate</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/operation_mode" type="array">
+            <obj_property name="ElementShortName">operation_mode[7:0]</obj_property>
+            <obj_property name="ObjectShortName">operation_mode[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group54" type="group">
+         <obj_property name="label">Check_Operation (16)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/operation_mode" type="array">
+            <obj_property name="ElementShortName">operation_mode[7:0]</obj_property>
+            <obj_property name="ObjectShortName">operation_mode[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/next_state" type="array">
+            <obj_property name="ElementShortName">next_state[11:0]</obj_property>
+            <obj_property name="ObjectShortName">next_state[11:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group55" type="group">
+         <obj_property name="label">Step_to_step (32)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
+            <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
+            <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/o_enable_mem" type="logic">
+            <obj_property name="ElementShortName">o_enable_mem</obj_property>
+            <obj_property name="ObjectShortName">o_enable_mem</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/en_write_reg" type="logic">
+            <obj_property name="ElementShortName">en_write_reg</obj_property>
+            <obj_property name="ObjectShortName">en_write_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/o_debug_unit_reg" type="logic">
+            <obj_property name="ElementShortName">o_debug_unit_reg</obj_property>
+            <obj_property name="ObjectShortName">o_debug_unit_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/en_read_reg" type="logic">
+            <obj_property name="ElementShortName">en_read_reg</obj_property>
+            <obj_property name="ObjectShortName">en_read_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/next_state" type="array">
+            <obj_property name="ElementShortName">next_state[11:0]</obj_property>
+            <obj_property name="ObjectShortName">next_state[11:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group56" type="group">
+         <obj_property name="label">Wait_One_Cicle (64)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/i_halt" type="logic">
+            <obj_property name="ElementShortName">i_halt</obj_property>
+            <obj_property name="ObjectShortName">i_halt</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
+            <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
+            <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group57" type="group">
+         <obj_property name="label">Continue_to_Halt (128)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/i_halt" type="logic">
+            <obj_property name="ElementShortName">i_halt</obj_property>
+            <obj_property name="ObjectShortName">i_halt</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
+            <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
+            <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="group51" type="group">
-      <obj_property name="label">Receive_One_Instr (2)</obj_property>
+   <wvobject fp_name="group509" type="group">
+      <obj_property name="label">Stage2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_address" type="array">
-         <obj_property name="ElementShortName">o_address[6:0]</obj_property>
-         <obj_property name="ObjectShortName">o_address[6:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group58" type="group">
+         <obj_property name="label">Send_program_counter (256)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/clock" type="logic">
+            <obj_property name="ElementShortName">clock</obj_property>
+            <obj_property name="ObjectShortName">clock</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_pc" type="logic">
+            <obj_property name="ElementShortName">end_send_pc</obj_property>
+            <obj_property name="ObjectShortName">end_send_pc</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_send_pc" type="logic">
+            <obj_property name="ElementShortName">enable_send_pc</obj_property>
+            <obj_property name="ObjectShortName">enable_send_pc</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
+            <obj_property name="ElementShortName">data_send[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
+            <obj_property name="ElementShortName">tx_start</obj_property>
+            <obj_property name="ObjectShortName">tx_start</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_done_uart" type="logic">
+            <obj_property name="ElementShortName">tx_done_uart</obj_property>
+            <obj_property name="ObjectShortName">tx_done_uart</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/count_bytes" type="array">
-         <obj_property name="ElementShortName">count_bytes[1:0]</obj_property>
-         <obj_property name="ObjectShortName">count_bytes[1:0]</obj_property>
+      <wvobject fp_name="group59" type="group">
+         <obj_property name="label">Send_cant_cyles (512)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
+            <obj_property name="ElementShortName">data_send[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/i_cant_cycles" type="array">
+            <obj_property name="ElementShortName">i_cant_cycles[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_cant_cycles[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_cant_cycles" type="logic">
+            <obj_property name="ElementShortName">end_send_cant_cycles</obj_property>
+            <obj_property name="ObjectShortName">end_send_cant_cycles</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
+            <obj_property name="ElementShortName">tx_start</obj_property>
+            <obj_property name="ObjectShortName">tx_start</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_done_uart" type="logic">
+            <obj_property name="ElementShortName">tx_done_uart</obj_property>
+            <obj_property name="ObjectShortName">tx_done_uart</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/o_address_du" type="array">
-         <obj_property name="ElementShortName">o_address_du[6:0]</obj_property>
-         <obj_property name="ObjectShortName">o_address_du[6:0]</obj_property>
+      <wvobject fp_name="group60" type="group">
+         <obj_property name="label">Send_one_reg (1024)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/enable_send_one_reg" type="logic">
+            <obj_property name="ElementShortName">enable_send_one_reg</obj_property>
+            <obj_property name="ObjectShortName">enable_send_one_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_one_reg" type="logic">
+            <obj_property name="ElementShortName">end_send_one_reg</obj_property>
+            <obj_property name="ObjectShortName">end_send_one_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
+            <obj_property name="ElementShortName">tx_start</obj_property>
+            <obj_property name="ObjectShortName">tx_start</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
+            <obj_property name="ElementShortName">data_send[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_reg_debug_unit" type="array">
+            <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_tx_done_tick" type="logic">
+            <obj_property name="ElementShortName">o_tx_done_tick</obj_property>
+            <obj_property name="ObjectShortName">o_tx_done_tick</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
+            <obj_property name="ElementShortName">cont_byte[2:0]</obj_property>
+            <obj_property name="ObjectShortName">cont_byte[2:0]</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/o_inst_load" type="array">
-         <obj_property name="ElementShortName">o_inst_load[31:0]</obj_property>
-         <obj_property name="ObjectShortName">o_inst_load[31:0]</obj_property>
+      <wvobject fp_name="group61" type="group">
+         <obj_property name="label">Check_send_all_regs (2048)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/o_addr_reg_debug_unit" type="array">
+            <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/ready_full_inst" type="logic">
-         <obj_property name="ElementShortName">ready_full_inst</obj_property>
-         <obj_property name="ObjectShortName">ready_full_inst</obj_property>
+      <wvobject fp_name="group61" type="group">
+         <obj_property name="label">Check_bit_sucio (4096)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
-   </wvobject>
-   <wvobject fp_name="group52" type="group">
-      <obj_property name="label">Check_Send_All_Instr (4)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/number_instructions" type="array">
-         <obj_property name="ElementShortName">number_instructions[7:0]</obj_property>
-         <obj_property name="ObjectShortName">number_instructions[7:0]</obj_property>
+      <wvobject fp_name="group61" type="group">
+         <obj_property name="label">Send_addr_mem (8192)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/all_instr_send" type="logic">
-         <obj_property name="ElementShortName">all_instr_send</obj_property>
-         <obj_property name="ObjectShortName">all_instr_send</obj_property>
+      <wvobject fp_name="group61" type="group">
+         <obj_property name="label">Send_data_mem (16264)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/enable_read_instr" type="logic">
-         <obj_property name="ElementShortName">enable_read_instr</obj_property>
-         <obj_property name="ObjectShortName">enable_read_instr</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group54" type="group">
-      <obj_property name="label">Waiting_Operation (8)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/ready_mode_operate" type="logic">
-         <obj_property name="ElementShortName">ready_mode_operate</obj_property>
-         <obj_property name="ObjectShortName">ready_mode_operate</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_read_mode_operate" type="logic">
-         <obj_property name="ElementShortName">en_read_mode_operate</obj_property>
-         <obj_property name="ObjectShortName">en_read_mode_operate</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/operation_mode" type="array">
-         <obj_property name="ElementShortName">operation_mode[7:0]</obj_property>
-         <obj_property name="ObjectShortName">operation_mode[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group54" type="group">
-      <obj_property name="label">Check_Operation (16)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/operation_mode" type="array">
-         <obj_property name="ElementShortName">operation_mode[7:0]</obj_property>
-         <obj_property name="ObjectShortName">operation_mode[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/next_state" type="array">
-         <obj_property name="ElementShortName">next_state[11:0]</obj_property>
-         <obj_property name="ObjectShortName">next_state[11:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group55" type="group">
-      <obj_property name="label">Step_to_step (32)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
-         <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
-         <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_enable_mem" type="logic">
-         <obj_property name="ElementShortName">o_enable_mem</obj_property>
-         <obj_property name="ObjectShortName">o_enable_mem</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_write_reg" type="logic">
-         <obj_property name="ElementShortName">en_write_reg</obj_property>
-         <obj_property name="ObjectShortName">en_write_reg</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_debug_unit_reg" type="logic">
-         <obj_property name="ElementShortName">o_debug_unit_reg</obj_property>
-         <obj_property name="ObjectShortName">o_debug_unit_reg</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_read_reg" type="logic">
-         <obj_property name="ElementShortName">en_read_reg</obj_property>
-         <obj_property name="ObjectShortName">en_read_reg</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/next_state" type="array">
-         <obj_property name="ElementShortName">next_state[11:0]</obj_property>
-         <obj_property name="ObjectShortName">next_state[11:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group56" type="group">
-      <obj_property name="label">Wait_One_Cicle (64)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_halt" type="logic">
-         <obj_property name="ElementShortName">i_halt</obj_property>
-         <obj_property name="ObjectShortName">i_halt</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
-         <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
-         <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group57" type="group">
-      <obj_property name="label">Continue_to_Halt (128)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_halt" type="logic">
-         <obj_property name="ElementShortName">i_halt</obj_property>
-         <obj_property name="ObjectShortName">i_halt</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/enable_pipe_reg" type="logic">
-         <obj_property name="ElementShortName">enable_pipe_reg</obj_property>
-         <obj_property name="ObjectShortName">enable_pipe_reg</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group58" type="group">
-      <obj_property name="label">Send_program_counter (256)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
-         <obj_property name="ElementShortName">data_send[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">en_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">end_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">end_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_send_program_counter" type="array">
-         <obj_property name="ElementShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
-      </wvobject>
-      <wvobject fp_name="group422" type="group">
-         <obj_property name="label">TxAux</obj_property>
+      <wvobject fp_name="group61" type="group">
+         <obj_property name="label">Check_send_all_mems (32528)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="group58" type="group">
-      <obj_property name="label">Send_cant_cycles (512)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
-         <obj_property name="ElementShortName">data_send[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">en_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">end_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">end_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_send_program_counter" type="array">
-         <obj_property name="ElementShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
-      </wvobject>
-      <wvobject fp_name="group422" type="group">
-         <obj_property name="label">TxAux</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group58" type="group">
-      <obj_property name="label">Send_one_reg (1024)</obj_property>
+   <wvobject fp_name="group211" type="group">
+      <obj_property name="label">SubModules Test</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_reg_debug_unit" type="array">
-         <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
-         <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
-         <obj_property name="ElementShortName">data_send[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/cont_byte" type="array">
-         <obj_property name="ElementShortName">cont_byte[7:0]</obj_property>
-         <obj_property name="ObjectShortName">cont_byte[7:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_done_uart" type="logic">
-         <obj_property name="ElementShortName">tx_done_uart</obj_property>
-         <obj_property name="ObjectShortName">tx_done_uart</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group58" type="group">
-      <obj_property name="label">Check_send_all_reg(2048)</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/data_send" type="array">
-         <obj_property name="ElementShortName">data_send[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_send[7:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/en_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">en_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">en_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_program_counter" type="logic">
-         <obj_property name="ElementShortName">end_send_program_counter</obj_property>
-         <obj_property name="ObjectShortName">end_send_program_counter</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/i_send_program_counter" type="array">
-         <obj_property name="ElementShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_send_program_counter[6:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/tx_start" type="logic">
-         <obj_property name="ElementShortName">tx_start</obj_property>
-         <obj_property name="ObjectShortName">tx_start</obj_property>
-      </wvobject>
-      <wvobject fp_name="group422" type="group">
-         <obj_property name="label">TxAux</obj_property>
+      <wvobject fp_name="group85" type="group">
+         <obj_property name="label">Memoria</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_debugUnit/memory_data/i_mem_enable" type="logic">
+            <obj_property name="ElementShortName">i_mem_enable</obj_property>
+            <obj_property name="ObjectShortName">i_mem_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/memory_data/o_data" type="array">
+            <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/memory_data/RAM" type="array">
+            <obj_property name="ElementShortName">RAM[127:0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">RAM[127:0][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/memory_data/i_addr" type="array">
+            <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/memory_data/i_read" type="logic">
+            <obj_property name="ElementShortName">i_read</obj_property>
+            <obj_property name="ObjectShortName">i_read</obj_property>
+         </wvobject>
       </wvobject>
-   </wvobject>
-   <wvobject fp_name="/tb_debugUnit/debug_unit/state" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">state[11:0]</obj_property>
-      <obj_property name="ObjectShortName">state[11:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="label">state_debug_unit[11:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="group85" type="group">
-      <obj_property name="label">Memoria</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/memory_data/i_mem_enable" type="logic">
-         <obj_property name="ElementShortName">i_mem_enable</obj_property>
-         <obj_property name="ObjectShortName">i_mem_enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/memory_data/o_data" type="array">
-         <obj_property name="ElementShortName">o_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/memory_data/RAM" type="array">
-         <obj_property name="ElementShortName">RAM[127:0][31:0]</obj_property>
-         <obj_property name="ObjectShortName">RAM[127:0][31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/memory_data/i_addr" type="array">
-         <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
-         <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/memory_data/i_read" type="logic">
-         <obj_property name="ElementShortName">i_read</obj_property>
-         <obj_property name="ObjectShortName">i_read</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group92" type="group">
-      <obj_property name="label">BankRegister</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_debugUnit/register" type="array">
-         <obj_property name="ElementShortName">register[31:0]</obj_property>
-         <obj_property name="ObjectShortName">register[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/bank_register/i_addr_ra" type="array">
-         <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
-         <obj_property name="ObjectShortName">i_addr_ra[4:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/bank_register/o_data_ra" type="array">
-         <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_debugUnit/bank_register/registers" type="array">
-         <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
-         <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
+      <wvobject fp_name="group92" type="group">
+         <obj_property name="label">BankRegister</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/register" type="array">
+            <obj_property name="ElementShortName">register[31:0]</obj_property>
+            <obj_property name="ObjectShortName">register[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/bank_register/i_addr_ra" type="array">
+            <obj_property name="ElementShortName">i_addr_ra[4:0]</obj_property>
+            <obj_property name="ObjectShortName">i_addr_ra[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/bank_register/o_data_ra" type="array">
+            <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_debugUnit/bank_register/registers" type="array">
+            <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[31]" type="array">
+               <obj_property name="ElementShortName">[31][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[30]" type="array">
+               <obj_property name="ElementShortName">[30][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[29]" type="array">
+               <obj_property name="ElementShortName">[29][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[28]" type="array">
+               <obj_property name="ElementShortName">[28][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[27]" type="array">
+               <obj_property name="ElementShortName">[27][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[26]" type="array">
+               <obj_property name="ElementShortName">[26][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[25]" type="array">
+               <obj_property name="ElementShortName">[25][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[24]" type="array">
+               <obj_property name="ElementShortName">[24][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[23]" type="array">
+               <obj_property name="ElementShortName">[23][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[22]" type="array">
+               <obj_property name="ElementShortName">[22][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[21]" type="array">
+               <obj_property name="ElementShortName">[21][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[20]" type="array">
+               <obj_property name="ElementShortName">[20][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[19]" type="array">
+               <obj_property name="ElementShortName">[19][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[18]" type="array">
+               <obj_property name="ElementShortName">[18][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[17]" type="array">
+               <obj_property name="ElementShortName">[17][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[16]" type="array">
+               <obj_property name="ElementShortName">[16][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[15]" type="array">
+               <obj_property name="ElementShortName">[15][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[14]" type="array">
+               <obj_property name="ElementShortName">[14][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[13]" type="array">
+               <obj_property name="ElementShortName">[13][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[12]" type="array">
+               <obj_property name="ElementShortName">[12][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[11]" type="array">
+               <obj_property name="ElementShortName">[11][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[10]" type="array">
+               <obj_property name="ElementShortName">[10][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[9]" type="array">
+               <obj_property name="ElementShortName">[9][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[8]" type="array">
+               <obj_property name="ElementShortName">[8][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[7]" type="array">
+               <obj_property name="ElementShortName">[7][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[6]" type="array">
+               <obj_property name="ElementShortName">[6][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[5]" type="array">
+               <obj_property name="ElementShortName">[5][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[4]" type="array">
+               <obj_property name="ElementShortName">[4][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[3]" type="array">
+               <obj_property name="ElementShortName">[3][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[2]" type="array">
+               <obj_property name="ElementShortName">[2][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[1]" type="array">
+               <obj_property name="ElementShortName">[1][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_debugUnit/bank_register/registers[0]" type="array">
+               <obj_property name="ElementShortName">[0][31:0]</obj_property>
+               <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+            </wvobject>
+         </wvobject>
       </wvobject>
    </wvobject>
 </wave_config>
