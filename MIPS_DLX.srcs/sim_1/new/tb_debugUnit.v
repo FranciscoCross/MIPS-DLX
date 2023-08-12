@@ -10,6 +10,7 @@ module tb_debugUnit;
     reg halt = 0;
     wire rx_data;
     reg [7 : 0] program_counter = 8'b00000011;
+    wire[6 : 0] wire_address_debug;
     reg reg_debug_unit = 0;
     reg bit_sucio = 1;
     wire [32-1:0] mem_debug_unit;
@@ -34,7 +35,7 @@ module tb_debugUnit;
     wire o_en_read;		
     wire o_enable_pipe;
     wire o_enable_mem;
-    wire o_debug_unit_reg;		
+    wire wire_debug_unit_reg;		
     wire [NB_DATA-1:0] o_inst_load;
     wire [7-1:0] o_address_du;
     wire o_ack_debug;
@@ -212,7 +213,7 @@ module tb_debugUnit;
 		.o_en_read(o_en_read),		
 		.o_enable_pipe(o_enable_pipe),
 		.o_enable_mem(o_enable_mem),
-		.o_debug_unit_reg(o_debug_unit_reg),				
+		.o_debug_unit_reg(wire_debug_unit_reg),				
 		.o_inst_load(o_inst_load), //instruccion a cargar en memoria
 		.o_address(o_address_du), //direccion donde se carga la instruccionz
 		.o_state(o_state)
@@ -249,5 +250,23 @@ dmem memory_data
     .i_read(1),
     .o_data(mem_debug_unit)
 );
+
+    imem instancia_imem(
+        .i_clk(clock),
+        .i_enable(i_enable),
+        .i_reset(i_reset),
+        .i_en_write(o_en_write),
+        .i_en_read(i_Mem_REn),
+        .i_addr(wire_address_debug),
+        .i_data(o_inst_load),
+        .o_data(wire_instr)
+    );
+     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
+	(
+		.i_A({NB_DATA{1'b0}}), //0
+		.i_B(o_address_du),    //1
+		.i_SEL(wire_debug_unit_reg),
+		.o_OUT(wire_address_debug)
+	);
 endmodule
 
