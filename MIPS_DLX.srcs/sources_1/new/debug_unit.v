@@ -47,18 +47,22 @@ module debug_unit
 		/* para DEBUG */
 		output wire [NB_STATE-1:0] o_state
 	);
-	localparam 	[NB_STATE-1:0]  Number_Instr        	=  12'b000000000001;//1
-	localparam 	[NB_STATE-1:0]	Receive_One_Instr     =  12'b000000000010;//2
-	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr 	=  12'b000000000100;//4
-	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  12'b000000001000;//8
-	localparam 	[NB_STATE-1:0]	Check_Operation    		=  12'b000000010000;//16 To choose between step or continuous mode
-	localparam 	[NB_STATE-1:0]	Step_to_step       		=  12'b000000100000;//32 
-	localparam 	[NB_STATE-1:0]	Wait_One_Cicle     		=  12'b000001000000;//64 
-	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  12'b000010000000;//128 For continuous mode
-	localparam 	[NB_STATE-1:0]	Send_program_counter  =  12'b000100000000;//256 
-	localparam 	[NB_STATE-1:0]	Send_cant_cyles 			=  12'b001000000000;//512
-	localparam 	[NB_STATE-1:0]	Send_Registers				=  12'b010000000000;//1024 
-	localparam 	[NB_STATE-1:0]	Send_Memory						=  12'b100000000000;//2048
+	localparam 	[NB_STATE-1:0]  Number_Instr        	=  16'b0000000000000001;//1
+	localparam 	[NB_STATE-1:0]	Receive_One_Instr     	=  16'b0000000000000010;//2
+	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr	=  16'b0000000000000100;//4
+	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  16'b0000000000001000;//8
+	localparam 	[NB_STATE-1:0]	Check_Operation    		=  16'b0000000000010000;//16 To choose between step or continuous mode
+	localparam 	[NB_STATE-1:0]	Step_to_step       		=  16'b0000000000100000;//32 
+	localparam 	[NB_STATE-1:0]	Wait_One_Cicle     		=  16'b0000000001000000;//64 
+	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  16'b0000000010000000;//128 For continuous mode
+	localparam 	[NB_STATE-1:0]	Send_program_counter  	=  16'b0000000100000000;//256 
+	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  16'b0000001000000000;//512
+	localparam 	[NB_STATE-1:0]	Send_one_reg			=  16'b0000010000000000;//1024
+	localparam 	[NB_STATE-1:0]	Check_send_all_regs		=  16'b0000100000000000;//2048  
+	localparam 	[NB_STATE-1:0]	Check_bit_sucio			=  16'b0001000000000000;//4096
+	localparam 	[NB_STATE-1:0]	Send_addr_mem			=  16'b0010000000000000;//8192
+	localparam 	[NB_STATE-1:0]	Send_data_mem			=  16'b0100000000000000;//16264
+	localparam 	[NB_STATE-1:0]	Check_send_all_mems		=  16'b1000000000000000;//32528
 	
 	wire ready_full_inst;
 	wire ready_number_instr;
@@ -129,59 +133,59 @@ begin
 			next_state <= {NB_STATE{1'b0}};
 			o_enable_pipe <= 1'b0;
 		end 
-	else 
-		begin
-			//ENVIO
-			if (en_send_program_counter && tx_done_uart) 
-				begin
-					end_send_program_counter <= 1'b1;
-					en_send_program_counter		<= 1'b0;
-				end 
-			if (en_send_cant_cyles && tx_done_uart) 
-				begin
-					en_send_cant_cyles 	<= 1'b0;
-					end_send_cant_cycles <= 1'b1;
-					data_send <= i_cant_cycles;
-					tx_start <= 1'b1;
-				end 
-			if (en_send_data_reg && tx_done_uart) 
-				begin
-					if (cont_byte == N_BYTES-1) 
-						begin
-							end_send_reg <= 1'b1;
-							o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;
-							cont_byte <= 8'b0;
-						end 
-					else 
-						begin
-							cont_byte <= cont_byte + 1;
-						end
-				end 
-			if (en_send_data_mem && tx_done_uart) 
-				begin
-					if(i_bit_sucio)
-						begin
-							if (cont_byte == N_BYTES-1) 
-								begin
-									end_send_mem <= 1'b1;
-									o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
-									cont_byte <= 8'b0;
-								end 
-							else
-								begin
-									cont_byte <= cont_byte + 1;
-								end
-						end
-					else if(!i_bit_sucio && cont_byte == N_BYTES-1)
-						begin
-							o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
-						end
-				end 
-			else
-				begin
-					tx_start <= 1'b0;
-				end
-		end 
+	// else 
+	// 	begin
+	// 		//ENVIO
+	// 		if (en_send_program_counter && tx_done_uart) 
+	// 			begin
+	// 				end_send_program_counter <= 1'b1;
+	// 				en_send_program_counter		<= 1'b0;
+	// 			end 
+	// 		if (en_send_cant_cyles && tx_done_uart) 
+	// 			begin
+	// 				en_send_cant_cyles 	<= 1'b0;
+	// 				end_send_cant_cycles <= 1'b1;
+	// 				data_send <= i_cant_cycles;
+	// 				tx_start <= 1'b1;
+	// 			end 
+	// 		if (en_send_data_reg && tx_done_uart) 
+	// 			begin
+	// 				if (cont_byte == N_BYTES-1) 
+	// 					begin
+	// 						end_send_reg <= 1'b1;
+	// 						o_addr_reg_debug_unit <= o_addr_reg_debug_unit + 1;
+	// 						cont_byte <= 8'b0;
+	// 					end 
+	// 				else 
+	// 					begin
+	// 						cont_byte <= cont_byte + 1;
+	// 					end
+	// 			end 
+	// 		if (en_send_data_mem && tx_done_uart) 
+	// 			begin
+	// 				if(i_bit_sucio)
+	// 					begin
+	// 						if (cont_byte == N_BYTES-1) 
+	// 							begin
+	// 								end_send_mem <= 1'b1;
+	// 								o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;
+	// 								cont_byte <= 8'b0;
+	// 							end 
+	// 						else
+	// 							begin
+	// 								cont_byte <= cont_byte + 1;
+	// 							end
+	// 					end
+	// 				else if(!i_bit_sucio && cont_byte == N_BYTES-1)
+	// 					begin
+	// 						o_addr_mem_debug_unit <= o_addr_mem_debug_unit + 1;	
+	// 					end
+	// 			end 
+	// 		else
+	// 			begin
+	// 				tx_start <= 1'b0;
+	// 			end
+	// 	end 
 end
 
 	
@@ -313,74 +317,59 @@ end
 				Send_program_counter:  		//256
 					begin							
 						debug_unit_reg = 1'b0;
-						en_send_program_counter = 1'b1;
 						next_state = Send_program_counter;	
 						data_send = i_send_program_counter;
-						tx_start = 1'b1;				
-						if (end_send_program_counter)
-							begin																							
-								en_send_program_counter = 1'b0;	
-								next_state = Send_cant_cyles;
-							end	
+						tx_start = 1'b1;																									
+						next_state = Send_cant_cyles;
 					end					
 				Send_cant_cyles:					//512	
-					begin						
-						debug_unit_reg = 1'b0;
-						en_send_cant_cyles = 1'b1;	
-						end_send_program_counter = 1'b0;						
-						next_state = Send_cant_cyles;
-						
-						if (end_send_cant_cycles)
-							begin
-								en_send_cant_cyles = 1'b0;
-								o_ctrl_read_debug_reg = 1'b1;													
-								next_state = Send_Registers;
-							end												
-					end				
-				Send_Registers:						//1024		
-					begin					
-						debug_unit_reg = 1'b0;
-						en_send_data_reg = 1'b1;
-						end_send_cant_cycles = 1'b0;	
-						o_ctrl_read_debug_reg = 1'b1;
-						next_state = Send_Registers;
+					begin
+						tx_start = 1'b0;
+						if(tx_done_uart)	
+						begin				
+							debug_unit_reg = 1'b0;
+							next_state = Send_cant_cyles;
+							data_send = i_cant_cycles;
+							tx_start = 1'b1;	
+							o_ctrl_read_debug_reg = 1'b1;													
+							next_state = Send_one_reg;
+						end											
+					end	
+				Send_one_reg:
+					begin
+						tx_start = 1'b0;
+						if(tx_done_uart)	
+						begin				
+							debug_unit_reg = 1'b0;
+							next_state = Send_one_reg;
+							data_send = i_reg_debug_unit[8*cont_byte+:8];
+							
+							o_ctrl_read_debug_reg = 1'b1;													
+							next_state = Send_one_reg;
+							tx_start = 1'b1;
+							if (cont_byte == N_BYTES-1) 
+								begin
+									next_state = Check_send_all_regs;
+									cont_byte = 8'b0;
+								end 
+							else 
+								begin	
+									cont_byte = cont_byte + 1;
+								end
+						end	
+					end
+				Check_send_all_regs:
+					begin
+						tx_start = 1'b0;		
+						if(o_addr_reg_debug_unit == 31)
+							next_state = Number_Instr;
+						else
+						begin
+							o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
+							next_state = Send_one_reg;
+						end
+					end
 
-						if (end_send_reg)
-							begin								
-								if (o_addr_reg_debug_unit == 5'b0) //Quiere decir que se llego al numero 32 ya que se envio desde el 0 al 31, (32 == 100000)
-	    							begin
-	    								o_ctrl_read_debug_reg = 1'b0;
-										en_send_data_reg = 1'b0;
-										next_state = Send_Memory;										
-										o_ctrl_wr_debug_mem = 1'b1;
-										o_ctrl_addr_debug_mem = 1'b1;
-										o_enable_mem = 1'b1;		
-	    							end	    							
-							end
-					end								
-				Send_Memory:							//2048	
-					begin	
-						debug_unit_reg = 1'b0;
-						end_send_reg = 1'b0;
-						o_ctrl_wr_debug_mem = 1'b1;
-						o_ctrl_addr_debug_mem = 1'b1;
-						en_send_data_mem = 1'b1;
-						o_enable_mem = 1'b1;
-						next_state = Send_Memory;
-						//next_tx_start = 1'b1;
-						
-						if (end_send_mem)
-							begin
-								if (o_addr_mem_debug_unit == `N_ELEMENTS-1)
-									begin
-										o_end_send_data = 1'b1;										
-										en_send_data_mem = 1'b0;										
-										o_ack_debug = 1'b1;
-										next_state = Waiting_operation;
-										//$display("FINISH ENVIO DE DATOS");	
-									end	
-							end		
-					end					
 				default:
 					next_state = Number_Instr;					
 			endcase
