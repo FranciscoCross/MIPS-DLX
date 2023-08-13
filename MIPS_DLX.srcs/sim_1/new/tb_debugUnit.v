@@ -2,19 +2,19 @@
 
 module tb_debugUnit;
     localparam NB_BITES = 8;
-    localparam NB_STATE  = 11;
+    localparam NB_STATE  = 15;
     localparam NB_DATA  = 32;
     
     reg clock = 0;
     reg reset = 0;
     reg halt = 0;
     wire rx_data;
-    reg [7 : 0] program_counter = 8'b00000011;
-    wire[6 : 0] wire_address_debug;
+    reg [`ADDRWIDTH-1:0] program_counter = 3;
+    wire[`ADDRWIDTH-1:0] wire_address_debug;
     reg reg_debug_unit = 0;
     reg bit_sucio = 1;
     wire [32-1:0] mem_debug_unit;
-    reg [7 : 0] cant_cycles_d = 8'b00000100;
+    reg [`ADDRWIDTH-1:0] cant_cycles_d = 4;
     reg tx_start_d = 0;
     reg data_ready_uart_d = 0;
     reg tx_done_d = 0;	
@@ -22,7 +22,7 @@ module tb_debugUnit;
 
  
     wire [32-1:0] register;
-
+    wire [32-1:0] wire_instr;
     //Outputs
 
     wire [5-1:0] o_addr_reg_debug_unit; //32 reg
@@ -245,9 +245,9 @@ bank_register bank_register
 dmem memory_data
 (
     .i_clk(clock),
-    .i_mem_enable(1),
+    .i_mem_enable(1'b1),
     .i_addr(o_addr_mem_debug_unit),		
-    .i_read(1),
+    .i_read(1'b1),
     .o_data(mem_debug_unit)
 );
 
@@ -261,9 +261,9 @@ dmem memory_data
         .i_data(o_inst_load),
         .o_data(wire_instr)
     );
-     mux2#(.NB_DATA(NB_DATA)) mux_address_mem
+     mux2#(.NB_DATA(`ADDRWIDTH)) mux_address_mem
 	(
-		.i_A({NB_DATA{1'b0}}), //0
+		.i_A({`ADDRWIDTH{1'b0}}), //0
 		.i_B(o_address_du),    //1
 		.i_SEL(wire_debug_unit_reg),
 		.o_OUT(wire_address_debug)

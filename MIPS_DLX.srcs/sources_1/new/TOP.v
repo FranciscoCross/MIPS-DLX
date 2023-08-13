@@ -5,7 +5,7 @@ module TOP
 		parameter CLOCK         = 50E6,
 		parameter NB_OPCODE     = 6,
 		parameter BAUD_RATE     = 203400,
-		parameter NB_STATE      = 12,		
+		parameter NB_STATE      = 15,		
 		parameter NB_DATA       = 32,	
 		parameter NB_REG        = 5,
 		parameter N_BITS        = 8,
@@ -20,7 +20,8 @@ module TOP
 		input wire i_rx,
 
 		output wire o_tx,
-		output wire o_state
+		output wire o_locked,
+		output wire [NB_STATE-1:0] o_state
 	);
 
 
@@ -33,14 +34,14 @@ module TOP
 	wire wire_enable_mem;
 
 	wire [`ADDRWIDTH-1:0] wire_send_program_counter;
-	wire [31:0] wire_reg_debug_unit;
-	wire [N_BITS-1:0] wire_cant_cycles;
-	wire [NB_REG-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
+	wire [ NB_DATA-1:0] wire_reg_debug_unit;
+	wire [`ADDRWIDTH-1:0] wire_cant_cycles;
+	wire [`ADDRWIDTH-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
 	wire wire_bit_sucio;
 	wire wire_ctrl_addr_debug_mem;
 	wire wire_ctrl_wr_debug_mem;
-	wire [`ADDRWIDTH:0] wire_addr_mem_debug_unit;
-	wire [31:0] wire_mem_debug_unit;
+	wire [`ADDRWIDTH-1:0] wire_addr_mem_debug_unit;
+	wire [ NB_DATA-1:0] wire_mem_debug_unit;
 	wire wire_ctrl_read_debug_reg;
 
 	
@@ -51,6 +52,7 @@ module TOP
   	(  
 		.clk_out1(clock_w),
 	  	.reset(i_reset_wz),
+	  	.locked(o_locked),
 	  	.clk_in1(i_clock)
 	 );
 
@@ -91,8 +93,8 @@ module TOP
 		.i_bit_sucio(wire_bit_sucio),
 		.i_mem_debug_unit(wire_mem_debug_unit),
 		
-        .o_addr_reg_debug_unit(wire_addr_reg_debug_unit),// direccion a leer del registro para enviar a pc
-        .o_addr_mem_debug_unit(wire_addr_mem_debug_unit), //direccion a leer en memoria
+		.o_addr_reg_debug_unit(wire_addr_reg_debug_unit),// direccion a leer del registro para enviar a pc
+		.o_addr_mem_debug_unit(wire_addr_mem_debug_unit), //direccion a leer en memoria
 		.o_ctrl_addr_debug_mem(wire_ctrl_addr_debug_mem),
 		.o_ctrl_wr_debug_mem(wire_ctrl_wr_debug_mem),
 		.o_ctrl_read_debug_reg(wire_ctrl_read_debug_reg),

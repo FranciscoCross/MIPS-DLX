@@ -9,7 +9,7 @@ module tb_TOP(
     localparam NB_DATA  = 32;
     localparam NB_BYTES = 8;
     localparam NB_BITS = 8;
-    localparam NB_STATE = 12;
+    localparam NB_STATE = 15;
 
     wire wire_rx, wire_tx, wire_rx_done, aux_tx_done, wire_locked;
     wire [NB_STATE-1:0] wire_state;
@@ -17,11 +17,12 @@ module tb_TOP(
 
     reg clock = 0;
     reg reset = 0;
+    wire locked;
 
     reg reset_wz = 0;
     reg aux_tx_start = 0;
     reg [NB_BITS-1 : 0] aux_tx_data = 0;
-    
+    wire locked_top;
     TOP #(	
 		.CLOCK(CLK),
 		.BAUD_RATE(BAUD_RATE),		
@@ -29,10 +30,12 @@ module tb_TOP(
     ) instancia_TOP	(
 		.i_clock(clock),
 		.i_reset(reset),
+		.i_reset_wz(reset_wz),
 		.i_rx(wire_tx),
 
 		.o_tx(wire_rx),
-    .o_state(wire_state)
+		.o_locked(locked_top),
+        .o_state(wire_state)
 	);
 
   UART2 uart2_PC
@@ -52,6 +55,7 @@ module tb_TOP(
   	(  
 		.clk_out1(clock_w),
 	  	.reset(reset_wz), 
+	  	.locked(locked),
 	  	.clk_in1(clock)
 	 );
 

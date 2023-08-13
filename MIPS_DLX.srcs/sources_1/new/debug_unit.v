@@ -21,12 +21,12 @@ module debug_unit
 		input wire i_halt,	
 		input wire i_rx_data,	
 		input wire [`ADDRWIDTH-1:0] i_send_program_counter, //pc + 1
-		input wire [N_BITS-1:0] 	i_cant_cycles,
+		input wire [`ADDRWIDTH-1:0] 	i_cant_cycles,
 		input wire [NB_DATA-1:0] 	i_reg_debug_unit, //viene del banco de registros
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] 	i_mem_debug_unit,
 
-		output reg [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
+		output reg [`ADDRWIDTH-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
 		output reg [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
 		output reg o_ctrl_addr_debug_mem,
@@ -135,10 +135,9 @@ begin
 		  		end_send_cant_cycles <= 1'b1;
 			if(enable_send_one_reg)
 			begin
-				cont_byte = cont_byte + 1;
+				cont_byte <= cont_byte + 1;
 				if (cont_byte > N_BYTES-1)
 				begin
-					
 					end_send_one_reg  <= 1'b1;
 					cont_byte <= 3'b0;
 				end
@@ -148,7 +147,7 @@ begin
 				end_send_addr_mem <= 1'b1;
 			if(enable_send_mem)
 			begin
-				cont_byte = cont_byte + 1;
+				cont_byte <= cont_byte + 1;
 				if (cont_byte > N_BYTES-1)
 				begin
 					end_send_mem  <= 1'b1;
@@ -443,7 +442,6 @@ du_recieve du_recieve
 	(
 		.i_clock(i_clock),
 		.i_reset(i_reset),
-		.i_enable(1),
 		.i_rx_done_uart(rx_done_uart),
 		.i_recieve_state(state[3:0]),
 		.i_data_uart_receive(data_uart_receive),

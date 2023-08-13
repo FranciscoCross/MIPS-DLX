@@ -4,7 +4,8 @@
 
 module dmem
  #(
-    parameter NB_DATA = 32 
+    parameter NB_DATA = 32, 
+    parameter MEM_SIZEB = 128
   )
   (
     input wire i_clk,
@@ -24,15 +25,12 @@ module dmem
      
     assign o_data = data_reg;
     //Para Inicializar la memoria en cero
+    // Inicializaci�n de data_reg y RAM
     generate
-      integer i;		
-      initial 
-      begin
-        data_reg = 0;
-        RAM[0] = 1;//{NB_DATA{1'b0}};
-        for (i = 1; i < 128; i = i + 1)
-            RAM[i] = RAM[i-1] + 1; //RAM[i] = {NB_DATA{1'b0}}; 
-      end
+        integer reg_index;
+        initial
+            for (reg_index = 0; reg_index < MEM_SIZEB; reg_index = reg_index + 1)
+                RAM[reg_index] = 32'b00000000000000000000000000000000;
     endgenerate
     
   always @(posedge i_clk)

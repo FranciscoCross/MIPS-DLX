@@ -11,7 +11,6 @@ module du_recieve
 	(
 		input wire i_clock,
 		input wire i_reset,
-		input wire i_enable,
 		input wire i_rx_done_uart,
 		input wire [NB_STATE-1:0] i_recieve_state,
 		input wire [N_BITS-1:0] i_data_uart_receive,
@@ -68,9 +67,7 @@ begin
 		ready_mode_operate <= 1'b0;
 		ready_number_instr <= 1'b0;
 	end
-	else if(i_enable)
-	begin
-		if(i_rx_done_uart)
+	else if(i_rx_done_uart)
 		begin
 			case (i_recieve_state)
 				Receive_Number_Instr: //1
@@ -119,7 +116,6 @@ begin
 			ready_full_inst <= 1'b0;
 			ready_mode_operate <= 1'b0;
 			all_instr_send <= 1'b0;
-		end
 		end
 end
 endmodule

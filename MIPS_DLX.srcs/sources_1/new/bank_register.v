@@ -89,17 +89,13 @@ module bank_register
 			end
 	end
 
-	    // Inicializacion de registros. 
-	generate
-	    integer i;		
-		initial
-		begin
-			registers[0] = 5;
-			for (i = 1; i < N_REGISTER; i = i + 1)
-				registers[i] = registers[i-1] + 1; //ACTUALMENTE ES PARA DEBUG//registers[i] = {NB_DATA{1'b0}}; //
-		end
 
-	endgenerate
+		generate
+        integer reg_index;
+        initial
+            for (reg_index = 0; reg_index < N_REGISTER; reg_index = reg_index + 1)
+                registers[reg_index] = {NB_DATA{1'b0}};
+    endgenerate
 
 
 endmodule

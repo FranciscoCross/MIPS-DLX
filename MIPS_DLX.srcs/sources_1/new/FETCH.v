@@ -20,7 +20,7 @@ module FETCH#(
     input wire [NB_DATA-1:0] i_addr_branch,
     input wire [NB_DATA-1:0] i_addr_jump,
     input wire i_jump_or_branch,
-    input wire [NB_DATA-1:0] i_wr_addr, // enviado por debug_unit para cargar instruccion
+    input wire [`ADDRWIDTH-1:0] i_wr_addr, // enviado por debug_unit para cargar instruccion
     
     output [NB_INST - 1:0] o_instruction,
     output [NB_DATA - 1:0] o_PCAddr,
@@ -28,8 +28,8 @@ module FETCH#(
     );
     //-------------------------------------------------
     //Debug Unit
-    wire [NB_DATA-1:0] wire_address_debug;
-    wire [NB_DATA-1:0] wire_pc;
+    wire [`ADDRWIDTH-1:0] wire_address_debug;
+    wire [`ADDRWIDTH-1:0] wire_pc;
     wire [NB_DATA-1:0] wire_address_jump_pc;
     wire [NB_DATA-1:0] wire_input_pc;
     wire [NB_INST-1:0] wire_instr;
@@ -55,7 +55,7 @@ module FETCH#(
     assign o_next_PCAddr = nextAddr_pc;
 
 
-    mux2#(.NB_DATA(NB_DATA)) mux_address_mem
+    mux2#(.NB_DATA(`ADDRWIDTH)) mux_address_mem
 	(
 		.i_A(wire_pc), //0
 		.i_B(i_wr_addr),    //1
@@ -78,7 +78,7 @@ module FETCH#(
 	(
 		.i_A(wire_instr),//0
 		.i_B(32'hF8000000),//1: NOP
-		.i_SEL(0), //jump_or_branch
+		.i_SEL(1'b0), //jump_or_branch
 		.o_OUT(o_instruction)
 	);
     

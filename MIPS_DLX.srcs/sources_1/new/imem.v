@@ -13,21 +13,21 @@ module imem#(
     input wire i_reset,
     input wire i_en_write,
     input wire i_en_read,
-    input wire [$clog2(MEM_SIZEB) - 1 : 0] i_addr,
+    input wire [`ADDRWIDTH - 1 : 0] i_addr,
     input wire [NB_INST - 1  :  0] i_data,
     output wire [NB_INST - 1 :  0] o_data
     );
     
     reg [NB_INST-1 : 0] MEM[MEM_SIZEB - 1 : 0];  //Register of memory 
     reg [NB_INST-1 : 0] data;             //Local variable to store the latest register pointed at
-    reg [NB_INST-1 : 0] reg_addr;
-  	generate
-    integer i;		
-		initial begin
-	    for (i = 0; i < MEM_SIZEB; i = i + 1)
-        MEM[i] <= 32'b11111000000000000000000000000000; //NOP 
-    end
-	endgenerate
+    reg [`ADDRWIDTH-1 : 0] reg_addr;
+
+   generate
+        integer reg_index;
+        initial
+            for (reg_index = 0; reg_index < MEM_SIZEB; reg_index = reg_index + 1)
+                MEM[reg_index] = 32'b11111000000000000000000000000000;
+    endgenerate
 
    initial 
       begin
