@@ -11,7 +11,7 @@ module tb_TOP(
     localparam NB_BITS = 8;
     localparam NB_STATE = 12;
 
-    wire wire_rx, wire_tx, wire_rx_done, wire_tx_done, wire_locked;
+    wire wire_rx, wire_tx, wire_rx_done, aux_tx_done, wire_locked;
     wire [NB_STATE-1:0] wire_state;
     wire [NB_BITS -1 : 0] wire_rx_data;
 
@@ -19,8 +19,8 @@ module tb_TOP(
     reg reset = 0;
 
     reg reset_wz = 0;
-    reg tx_start = 0;
-    reg [NB_BITS-1 : 0] tx_data = 0;
+    reg aux_tx_start = 0;
+    reg [NB_BITS-1 : 0] aux_tx_data = 0;
     
     TOP #(	
 		.CLOCK(CLK),
@@ -40,438 +40,580 @@ module tb_TOP(
       .i_clock(clock_w),
       .i_reset(reset),
       .i_rx(wire_rx),
-      .i_tx(tx_data), 
-      .i_tx_start(tx_start),
+      .i_tx(aux_tx_data), 
+      .i_tx_start(aux_tx_start),
       .o_rx(wire_rx_data),
       .o_rx_done_tick(wire_rx_done),
       .o_tx(wire_tx),
-      .o_tx_done_tick(wire_tx_done)
+      .o_tx_done_tick(aux_tx_done)
       );
     
    	clock_wz clock_wz_pc
   	(  
 		.clk_out1(clock_w),
-	  	.reset(reset), 
+	  	.reset(reset_wz), 
 	  	.clk_in1(clock)
 	 );
 
   // Clock generation    
-    always @* 
-    begin
-        forever 
-            begin
-              forever #5 clock = ~clock; //clock a 50MHz -> 20ns de periodo
-            end
-    end
+  always #10 clock = ~clock; // # < timeunit > delay
 
        initial begin
+            #20
             reset_wz = 0;
-            reset = 0;
-            #10
+            #20
             reset_wz = 1;
-            reset = 1;
-            #60
+            #20
             reset_wz = 0;
+            #1000
             reset = 0;
+            #20
+            reset = 1;
+            #20
+            reset = 0;
+            
+            
+            
             $display("Envio numero de instrucciones");
+            aux_tx_data = 8'b00001011;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
             
-            #100
-            tx_data = 8'b00001011;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
+            while (!aux_tx_done) begin
+                  #1; // Wait 5 time units before checking again
+            end
+            #50  
 
-            #550000
-            $display("Envio primer byte de instruccion lui R1, 10 "); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
+
+
+
+            $display("Envio primer byte de instruccion 1"); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
+            aux_tx_data = 8'b00001010;     
             #20
-            tx_data = 8'b00001010;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 1"); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000001;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion lui R1, 10"); //32'b00111100 00000001 00000000 00001010;  // lui R1, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00111100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 1"); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
+            aux_tx_data = 8'b00000001;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 1"); //32'b00111100000000010000000000001010; 3C01000A // lui R1, 10
+            aux_tx_data = 8'b00111100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50
+            
+
+            $display("Envio primer byte de instruccion 2"); //32'b00111100 00000010 00000000 00010100; //3C020014 //lui R2, 20
+            aux_tx_data = 8'b00010100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 2"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 2"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_data = 8'b00000010;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 2"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_data = 8'b00111100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50            
+            
+
+
+            $display("Envio primer byte de instruccion 3");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_data = 8'b00011110;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 3");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 3");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_data = 8'b00000011;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 3");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_data = 8'b00111100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50 
             
             
-            $display("Envio primer byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+
+
+            $display("Envio primer byte de instruccion 4");   //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_data = 8'b00100001;     
             #20
-            tx_data = 8'b00010100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 4");  //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_data = 8'b00100000;     
             #20
-            tx_data = 8'b00000010;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion lui R2, 20"); //32'b00111100 00000010 00000000 00010100; //lui R2, 20
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00111100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 4");   //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_data = 8'b00100010;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 4");   //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50              
             
             
-            
-            $display("Envio primer byte de instruccion lui R3, 30"); //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+
+
+            $display("Envio primer byte de instruccion 5");   //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_data = 8'b00000111;     
             #20
-            tx_data = 8'b00011110;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 5");  //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3 
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000011;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion lui R3, 30");  //32'b00111100 00000011 00000000 00011110; //lui R3, 30
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00111100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            
-            
-            $display("Envio primer byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 5");   //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_data = 8'b01100100;     
             #20
-            tx_data = 8'b00100001;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00100000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
             #20
-            tx_data = 8'b00100010;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion addu R4, R1, R2 "); //32'b00000000 00100010 00100000 00100001; //addu R4, R1, R2 
+
+            $display("Envio cuarto byte de instruccion 5");   //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_data = 8'b00010000;     
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50             
             
             
-            $display("Envio primer byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+
+
+            $display("Envio primer byte de instruccion 6");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00001010;     
             #20
-            tx_data = 8'b00000111;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 6");  //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b01100100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion beq R3, R4, 3"); //32'b00010000 01100100 00000000 00000111; //beq R3, R4, 3
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00010000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 6");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00000011;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 6");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00100000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50          
             
             
-            
-            $display("Envio primer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+
+
+            $display("Envio primer byte de instruccion 7");   //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_data = 8'b00001000;     
             #20
-            tx_data = 8'b00001010;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 7");  //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000011;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00100000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            
-            
-            
-            $display("Envio primer byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 7");   //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00001000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 7");   //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_data = 8'b00001000;     
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion j 1"); //32'b00001000 00000000 00000000 00001000; //j 1
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00001000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50 
             
             
-            
-            $display("Envio primer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+
+
+            $display("Envio primer byte de instruccion 8");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00001010;     
             #20
-            tx_data = 8'b00001010;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 8");  //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000011;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion addi R3, 10"); //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00100000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            
-            
-            
-            $display("Envio primer byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 8");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00000011;     
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion lw R5, 0(0)"); //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 8");   //32'b00100000 00000011 00000000 00001010; //addi R3, 10
+            aux_tx_data = 8'b00100000;     
             #20
-            tx_data = 8'b00000101;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion lw R5, 0(0)");//32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b10001100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50                          
             
             
+
+
+            $display("Envio primer byte de instruccion 9");  //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 9");  //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 9");   //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_data = 8'b00000101;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 9");   //32'b10001100 00000101 00000000 00000000; //lw R5, 0(0)
+            aux_tx_data = 8'b10001100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50
             
             
-            $display("Envio primer byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+
+
+            $display("Envio primer byte de instruccion 10");  //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_data = 8'b00000001;     
             #20
-            tx_data = 8'b00000001;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio segundo byte de instruccion 10");  //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion sw R4, 1(0)"); //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b10101100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 10");   //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_data = 8'b00000100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 10");   //32'b10101100 00000100 00000000 00000001; //sw R4, 1(0)
+            aux_tx_data = 8'b10101100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #50                    
             
             
-            
-            $display("Envio primer byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+
+
+            $display("Envio primer byte de instruccion 11"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio segundo byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_start = 1;
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio tercer byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
             #20
-            tx_data = 8'b00000000;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            $display("Envio cuarto byte de instruccion HALT"); //32'b11111100 00000000 00000000 00000000;  // HALT
+
+            $display("Envio segundo byte de instruccion 11");  //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'b00000000;     
             #20
-            tx_data = 8'b11111100;     
-            #2
-            tx_start = 1;
-            #2
-            tx_start = 0;
-            #550000
-            
-            // $display("Envio ModeOperate"); //32'b11111100 00000000 00000000 00000000;  // HALT
-            // #20
-            // tx_data = 8'b00010000;     
-            // #2
-            // tx_start = 1;
-            // #2
-            // tx_start = 0;
-            // #550000
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio tercer byte de instruccion 11");   //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'b00000000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #20 
+
+            $display("Envio cuarto byte de instruccion 11");  //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'b11111100;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #100            
+
+            $display("Envio ModeOperate");  //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'b00010000;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
+            #10000               
 
             $finish;
  

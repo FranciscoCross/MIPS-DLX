@@ -73,12 +73,12 @@ begin
 		if(i_rx_done_uart)
 		begin
 			case (i_recieve_state)
-				Receive_Number_Instr:
+				Receive_Number_Instr: //1
 				begin
 					number_instructions <= i_data_uart_receive;
 					ready_number_instr  	<= 1'b1;
 				end
-				Receive_One_Instr:
+				Receive_One_Instr: //2
 				begin
 					instruction <= {i_data_uart_receive, instruction[31:8]};
 					if (count_bytes == N_BYTES-1) 
@@ -93,7 +93,7 @@ begin
 						count_bytes <= count_bytes + 1'b1;						
 					end
 				end
-				Waiting_operation:
+				Waiting_operation: //4
 				begin
 					mode_operate <= i_data_uart_receive;
 					ready_mode_operate <= 1'b1;	

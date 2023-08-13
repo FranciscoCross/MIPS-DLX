@@ -322,24 +322,28 @@ end
 						end
 					end	
 				Send_one_reg:
-					if(end_send_one_reg)
 					begin
-						next_state = Check_send_all_regs;
-						o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
-						enable_send_one_reg = 1'b0;
-					end	
-					else
-					begin
-						data_send = i_reg_debug_unit[8*cont_byte+:8];	
-						end_send_cant_cycles	= 1'b0;		
-						next_state = Send_one_reg;	
-						enable_send_one_reg = 1'b1;																									
+						o_ctrl_read_debug_reg = 1'b1;
+						if(end_send_one_reg)
+						begin
+							next_state = Check_send_all_regs;
+							o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
+							enable_send_one_reg = 1'b0;
+						end	
+						else
+						begin
+							data_send = i_reg_debug_unit[8*cont_byte+:8];	
+							end_send_cant_cycles	= 1'b0;		
+							next_state = Send_one_reg;	
+							enable_send_one_reg = 1'b1;																									
+						end
 					end
 				Check_send_all_regs:
 					begin
 						end_send_one_reg = 1'b0;
 						if(o_addr_reg_debug_unit == 5'b0)
 						begin
+							o_ctrl_read_debug_reg = 1'b1;
 							next_state = Check_bit_sucio;
 						end
 						else
@@ -349,6 +353,9 @@ end
 					end
 				Check_bit_sucio:
 					begin
+						o_enable_mem = 1'b1;
+						o_ctrl_wr_debug_mem  = 1'b1;
+						o_ctrl_addr_debug_mem = 1'b1;
 						if(i_bit_sucio)
 						begin
 							next_state = Send_addr_mem;
@@ -360,6 +367,9 @@ end
 					end
 				Send_addr_mem:
 					begin	
+						o_enable_mem = 1'b1;
+						o_ctrl_wr_debug_mem  = 1'b1;
+						o_ctrl_addr_debug_mem = 1'b1;
 						if(end_send_addr_mem)
 						begin
 							next_state = Send_data_mem;
@@ -374,6 +384,9 @@ end
 					end	
 				Send_data_mem:
 					begin
+						o_enable_mem = 1'b1;
+						o_ctrl_wr_debug_mem  = 1'b1;
+						o_ctrl_addr_debug_mem = 1'b1;
 						if(end_send_mem)
 						begin
 							o_addr_mem_debug_unit = o_addr_mem_debug_unit + 1;
@@ -391,12 +404,20 @@ end
 				Check_send_all_mems:
 					begin
 						end_send_mem = 1'b0;
+						o_ctrl_wr_debug_mem  = 1'b1;
+						o_ctrl_addr_debug_mem = 1'b1;
 						if(o_addr_mem_debug_unit == 7'b0)
 						begin
+							o_enable_mem = 1'b0;
+							o_ctrl_wr_debug_mem  = 1'b0;
+							o_ctrl_addr_debug_mem = 1'b0;
 							next_state = Waiting_operation;
 						end
 						else
 						begin
+							o_enable_mem = 1'b1;
+							o_ctrl_wr_debug_mem  = 1'b1;
+							o_ctrl_addr_debug_mem = 1'b1;
 							next_state = Check_bit_sucio;
 						end
 					end

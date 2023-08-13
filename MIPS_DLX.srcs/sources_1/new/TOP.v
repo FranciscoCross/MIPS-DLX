@@ -16,6 +16,7 @@ module TOP
 	(
 		input wire i_clock,
 		input wire i_reset,
+		input wire i_reset_wz,
 		input wire i_rx,
 
 		output wire o_tx,
@@ -49,7 +50,7 @@ module TOP
 	clock_wz clock_wz
   	(  
 		.clk_out1(clock_w),
-	  	.reset(i_reset),
+	  	.reset(i_reset_wz),
 	  	.clk_in1(i_clock)
 	 );
 
