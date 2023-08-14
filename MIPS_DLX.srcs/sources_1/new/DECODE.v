@@ -22,7 +22,7 @@ module DECODE
 		input wire i_reg_write,     		// Señal de control para escritura en registros
 		input wire [`ADDRWIDTH-1:0] i_pc,   // Contador de programa
 
-		input wire [NB_REG-1:0] i_addr_debug_unit,     	// Dirección para acceder a la unidad de depuración
+		input wire [`ADDRWIDTH-1:0] i_addr_debug_unit,     	// Dirección para acceder a la unidad de depuración
 
 		input wire [NB_REG-1:0] i_EX_write_register_usage,    // Registro de escritura desde la etapa EX
 		input wire [NB_REG-1:0] i_EX_rt,     			// Registro de destino desde la etapa EX

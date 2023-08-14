@@ -26,7 +26,7 @@ module tb_TOP(
     TOP #(	
 		.CLOCK(CLK),
 		.BAUD_RATE(BAUD_RATE),		
-		.NB_DATA(NB_BYTES)	
+		.NB_DATA(NB_DATA)	
     ) instancia_TOP	(
 		.i_clock(clock),
 		.i_reset(reset),
