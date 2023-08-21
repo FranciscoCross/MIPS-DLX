@@ -103,6 +103,8 @@ module tb_FETCH(
         #2
         i_Mem_Data = 32'b11111100000000000000000000000000;
         i_wr_addr = 10;
+        #2
+        i_wr_addr = 11;
         #3
         i_enable_pipe = 1;
         i_debug_unit = 0;
@@ -114,7 +116,6 @@ module tb_FETCH(
         i_addr_branch = 0;
         i_addr_jump = 0;
         i_jump_or_branch = 0;
-        i_wr_addr = 0;
         #1
         i_addr_branch = 1;
         #2
@@ -144,6 +145,7 @@ module tb_FETCH(
         #1
         i_PCsrc = 0;
         #1
+        i_addr_register = 0;
         i_addr_branch = 17;
         i_addr_jump = 10;
         #1
@@ -155,8 +157,18 @@ module tb_FETCH(
         i_PCsrc = 0;
         #1
         i_addr_branch = 15;
+        i_addr_jump = 0;
         #2
-        i_addr_branch = 0;
+        i_addr_branch = 9;
+        #2
+        i_addr_branch = 10;
+        #2
+        i_addr_branch = 12;
+        i_addr_jump = 1;
+        #2
+        i_addr_branch = 13;
+        i_addr_jump = 0;
+       
         
         #10
         $finish;
