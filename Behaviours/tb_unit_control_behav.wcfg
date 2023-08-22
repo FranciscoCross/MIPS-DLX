@@ -11,15 +11,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="10.068 ns"></ZoomStartTime>
-      <ZoomEndTime time="66.565 ns"></ZoomEndTime>
-      <Cursor1Time time="11.000 ns"></Cursor1Time>
+      <ZoomStartTime time="8.467 ns"></ZoomStartTime>
+      <ZoomEndTime time="26.198 ns"></ZoomEndTime>
+      <Cursor1Time time="7.208 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="299"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="3" />
+   <wave_markers>
+      <marker time="10000" label="" />
+      <marker time="38000" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb_unit_control/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
