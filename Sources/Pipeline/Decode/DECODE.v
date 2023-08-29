@@ -113,25 +113,6 @@ module DECODE
 	assign o_halt =                 reg_halt;
 
 
-	initial begin
-		rs_reg = 0;
-		rt_reg = 0;
-		rd_reg = 0;
-		reg_shamt    = 0;
-		reg_function = 0;
-
-		reg_addr_jump = 0;
-		reg_addr_branch = 0;
-
-		reg_EX_control = 0;
-		reg_M_control =  0;
-		reg_WB_control = 0;
-
-		reg_inm_ext = 0;
-		reg_branch_or_jump = 0;
-		reg_halt = 0;
-	end
-
 
 	always @(posedge i_clock)
 	begin
@@ -244,7 +225,7 @@ module DECODE
 	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
 	(
 		.i_A(i_instruction[`RS_BIT]),
-		.i_B(i_addr_debug_unit),
+		.i_B(i_addr_debug_unit[NB_REG-1:0]),
 		.i_SEL(i_ctrl_read_debug_reg),
 		.o_OUT(wire_addr_ra)
 	);
