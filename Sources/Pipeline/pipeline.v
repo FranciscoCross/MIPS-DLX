@@ -20,7 +20,8 @@ module pipeline
 		input wire [`ADDRWIDTH-1:0] i_addr_inst_load,
 		input wire i_en_write,	
 		input wire i_en_read,	
-		input wire i_enable_mem,	
+		input wire i_enable_mem,
+		input wire i_read_du,	
 		input wire i_enable_pipe,
 		input wire i_debug_unit,
 		input wire [`ADDRWIDTH-1:0] i_addr_debug_unit, //addr de registro debug
@@ -325,6 +326,7 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_mem || i_enable_pipe),
+		.i_read_du(i_read_du),
 		.i_MEM_control(wire_M_ctrl_EX),//(wire_M_ctrl_MEM),
 		.i_WB_control(wire_WB_ctrl_EX_MEM),
 

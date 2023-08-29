@@ -41,6 +41,7 @@ module debug_unit
 		output wire o_debug_unit_reg,				
 		output wire [NB_DATA-1:0] 		o_inst_load, //instruccion a cargar en memoria
 		output wire [`ADDRWIDTH-1:0] 	o_address, //direccion donde se carga la instruccion
+		output reg o_read_du,
 
 		/* para DEBUG */
 		output wire [NB_STATE-1:0] o_state
@@ -119,6 +120,7 @@ begin
 			state <= {NB_STATE{1'b0}};
 			next_state <= {NB_STATE{1'b0}};
 			o_enable_pipe <= 1'b0;
+			o_read_du <= 1'b0;
 		end 
 	else
 	begin
@@ -322,6 +324,7 @@ end
 					end	
 				Send_one_reg:
 					begin
+					    o_read_du  = 1'b1;
 						o_ctrl_read_debug_reg = 1'b1;
 						if(end_send_one_reg)
 						begin
