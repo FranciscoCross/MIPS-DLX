@@ -29,7 +29,7 @@ module TOP
 	wire [`ADDRWIDTH-1:0] wire_addr_load_inst; // instruccion a cargar y su direccion
 
 	wire wire_en_write, wire_en_read, wire_debug_unit;	
-    wire clock_w, locked_wz;
+    wire clock_w;
 	wire wire_halt, wire_enable_pipe;
 	wire wire_enable_mem;
 
@@ -40,12 +40,13 @@ module TOP
 	wire wire_bit_sucio;
 	wire wire_ctrl_addr_debug_mem;
 	wire wire_ctrl_wr_debug_mem;
+	wire wire_read_du;
 	wire [`ADDRWIDTH-1:0] wire_addr_mem_debug_unit;
 	wire [ NB_DATA-1:0] wire_mem_debug_unit;
 	wire wire_ctrl_read_debug_reg;
 
 	
-	assign o_locked = locked_wz;
+	
 	assign halt_o = wire_halt;
 
 	clock_wz clock_wz
@@ -66,6 +67,7 @@ module TOP
 		.i_en_read(wire_en_read),
 		.i_enable_mem(wire_enable_mem),
 		.i_enable_pipe(wire_enable_pipe),
+		.i_read_du(wire_read_du),
 		.i_debug_unit(wire_debug_unit),
 		.i_addr_debug_unit(wire_addr_reg_debug_unit), //addr de registro debug
 		.i_addr_mem_debug_unit(wire_addr_mem_debug_unit),
@@ -106,6 +108,7 @@ module TOP
 		.o_debug_unit_reg(wire_debug_unit),				
 		.o_inst_load(wire_inst_load), //instruccion a cargar en memoria
 		.o_address(wire_addr_load_inst), //direccion donde se carga la instruccion
+		.o_read_du(wire_read_du),
 		.o_state(o_state)
 	);
 endmodule

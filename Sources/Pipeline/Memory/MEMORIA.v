@@ -15,6 +15,7 @@ module MEMORIA
 		input wire i_clock,
 		input wire i_reset,
 		input wire i_enable_mem,
+		input wire i_read_du,
 		input wire [NB_MEM_CTRL-1:0] i_MEM_control,
 		input wire [NB_WB_CTRL-1:0] i_WB_control,
 		input wire [`ADDRWIDTH-1:0] i_alu_result,                   //address
@@ -49,12 +50,7 @@ module MEMORIA
 	assign o_mem_data = reg_mem_data;
 	assign o_WB_control = WB_control_reg;
 
-	initial begin
-		reg_bit_sucio = 0;
-		reg_data_mem_debug_unit = 0;
-		reg_mem_data = 0;
-		WB_control_reg = 0;
-	end
+
 	always @(posedge i_clock)
 	begin
 		if(i_reset)
@@ -112,7 +108,7 @@ module MEMORIA
 		.i_mem_enable(i_enable_mem),
 		.i_addr(wire_addr_mem),		
 		.i_data(wire_data_mem_write),
-		.i_read(MEM_control[`MEM_READ]),
+		.i_read(MEM_control[`MEM_READ] || i_read_du),
 		.i_write(MEM_control[`MEM_WRITE]),
 		.o_data(wire_data_mem_read)
 	);

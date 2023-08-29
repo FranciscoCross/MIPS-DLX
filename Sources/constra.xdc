@@ -10,10 +10,10 @@ set_property PACKAGE_PIN T17 [get_ports {i_reset_wz}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {i_reset_wz}]
 
 #USB-RS232 Interface
-set_property PACKAGE_PIN B18 [get_ports i_rx_data]						
-	set_property IOSTANDARD LVCMOS33 [get_ports i_rx_data]
-set_property PACKAGE_PIN A18 [get_ports o_tx_data]						
-	set_property IOSTANDARD LVCMOS33 [get_ports o_tx_data]
+set_property PACKAGE_PIN B18 [get_ports i_rx]						
+	set_property IOSTANDARD LVCMOS33 [get_ports i_rx]
+set_property PACKAGE_PIN A18 [get_ports o_tx]						
+	set_property IOSTANDARD LVCMOS33 [get_ports o_tx]
 
 
 # LEDs
