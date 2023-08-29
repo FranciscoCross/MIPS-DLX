@@ -45,6 +45,7 @@ module FETCH#(
     reg imem_en_wr;
     reg imem_en_rd;
 
+    wire neg_enable;
     //-------------------------------------------------
     initial begin
         imem_en_wr = 0;
@@ -54,6 +55,7 @@ module FETCH#(
     assign o_PCAddr = wire_pc;
     assign o_next_PCAddr = nextAddr_pc;
 
+    not(neg_enable, i_enable);
 
     mux2#(.NB_DATA(`ADDRWIDTH)) mux_address_mem
 	(
@@ -98,7 +100,7 @@ module FETCH#(
     inst_pc(
         .i_clk(i_clk),
         .i_reset(i_reset),
-        .i_enable(i_enable),
+        .i_enable(neg_enable),
         .i_addr(wire_input_pc),
         .o_addr(wire_pc)
     );
@@ -108,7 +110,6 @@ module FETCH#(
     ) 
     inst_pc_add(
         .i_clk(i_clk),
-        .i_enable(i_enable),
         .i_nAddr(wire_pc),
         .o_nAddr(nextAddr_pc)
     );
@@ -120,7 +121,7 @@ module FETCH#(
     )
     instancia_imem(
         .i_clk(i_clk),
-        .i_enable(i_enable),
+        .i_enable(neg_enable),
         .i_reset(i_reset),
         .i_en_write(i_Mem_WEn),
         .i_en_read(i_Mem_REn),

@@ -6,7 +6,6 @@ module pc_add
 	)
 	(
 		input wire i_clk,
-		input wire i_enable,
 		input wire [NB_DATA-1:0] i_nAddr,
 		output wire [NB_DATA-1:0] o_nAddr
 	);
