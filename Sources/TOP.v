@@ -29,7 +29,7 @@ module TOP
 	wire [`ADDRWIDTH-1:0] wire_addr_load_inst; // instruccion a cargar y su direccion
 
 	wire wire_en_write, wire_en_read, wire_debug_unit;	
-    wire clock_w, locked_wz;
+    wire clock_w;
 	wire wire_halt, wire_enable_pipe;
 	wire wire_enable_mem;
 
@@ -45,7 +45,7 @@ module TOP
 	wire wire_ctrl_read_debug_reg;
 
 	
-	assign o_locked = locked_wz;
+	
 	assign halt_o = wire_halt;
 
 	clock_wz clock_wz
