@@ -20,7 +20,6 @@ module imem#(
     
     reg [NB_INST-1 : 0] MEM[MEM_SIZEB - 1 : 0];  //Register of memory 
     reg [NB_INST-1 : 0] data;             //Local variable to store the latest register pointed at
-    reg [`ADDRWIDTH-1 : 0] reg_addr;
 
    generate
         integer reg_index;
@@ -29,52 +28,27 @@ module imem#(
                 MEM[reg_index] = 32'b11111000000000000000000000000000;
     endgenerate
 
-   initial 
+   always @(negedge i_clk)
       begin
-         data = {NB_INST{1'b0}}; 
-         reg_addr = 0;
-      end
-
-
-   always @(posedge i_clk)
-      begin
-         reg_addr <= i_addr;
+         if(i_reset)
+            data = 0;
       end
 
    //Write
     always @(posedge i_clk)
         begin
-           if(i_reset)
-              data = MEM[0];
-           else if(i_en_write)
+           if(i_en_write)
               MEM[i_addr] = i_data;          
-           else
-              data = data; //Any case show latest instruction
         end
    //Read
    always @(negedge i_clk)
       begin
          if(i_enable)
-         begin
+            data = data;
+         else             
             if(i_en_read)
-               data = MEM[reg_addr];            
-            else 
-               data = data; //Any case show latest instruction
-         end
+               data = MEM[i_addr];
       end
-
-   always @(negedge i_enable)
-   begin
-      if(i_en_read)
-         if(reg_addr > 0)
-         data = MEM[reg_addr-1];    
-   end
-
-   always @(posedge i_enable)
-   begin
-      if(i_en_read)
-         data = MEM[reg_addr];    
-   end
    
    assign o_data = data;
     	    // Inicializacion de registros.
