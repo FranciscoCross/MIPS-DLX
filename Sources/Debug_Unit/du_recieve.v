@@ -57,65 +57,65 @@ always @(posedge i_clock)
 begin
 	if(i_reset)
 	begin
-		number_instructions <= {N_BITS{1'b0}};
-		ready_full_inst <= 1'b0;
-		instruction <= {NB_DATA{1'b0}};
-		count_bytes <= {2{1'b0}};
-		count_instruction_now <= {N_BITS{1'b0}};
-		all_instr_send <= 1'b0;
-		mode_operate <= {N_BITS{1'b0}};
-		ready_mode_operate <= 1'b0;
-		ready_number_instr <= 1'b0;
+		number_instructions 	= {N_BITS{1'b0}};
+		ready_full_inst 		= 1'b0;
+		instruction 			= {NB_DATA{1'b0}};
+		count_bytes 			= {2{1'b0}};
+		count_instruction_now 	= {N_BITS{1'b0}};
+		all_instr_send 			= 1'b0;
+		mode_operate 			= {N_BITS{1'b0}};
+		ready_mode_operate 		= 1'b0;
+		ready_number_instr 		= 1'b0;
 	end
 	else if(i_rx_done_uart)
 		begin
 			case (i_recieve_state)
 				Receive_Number_Instr: //1
 				begin
-					number_instructions <= i_data_uart_receive;
-					ready_number_instr  	<= 1'b1;
+					number_instructions = i_data_uart_receive;
+					ready_number_instr  = 1'b1;
 				end
 				Receive_One_Instr: //2
 				begin
-					instruction <= {i_data_uart_receive, instruction[31:8]};
+					instruction = {i_data_uart_receive, instruction[31:8]};
 					if (count_bytes == N_BYTES-1) 
 					begin
-						count_instruction_now <= count_instruction_now + 1;
-						count_bytes <= 2'b0;
-						ready_full_inst <= 1'b1;
+						count_instruction_now 	= count_instruction_now + 1;
+						count_bytes 			= 2'b0;
+						ready_full_inst 		= 1'b1;
 					end
 					else
 					begin
-						ready_full_inst <= 1'b0;
-						count_bytes <= count_bytes + 1'b1;						
+						ready_full_inst = 1'b0;
+						count_bytes 	= count_bytes + 1'b1;						
 					end
 				end
 				Waiting_operation: //4
 				begin
-					mode_operate <= i_data_uart_receive;
-					ready_mode_operate <= 1'b1;	
+					mode_operate 		= i_data_uart_receive;
+					ready_mode_operate 	= 1'b1;	
 				end
 				default:
                 begin
-				    number_instructions <= number_instructions;
-                    ready_full_inst <= ready_full_inst;
-                    instruction <= instruction;
-                    count_bytes <= count_bytes;
-                    count_instruction_now <= count_instruction_now;
-                    all_instr_send <= all_instr_send;
-                    mode_operate <= mode_operate;
-                    ready_mode_operate <= ready_mode_operate;
+				    number_instructions 		= number_instructions;
+                    ready_full_inst 			= ready_full_inst;
+                    instruction 				= instruction;
+                    count_bytes 				= count_bytes;
+                    count_instruction_now 		= count_instruction_now;
+                    all_instr_send 				= all_instr_send;
+                    mode_operate 				= mode_operate;
+                    ready_mode_operate 			= ready_mode_operate;
 				end
 			endcase
 		end
 		else if (count_instruction_now == number_instructions) 
-			all_instr_send <= 1'b1;
+			all_instr_send = 1'b1;
 		else 
 		begin
-			ready_number_instr <= 1'b0;
-			ready_full_inst <= 1'b0;
-			ready_mode_operate <= 1'b0;
-			all_instr_send <= 1'b0;
+			ready_number_instr 	= 1'b0;
+			ready_full_inst 	= 1'b0;
+			ready_mode_operate 	= 1'b0;
+			all_instr_send 		= 1'b0;
 		end
 end
 endmodule

@@ -378,7 +378,7 @@ end
 							next_state = Send_one_reg;
 						end
 					end
-				Check_bit_sucio:
+				Check_bit_sucio: //4096
 					begin
 						enable_mem = 1'b1;
 						ctrl_wr_debug_mem  = 1'b1;
@@ -392,7 +392,7 @@ end
 							next_state = Check_bit_sucio;
 						end
 					end
-				Send_addr_mem:
+				Send_addr_mem: //8192
 					begin	
 						enable_mem = 1'b1;
 						ctrl_wr_debug_mem  = 1'b1;
@@ -409,7 +409,7 @@ end
 							enable_send_addr_mem = 1'b1;																									
 						end
 					end	
-				Send_data_mem:
+				Send_data_mem://16264
 					begin
 						enable_mem = 1'b1;
 						ctrl_wr_debug_mem  = 1'b1;
@@ -428,7 +428,7 @@ end
 							enable_send_mem = 1'b1;																									
 						end
 					end
-				Check_send_all_mems:
+				Check_send_all_mems: //32528
 					begin
 						end_send_mem = 1'b0;
 						ctrl_wr_debug_mem  = 1'b1;
