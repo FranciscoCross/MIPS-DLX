@@ -374,7 +374,8 @@ end
 						end
 						else
 						begin
-							next_state = Check_bit_sucio;
+							addr_mem_debug_unit = addr_mem_debug_unit + 1;
+							next_state = Check_send_all_mems;
 						end
 					end
 				Send_addr_mem: //8192
