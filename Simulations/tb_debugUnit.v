@@ -25,7 +25,7 @@ module tb_debugUnit;
     wire [32-1:0] wire_instr;
     //Outputs
 
-    wire [5-1:0] o_addr_reg_debug_unit; //32 reg
+    wire [`ADDRWIDTH-1:0]  o_addr_reg_debug_unit; //32 reg
     wire [7-1:0] o_addr_mem_debug_unit; //128 elementos en memoria
     wire o_ctrl_addr_debug_mem;
     wire o_ctrl_wr_debug_mem;
@@ -238,7 +238,7 @@ bank_register bank_register
 		.i_clock(clock),
 		.i_reset(reset),
 		.i_rw(o_ctrl_read_debug_reg), 
-		.i_addr_ra(o_addr_reg_debug_unit),
+		.i_addr_ra(o_addr_reg_debug_unit[4:0]),
 		.o_data_ra(register)		
 	);
 

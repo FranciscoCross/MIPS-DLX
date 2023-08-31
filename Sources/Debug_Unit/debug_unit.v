@@ -69,7 +69,7 @@ module debug_unit
 	wire [`ADDRWIDTH-1:0] addr_instruction;
 
 	wire [N_BITS-1:0] data_uart_receive;
-	reg enable_read_cant_instr, en_read_reg, en_write_reg;
+	reg en_read_reg, en_write_reg;
 
 	/* Finish send-data*/
 	reg end_send_pc, enable_send_pc;
@@ -77,7 +77,6 @@ module debug_unit
 	reg end_send_one_reg, enable_send_one_reg;
 	reg end_send_addr_mem, enable_send_addr_mem;
 	reg end_send_mem, enable_send_mem;
-	reg enable_read_mode_operate;	
 	reg tx_busy;
 
 	/******************/
@@ -108,36 +107,14 @@ begin
   	if (i_reset) 
 		begin
 			// Asignaciones durante el reset
-			enable_read_cant_instr		= 1'b0;
-			enable_send_cant_cycles		= 1'b0;
-			enable_send_one_reg			= 1'b0;
-			enable_send_addr_mem		= 1'b0;
-			enable_send_mem				= 1'b0;
-			enable_read_mode_operate	= 1'b0;
-			debug_unit_reg				= 1'b0;
-			enable_mem					= 1'b0;
-			ctrl_read_debug_reg			= 1'b0;
-			ctrl_wr_debug_mem			= 1'b0;
-			ctrl_addr_debug_mem			= 1'b0;
-			addr_reg_debug_unit 		= {NB_REG{1'b0}};
 			end_send_mem 				= 1'b0;
 			end_send_cant_cycles 		= 1'b0;
-			addr_mem_debug_unit			= {`ADDRWIDTH{1'b0}};
-			data_send 					= {N_BITS{1'b0}};
 			cont_byte 					= {N_BITS{1'b0}};
-			enable_send_pc 				= 1'b0;
 			end_send_pc 				= 1'b0;
 			end_send_addr_mem 			= 1'b0;
 			end_send_one_reg  			= 1'b0;
 			tx_start 					= 1'b0;
-			cont_byte 					= {N_BITS{1'b0}};
-			state 						= {NB_STATE{1'b0}};
-			next_state 					= {NB_STATE{1'b0}};
-			enable_pipe_reg 			= 1'b0;
-			read_du 					= 1'b0;
 			tx_busy 					= 1'b0;
-			en_read_reg					= 1'b0;
-			en_write_reg				= 1'b0;
 		end 
 	else
 	begin
@@ -180,54 +157,63 @@ begin
 					end_send_mem  = 1'b1;
 					cont_byte = 3'b0;
 				end
-						
 			end
 		end
 	end
 end		
 
-
-	
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 	always @(posedge i_clock) //logica de cambio de estado
-		begin: next_state_logic		    
-			next_state 					= state;
-			enable_pipe_reg	 			= 1'b0;			
-			en_write_reg 				= 1'b0;
+		begin
+		next_state 					= state;
+		en_read_reg					= 1'b0;
+		enable_mem 					= 1'b0;			
+		debug_unit_reg 				= 1'b1; 
+		ctrl_read_debug_reg 		= 1'b0;
+		//ctrl_addr_debug_mem 		= 1'b0;
+		ctrl_wr_debug_mem 			= 1'b0;	
+		if (i_reset) 
+		begin
+			// Asignaciones durante el reset
+			enable_send_cant_cycles		= 1'b0;
+			enable_send_one_reg			= 1'b0;
+			enable_send_addr_mem		= 1'b0;
+			enable_send_mem				= 1'b0;
+			//debug_unit_reg				= 1'b0;
+			enable_mem					= 1'b0;
+			ctrl_read_debug_reg			= 1'b0;
+			ctrl_wr_debug_mem			= 1'b0;
+			ctrl_addr_debug_mem			= 1'b0;
+			addr_reg_debug_unit 		= {NB_REG{1'b0}};
+			addr_mem_debug_unit			= {`ADDRWIDTH{1'b0}};
+			data_send 					= {N_BITS{1'b0}};
+			enable_send_pc 				= 1'b0;
+			state 						= Number_Instr;;
+			next_state 					= Number_Instr;
+			enable_pipe_reg 			= 1'b0;
+			read_du 					= 1'b0;
 			en_read_reg					= 1'b0;
-			enable_read_cant_instr 		= 1'b0; // habilita leer la cantidad de instrucciones a cargar en memoria
-			enable_read_mode_operate 	= 1'b0;
-			enable_mem 					= 1'b0;			
-			debug_unit_reg 				= 1'b1; 
-			/* envio de datos*/
-			ctrl_read_debug_reg 		= 1'b0;
-			ctrl_addr_debug_mem 		= 1'b0;
-			ctrl_wr_debug_mem 			= 1'b0;	
-			enable_send_cant_cycles 	= 1'b0;
-			enable_send_one_reg 		= 1'b0;
-			enable_send_addr_mem 		= 1'b0;
-			enable_send_mem 			= 1'b0;
-					
-			
+			en_write_reg				= 1'b0;
+		end
+		else
+		begin	    
 			case (state)
 				Number_Instr: 						//1
 					begin
 						next_state  = Number_Instr;	
-						enable_read_cant_instr = 1'b1;
 						if (ready_number_instr)
 						begin								
 							next_state  = Receive_One_Instr;
-							enable_read_cant_instr = 1'b0;
 						end
 						else
 						begin
 							next_state  = next_state;
-							enable_read_cant_instr = enable_read_cant_instr;
 						end								    						      					
 					end	
 				Receive_One_Instr: 				//2
 					begin
+						en_write_reg = 1'b0;
 						if (ready_full_inst) //Cuando esta lista la instruccion, la manda y pasa al siguiente estado
 						begin									
 							next_state = Check_Send_All_Instr;
@@ -237,18 +223,18 @@ end
 					end				
 				Check_Send_All_Instr:			//4		//Estado con el que verificamos si se termino el envio de instrucciones		
 					begin					
-						en_write_reg = 1'b1;	 //habilito la escritura en memoria del pipeline															
+						en_write_reg = 1'b1;	 //habilito la escritura en memoria de instrucciones del pipeline															
 						if (all_instr_send)
 						begin	
-							next_state  = Waiting_operation;								
+							next_state  = Waiting_operation;
+															
 						end
 						else
 							next_state  = Receive_One_Instr;	
 					end	
 				Waiting_operation: 				//8	
 					begin
-							
-						enable_read_mode_operate = 1'b1;
+						en_write_reg = 1'b0;	
 						debug_unit_reg = 1'b0;						
 						if (ready_mode_operate)
 						begin								
@@ -260,7 +246,6 @@ end
 				Check_Operation: 					//16 //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
 						debug_unit_reg = 1'b0;
-						enable_read_mode_operate = 1'b0;
 						case (operation_mode)
 							`mode_step_to_step:
 								next_state = Step_to_step;	
@@ -452,6 +437,7 @@ end
 					next_state = Number_Instr;					
 			endcase
 		end
+	end
 
 	UART2 uart2
         (
