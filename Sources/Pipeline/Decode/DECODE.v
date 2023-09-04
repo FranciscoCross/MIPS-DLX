@@ -27,7 +27,6 @@ module DECODE
 		input wire [NB_REG-1:0] i_EX_write_register_usage,    // Registro de escritura desde la etapa EX
 		input wire [NB_REG-1:0] i_EX_rt,     			// Registro de destino desde la etapa EX
 		input wire i_ID_EX_mem_read,     				// Señal de control desde el registro de la etapa ID/EX para lectura de memoria
-		input wire i_EX_reg_write,     					// Señal de control desde la etapa EX para escritura en registros
 		input wire i_forward_A,     					// Señal de control para adelantar datos A
 		input wire i_forward_B,     					// Señal de control para adelantar datos B
 		input wire [NB_DATA-1:0] i_data_forward_EX_MEM,	// Datos adelantados desde la etapa EX/MEM

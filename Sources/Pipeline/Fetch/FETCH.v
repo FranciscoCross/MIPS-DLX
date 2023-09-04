@@ -109,7 +109,6 @@ module FETCH#(
         .NB_DATA (NB_DATA)
     ) 
     inst_pc_add(
-        .i_clk(i_clk),
         .i_nAddr(wire_pc),
         .o_nAddr(nextAddr_pc)
     );
