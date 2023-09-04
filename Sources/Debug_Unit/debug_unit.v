@@ -181,7 +181,6 @@ end
 			enable_send_one_reg			= 1'b0;
 			enable_send_addr_mem		= 1'b0;
 			enable_send_mem				= 1'b0;
-			//debug_unit_reg				= 1'b0;
 			enable_mem					= 1'b0;
 			ctrl_read_debug_reg			= 1'b0;
 			ctrl_wr_debug_mem			= 1'b0;
@@ -190,7 +189,7 @@ end
 			addr_mem_debug_unit			= {`ADDRWIDTH{1'b0}};
 			data_send 					= {N_BITS{1'b0}};
 			enable_send_pc 				= 1'b0;
-			state 						= Number_Instr;;
+			state 						= Number_Instr;
 			next_state 					= Number_Instr;
 			enable_pipe_reg 			= 1'b0;
 			read_du 					= 1'b0;

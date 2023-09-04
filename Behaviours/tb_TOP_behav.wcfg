@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="24,115,605.578 ns"></ZoomStartTime>
-      <ZoomEndTime time="24,116,296.310 ns"></ZoomEndTime>
-      <Cursor1Time time="24,115,849.306 ns"></Cursor1Time>
+      <ZoomStartTime time="23,958.891676 us"></ZoomStartTime>
+      <ZoomEndTime time="24,344.850324 us"></ZoomEndTime>
+      <Cursor1Time time="24,151.871000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="245"></NameColumnWidth>
-      <ValueColumnWidth column_width="103"></ValueColumnWidth>
+      <ValueColumnWidth column_width="99"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wave_markers>
@@ -515,10 +515,6 @@
             <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/Decode_stage/i_ID_EX_mem_read" type="logic">
                <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
                <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
-            </wvobject>
-            <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/Decode_stage/i_EX_reg_write" type="logic">
-               <obj_property name="ElementShortName">i_EX_reg_write</obj_property>
-               <obj_property name="ObjectShortName">i_EX_reg_write</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/Decode_stage/i_forward_A" type="logic">
                <obj_property name="ElementShortName">i_forward_A</obj_property>
@@ -2743,7 +2739,6 @@
       <wvobject fp_name="group863" type="group">
          <obj_property name="label">Count_cicles</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group687" type="group">
             <obj_property name="label">inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
