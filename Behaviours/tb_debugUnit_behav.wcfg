@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="14.560000001 ms"></ZoomEndTime>
-      <Cursor1Time time="5.249071000 ms"></Cursor1Time>
+      <ZoomStartTime time="69.091097921 ms"></ZoomStartTime>
+      <ZoomEndTime time="88.864604416 ms"></ZoomEndTime>
+      <Cursor1Time time="72.008500519 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
-      <ValueColumnWidth column_width="67"></ValueColumnWidth>
+      <ValueColumnWidth column_width="63"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="18" />
    <wave_markers>
@@ -172,8 +172,8 @@
       <obj_property name="label">Outputs</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_reg_debug_unit" type="array">
-         <obj_property name="ElementShortName">o_addr_reg_debug_unit[6:0]</obj_property>
-         <obj_property name="ObjectShortName">o_addr_reg_debug_unit[6:0]</obj_property>
+         <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+         <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_mem_debug_unit" type="array">
          <obj_property name="ElementShortName">o_addr_mem_debug_unit[6:0]</obj_property>
@@ -346,10 +346,6 @@
       <obj_property name="label">Stage1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_debugUnit/debug_unit/enable_read_cant_instr" type="logic">
-         <obj_property name="ElementShortName">enable_read_cant_instr</obj_property>
-         <obj_property name="ObjectShortName">enable_read_cant_instr</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_debugUnit/debug_unit/ctrl_addr_debug_mem" type="logic">
          <obj_property name="ElementShortName">ctrl_addr_debug_mem</obj_property>
          <obj_property name="ObjectShortName">ctrl_addr_debug_mem</obj_property>
@@ -486,6 +482,7 @@
    <wvobject fp_name="group509" type="group">
       <obj_property name="label">Stage2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group58" type="group">
          <obj_property name="label">Send_program_counter (256)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -567,8 +564,8 @@
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_debugUnit/debug_unit/o_addr_reg_debug_unit" type="array">
-            <obj_property name="ElementShortName">o_addr_reg_debug_unit[6:0]</obj_property>
-            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[6:0]</obj_property>
+            <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_debugUnit/debug_unit/uart2/o_tx_done_tick" type="logic">
@@ -587,9 +584,15 @@
       <wvobject fp_name="group61" type="group">
          <obj_property name="label">Check_send_all_regs (2048)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_debugUnit/debug_unit/addr_reg_debug_unit" type="array">
+            <obj_property name="ElementShortName">addr_reg_debug_unit[6:0]</obj_property>
+            <obj_property name="ObjectShortName">addr_reg_debug_unit[6:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
          <wvobject fp_name="/tb_debugUnit/o_addr_reg_debug_unit" type="array">
-            <obj_property name="ElementShortName">o_addr_reg_debug_unit[6:0]</obj_property>
-            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[6:0]</obj_property>
+            <obj_property name="ElementShortName">o_addr_reg_debug_unit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_addr_reg_debug_unit[4:0]</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>

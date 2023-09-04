@@ -11,24 +11,24 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="104,588.682737 us"></ZoomStartTime>
-      <ZoomEndTime time="109,118.682738 us"></ZoomEndTime>
-      <Cursor1Time time="108,083.682737 us"></Cursor1Time>
+      <ZoomStartTime time="2,608.257068 us"></ZoomStartTime>
+      <ZoomEndTime time="2,653.557069 us"></ZoomEndTime>
+      <Cursor1Time time="2,631.707068 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="245"></NameColumnWidth>
       <ValueColumnWidth column_width="107"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
+   <WVObjectSize size="10" />
    <wave_markers>
       <marker time="125100000" label="" />
       <marker time="9460850000000" label="" />
       <marker time="9840410000000" label="" />
       <marker time="34068330000000" label="" />
-      <marker time="1080000" label="" />
       <marker time="998639000" label="" />
       <marker time="499680000" label="" />
       <marker time="92339700000" label="" />
+      <marker time="1079139" label="" />
    </wave_markers>
    <wvobject fp_name="group119" type="group">
       <obj_property name="label">ClockWizard</obj_property>
@@ -2677,6 +2677,7 @@
    <wvobject fp_name="group494" type="group">
       <obj_property name="label">UART PC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/uart2_PC/i_reset" type="logic">
          <obj_property name="ElementShortName">i_reset</obj_property>
          <obj_property name="ObjectShortName">i_reset</obj_property>
@@ -2717,6 +2718,7 @@
       <wvobject fp_name="group507" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_TOP/uart2_PC/i_rx" type="logic">
             <obj_property name="ElementShortName">i_rx</obj_property>
             <obj_property name="ObjectShortName">i_rx</obj_property>
@@ -2740,5 +2742,9 @@
    <wvobject fp_name="/tb_TOP/instancia_TOP/debug_unit/addr_mem_debug_unit" type="array">
       <obj_property name="ElementShortName">addr_mem_debug_unit[6:0]</obj_property>
       <obj_property name="ObjectShortName">addr_mem_debug_unit[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP/instancia_TOP/pipeline/memory_stage/ctrl_bit_sucio/i_addr" type="array">
+      <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+      <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
    </wvobject>
 </wave_config>

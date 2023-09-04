@@ -26,7 +26,7 @@ module debug_unit
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] 	i_mem_debug_unit,
 
-		output wire [`ADDRWIDTH-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
+		output wire [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
 		output wire [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
 		output wire o_ctrl_addr_debug_mem,
@@ -92,6 +92,7 @@ module debug_unit
 
 
 	wire tx_done_uart;
+	wire rx_done_uart;
 	reg [`ADDRWIDTH-1:0] 	addr_reg_debug_unit;
 	reg [`ADDRWIDTH-1:0]    addr_mem_debug_unit;
 	reg read_du;
