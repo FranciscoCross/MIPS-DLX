@@ -36,7 +36,7 @@ module TOP
 	wire [`ADDRWIDTH-1:0] wire_send_program_counter;
 	wire [ NB_DATA-1:0] wire_reg_debug_unit;
 	wire [`ADDRWIDTH-1:0] wire_cant_cycles;
-	wire [`ADDRWIDTH-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
+	wire [NB_REG-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
 	wire wire_bit_sucio;
 	wire wire_ctrl_addr_debug_mem;
 	wire wire_ctrl_wr_debug_mem;

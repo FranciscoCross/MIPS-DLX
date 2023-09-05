@@ -68,7 +68,7 @@ module unit_control
 			beq  = 1'b0;
 			bne  = 1'b0;
 			jump = 1'b0;	
-			halt_detected = 1'b1;
+			halt_detected = 1'b0;
 			pc_src      = 2'b00;
 			M_control   = 6'b000000;
 			WB_control  = 3'b000;

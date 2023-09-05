@@ -24,7 +24,7 @@ module pipeline
 		input wire i_read_du,	
 		input wire i_enable_pipe,
 		input wire i_debug_unit,
-		input wire [`ADDRWIDTH-1:0] i_addr_debug_unit, //addr de registro debug
+		input wire [NB_REG-1:0] i_addr_debug_unit, //addr de registro debug
 		input wire [`ADDRWIDTH-1:0] i_addr_mem_debug_unit,
 		input wire i_ctrl_read_debug_reg,
 		input wire i_ctrl_wr_debug_mem, //leyendo para debug mem
@@ -207,7 +207,6 @@ module pipeline
 		.i_EX_write_register_usage(wire_write_reg_WB_ID), 
 		.i_EX_rt(wire_rt_ID_EX), 
 		.i_ID_EX_mem_read(wire_M_ctrl_ID_EX[5]), 
-		.i_EX_reg_write(wire_WB_ctrl_ID_EX[2]),
 		.i_forward_A(forw_branch_A), 
 		.i_forward_B(forw_branch_B),
 		.i_data_forward_EX_MEM(wire_result_alu_EX),

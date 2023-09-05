@@ -28,22 +28,18 @@ module imem#(
                 MEM[reg_index] = 32'b11111000000000000000000000000000;
     endgenerate
 
+   //Write
+    always @(posedge i_clk)
+      begin
+         if(i_en_write)
+            MEM[i_addr] = i_data;          
+      end
+   //Read
    always @(negedge i_clk)
       begin
          if(i_reset)
             data = 0;
-      end
-
-   //Write
-    always @(posedge i_clk)
-        begin
-           if(i_en_write)
-              MEM[i_addr] = i_data;          
-        end
-   //Read
-   always @(negedge i_clk)
-      begin
-         if(i_enable)
+         else if(i_enable) //ta al dope mepa
             data = data;
          else             
             if(i_en_read)

@@ -1,9 +1,11 @@
 `timescale 1ns / 1ps
+`include "parameters.vh"
 
 module tb_debugUnit;
     localparam NB_BITES = 8;
     localparam NB_STATE  = 15;
     localparam NB_DATA  = 32;
+    localparam NB_REG  = 5;
     
     reg clock = 0;
     reg reset = 0;
@@ -25,7 +27,7 @@ module tb_debugUnit;
     wire [32-1:0] wire_instr;
     //Outputs
 
-    wire [5-1:0] o_addr_reg_debug_unit; //32 reg
+    wire [NB_REG-1:0]  o_addr_reg_debug_unit; //32 reg
     wire [7-1:0] o_addr_mem_debug_unit; //128 elementos en memoria
     wire o_ctrl_addr_debug_mem;
     wire o_ctrl_wr_debug_mem;
@@ -238,7 +240,7 @@ bank_register bank_register
 		.i_clock(clock),
 		.i_reset(reset),
 		.i_rw(o_ctrl_read_debug_reg), 
-		.i_addr_ra(o_addr_reg_debug_unit),
+		.i_addr_ra(o_addr_reg_debug_unit[4:0]),
 		.o_data_ra(register)		
 	);
 

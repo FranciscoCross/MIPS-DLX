@@ -3,6 +3,7 @@
 module tb_PIPELINE;
 
   // Inputs
+  localparam NB_REG = 5;
   reg clock;
   reg i_reset;
   reg [32-1:0] i_inst_load;
@@ -12,7 +13,7 @@ module tb_PIPELINE;
   reg i_enable_mem;
   reg i_enable_pipe;
   reg i_debug_unit;
-  reg [`ADDRWIDTH-1:0] i_addr_debug_unit;
+  reg [NB_REG-1:0] i_addr_debug_unit;
   reg [`ADDRWIDTH-1:0] i_addr_mem_debug_unit;
   reg i_ctrl_read_debug_reg;
   reg i_ctrl_wr_debug_mem;

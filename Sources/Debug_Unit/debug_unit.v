@@ -26,22 +26,22 @@ module debug_unit
 		input wire i_bit_sucio,
 		input wire [NB_DATA-1:0] 	i_mem_debug_unit,
 
-		output reg [`ADDRWIDTH-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
+		output wire [NB_REG-1:0] 	o_addr_reg_debug_unit,// direccion a leer del registro para enviar a pc
 
-		output reg [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
-		output reg o_ctrl_addr_debug_mem,
-		output reg o_ctrl_wr_debug_mem,
-		output reg o_ctrl_read_debug_reg,
+		output wire [`ADDRWIDTH-1:0] o_addr_mem_debug_unit, //direccion a leer en memoria
+		output wire o_ctrl_addr_debug_mem,
+		output wire o_ctrl_wr_debug_mem,
+		output wire o_ctrl_read_debug_reg,
 		output wire o_tx_data,
 		output wire o_en_write, //habilitamos la escritura en memoria, sabiendo que el dato ya esta completo formando los 32 bits de la instruccion
 		output wire o_en_read,		
-		output reg o_enable_pipe,
-		output reg o_enable_mem,
+		output wire o_enable_pipe,
+		output wire o_enable_mem,
 		
 		output wire o_debug_unit_reg,				
 		output wire [NB_DATA-1:0] 		o_inst_load, //instruccion a cargar en memoria
 		output wire [`ADDRWIDTH-1:0] 	o_address, //direccion donde se carga la instruccion
-		output reg o_read_du,
+		output wire o_read_du,
 
 		/* para DEBUG */
 		output wire [NB_STATE-1:0] o_state
@@ -69,7 +69,7 @@ module debug_unit
 	wire [`ADDRWIDTH-1:0] addr_instruction;
 
 	wire [N_BITS-1:0] data_uart_receive;
-	reg enable_read_cant_instr, en_read_reg, en_write_reg;
+	reg en_read_reg, en_write_reg;
 
 	/* Finish send-data*/
 	reg end_send_pc, enable_send_pc;
@@ -77,7 +77,7 @@ module debug_unit
 	reg end_send_one_reg, enable_send_one_reg;
 	reg end_send_addr_mem, enable_send_addr_mem;
 	reg end_send_mem, enable_send_mem;
-	reg enable_read_mode_operate;	
+	reg tx_busy;
 
 	/******************/
 	
@@ -87,122 +87,133 @@ module debug_unit
 	reg tx_start;
 	reg [N_BITS-1:0] data_send;   
 		
-	assign o_en_write    = en_write_reg;
-	assign o_en_read     = en_read_reg;
-	assign o_address     = addr_instruction-1;
-	assign o_debug_unit_reg   = debug_unit_reg;		
 
-	/* para DEBUG */
-	assign o_state = state;
+	
 
 
-wire tx_done_uart;
+	wire tx_done_uart;
+	wire rx_done_uart;
+	reg [`ADDRWIDTH-1:0] 	addr_reg_debug_unit;
+	reg [`ADDRWIDTH-1:0]    addr_mem_debug_unit;
+	reg read_du;
+	reg enable_mem;
+	reg ctrl_read_debug_reg;
+	reg ctrl_wr_debug_mem;
+	reg ctrl_addr_debug_mem;
 
 always @(negedge i_clock) 
 begin
-  	state <= next_state;
-	o_enable_pipe <= enable_pipe_reg;
+  	state = next_state;
+	
   	if (i_reset) 
 		begin
 			// Asignaciones durante el reset
-			o_addr_reg_debug_unit <= {NB_REG{1'b0}};
-			end_send_mem <= 1'b0;
-			end_send_cant_cycles <= 1'b0;
-			o_addr_mem_debug_unit <= {`ADDRWIDTH{1'b0}};
-			data_send <= {N_BITS{1'b0}};
-			cont_byte <= {N_BITS{1'b0}};
-			enable_send_pc <= 1'b0;
-			end_send_pc <= 1'b0;
-			end_send_addr_mem <= 1'b0;
-			end_send_one_reg  <= 1'b0;
-			tx_start <= 1'b0;
-			cont_byte <= {N_BITS{1'b0}};
-			state <= {NB_STATE{1'b0}};
-			next_state <= {NB_STATE{1'b0}};
-			o_enable_pipe <= 1'b0;
-			o_read_du <= 1'b0;
+			end_send_mem 				= 1'b0;
+			end_send_cant_cycles 		= 1'b0;
+			cont_byte 					= {N_BITS{1'b0}};
+			end_send_pc 				= 1'b0;
+			end_send_addr_mem 			= 1'b0;
+			end_send_one_reg  			= 1'b0;
+			tx_start 					= 1'b0;
+			tx_busy 					= 1'b0;
 		end 
 	else
 	begin
 		if(enable_send_pc || enable_send_cant_cycles || enable_send_one_reg || enable_send_addr_mem || enable_send_mem)
 		begin
-			tx_start <= 1'b1;
+			if(tx_busy == 0)
+			begin
+				tx_start 	= 1'b1;
+				tx_busy 	= 1'b1;
+			end
+			else 
+			begin
+				tx_start = 1'b0;
+			end
 		end
 		if(tx_done_uart)
 		begin
-			tx_start <= 1'b0;
+			tx_busy = 1'b0;
 		  	if(enable_send_pc)
-		  		end_send_pc <= 1'b1;
+		  		end_send_pc = 1'b1;
 			if(enable_send_cant_cycles)
-		  		end_send_cant_cycles <= 1'b1;
+		  		end_send_cant_cycles = 1'b1;
 			if(enable_send_one_reg)
 			begin
-				cont_byte <= cont_byte + 1;
+				cont_byte = cont_byte + 1;
 				if (cont_byte > N_BYTES-1)
 				begin
-					end_send_one_reg  <= 1'b1;
-					cont_byte <= 3'b0;
+					end_send_one_reg  = 1'b1;
+					cont_byte = 3'b0;
 				end
 						
 			end
 			if(enable_send_addr_mem)
-				end_send_addr_mem <= 1'b1;
+				end_send_addr_mem = 1'b1;
 			if(enable_send_mem)
 			begin
-				cont_byte <= cont_byte + 1;
+				cont_byte = cont_byte + 1;
 				if (cont_byte > N_BYTES-1)
 				begin
-					end_send_mem  <= 1'b1;
-					cont_byte <= 3'b0;
+					end_send_mem  = 1'b1;
+					cont_byte = 3'b0;
 				end
-						
 			end
 		end
 	end
 end		
 
-
-	
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 	always @(posedge i_clock) //logica de cambio de estado
-		begin: next_state_logic		    
-			next_state 					= state;
-			enable_pipe_reg	 			= 1'b0;			
-			en_write_reg 				= 1'b0;
+		begin
+		next_state 					= state;
+		en_read_reg					= 1'b0;
+		enable_mem 					= 1'b0;			
+		debug_unit_reg 				= 1'b1; 
+		ctrl_read_debug_reg 		= 1'b0;
+		//ctrl_addr_debug_mem 		= 1'b0;
+		ctrl_wr_debug_mem 			= 1'b0;	
+		if (i_reset) 
+		begin
+			// Asignaciones durante el reset
+			enable_send_cant_cycles		= 1'b0;
+			enable_send_one_reg			= 1'b0;
+			enable_send_addr_mem		= 1'b0;
+			enable_send_mem				= 1'b0;
+			enable_mem					= 1'b0;
+			ctrl_read_debug_reg			= 1'b0;
+			ctrl_wr_debug_mem			= 1'b0;
+			ctrl_addr_debug_mem			= 1'b0;
+			addr_reg_debug_unit 		= {NB_REG{1'b0}};
+			addr_mem_debug_unit			= {`ADDRWIDTH{1'b0}};
+			data_send 					= {N_BITS{1'b0}};
+			enable_send_pc 				= 1'b0;
+			state 						= Number_Instr;
+			next_state 					= Number_Instr;
+			enable_pipe_reg 			= 1'b0;
+			read_du 					= 1'b0;
 			en_read_reg					= 1'b0;
-			enable_read_cant_instr 		= 1'b0; // habilita leer la cantidad de instrucciones a cargar en memoria
-			enable_read_mode_operate 	= 1'b0;
-			o_enable_mem 				= 1'b0;			
-			debug_unit_reg 				= 1'b1; 
-			/* envio de datos*/
-			o_ctrl_read_debug_reg 		= 1'b0;
-			o_ctrl_addr_debug_mem 		= 1'b0;
-			o_ctrl_wr_debug_mem 		= 1'b0;	
-			enable_send_cant_cycles 	= 1'b0;
-			enable_send_one_reg 		= 1'b0;
-			enable_send_addr_mem 		= 1'b0;
-			enable_send_mem 			= 1'b0;
-					
-			
+			en_write_reg				= 1'b0;
+		end
+		else
+		begin	    
 			case (state)
 				Number_Instr: 						//1
 					begin
 						next_state  = Number_Instr;	
-						enable_read_cant_instr = 1'b1;
 						if (ready_number_instr)
 						begin								
 							next_state  = Receive_One_Instr;
-							enable_read_cant_instr = 1'b0;
 						end
 						else
 						begin
 							next_state  = next_state;
-							enable_read_cant_instr = enable_read_cant_instr;
 						end								    						      					
 					end	
 				Receive_One_Instr: 				//2
 					begin
+						en_write_reg = 1'b0;
 						if (ready_full_inst) //Cuando esta lista la instruccion, la manda y pasa al siguiente estado
 						begin									
 							next_state = Check_Send_All_Instr;
@@ -212,18 +223,18 @@ end
 					end				
 				Check_Send_All_Instr:			//4		//Estado con el que verificamos si se termino el envio de instrucciones		
 					begin					
-						en_write_reg = 1'b1;	 //habilito la escritura en memoria del pipeline															
+						en_write_reg = 1'b1;	 //habilito la escritura en memoria de instrucciones del pipeline															
 						if (all_instr_send)
 						begin	
-							next_state  = Waiting_operation;								
+							next_state  = Waiting_operation;
+															
 						end
 						else
 							next_state  = Receive_One_Instr;	
 					end	
 				Waiting_operation: 				//8	
 					begin
-							
-						enable_read_mode_operate = 1'b1;
+						en_write_reg = 1'b0;	
 						debug_unit_reg = 1'b0;						
 						if (ready_mode_operate)
 						begin								
@@ -235,7 +246,6 @@ end
 				Check_Operation: 					//16 //Case que elige el modo de operacion, STEP o CONTINUO
 					begin						
 						debug_unit_reg = 1'b0;
-						enable_read_mode_operate = 1'b0;
 						case (operation_mode)
 							`mode_step_to_step:
 								next_state = Step_to_step;	
@@ -249,7 +259,7 @@ end
 					begin	
 						en_read_reg = 1'b1;
 						enable_pipe_reg = 1'b1;
-						o_enable_mem = 1'b1;	
+						enable_mem = 1'b1;	
 						debug_unit_reg = 1'b0;
 						en_write_reg = 1'b0;						
 						next_state = Wait_One_Cicle;
@@ -274,7 +284,7 @@ end
 					begin						
 						en_read_reg = 1'b1;
 						enable_pipe_reg = 1'b1;
-						o_enable_mem = 1'b1;						
+						enable_mem = 1'b1;						
 						next_state = Continue_to_Halt;
 						debug_unit_reg = 1'b0;
 						en_write_reg = 1'b0;						
@@ -324,12 +334,12 @@ end
 					end	
 				Send_one_reg:
 					begin
-					    o_read_du  = 1'b1;
-						o_ctrl_read_debug_reg = 1'b1;
+					    read_du  = 1'b1;
+						ctrl_read_debug_reg = 1'b1;
 						if(end_send_one_reg)
 						begin
 							next_state = Check_send_all_regs;
-							o_addr_reg_debug_unit = o_addr_reg_debug_unit + 1;
+							addr_reg_debug_unit = addr_reg_debug_unit + 1;
 							enable_send_one_reg = 1'b0;
 						end	
 						else
@@ -343,9 +353,9 @@ end
 				Check_send_all_regs:
 					begin
 						end_send_one_reg = 1'b0;
-						if(o_addr_reg_debug_unit == 5'b0)
+						if(addr_reg_debug_unit == 32)
 						begin
-							o_ctrl_read_debug_reg = 1'b1;
+							ctrl_read_debug_reg = 1'b1;
 							next_state = Check_bit_sucio;
 						end
 						else
@@ -353,25 +363,26 @@ end
 							next_state = Send_one_reg;
 						end
 					end
-				Check_bit_sucio:
+				Check_bit_sucio: //4096
 					begin
-						o_enable_mem = 1'b1;
-						o_ctrl_wr_debug_mem  = 1'b1;
-						o_ctrl_addr_debug_mem = 1'b1;
+						enable_mem = 1'b1;
+						ctrl_wr_debug_mem  = 1'b1;
+						ctrl_addr_debug_mem = 1'b1;
 						if(i_bit_sucio)
 						begin
 							next_state = Send_addr_mem;
 						end
 						else
 						begin
-							next_state = Check_bit_sucio;
+							addr_mem_debug_unit = addr_mem_debug_unit + 1;
+							next_state = Check_send_all_mems;
 						end
 					end
-				Send_addr_mem:
+				Send_addr_mem: //8192
 					begin	
-						o_enable_mem = 1'b1;
-						o_ctrl_wr_debug_mem  = 1'b1;
-						o_ctrl_addr_debug_mem = 1'b1;
+						enable_mem = 1'b1;
+						ctrl_wr_debug_mem  = 1'b1;
+						ctrl_addr_debug_mem = 1'b1;
 						if(end_send_addr_mem)
 						begin
 							next_state = Send_data_mem;
@@ -380,18 +391,18 @@ end
 						else
 						begin					
 							next_state = Send_addr_mem;	
-							data_send = o_addr_mem_debug_unit;
+							data_send = addr_mem_debug_unit;
 							enable_send_addr_mem = 1'b1;																									
 						end
 					end	
-				Send_data_mem:
+				Send_data_mem://16264
 					begin
-						o_enable_mem = 1'b1;
-						o_ctrl_wr_debug_mem  = 1'b1;
-						o_ctrl_addr_debug_mem = 1'b1;
+						enable_mem = 1'b1;
+						ctrl_wr_debug_mem  = 1'b1;
+						ctrl_addr_debug_mem = 1'b1;
 						if(end_send_mem)
 						begin
-							o_addr_mem_debug_unit = o_addr_mem_debug_unit + 1;
+							addr_mem_debug_unit = addr_mem_debug_unit + 1;
 							next_state = Check_send_all_mems;
 							enable_send_mem = 1'b0;
 						end	
@@ -403,23 +414,23 @@ end
 							enable_send_mem = 1'b1;																									
 						end
 					end
-				Check_send_all_mems:
+				Check_send_all_mems: //32528
 					begin
 						end_send_mem = 1'b0;
-						o_ctrl_wr_debug_mem  = 1'b1;
-						o_ctrl_addr_debug_mem = 1'b1;
-						if(o_addr_mem_debug_unit == 7'b0)
+						ctrl_wr_debug_mem  = 1'b1;
+						ctrl_addr_debug_mem = 1'b1;
+						if(addr_mem_debug_unit == 7'b0)
 						begin
-							o_enable_mem = 1'b0;
-							o_ctrl_wr_debug_mem  = 1'b0;
-							o_ctrl_addr_debug_mem = 1'b0;
+							enable_mem = 1'b0;
+							ctrl_wr_debug_mem  = 1'b0;
+							ctrl_addr_debug_mem = 1'b0;
 							next_state = Waiting_operation;
 						end
 						else
 						begin
-							o_enable_mem = 1'b1;
-							o_ctrl_wr_debug_mem  = 1'b1;
-							o_ctrl_addr_debug_mem = 1'b1;
+							enable_mem = 1'b1;
+							ctrl_wr_debug_mem  = 1'b1;
+							ctrl_addr_debug_mem = 1'b1;
 							next_state = Check_bit_sucio;
 						end
 					end
@@ -427,6 +438,7 @@ end
 					next_state = Number_Instr;					
 			endcase
 		end
+	end
 
 	UART2 uart2
         (
@@ -447,9 +459,7 @@ du_recieve du_recieve
 		.i_reset(i_reset),
 		.i_rx_done_uart(rx_done_uart),
 		.i_recieve_state(state[3:0]),
-		.i_data_uart_receive(data_uart_receive),
-
-	
+		.i_data_uart_receive(data_uart_receive),	
 		.o_number_instructions(number_instructions),
 		.o_ready_number_instr(ready_number_instr),
 		.o_instruction(o_inst_load),
@@ -459,6 +469,21 @@ du_recieve du_recieve
 		.o_mode_operate(operation_mode),
 		.o_ready_mode_operate(ready_mode_operate)
 	);
+
+assign o_addr_reg_debug_unit 	= addr_reg_debug_unit;
+assign o_addr_mem_debug_unit 	= addr_mem_debug_unit;
+assign o_ctrl_addr_debug_mem 	= ctrl_addr_debug_mem;
+assign o_ctrl_wr_debug_mem 		= ctrl_wr_debug_mem;
+assign o_ctrl_read_debug_reg 	= ctrl_read_debug_reg;
+assign o_en_write 				= en_write_reg;
+assign o_en_read 				= en_read_reg;	
+assign o_enable_pipe 			= enable_pipe_reg;
+assign o_enable_mem 			= enable_mem;
+assign o_debug_unit_reg 		= debug_unit_reg;				
+assign o_address 				= addr_instruction-1;
+assign o_read_du 				= read_du;
+assign o_state 					= state;
+
 
 
 endmodule
