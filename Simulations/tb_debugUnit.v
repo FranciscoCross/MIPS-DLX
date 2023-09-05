@@ -193,7 +193,7 @@ module tb_debugUnit;
 
     	
 
-    debug_unit #(.BAUD_RATE(115200)) debug_unit
+    debug_unit #(.BAUD_RATE(19200)) debug_unit
 	(
 		.i_clock(clock),
 		.i_reset(reset),

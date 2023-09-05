@@ -7,7 +7,7 @@
 module debug_unit
 	#(
 		parameter CLOCK      = 50E6,
-		parameter BAUD_RATE  = 9600,
+		parameter BAUD_RATE  = 19200,
 		parameter NB_DATA    = 32,
 		parameter NB_REG     = 5,
 		parameter N_BITS     = 8,

@@ -5,7 +5,7 @@ module tb_TOP(
     );
 
     localparam CLK  = 50E6;
-    localparam BAUD_RATE  = 115200;
+    localparam BAUD_RATE  = 19200;
     localparam NB_DATA  = 32;
     localparam NB_BYTES = 8;
     localparam NB_BITS = 8;

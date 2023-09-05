@@ -1,7 +1,7 @@
 # Clock signal
 set_property PACKAGE_PIN W5 [get_ports i_clock]							
 	set_property IOSTANDARD LVCMOS33 [get_ports i_clock]
-	create_clock -add -name sys_clk_pin -period 20.00 -waveform {0 5} [get_ports i_clock]
+	# create_clock -add -name sys_clk_pin -period 20.00 -waveform {0 5} [get_ports i_clock]
  
 # Buttons
 set_property PACKAGE_PIN W19 [get_ports {i_reset}]					
@@ -45,8 +45,6 @@ set_property PACKAGE_PIN P3 [get_ports {o_state[12]}]
  	set_property IOSTANDARD LVCMOS33 [get_ports {o_state[12]}]
 set_property PACKAGE_PIN N3 [get_ports {o_state[13]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {o_state[13]}]
-set_property PACKAGE_PIN P1 [get_ports {o_state[14]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {o_state[14]}]
 set_property PACKAGE_PIN L1 [get_ports {o_locked}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {o_locked}]
 
