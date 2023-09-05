@@ -12,7 +12,7 @@ module debug_unit
 		parameter NB_REG     = 5,
 		parameter N_BITS     = 8,
 		parameter N_BYTES    = 4,		
-		parameter NB_STATE   = 15,
+		parameter NB_STATE   = 14,
 		parameter N_COUNT	 	 = 10			
 	)
 	(
@@ -46,22 +46,22 @@ module debug_unit
 		/* para DEBUG */
 		output wire [NB_STATE-1:0] o_state
 	);
-	localparam 	[NB_STATE-1:0]  Number_Instr        	=  15'b000000000000001;//1
-	localparam 	[NB_STATE-1:0]	Receive_One_Instr     	=  15'b000000000000010;//2
-	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr	=  15'b000000000000100;//4
-	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  15'b000000000001000;//8
-	localparam 	[NB_STATE-1:0]	Check_Operation    		=  15'b000000000010000;//16 To choose between step or continuous mode
-	localparam 	[NB_STATE-1:0]	Step_to_step       		=  15'b000000000100000;//32 
-	localparam 	[NB_STATE-1:0]	Wait_One_Cicle     		=  15'b000000001000000;//64 
-	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  15'b000000010000000;//128 For continuous mode
-	localparam 	[NB_STATE-1:0]	Send_program_counter  	=  15'b000000100000000;//256 
-	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  15'b000001000000000;//512
-	localparam 	[NB_STATE-1:0]	Send_one_reg			=  15'b000010000000000;//1024
-	localparam 	[NB_STATE-1:0]	Check_send_all_regs		=  15'b000100000000000;//2048  
-	localparam 	[NB_STATE-1:0]	Check_bit_sucio			=  15'b001000000000000;//4096
-	localparam 	[NB_STATE-1:0]	Send_addr_mem			=  15'b010000000000000;//8192
-	localparam 	[NB_STATE-1:0]	Send_data_mem			=  15'b100000000000000;//16264
-	localparam 	[NB_STATE-1:0]	Check_send_all_mems		=  15'b111111111111111;//32767
+	localparam 	[NB_STATE-1:0]  Number_Instr        	=  14'b00000000000001;//1
+	localparam 	[NB_STATE-1:0]	Receive_One_Instr     	=  14'b00000000000010;//2
+	localparam 	[NB_STATE-1:0]	Check_Send_All_Instr	=  14'b00000000000100;//4
+	localparam 	[NB_STATE-1:0]	Waiting_operation  		=  14'b00000000001000;//8
+	localparam 	[NB_STATE-1:0]	Check_Operation    		=  14'b00000000010000;//16 To choose between step or continuous mode
+	localparam 	[NB_STATE-1:0]	Step_to_step       		=  14'b00000000100000;//32 
+	localparam 	[NB_STATE-1:0]	Wait_One_Cicle     		=  14'b00000001000000;//64 
+	localparam 	[NB_STATE-1:0]	Continue_to_Halt  		=  14'b00000010000000;//128 For continuous mode
+	localparam 	[NB_STATE-1:0]	Send_program_counter  	=  14'b00000100000000;//256 
+	localparam 	[NB_STATE-1:0]	Send_cant_cyles 		=  14'b00001000000000;//512
+	localparam 	[NB_STATE-1:0]	Send_one_reg			=  14'b00010000000000;//1024
+	localparam 	[NB_STATE-1:0]	Check_send_all_regs		=  14'b00100000000000;//2048  
+	localparam 	[NB_STATE-1:0]	Check_bit_sucio			=  14'b01000000000000;//4096
+	localparam 	[NB_STATE-1:0]	Send_addr_mem			=  14'b10000000000000;//8192
+	localparam 	[NB_STATE-1:0]	Send_data_mem			=  14'b00000001111111;//127
+	localparam 	[NB_STATE-1:0]	Check_send_all_mems		=  14'b11111111111111;//32767
 	
 	wire ready_full_inst, ready_number_instr, all_instr_send, ready_mode_operate;
 	wire [N_BITS-1:0] operation_mode;
@@ -395,7 +395,7 @@ end
 							enable_send_addr_mem = 1'b1;																									
 						end
 					end	
-				Send_data_mem://16264
+				Send_data_mem://127
 					begin
 						enable_mem = 1'b1;
 						ctrl_wr_debug_mem  = 1'b1;

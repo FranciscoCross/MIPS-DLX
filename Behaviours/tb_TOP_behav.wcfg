@@ -3143,7 +3143,7 @@
          </wvobject>
       </wvobject>
       <wvobject fp_name="group61" type="group">
-         <obj_property name="label">Send_data_mem (16264)</obj_property>
+         <obj_property name="label">Send_data_mem (127)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <wvobject fp_name="group775" type="group">
             <obj_property name="label">Aux</obj_property>

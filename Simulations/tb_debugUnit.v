@@ -3,7 +3,7 @@
 
 module tb_debugUnit;
     localparam NB_BITES = 8;
-    localparam NB_STATE  = 15;
+    localparam NB_STATE  = 14;
     localparam NB_DATA  = 32;
     localparam NB_REG  = 5;
     

@@ -9,7 +9,7 @@ module tb_TOP(
     localparam NB_DATA  = 32;
     localparam NB_BYTES = 8;
     localparam NB_BITS = 8;
-    localparam NB_STATE = 15;
+    localparam NB_STATE = 14;
 
     wire wire_rx, wire_tx, wire_rx_done, aux_tx_done, wire_locked;
     wire [NB_STATE-1:0] wire_state;

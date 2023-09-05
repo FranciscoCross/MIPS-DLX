@@ -643,7 +643,7 @@
          </wvobject>
       </wvobject>
       <wvobject fp_name="group61" type="group">
-         <obj_property name="label">Send_data_mem (16264)</obj_property>
+         <obj_property name="label">Send_data_mem (127)</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <wvobject fp_name="/tb_debugUnit/debug_unit/end_send_mem" type="logic">
             <obj_property name="ElementShortName">end_send_mem</obj_property>
