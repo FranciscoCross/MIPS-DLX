@@ -8,9 +8,9 @@ module UART2
         input wire i_clock,
         input wire i_reset,
         input wire i_rx,
-        input wire [NB_DATA-1:0] i_tx, 
+        input wire [NB_DATA-1:0] i_tx_data, 
         input wire i_tx_start,
-        output wire [NB_DATA-1:0] o_rx,
+        output wire [NB_DATA-1:0] o_rx_data,
         output wire o_rx_done_tick,
         output wire o_tx,
         output wire o_tx_done_tick
@@ -27,13 +27,13 @@ rx_uart rx_uart_instance(.i_clock(i_clock),
                             .i_reset(i_reset),
                             .i_rx(i_rx),
                             .o_rx_done_tick(o_rx_done_tick),
-                            .o_data(o_rx));
+                            .o_data(o_rx_data));
 
 tx_uart tx_uart_instance_2(.i_clock(i_clock),
                             .i_reset(i_reset),
                             .i_tx_start(i_tx_start),
                             .i_s_tick(s_tick_wire),
-                            .i_data(i_tx),
+                            .i_data(i_tx_data),
                             .o_tx_done_tick(o_tx_done_tick),
                             .o_tx(o_tx));    
 

@@ -15,7 +15,6 @@ module tb_MEMORIA;
   reg [`ADDRWIDTH-1:0] i_addr_mem_debug_unit;
   reg i_ctrl_addr_debug_mem;
   reg i_ctrl_wr_debug_mem;
-  wire o_bit_sucio;
   wire [NB_DATA-1:0] o_data_mem_debug_unit;
   wire [NB_DATA-1:0] o_mem_data;
 
@@ -32,7 +31,6 @@ module tb_MEMORIA;
     .i_addr_mem_debug_unit(i_addr_mem_debug_unit),
     .i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
     .i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
-    .o_bit_sucio(o_bit_sucio),
     .o_data_mem_debug_unit(o_data_mem_debug_unit),
     .o_mem_data(o_mem_data)
   );

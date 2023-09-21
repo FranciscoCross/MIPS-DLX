@@ -23,7 +23,6 @@ module tb_PIPELINE;
   reg read_du = 0; 
 
   // Outputs
-  wire o_bit_sucio;
   wire [`ADDRWIDTH-1:0] o_data_send_pc;
   wire [31:0] o_data_reg_debug_unit;
   wire [31:0] o_data_mem_debug_unit;
@@ -48,7 +47,6 @@ module tb_PIPELINE;
     .i_ctrl_read_debug_reg(i_ctrl_read_debug_reg),
     .i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
     .i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
-    .o_bit_sucio(o_bit_sucio),
     .o_data_send_pc(o_data_send_pc),
     .o_data_reg_debug_unit(o_data_reg_debug_unit),
     .o_data_mem_debug_unit(o_data_mem_debug_unit),

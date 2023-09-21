@@ -25,30 +25,15 @@ module TOP
 	);
 
 
-	wire [31:0] wire_inst_load;
-	wire [`ADDRWIDTH-1:0] wire_addr_load_inst; // instruccion a cargar y su direccion
-
-	wire wire_en_write, wire_en_read, wire_debug_unit;	
-    wire clock_w;
-	wire wire_halt, wire_enable_pipe;
-	wire wire_enable_mem;
-
-	wire [`ADDRWIDTH-1:0] wire_send_program_counter;
-	wire [ NB_DATA-1:0] wire_reg_debug_unit;
+	wire [`ADDRWIDTH-1:0] wire_im_addr, wire_br_addr, wire_dm_addr, wire_pc_value;
+	wire [ NB_DATA-1:0] wire_im_data_write, wire_br_data, wire_dm_data;
 	wire [`ADDRWIDTH-1:0] wire_cant_cycles;
 	wire [NB_REG-1:0] wire_addr_reg_debug_unit; //direccion a registro a leer
-	wire wire_bit_sucio;
-	wire wire_ctrl_addr_debug_mem;
-	wire wire_ctrl_wr_debug_mem;
-	wire wire_read_du;
-	wire [`ADDRWIDTH-1:0] wire_addr_mem_debug_unit;
-	wire [ NB_DATA-1:0] wire_mem_debug_unit;
-	wire wire_ctrl_read_debug_reg;
-
+	wire wire_ctrl_addr_debug_mem, wire_im_write_enable, wire_dm_enable, wire_enable_pipe, wire_du_select_addr, wire_halt;
+	wire [7:0] tx_data_to_send, aux_rx_data_pipe;
+	wire aux_tx_done_pipe, aux_rx_done_pipe, tx_start_debug_unit; 
+    wire clock_w;
 	
-	
-	assign halt_o = wire_halt;
-
 	clock_wz clock_wz
   	(  
 		.clk_out1(clock_w),
@@ -61,54 +46,62 @@ module TOP
 	(
 		.clock(clock_w),
 		.i_reset(i_reset),
-		.i_inst_load(wire_inst_load),
-		.i_addr_inst_load(wire_addr_load_inst),		
-		.i_en_write(wire_en_write),
-		.i_en_read(wire_en_read),
-		.i_enable_mem(wire_enable_mem),
+		.i_im_data(wire_im_data_write),
+		.i_im_addr(wire_im_addr),		
+		.i_im_enable_write(wire_im_write_enable),
+		.i_en_read(1'b1),
+		.i_enable_mem(wire_dm_enable),
 		.i_enable_pipe(wire_enable_pipe),
-		.i_read_du(wire_read_du),
-		.i_debug_unit(wire_debug_unit),
-		.i_addr_debug_unit(wire_addr_reg_debug_unit), //addr de registro debug
-		.i_addr_mem_debug_unit(wire_addr_mem_debug_unit),
-		.i_ctrl_read_debug_reg(wire_ctrl_read_debug_reg),
-		.i_ctrl_wr_debug_mem(wire_ctrl_wr_debug_mem), //leyendo para debug mem
-		.i_ctrl_addr_debug_mem(wire_ctrl_addr_debug_mem), 
-		.o_bit_sucio(wire_bit_sucio),
-		.o_data_send_pc(wire_send_program_counter),
-		.o_data_reg_debug_unit(wire_reg_debug_unit),
-		.o_data_mem_debug_unit(wire_mem_debug_unit),
-		.o_count_cycles(wire_cant_cycles),
+		.i_dm_enable_read(wire_dm_enable),
+		.i_debug_unit(wire_du_select_addr),
+		.i_br_addr(wire_br_addr), 
+		.i_dm_addr(wire_dm_addr),
+		.i_br_enable(1'b1),
+		.i_dm_enable(wire_dm_enable), //leyendo para debug mem
+		.i_dm_enable_addr(wire_dm_enable), 
+		.o_data_send_pc(wire_pc_value),
+		.o_data_reg_debug_unit(wire_br_data),
+		.o_data_mem_debug_unit(wire_dm_data),
 		.o_halt(wire_halt)
 	);
 
-	
-    debug_unit#(.CLOCK(CLOCK), .BAUD_RATE(BAUD_RATE)) debug_unit
-	(
-		.i_clock(clock_w),
-		.i_reset(i_reset),
-		.i_halt(wire_halt),	
-		.i_rx_data(i_rx),	
-		.i_send_program_counter(wire_send_program_counter), //pc + 1
-		.i_cant_cycles(wire_cant_cycles),
-		.i_reg_debug_unit(wire_reg_debug_unit), //viene del banco de registros
-		.i_bit_sucio(wire_bit_sucio),
-		.i_mem_debug_unit(wire_mem_debug_unit),
-		
-		.o_addr_reg_debug_unit(wire_addr_reg_debug_unit),// direccion a leer del registro para enviar a pc
-		.o_addr_mem_debug_unit(wire_addr_mem_debug_unit), //direccion a leer en memoria
-		.o_ctrl_addr_debug_mem(wire_ctrl_addr_debug_mem),
-		.o_ctrl_wr_debug_mem(wire_ctrl_wr_debug_mem),
-		.o_ctrl_read_debug_reg(wire_ctrl_read_debug_reg),
-		.o_tx_data(o_tx),
-		.o_en_write(wire_en_write), //habilitamos la escritura en memoria, sabiendo que el dato ya esta completo formando los 32 bits de la instruccion
-		.o_en_read(wire_en_read),		
-		.o_enable_pipe(wire_enable_pipe),
-		.o_enable_mem(wire_enable_mem),
-		.o_debug_unit_reg(wire_debug_unit),				
-		.o_inst_load(wire_inst_load), //instruccion a cargar en memoria
-		.o_address(wire_addr_load_inst), //direccion donde se carga la instruccion
-		.o_read_du(wire_read_du),
-		.o_state(o_state)
-	);
+	debug_unit2 debug_unit2
+    (
+        .i_clock(clock_w),
+        .i_reset(i_reset),
+        .i_halt(wire_halt),          
+        .i_rx_done(aux_rx_done_pipe),      
+        .i_tx_done(aux_tx_done_pipe),      
+        .i_rx_data(aux_rx_data_pipe),     
+        .i_pc_value(wire_pc_value),     
+        .i_dm_data(wire_dm_data),      
+        .i_br_data(wire_br_data),      
+        .o_im_write_enable(wire_im_write_enable), 
+        .o_im_data_write(wire_im_data_write),
+        .o_im_addr(wire_im_addr),      
+        .o_tx_data(tx_data_to_send),      
+        .o_tx_start(tx_start_debug_unit),     
+        .o_br_addr(wire_br_addr),      
+        .o_br_read(wire_br_read),  
+        .o_dm_addr(wire_dm_addr),      
+        .o_dm_enable(wire_dm_enable), 
+        .o_dm_read_enable(wire_dm_read_enable), 
+        .o_state(wire_state),
+        .o_enable_pipe(wire_enable_pipe),
+        .o_debug_unit_load(wire_du_select_addr)
+    );
+
+    UART2 uart_pipeline
+    (
+        .i_clock(clock_w),
+        .i_reset(i_reset),
+        .i_rx(i_rx),                   //wire para rx bit a bit
+        .i_tx_data(tx_data_to_send),        //data to transfer
+        .i_tx_start(tx_start_debug_unit),   //start transfer
+        .o_rx_data(aux_rx_data_pipe),       //data complete recive
+        .o_rx_done_tick(aux_rx_done_pipe),  //rx done
+        .o_tx(o_tx),                   //wire para tx bit a bit
+        .o_tx_done_tick(aux_tx_done_pipe)   //tx done
+    );
+
 endmodule

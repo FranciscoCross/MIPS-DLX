@@ -30,7 +30,7 @@ module dmem
         integer reg_index;
         initial
             for (reg_index = 0; reg_index < MEM_SIZEB; reg_index = reg_index + 1)
-                RAM[reg_index] = 32'b00000000000000000000000000000000;
+                RAM[reg_index] = reg_index;
     endgenerate
     
   always @(posedge i_clk)

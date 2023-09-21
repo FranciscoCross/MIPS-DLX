@@ -14,7 +14,7 @@ module DECODE
 		input wire i_reset,     // Señal de reinicio
 		input wire i_enable,     // Señal de enable
 
-		input wire  i_ctrl_read_debug_reg,     		// Señal de control para leer el registro de depuración
+		input wire  i_br_enable,     		// Señal de control para leer el registro de depuración
 		input wire [NB_DATA-1:0] i_instruction,     // Bus de datos que contiene la instrucción
 		input wire [NB_DATA-1:0] i_data_rw,     	// Bus de datos para lectura/escritura en memoria
 		input wire [NB_REG-1:0] i_write_register,   // Registro de destino para escritura
@@ -22,7 +22,7 @@ module DECODE
 		input wire i_reg_write,     		// Señal de control para escritura en registros
 		input wire [`ADDRWIDTH-1:0] i_pc,   // Contador de programa
 
-		input wire [NB_REG-1:0] i_addr_debug_unit,     	// Dirección para acceder a la unidad de depuración
+		input wire [NB_REG-1:0] i_br_addr,     	// Dirección para acceder a la unidad de depuración
 
 		input wire [NB_REG-1:0] i_EX_write_register_usage,    // Registro de escritura desde la etapa EX
 		input wire [NB_REG-1:0] i_EX_rt,     			// Registro de destino desde la etapa EX
@@ -224,8 +224,8 @@ module DECODE
 	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
 	(
 		.i_A(i_instruction[`RS_BIT]),
-		.i_B(i_addr_debug_unit),
-		.i_SEL(i_ctrl_read_debug_reg),
+		.i_B(i_br_enable),
+		.i_SEL(i_br_enable),
 		.o_OUT(wire_addr_ra)
 	);
 

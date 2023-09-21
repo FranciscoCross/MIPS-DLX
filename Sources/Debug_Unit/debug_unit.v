@@ -445,9 +445,9 @@ end
         .i_clock(i_clock),
         .i_reset(i_reset),
         .i_rx(i_rx_data), //wire para rx bit a bit
-        .i_tx(data_send), //data to transfer
+        .i_tx_data(data_send), //data to transfer
         .i_tx_start(tx_start), //start transfer
-        .o_rx(data_uart_receive), //data complete recive
+        .o_rx_data(data_uart_receive), //data complete recive
         .o_rx_done_tick(rx_done_uart), //rx done
         .o_tx(o_tx_data), //wire para tx bit a bit
         .o_tx_done_tick(tx_done_uart) //tx done

@@ -16,24 +16,22 @@ module pipeline
 	(
 		input wire clock,
 		input wire i_reset,
-		input wire [NB_DATA-1:0] i_inst_load,
-		input wire [`ADDRWIDTH-1:0] i_addr_inst_load,
-		input wire i_en_write,	
+		input wire [NB_DATA-1:0] i_im_data,
+		input wire [`ADDRWIDTH-1:0] i_im_addr,
+		input wire i_im_enable_write,	
 		input wire i_en_read,	
 		input wire i_enable_mem,
-		input wire i_read_du,	
+		input wire i_dm_enable_read,	
 		input wire i_enable_pipe,
 		input wire i_debug_unit,
-		input wire [NB_REG-1:0] i_addr_debug_unit, //addr de registro debug
-		input wire [`ADDRWIDTH-1:0] i_addr_mem_debug_unit,
-		input wire i_ctrl_read_debug_reg,
-		input wire i_ctrl_wr_debug_mem, //leyendo para debug mem
-		input wire i_ctrl_addr_debug_mem, 
-		output wire o_bit_sucio,
+		input wire [NB_REG-1:0] i_br_addr, //addr de registro debug
+		input wire [`ADDRWIDTH-1:0] i_dm_addr,
+		input wire i_br_enable,
+		input wire i_dm_enable, //leyendo para debug mem
+		input wire i_dm_enable_addr, 
 		output wire [`ADDRWIDTH-1:0] o_data_send_pc,
 		output wire [NB_DATA-1:0] o_data_reg_debug_unit,
 		output wire [NB_DATA-1:0] o_data_mem_debug_unit,
-		output wire [`ADDRWIDTH-1:0] o_count_cycles,
 		output wire o_halt
 	);
 
@@ -152,14 +150,6 @@ module pipeline
 
     assign o_data_send_pc = wire_pc_IF_ID;
 
- 	count_cycles#(.NB_COUNT(`ADDRWIDTH)) count_cycles
-	(
-		.i_clock(clock),
-		.i_reset(i_reset),
-		.i_en_count(i_enable_pipe),
-		.o_count_cycles(o_count_cycles)
-	);
-	
 	
 	FETCH instruccion_fetch
 	(	
@@ -167,15 +157,15 @@ module pipeline
     .i_reset(i_reset),
     .i_enable(wire_pc_write&&i_enable_pipe),
     .i_debug_unit(i_debug_unit),
-    .i_Mem_WEn(i_en_write),
+    .i_Mem_WEn(i_im_enable_write),
     .i_Mem_REn(i_en_read),
-    .i_Mem_Data(i_inst_load),
+    .i_Mem_Data(i_im_data),
     .i_PCsrc(wire_pc_src_ID_IF),
     .i_addr_register(wire_addr_reg_ID_IF),
     .i_addr_branch(wire_addr_branch_ID_IF),
     .i_addr_jump(wire_addr_jump_ID_IF),
     .i_jump_or_branch(wire_branch_or_jump_IF_ID),
-    .i_wr_addr(i_addr_inst_load), 
+    .i_wr_addr(i_im_addr), 
     .o_instruction(wire_inst_IF),
     .o_PCAddr(wire_pc),
 	.o_next_PCAddr(wire_pc_adder)
@@ -197,13 +187,13 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable(i_enable_pipe),    
-		.i_ctrl_read_debug_reg(i_ctrl_read_debug_reg),
+		.i_br_enable(i_br_enable),
 		.i_instruction(wire_inst_IF_ID),		
 		.i_data_rw(wire_data_write_WB_ID),
 		.i_write_register(wire_write_reg_WB_ID),//(wire_write_reg_WB_ID),
 		.i_reg_write(wire_reg_write_WB_EX),		
 		.i_pc(wire_pc_IF_ID),
-		.i_addr_debug_unit(i_addr_debug_unit),
+		.i_br_addr(i_br_addr),
 		.i_EX_write_register_usage(wire_write_reg_WB_ID), 
 		.i_EX_rt(wire_rt_ID_EX), 
 		.i_ID_EX_mem_read(wire_M_ctrl_ID_EX[5]), 
@@ -325,18 +315,17 @@ module pipeline
 		.i_clock(clock),
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_mem || i_enable_pipe),
-		.i_read_du(i_read_du),
+		.i_dm_enable_read(i_dm_enable_read),
 		.i_MEM_control(wire_M_ctrl_EX),//(wire_M_ctrl_MEM),
 		.i_WB_control(wire_WB_ctrl_EX_MEM),
 
 		.i_alu_result(wire_result_alu_EX[`ADDRWIDTH-1:0]),//(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
 		.i_data_write(wire_write_data_MEM),
 
-		.i_addr_mem_debug_unit(i_addr_mem_debug_unit),
-		.i_ctrl_addr_debug_mem(i_ctrl_addr_debug_mem),
-		.i_ctrl_wr_debug_mem(i_ctrl_wr_debug_mem),
+		.i_dm_addr(i_dm_addr),
+		.i_dm_enable_addr(i_dm_enable_addr),
+		.i_dm_enable(i_dm_enable),
 		
-		.o_bit_sucio(o_bit_sucio),
 		.o_data_mem_debug_unit(o_data_mem_debug_unit),
 		.o_mem_data(wire_mem_data_MEM_WB),	
 		.o_WB_control(wire_WB_ctrl_MEM)

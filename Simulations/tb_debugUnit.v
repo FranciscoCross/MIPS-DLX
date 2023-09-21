@@ -226,9 +226,9 @@ module tb_debugUnit;
         .i_clock(clock),
         .i_reset(reset),
         .i_rx(o_tx_data), //wire para rx bit a bit
-        .i_tx(aux_tx_data), //data to transfer
+        .i_tx_data(aux_tx_data), //data to transfer
         .i_tx_start(aux_tx_start), //start transfer
-        .o_rx(aux_rx_data), //data complete recive
+        .o_rx_data(aux_rx_data), //data complete recive
         .o_rx_done_tick(aux_rx_done), //rx done
         .o_tx(rx_data), //wire para tx bit a bit
         .o_tx_done_tick(aux_tx_done) //tx done

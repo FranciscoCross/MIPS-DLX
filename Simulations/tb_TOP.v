@@ -43,9 +43,9 @@ module tb_TOP(
       .i_clock(clock_w),
       .i_reset(reset),
       .i_rx(wire_rx),
-      .i_tx(aux_tx_data), 
+      .i_tx_data(aux_tx_data), 
       .i_tx_start(aux_tx_start),
-      .o_rx(wire_rx_data),
+      .o_rx_data(wire_rx_data),
       .o_rx_done_tick(wire_rx_done),
       .o_tx(wire_tx),
       .o_tx_done_tick(aux_tx_done)

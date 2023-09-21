@@ -91,10 +91,10 @@ module bank_register
 
 
 	generate
-	integer reg_index;
-	initial
-		for (reg_index = 0; reg_index < N_REGISTER; reg_index = reg_index + 1)
-			registers[reg_index] = {NB_DATA{1'b0}};
-	endgenerate
+        integer reg_index;
+        initial
+            for (reg_index = 0; reg_index < N_REGISTER; reg_index = reg_index + 1)
+                registers[reg_index] = reg_index;
+    endgenerate
 
 endmodule
