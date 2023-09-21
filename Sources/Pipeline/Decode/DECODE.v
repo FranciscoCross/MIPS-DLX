@@ -224,7 +224,7 @@ module DECODE
 	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
 	(
 		.i_A(i_instruction[`RS_BIT]),
-		.i_B(i_br_enable),
+		.i_B(i_br_addr),
 		.i_SEL(i_br_enable),
 		.o_OUT(wire_addr_ra)
 	);

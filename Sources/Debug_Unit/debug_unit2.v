@@ -27,10 +27,10 @@ module debug_unit2#(
     
 	output                  o_im_write_enable, //*
 	output [NB_DATA-1:0]    o_im_data_write,// * data to write in INSTRUCTION MEMORY
-    output [N_BITS-1:0]    	o_im_addr,      // * address to write INSTRUCTION MEMORY
+    output [`ADDRWIDTH-1:0] o_im_addr,      // * address to write INSTRUCTION MEMORY
     output [N_BITS-1:0]    	o_tx_data,      // to TX - UART
     output                  o_tx_start,     // to TX - UART
-	output [NB_DATA_RB-1:0] o_br_addr,      // * address to read BANK REGISTER
+	output [`ADDRWIDTH-1:0] o_br_addr,      // * address to read BANK REGISTER
     output                  o_br_read, // * 
     output [`ADDRWIDTH-1:0] o_dm_addr,      // * address to read DATA MEMORY
     output                  o_dm_enable, // *
@@ -78,8 +78,7 @@ reg                     dm_enable,          next_dm_enable;
 reg [NB_DATA_RB-1:0]    count_br_tx_done,   next_count_br_tx_done; 
 reg [NB_BYTE_CTR-1:0]   count_br_byte,      next_count_br_byte;     // cuenta hasta 4 bytes
 reg                     br_read,     next_br_read;
-// PC
-reg [NB_PC_CTR-1:0]     count_pc,           next_count_pc;
+
 // TX
 reg [N_BITS-1:0]       send_data,          next_send_data;         // DM & BR -> TX
 reg                     tx_start,           tx_start_next;
@@ -110,7 +109,6 @@ always @(negedge i_clock) begin
         br_read          <= 1'b0;
 
         // PC
-        count_pc                <= 2'b0;
         count_byte              <= 2'b0;
         
         // TX
@@ -143,7 +141,6 @@ always @(negedge i_clock) begin
         count_br_tx_done        <= next_count_br_tx_done;
         tx_start                <= tx_start_next;
         // PC
-        count_pc                <= next_count_pc;
         count_byte              <= next_count_byte;
         // TX
         send_data               <= next_send_data;
@@ -166,7 +163,6 @@ always @(*) begin
     count_dm_tx_done_next   = count_dm_tx_done;
     next_count_br_byte      = count_br_byte;
     next_count_br_tx_done   = count_br_tx_done;
-    next_count_pc           = count_pc;
     next_count_byte         = count_byte;
     next_im_write_enable    = im_write_enable;
     next_im_count           = im_count;

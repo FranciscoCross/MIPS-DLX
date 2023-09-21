@@ -86,7 +86,7 @@ module TOP
         .o_dm_addr(wire_dm_addr),      
         .o_dm_enable(wire_dm_enable), 
         .o_dm_read_enable(wire_dm_read_enable), 
-        .o_state(wire_state),
+        .o_state(o_state),
         .o_enable_pipe(wire_enable_pipe),
         .o_debug_unit_load(wire_du_select_addr)
     );
