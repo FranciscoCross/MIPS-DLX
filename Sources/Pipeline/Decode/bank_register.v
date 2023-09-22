@@ -35,58 +35,32 @@ module bank_register
 	
 	);
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
-	reg [NB_DATA-1:0] reset_data_ra;
-	reg [NB_DATA-1:0] reset_data_rb;
-	reg [NB_REG-1:0] reg_addr_rw, reset_reg_addr_rw;
-	reg reg_rw, reset_reg_rw;
+	reg [NB_REG-1:0] reg_addr_rw;
+	reg reg_rw;
 	
-	initial
-	begin
-		o_data_ra = 32'b0;
-		o_data_rb = 32'b0;
-		reset_data_ra = 32'b0;
-		reset_data_rb = 32'b0;
-		reg_addr_rw = 0;
-		reset_reg_addr_rw = 0;
-		reg_rw = 0;
-		reset_reg_rw = 0;
-	end
-
     always @(posedge i_clock) //Lectura
 	begin
-		reg_addr_rw <= i_addr_rw;
-		reg_rw <= i_rw;
+		if (i_reset)
+		begin	        			
+			o_data_ra <= 32'b0;
+			o_data_rb <= 32'b0;
+			reg_addr_rw <= 0;
+			reg_rw <= 0;
+		end else begin
+			o_data_ra <= registers[i_addr_ra];
+			o_data_rb <= registers[i_addr_rb];	
 
-	end
-
-    always @(posedge i_clock) //Lectura
-	begin
-		o_data_ra <= registers[i_addr_ra];
-		o_data_rb <= registers[i_addr_rb];	
+			reg_addr_rw <= i_addr_rw;
+			reg_rw <= i_rw;
+		end
 	end
 
     always @(negedge i_clock)
 	begin
-		if (i_reset)
-		begin	        			
-			o_data_ra <= reset_data_ra;
-			o_data_rb <= reset_data_rb;
-			reg_addr_rw <= reset_reg_addr_rw;
-			reg_rw <= reset_reg_rw;
-		end        	
-		else if (reg_rw) //ESCRITURA
-			begin
-				registers[reg_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
-				if (i_addr_ra == reg_addr_rw)					//SI LA ADDR que se uso para escribir coincide con RA o RB actualizo salida de estas si no, mantengo valores
-					o_data_ra <= i_data_rw;
-				else if (i_addr_rb == reg_addr_rw)
-					o_data_rb <= i_data_rw;
-				else
-				begin
-					o_data_ra <= registers[i_addr_ra];
-					o_data_rb <= registers[i_addr_rb];
-				end
-			end
+	if (reg_rw) //ESCRITURA
+	begin
+		registers[reg_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
+	end
 	end
 
 
@@ -94,7 +68,7 @@ module bank_register
         integer reg_index;
         initial
             for (reg_index = 0; reg_index < N_REGISTER; reg_index = reg_index + 1)
-                registers[reg_index] = reg_index;
+                registers[reg_index] = 0;
     endgenerate
 
 endmodule
