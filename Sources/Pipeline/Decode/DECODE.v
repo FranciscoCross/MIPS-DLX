@@ -131,7 +131,6 @@ module DECODE
 			reg_WB_control <= 0;
 
 			reg_inm_ext <= 0;
-			reg_branch_or_jump <= 0;
 			reg_halt <= 0;
 		end
 		else
