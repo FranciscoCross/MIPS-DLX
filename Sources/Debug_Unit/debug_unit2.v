@@ -252,7 +252,7 @@ always @(*) begin
             end
         end
         WRITE_IM: begin //Verificado
-            if(im_count == 7'd11)begin
+            if(im_count == 7'd10)begin
                 next_state              = READY;
                 next_im_write_enable    = 1'b0;
                 next_debug_unit_load    = 1'b0;

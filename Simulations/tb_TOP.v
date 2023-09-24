@@ -9,7 +9,7 @@ module tb_TOP(
     localparam NB_DATA  = 32;
     localparam NB_BYTES = 8;
     localparam NB_BITS = 8;
-    localparam NB_STATE = 14;
+    localparam NB_STATE = 10;
 
     wire wire_rx, wire_tx, wire_rx_done, aux_tx_done, wire_locked;
     wire [NB_STATE-1:0] wire_state;
@@ -23,11 +23,7 @@ module tb_TOP(
     reg aux_tx_start = 0;
     reg [NB_BITS-1 : 0] aux_tx_data = 0;
     wire locked_top;
-    TOP #(	
-		.CLOCK(CLK),
-		.BAUD_RATE(BAUD_RATE),		
-		.NB_DATA(NB_DATA)	
-    ) instancia_TOP	(
+    TOP instancia_TOP	(
 		.i_clock(clock),
 		.i_reset(reset),
 		.i_reset_wz(reset_wz),
@@ -78,17 +74,17 @@ module tb_TOP(
             
             
             
-            $display("Envio numero de instrucciones");
-            aux_tx_data = 8'b00001011;     
+            #20
+            $display("Envio comando para escribir programa");
+            aux_tx_data = 8'd1;     
             #20
             aux_tx_start = 1;
             #20
             aux_tx_start = 0;
             
             while (!aux_tx_done) begin
-                  #1; // Wait 5 time units before checking again
-            end
-            #50  
+                 #1; // Wait 1 time units before checking again
+            end  
 
 
 
@@ -608,8 +604,8 @@ module tb_TOP(
             end
             #100            
 
-            $display("Envio ModeOperate");  //32'b11111100 00000000 00000000 00000000;  // HALT
-            aux_tx_data = 8'b00010000;     
+            $display("Envio StepByStep");  //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'd3;     
             #20
             aux_tx_start = 1;
             #20
@@ -618,7 +614,15 @@ module tb_TOP(
                 #1; // Wait 5 time units before checking again
             end
             #10000               
-
+            $display("Envio CMD_STEP");  //32'b11111100 00000000 00000000 00000000;  // HALT
+            aux_tx_data = 8'd7;     
+            #20
+            aux_tx_start = 1;
+            #20
+            aux_tx_start = 0;
+            while (!aux_tx_done) begin
+                #1; // Wait 5 time units before checking again
+            end
             $finish;
  
         end

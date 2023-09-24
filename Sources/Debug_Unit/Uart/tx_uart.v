@@ -2,7 +2,7 @@
 
 module tx_uart 
 #(parameter DBIT = 8,
-  parameter NB_STATE = 2,
+  parameter NB_STATE = 4,
   parameter SB_TICK = 16   // sampling rate for 19200 bauds
   ) 
 (
@@ -15,12 +15,12 @@ module tx_uart
     output o_tx                 // UART tx data
 );
 
-localparam [NB_STATE - 1 : 0 ] IDLE  = 2'b00;
-localparam [NB_STATE - 1 : 0 ] START = 2'b01;
-localparam [NB_STATE - 1 : 0 ] DATA  = 2'b10;
-localparam [NB_STATE - 1 : 0 ] STOP  = 2'b11;
+localparam [NB_STATE - 1 : 0 ] IDLE  = 4'b0001;
+localparam [NB_STATE - 1 : 0 ] START = 4'b0010;
+localparam [NB_STATE - 1 : 0 ] DATA  = 4'b0100;
+localparam [NB_STATE - 1 : 0 ] STOP  = 4'b1000;
 
-reg [1:0] state, next_state;
+reg [NB_STATE - 1:0] state, next_state;
 reg [3:0] tick_counter, next_tick_counter;
 reg [2:0] data_counter, next_data_counter;
 reg [DBIT-1:0] shiftreg, next_shiftreg;

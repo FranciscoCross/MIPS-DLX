@@ -24,7 +24,7 @@ module pipeline
 		input wire i_dm_enable_read,	
 		input wire i_enable_pipe,
 		input wire i_debug_unit,
-		input wire [NB_REG-1:0] i_br_addr, //addr de registro debug
+		input wire [`ADDRWIDTH-1:0] i_br_addr, //addr de registro debug
 		input wire [`ADDRWIDTH-1:0] i_dm_addr,
 		input wire i_br_enable,
 		input wire i_dm_enable, //leyendo para debug mem

@@ -5,7 +5,7 @@ module TOP
 		parameter CLOCK         = 50E6,
 		parameter NB_OPCODE     = 6,
 		parameter BAUD_RATE     = 19200,
-		parameter NB_STATE      = 14,		
+		parameter NB_STATE      = 10,		
 		parameter NB_DATA       = 32,	
 		parameter NB_REG        = 5,
 		parameter N_BITS        = 8,
