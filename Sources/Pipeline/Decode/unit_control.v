@@ -155,7 +155,7 @@ module unit_control
 											beq  = beq;
 											bne  = bne;
 											jump = jump;	
-											halt_detected	= halt_detected;	 					
+											halt_detected	= 1'b0;	 					
 											pc_src 			= pc_src;
 											EX_control 		= EX_control;
 											M_control  		= M_control;
@@ -395,7 +395,7 @@ module unit_control
 								beq  = beq;
 								bne  = bne;
 								jump = jump;
-								halt_detected = halt_detected;
+								halt_detected = 1'b0;
 								pc_src     = pc_src;
 								M_control  = M_control;
 								WB_control = WB_control;
