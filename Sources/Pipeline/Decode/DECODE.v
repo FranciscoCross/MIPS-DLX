@@ -222,8 +222,8 @@ module DECODE
 	//Con este mux lo que hacemos es elegir si queremos conectar la debug unit para que podamos leer los registros despues de una ejecucion 
 	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
 	(
-		.i_A(i_instruction[`RS_BIT]),
-		.i_B(i_br_addr[4:0]),
+		.i_B(i_instruction[`RS_BIT]),
+		.i_A(i_br_addr[4:0]),
 		.i_SEL(i_br_enable),
 		.o_OUT(wire_addr_ra)
 	);
