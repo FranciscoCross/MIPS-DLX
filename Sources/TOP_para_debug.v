@@ -29,10 +29,10 @@ module TOP_para_debug
 	);
 
 
-
-	wire [`ADDRWIDTH-1:0] wire_im_addr, wire_br_addr, wire_dm_addr, wire_pc_value;
+	wire [NB_REG-1:0] wire_br_addr;
+	wire [`ADDRWIDTH-1:0] wire_im_addr, wire_dm_addr, wire_pc_value;
 	wire [ NB_DATA-1:0] wire_im_data_write, wire_br_data, wire_dm_data;
-	wire wire_im_write_enable, wire_dm_enable, wire_enable_pipe, wire_du_select_addr, wire_halt;
+	wire wire_im_write_enable, wire_dm_enable, wire_enable_pipe, wire_du_select_addr;
     wire clock_w;
 	
 	clock_wz clock_wz

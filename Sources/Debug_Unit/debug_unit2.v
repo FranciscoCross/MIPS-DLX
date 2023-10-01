@@ -30,7 +30,7 @@ module debug_unit2#(
     output [`ADDRWIDTH-1:0] o_im_addr,      // * address to write INSTRUCTION MEMORY
     output [N_BITS-1:0]    	o_tx_data,      // to TX - UART
     output                  o_tx_start,     // to TX - UART
-	output [`ADDRWIDTH-1:0] o_br_addr,      // * address to read BANK REGISTER
+	output [NB_DATA_DM-1:0] o_br_addr,      // * address to read BANK REGISTER
     output                  o_br_read, // * 
     output [`ADDRWIDTH-1:0] o_dm_addr,      // * address to read DATA MEMORY
     output                  o_dm_enable, // *

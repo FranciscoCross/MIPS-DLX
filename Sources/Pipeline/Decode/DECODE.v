@@ -22,7 +22,7 @@ module DECODE
 		input wire i_reg_write,     		// Señal de control para escritura en registros
 		input wire [`ADDRWIDTH-1:0] i_pc,   // Contador de programa
 
-		input wire [`ADDRWIDTH-1:0] i_br_addr,     	// Dirección para acceder a la unidad de depuración
+		input wire [NB_REG-1:0] i_br_addr,     	// Dirección para acceder a la unidad de depuración
 
 		input wire [NB_REG-1:0] i_EX_write_register_usage,    // Registro de escritura desde la etapa EX
 		input wire [NB_REG-1:0] i_EX_rt,     			// Registro de destino desde la etapa EX
@@ -223,7 +223,7 @@ module DECODE
 	mux2 #(.NB_DATA(NB_REG)) mux_read_debug
 	(
 		.i_B(i_instruction[`RS_BIT]),
-		.i_A(i_br_addr[4:0]),
+		.i_A(i_br_addr),
 		.i_SEL(i_br_enable),
 		.o_OUT(wire_addr_ra)
 	);
