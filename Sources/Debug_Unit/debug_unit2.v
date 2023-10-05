@@ -105,7 +105,7 @@ always @(negedge i_clock) begin
         // REGISTERS BANK
         count_br_tx_done        <= 5'b0;
         count_br_byte           <= 2'b0;
-        br_read          <= 1'b0;
+        br_read                 <= 1'b0;
 
         // PC
         count_byte              <= 2'b0;
@@ -200,7 +200,7 @@ always @(*) begin: set_next_values
                 endcase
             end
         end
-        READY: begin: ready_state
+        READY: begin: ready_state //4
             if(i_rx_done)begin
                 case(i_rx_data)
                     CMD_STEP_BY_STEP:   next_state = STEP_BY_STEP;
@@ -208,7 +208,7 @@ always @(*) begin: set_next_values
                 endcase
             end
         end
-        START: begin: start_state
+        START: begin: start_state //8
             next_dm_enable      = 1'b1;
             next_enable_pipe    = 1'b1;
 
@@ -216,7 +216,7 @@ always @(*) begin: set_next_values
                 next_state = IDLE;
             end
         end
-        STEP_BY_STEP: begin: step_by_step_state
+        STEP_BY_STEP: begin: step_by_step_state //16
             count_dm_tx_done_next = 0;
             next_count_br_tx_done = 0;
             if(i_rx_done)begin

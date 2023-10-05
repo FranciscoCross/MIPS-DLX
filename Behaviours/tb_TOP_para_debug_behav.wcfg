@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="835.255 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,032.950 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="58,451.187 ns"></ZoomStartTime>
+      <ZoomEndTime time="58,727.763 ns"></ZoomEndTime>
+      <Cursor1Time time="58,665.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="303"></NameColumnWidth>
-      <ValueColumnWidth column_width="101"></ValueColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
    <wave_markers>
@@ -40,7 +40,6 @@
       <wvobject fp_name="group24" type="group">
          <obj_property name="label">FETCH</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group24" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -513,8 +512,8 @@
                <obj_property name="ObjectShortName">i_pc[6:0]</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/i_br_addr" type="array">
-               <obj_property name="ElementShortName">i_br_addr[6:0]</obj_property>
-               <obj_property name="ObjectShortName">i_br_addr[6:0]</obj_property>
+               <obj_property name="ElementShortName">i_br_addr[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_br_addr[4:0]</obj_property>
             </wvobject>
             <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/i_EX_write_register_usage" type="array">
                <obj_property name="ElementShortName">i_EX_write_register_usage[4:0]</obj_property>
@@ -544,7 +543,6 @@
          <wvobject fp_name="group24" type="group">
             <obj_property name="label">Outputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/o_rs" type="array">
                <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
                <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
@@ -804,10 +802,14 @@
                <obj_property name="label">bank_register</obj_property>
                <obj_property name="DisplayName">label</obj_property>
                <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/bank_register/registers" type="array">
+                  <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
+                  <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
                <wvobject fp_name="group24" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/bank_register/i_clock" type="logic">
                      <obj_property name="ElementShortName">i_clock</obj_property>
                      <obj_property name="ObjectShortName">i_clock</obj_property>
@@ -844,7 +846,6 @@
                <wvobject fp_name="group24" type="group">
                   <obj_property name="label">Outputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/bank_register/o_data_ra" type="array">
                      <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
                      <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
@@ -860,11 +861,9 @@
             <wvobject fp_name="group24" type="group">
                <obj_property name="label">mux_read_debug</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="group24" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/mux_read_debug/i_SEL" type="logic">
                      <obj_property name="ElementShortName">i_SEL</obj_property>
                      <obj_property name="ObjectShortName">i_SEL</obj_property>
@@ -939,7 +938,6 @@
             <wvobject fp_name="group24" type="group">
                <obj_property name="label">ext_signo</obj_property>
                <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/ext_signo/i_unextended" type="array">
                   <obj_property name="ElementShortName">i_unextended[15:0]</obj_property>
                   <obj_property name="ObjectShortName">i_unextended[15:0]</obj_property>
@@ -1694,7 +1692,6 @@
                <wvobject fp_name="group24" type="group">
                   <obj_property name="label">Outputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
                   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/memory_stage/memory_data/o_data" type="array">
                      <obj_property name="ElementShortName">o_data[31:0]</obj_property>
                      <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
@@ -1943,8 +1940,8 @@
             <obj_property name="ObjectShortName">o_tx_start</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/o_br_addr" type="array">
-            <obj_property name="ElementShortName">o_br_addr[6:0]</obj_property>
-            <obj_property name="ObjectShortName">o_br_addr[6:0]</obj_property>
+            <obj_property name="ElementShortName">o_br_addr[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_br_addr[4:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/o_br_read" type="logic">
             <obj_property name="ElementShortName">o_br_read</obj_property>
