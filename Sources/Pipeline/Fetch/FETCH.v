@@ -23,7 +23,6 @@ module FETCH#(
     input wire [`ADDRWIDTH-1:0] i_wr_addr, // enviado por debug_unit para cargar instruccion
     
     output [NB_INST - 1:0] o_instruction,
-    output [NB_DATA - 1:0] o_PCAddr,
     output [NB_DATA - 1:0] o_next_PCAddr
     );
     //-------------------------------------------------
@@ -52,7 +51,7 @@ module FETCH#(
         imem_en_rd = 1;
     end
 
-    assign o_PCAddr = wire_pc;
+    //assign o_PCAddr = wire_pc;
     assign o_next_PCAddr = nextAddr_pc;
 
     not(neg_enable, i_enable);

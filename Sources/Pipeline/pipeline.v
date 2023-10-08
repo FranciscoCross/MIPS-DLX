@@ -39,12 +39,10 @@ module pipeline
 
 
 	wire [`ADDRWIDTH-1:0]   wire_pc_IF_ID; 
-	wire [`ADDRWIDTH-1:0]   wire_pc_ID_EX;
 	wire [`ADDRWIDTH-1:0]   wire_pc_EX_MEM; 
 	wire [`ADDRWIDTH-1:0]   wire_pc_MEM_WB;
 	wire [`ADDRWIDTH-1:0]   wire_pc_WB; 
 	wire [`ADDRWIDTH-1:0]   wire_pc_adder;
-	wire [`ADDRWIDTH-1:0]   wire_pc;
 
 	wire [NB_DATA-1:0]  wire_inst_IF; 
     wire [NB_DATA-1:0]  wire_inst_IF_ID;
@@ -74,8 +72,6 @@ module pipeline
 	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_EX_MEM;
 	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_EX_MEM;
 	/* ------------------------------------------ */
-	wire [NB_MEM_CTRL-1:0]  wire_M_ctrl_MEM;
-	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_MEM_WB;
 	wire [NB_WB_CTRL-1:0]   wire_WB_ctrl_MEM;
 	/* ------------------------------------------ */
 
@@ -136,7 +132,8 @@ module pipeline
 
 	wire [NB_REG-1:0] wire_write_reg_MEM;
 	wire [NB_REG-1:0] wire_write_reg_MEM_WB;
-	wire [NB_REG-1:0] wire_write_reg_WB_ID; // registro a escribir en ID
+	wire [NB_REG-1:0] wire_write_reg_IM_WB; // registro a escribir en ID
+	wire [NB_REG-1:0] wire_write_reg_WB; // registro a escribir en ID
 	wire [NB_DATA-1:0] wire_mem_data_MEM_WB;
 	wire [NB_DATA-1:0] wire_mem_data_WB;
 
@@ -167,7 +164,6 @@ module pipeline
     .i_jump_or_branch(wire_branch_or_jump_IF_ID),
     .i_wr_addr(i_im_addr), 
     .o_instruction(wire_inst_IF),
-    .o_PCAddr(wire_pc),
 	.o_next_PCAddr(wire_pc_adder)
 	);  
 
@@ -190,11 +186,11 @@ module pipeline
 		.i_br_enable(i_br_enable),
 		.i_instruction(wire_inst_IF_ID),		
 		.i_data_rw(wire_data_write_WB_ID),
-		.i_write_register(wire_write_reg_WB_ID),//(wire_write_reg_WB_ID),
+		.i_write_register(wire_write_reg_WB),
 		.i_reg_write(wire_reg_write_WB_EX),		
 		.i_pc(wire_pc_IF_ID),
 		.i_br_addr(i_br_addr),
-		.i_EX_write_register_usage(wire_write_reg_WB_ID), 
+		.i_EX_write_register_usage(wire_write_reg_IM_WB), 
 		.i_EX_rt(wire_rt_ID_EX), 
 		.i_ID_EX_mem_read(wire_M_ctrl_ID_EX[5]), 
 		.i_forward_A(forw_branch_A), 
@@ -271,7 +267,7 @@ module pipeline
 		.i_M_control(wire_M_ctrl_ID_EX),//
 		.i_WB_control(wire_WB_ctrl_ID_EX),//
 		.i_EX_MEM_write_reg(wire_write_reg_MEM_WB),
-		.i_MEM_WB_write_reg(wire_write_reg_WB_ID),
+		.i_MEM_WB_write_reg(wire_write_reg_IM_WB),
 		.i_EX_MEM_reg_write(wire_reg_write_MEM_EX), 
 		.i_MEM_WB_reg_write(wire_reg_write_WB_EX),
 		.i_EX_MEM_result_alu(wire_result_alu_EX_MEM),
@@ -316,7 +312,7 @@ module pipeline
 		.i_reset(i_reset),
 		.i_enable_mem(i_enable_mem || i_enable_pipe),
 		.i_dm_enable_read(i_dm_enable_read),
-		.i_MEM_control(wire_M_ctrl_EX),//(wire_M_ctrl_MEM),
+		.i_MEM_control(wire_M_ctrl_EX),
 		.i_WB_control(wire_WB_ctrl_EX_MEM),
 
 		.i_alu_result(wire_result_alu_EX[`ADDRWIDTH-1:0]),//(wire_result_alu_EX_MEM[`ADDRWIDTH-1:0]),
@@ -352,7 +348,7 @@ module pipeline
 		.o_inm_ext(wire_inm_ext_WB),
 		.o_pc(wire_pc_WB), //deberia entrar en la etapa ID 
 
-		.o_write_register(wire_write_reg_WB_ID),// va tanto a ID como EX
+		.o_write_register(wire_write_reg_IM_WB),// va tanto a ID como EX
 		.o_reg_write(wire_reg_write_WB_EX), //va a EX para unit forward
 		.o_halt_detected(o_halt)
 		
@@ -362,11 +358,13 @@ module pipeline
 	(		
 		.i_clock(clock),   
 		.i_reset(i_reset),
+		.i_write_register(wire_write_reg_IM_WB),
 		.i_alu_result(wire_alu_result_WB),
 		.i_pc(wire_pc_WB),
 		.i_mem_data(wire_mem_data_WB),
 		.i_mem_to_reg(wire_mem_to_reg_WB),
 		.i_inm_ext(wire_inm_ext_WB),
+		.o_write_register(wire_write_reg_WB),
 		.o_data(wire_data_write_WB_ID) //dato a escribir en registro
 	);
 

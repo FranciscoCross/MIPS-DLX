@@ -35,7 +35,6 @@ module bank_register
 	
 	);
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
-	reg [NB_REG-1:0] reg_addr_rw;
 	reg reg_rw;
 	
     always @(posedge i_clock) //Lectura
@@ -44,13 +43,10 @@ module bank_register
 		begin	        			
 			o_data_ra <= 32'b0;
 			o_data_rb <= 32'b0;
-			reg_addr_rw <= 0;
 			reg_rw <= 0;
 		end else begin
 			o_data_ra <= registers[i_addr_ra];
 			o_data_rb <= registers[i_addr_rb];	
-
-			reg_addr_rw <= i_addr_rw;
 			reg_rw <= i_rw;
 		end
 	end
@@ -59,7 +55,7 @@ module bank_register
 	begin
 	if (reg_rw) //ESCRITURA
 	begin
-		registers[reg_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
+		registers[i_addr_rw] <= i_data_rw; 	//GUARDO EL VALOR "DATA" en la direccion puesta
 	end
 	end
 

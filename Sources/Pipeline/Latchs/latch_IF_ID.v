@@ -35,8 +35,6 @@ module latch_IF_ID
 				begin
 					o_pc <= o_pc;
 					o_instruction <= o_instruction;
-				end
-				
-								
+				end					
 		end		
 endmodule 

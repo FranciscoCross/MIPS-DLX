@@ -83,15 +83,6 @@ module tb_TOP_para_debug;
 		#10
 		i_rx_done	= 1'b0;
     end
-//--------------- CONTINUA --------------------
-    // #1000
-    // $display("[time=%0t] Ejecucion continua", $time);
-    // i_rx_data = 8'd2; // Ejecuion continua
-    // i_rx_done = 1'b1;
-
-    // #20
-    // i_rx_done = 1'b0;
-
 //--------------- STEP BY STEP--------------------
     #1000
     $display("Ejecución step by step. time = %0t", $time);
@@ -101,37 +92,24 @@ module tb_TOP_para_debug;
     #20
     i_rx_done = 1'b0;
     
-    for(s=0; s<12; s=s+1) begin
-        #100000
-        $display("Ejecución step  %d. time = %0t",s, $time);
-        i_rx_data = 7;
-        i_rx_done = 1'b1;
+    // for(s=0; s<12; s=s+1) begin
+    //     #100000
+    //     $display("Ejecución step  %d. time = %0t",s, $time);
+    //     i_rx_data = 7;
+    //     i_rx_done = 1'b1;
     
-        #20
-        i_rx_done = 1'b0;
-        #1000
-        for (i=0; i<260; i=i+1) begin
-              #80
-              i_tx_done	= 1'b1;
+    //     #20
+    //     i_rx_done = 1'b0;
+    //     #1000
+    //     for (i=0; i<260; i=i+1) begin
+    //           #80
+    //           i_tx_done	= 1'b1;
         
-              #20
-              i_tx_done	= 1'b0;
-        end  
-    end
-    
-    //--------------- CONTINUA --------------------
-     #1000
-     $display("[time=%0t] Ejecucion continua", $time);
-     i_rx_data = 8'd8; // Ejecuion continua
-     i_rx_done = 1'b1;
-
-     #20
-     i_rx_done = 1'b0;
-    //-------------------------------------------------
-
-    // Se envia cmd start para ejecucion continua
-    #100
-
+    //           #20
+    //           i_tx_done	= 1'b0;
+    //     end  
+    //end
+    #100000
     $finish;
   end
 
