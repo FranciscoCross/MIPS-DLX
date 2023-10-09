@@ -22,16 +22,16 @@ module bank_register
 		parameter N_REGISTER = 32		
 	)
 	( 
-		input wire i_clock,
-		input wire i_reset,
-		input wire i_rw, 
-		input wire [NB_REG-1:0] i_addr_ra,
-		input wire [NB_REG-1:0] i_addr_rb,
-		input wire [NB_REG-1:0] i_addr_rw,
-		input wire [NB_DATA-1:0] i_data_rw,
+		input wire 					i_clock,
+		input wire 					i_reset,
+		input wire 					i_rw, 
+		input wire [NB_REG-1:0] 	i_addr_ra,
+		input wire [NB_REG-1:0] 	i_addr_rb,
+		input wire [NB_REG-1:0] 	i_addr_rw,
+		input wire [NB_DATA-1:0] 	i_data_rw,
 
-		output reg [NB_DATA-1:0] o_data_ra,
-		output reg [NB_DATA-1:0] o_data_rb		
+		output reg [NB_DATA-1:0] 	o_data_ra,
+		output reg [NB_DATA-1:0] 	o_data_rb		
 	
 	);
 	reg [NB_DATA-1:0] registers[N_REGISTER-1:0];  	
@@ -41,13 +41,13 @@ module bank_register
 	begin
 		if (i_reset)
 		begin	        			
-			o_data_ra <= 32'b0;
-			o_data_rb <= 32'b0;
-			reg_rw <= 0;
+			o_data_ra 	<= 32'b0;
+			o_data_rb 	<= 32'b0;
+			reg_rw 		<= 0;
 		end else begin
-			o_data_ra <= registers[i_addr_ra];
-			o_data_rb <= registers[i_addr_rb];	
-			reg_rw <= i_rw;
+			o_data_ra 	<= registers[i_addr_ra];
+			o_data_rb 	<= registers[i_addr_rb];	
+			reg_rw 		<= i_rw;
 		end
 	end
 

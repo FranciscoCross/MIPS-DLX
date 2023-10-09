@@ -7,21 +7,21 @@ module WRITE_BACK
 		parameter NB_REG        = 5      // Tamaño del bus de registros
 	)
 	(
-		input wire i_clock,
-		input wire i_reset,
-		input [NB_REG-1:0] i_write_register,
-		input wire [NB_DATA-1:0] i_mem_data,
-		input wire [NB_DATA-1:0] i_alu_result,
-		input wire [`ADDRWIDTH-1:0] i_pc,
-		input wire [NB_DATA-1:0] i_inm_ext, // LUI
-		input wire [NB_MEM_TO_REG-1:0] i_mem_to_reg,
-		output [NB_REG-1:0] o_write_register,
-		output wire [NB_DATA-1:0] o_data
+		input wire 						i_clock,
+		input wire 						i_reset,
+		input [NB_REG-1:0] 				i_write_register,
+		input wire [NB_DATA-1:0] 		i_mem_data,
+		input wire [NB_DATA-1:0] 		i_alu_result,
+		input wire [`ADDRWIDTH-1:0] 	i_pc,
+		input wire [NB_DATA-1:0] 		i_inm_ext, // LUI
+		input wire [NB_MEM_TO_REG-1:0] 	i_mem_to_reg,
+		output [NB_REG-1:0] 			o_write_register,
+		output wire [NB_DATA-1:0] 	o_data
 	);
 
-	wire [NB_DATA-1:0] wire_data;
-	reg [NB_DATA-1:0] reg_data;
-	reg [NB_REG-1:0] write_register;
+	wire [NB_DATA-1:0] 	wire_data;
+	reg [NB_DATA-1:0] 	reg_data;
+	reg [NB_REG-1:0] 	write_register;
 
 	assign o_data 			= reg_data;
 	assign o_write_register = write_register;

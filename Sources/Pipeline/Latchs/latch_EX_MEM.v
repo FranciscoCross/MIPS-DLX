@@ -36,14 +36,15 @@ module latch_EX_MEM
 		
 	);
 
-	reg [NB_REG-1:0] write_reg;	
-	reg [NB_DATA-1:0] mem_data_reg, alu_result_reg, data_inm_reg;
-
-	reg [NB_MEM_CTRL-1:0] MEM_control_reg;
-	reg [NB_WB_CTRL-1:0] WB_control_reg;	
-	reg [`ADDRWIDTH-1:0] pc_reg;
-	
-	reg reg_write, halt_detected;
+	reg [NB_REG-1:0] 		write_reg;	
+	reg [NB_DATA-1:0] 		mem_data_reg;
+	reg [NB_DATA-1:0]		alu_result_reg;
+	reg [NB_DATA-1:0]		data_inm_reg;
+	reg [NB_MEM_CTRL-1:0] 	MEM_control_reg;
+	reg [NB_WB_CTRL-1:0] 	WB_control_reg;	
+	reg [`ADDRWIDTH-1:0] 	pc_reg;
+	reg 					reg_write;
+	reg 					halt_detected;
 
 	assign o_MEM_control    = MEM_control_reg;
 	assign o_WB_control     = WB_control_reg;
@@ -54,21 +55,7 @@ module latch_EX_MEM
 	assign o_pc             = pc_reg;
 	assign o_reg_write      = reg_write;
 	
-	assign o_halt_detected = halt_detected;
-
-	initial begin
-		write_reg = 0;	
-		mem_data_reg = 0;
-		alu_result_reg = 0;
-		data_inm_reg = 0;
-
-		MEM_control_reg = 0;
-		WB_control_reg = 0;	
-		pc_reg = 0;
-		
-		reg_write = 0;
-		halt_detected = 0;
-	end
+	assign o_halt_detected 	= halt_detected;
 
 	always @(negedge i_clock)
 		begin

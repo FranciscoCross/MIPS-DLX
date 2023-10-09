@@ -17,7 +17,7 @@ module tb_dmem;
     reg clk = 0;
  
     dmem instancia_dmem(
-        .i_clk(clk),
+        .i_clock(clk),
         .i_mem_enable(EN_MEM),
         .i_write(EN_W),
         .i_read(EN_R),

@@ -8,48 +8,31 @@ module FETCH#(
     parameter NB_DATA = `ADDRWIDTH,
     parameter MEM_SIZEB = `N_ELEMENTS
     )(
-    input i_clk,
-    input i_reset,
-    input i_enable,
-    input wire i_debug_unit,
-    input i_Mem_WEn,
-    input i_Mem_REn,
-    input [NB_INST - 1:0] i_Mem_Data,
-    input [1:0] i_PCsrc,
-    input wire [NB_DATA-1:0] i_addr_register,
-    input wire [NB_DATA-1:0] i_addr_branch,
-    input wire [NB_DATA-1:0] i_addr_jump,
-    input wire i_jump_or_branch,
-    input wire [`ADDRWIDTH-1:0] i_wr_addr, // enviado por debug_unit para cargar instruccion
+    input                   i_clock,
+    input                   i_reset,
+    input                   i_enable,
+    input                   i_debug_unit,
+    input                   i_Mem_WEn,
+    input                   i_Mem_REn,
+    input [NB_INST - 1:0]   i_Mem_Data,
+    input [1:0]             i_PCsrc,
+    input [NB_DATA-1:0]     i_addr_register,
+    input [NB_DATA-1:0]     i_addr_branch,
+    input [NB_DATA-1:0]     i_addr_jump,
+    input                   i_jump_or_branch,
+    input [`ADDRWIDTH-1:0]  i_wr_addr, // enviado por debug_unit para cargar instruccion
     
-    output [NB_INST - 1:0] o_instruction,
-    output [NB_DATA - 1:0] o_next_PCAddr
+    output [NB_INST - 1:0]  o_instruction,
+    output [NB_DATA - 1:0]  o_next_PCAddr
     );
     //-------------------------------------------------
-    //Debug Unit
-    wire [`ADDRWIDTH-1:0] wire_address_debug;
-    wire [`ADDRWIDTH-1:0] wire_pc;
-    wire [NB_DATA-1:0] wire_address_jump_pc;
-    wire [NB_DATA-1:0] wire_input_pc;
-    wire [NB_INST-1:0] wire_instr;
-
-    //Program counter
-    wire [NB_DATA - 1:0] i_addr_pc;
-    wire [NB_DATA - 1:0] o_addr_pc;
-      
-    //PC Addr
-    wire [NB_DATA - 1:0] nextAddr_pc; 
-    
-    //Instruction memory
-    reg imem_en_wr;
-    reg imem_en_rd;
-
-    wire neg_enable;
-    //-------------------------------------------------
-    initial begin
-        imem_en_wr = 0;
-        imem_en_rd = 1;
-    end
+    wire [`ADDRWIDTH-1:0]   wire_address_debug;
+    wire [`ADDRWIDTH-1:0]   wire_pc;
+    wire [NB_DATA-1:0]      wire_address_jump_pc;
+    wire [NB_DATA-1:0]      wire_input_pc;
+    wire [NB_INST-1:0]      wire_instr;
+    wire [NB_DATA - 1:0]    nextAddr_pc; 
+    wire                    neg_enable;
 
     //assign o_PCAddr = wire_pc;
     assign o_next_PCAddr = nextAddr_pc;
@@ -97,7 +80,7 @@ module FETCH#(
         .NB_DATA (NB_DATA)
     ) 
     inst_pc(
-        .i_clk(i_clk),
+        .i_clock(i_clock),
         .i_reset(i_reset),
         .i_enable(neg_enable),
         .i_addr(wire_input_pc),
@@ -118,7 +101,7 @@ module FETCH#(
         .MEM_SIZEB(MEM_SIZEB)
     )
     instancia_imem(
-        .i_clk(i_clk),
+        .i_clock(i_clock),
         .i_enable(neg_enable),
         .i_reset(i_reset),
         .i_en_write(i_Mem_WEn),

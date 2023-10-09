@@ -16,12 +16,12 @@ module unit_branch
 		parameter NB_DATA = 32		
 	)
 	(
-		input wire [`ADDRWIDTH-1:0] i_pc,
-		input wire [`ADDRWIDTH-1:0] i_inm_ext,
-		input wire [NB_DATA-1:0] i_data_ra,
-		input wire [NB_DATA-1:0] i_data_rb,
-		output wire o_is_equal,
-		output wire [`ADDRWIDTH-1:0] o_branch_address   
+		input wire [`ADDRWIDTH-1:0] 	i_pc,
+		input wire [`ADDRWIDTH-1:0] 	i_inm_ext,
+		input wire [NB_DATA-1:0] 		i_data_ra,
+		input wire [NB_DATA-1:0] 		i_data_rb,
+		output wire 					o_is_equal,
+		output wire [`ADDRWIDTH-1:0] 	o_branch_address   
 	);
 
 	//Salto incondicional para instrucciones tipo I.

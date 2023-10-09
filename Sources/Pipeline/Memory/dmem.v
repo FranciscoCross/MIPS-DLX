@@ -8,24 +8,21 @@ module dmem
     parameter MEM_SIZEB = 128
   )
   (
-    input wire i_clk,
-    input wire i_mem_enable, 
-
-    input wire [`ADDRWIDTH-1:0] i_addr,
-    input wire [NB_DATA-1:0] i_data,
-
-    input wire i_read,
-    input wire i_write,
+    input wire                    i_clock,
+    input wire                    i_mem_enable, 
+    input wire                    i_read,
+    input wire                    i_write,
+    input wire [`ADDRWIDTH-1:0]   i_addr,
+    input wire [NB_DATA-1:0]      i_data,
    
-    output wire [NB_DATA-1:0] o_data
+    output wire [NB_DATA-1:0]     o_data
   );
   
     reg [NB_DATA-1:0] RAM[`N_ELEMENTS-1:0];
     reg [NB_DATA-1:0] data_reg = {NB_DATA{1'b0}};
      
-    assign o_data = data_reg;
-    //Para Inicializar la memoria en cero
-    // Inicializaci�n de data_reg y RAM
+    
+
     generate
         integer reg_index;
         initial
@@ -33,7 +30,7 @@ module dmem
                 RAM[reg_index] = reg_index;
     endgenerate
     
-  always @(posedge i_clk)
+  always @(posedge i_clock)
     begin
       if (i_mem_enable)
         begin
@@ -44,7 +41,7 @@ module dmem
         RAM[i_addr] <= RAM[i_addr];
     end
 
-  always @(negedge i_clk)
+  always @(negedge i_clock)
     begin
       if (i_mem_enable)
         begin          
@@ -55,4 +52,5 @@ module dmem
         end
     end
 
+  assign o_data = data_reg;
 endmodule

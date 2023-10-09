@@ -27,8 +27,6 @@ module mux4
                 out = i_C;
             2'b11:
                 out = i_D;
-            default:
-                out = i_A;
         endcase
     end
     

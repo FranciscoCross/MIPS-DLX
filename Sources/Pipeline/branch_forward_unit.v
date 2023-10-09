@@ -9,7 +9,7 @@ module branch_forward_unit
 		input wire [NB_REG-1:0] i_ID_rt,
 		
 		input wire [NB_REG-1:0] i_EX_MEM_write_reg,
-		input wire i_EX_MEM_reg_write,	
+		input wire 				i_EX_MEM_reg_write,	
 
 		output reg o_forward_A, o_forward_B
 	);

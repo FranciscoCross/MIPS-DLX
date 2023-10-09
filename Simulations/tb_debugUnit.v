@@ -246,7 +246,7 @@ bank_register bank_register
 
 dmem memory_data
 (
-    .i_clk(clock),
+    .i_clock(clock),
     .i_mem_enable(1'b1),
     .i_addr(o_addr_mem_debug_unit),		
     .i_read(1'b1),
@@ -254,7 +254,7 @@ dmem memory_data
 );
 
     imem instancia_imem(
-        .i_clk(clock),
+        .i_clock(clock),
         .i_enable(i_enable),
         .i_reset(i_reset),
         .i_en_write(o_en_write),

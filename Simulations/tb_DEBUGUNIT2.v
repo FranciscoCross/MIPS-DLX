@@ -779,7 +779,7 @@ module tb_DEBUGUNIT2;
 
     dmem memory_data
     (
-        .i_clk(clock),
+        .i_clock(clock),
         .i_mem_enable(dm_enable),
         .i_addr(dm_addr),		
         .i_read(dm_read_enable),
@@ -787,7 +787,7 @@ module tb_DEBUGUNIT2;
     );
 
     imem instancia_imem(
-        .i_clk(clock),
+        .i_clock(clock),
         .i_enable(i_enable),
         .i_reset(i_reset),
         .i_en_write(im_write_enable),

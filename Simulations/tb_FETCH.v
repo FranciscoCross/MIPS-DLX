@@ -22,7 +22,7 @@ module tb_FETCH(
 
     FETCH instruccion_fetch
 	(	
-    .i_clk(clock),
+    .i_clock(clock),
     .i_reset(i_reset),
     .i_enable(wire_pc_write&&i_enable_pipe),
     .i_debug_unit(i_debug_unit),

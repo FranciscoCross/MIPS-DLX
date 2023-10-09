@@ -8,44 +8,41 @@ module latch_MEM_WB
 		parameter NB_MEM_TO_REG = 2
 	)
 	(
-		input wire i_clock,
-		input wire i_reset,
-		input wire i_enable_pipe,
-		input wire i_halt_detected,
-		input wire [NB_DATA-1:0] i_mem_data,
-		input wire [NB_DATA-1:0] i_alu_result,
-		input wire [`ADDRWIDTH-1:0] i_pc,
-		input wire [NB_DATA-1:0] i_data_inm, //dato a escribir en registro (LUI) 
-		input wire [NB_WB_CTRL-1:0] i_WB_control,
-		input wire [NB_REG-1:0] i_write_register,
-		
-		output wire [NB_REG-1:0] o_write_register,
+		input wire 						i_clock,
+		input wire 						i_reset,
+		input wire 						i_enable_pipe,
+		input wire 						i_halt_detected,
+		input wire [NB_DATA-1:0] 		i_mem_data,
+		input wire [NB_DATA-1:0] 		i_alu_result,
+		input wire [`ADDRWIDTH-1:0] 	i_pc,
+		input wire [NB_DATA-1:0] 		i_data_inm, //dato a escribir en registro (LUI) 
+		input wire [NB_WB_CTRL-1:0] 	i_WB_control,
+		input wire [NB_REG-1:0] 		i_write_register,
+	
+		output wire [NB_REG-1:0] 		o_write_register,
 		output wire [NB_MEM_TO_REG-1:0] o_mem_to_reg,
-
-		output wire [NB_DATA-1:0] o_mem_data,
-		output wire [NB_DATA-1:0] o_alu_result,
-		output wire [`ADDRWIDTH-1:0] o_pc,
-		output wire [NB_DATA-1:0] o_inm_ext,
-
-		output wire o_reg_write,
-		output wire o_halt_detected	
+		output wire [NB_DATA-1:0] 		o_mem_data,
+		output wire [NB_DATA-1:0] 		o_alu_result,
+		output wire [`ADDRWIDTH-1:0] 	o_pc,
+		output wire [NB_DATA-1:0] 		o_inm_ext,
+		output wire 					o_reg_write,
+		output wire 					o_halt_detected	
 	
 	);
 
 	reg [NB_MEM_TO_REG-1:0] mem_to_reg;
-	reg [NB_REG-1:0] write_reg;
-	reg reg_write;
-	reg [NB_DATA-1:0] mem_data_reg, alu_result_reg, inm_ext_reg;
+	reg [NB_REG-1:0] 		write_reg;
+	reg 					reg_write;
+	reg [NB_DATA-1:0] 		mem_data_reg;
+	reg [NB_DATA-1:0]		alu_result_reg;
+	reg [NB_DATA-1:0]		inm_ext_reg;
+	reg [`ADDRWIDTH-1:0] 	pc_reg;
+	reg 					halt_detected;
 
-	reg [`ADDRWIDTH-1:0] pc_reg;
-	reg halt_detected;
-
-	assign o_halt_detected = halt_detected;
-	
+	assign o_halt_detected 	= halt_detected;
 	assign o_mem_to_reg     = mem_to_reg;
 	assign o_reg_write      = reg_write;
 	assign o_write_register = write_reg;
-
 	assign o_mem_data       = mem_data_reg;
 	assign o_alu_result     = alu_result_reg;
 	assign o_pc             = pc_reg;

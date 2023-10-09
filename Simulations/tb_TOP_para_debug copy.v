@@ -15,16 +15,17 @@ module tb_TOP_para_debug2;
 
   // Ports
   reg               i_clock       = 1'b0;
-  reg               i_reset_wz = 1'b1;
+  reg               i_reset_wz    = 1'b1;
   reg               i_reset       = 1'b1;
   reg               i_rx_done     = 1'b0;
   reg               i_tx_done     = 1'b0;
   reg [BYTE-1:0]    i_rx_data     = 8'b0;
 
-  wire o_halt;
+  wire              o_halt;
   wire [NB_ST-1:0]  o_state;
   wire [BYTE-1:0]   o_tx_data;
-  wire              o_tx_start, o_locked;
+  wire              o_tx_start;
+  wire              o_locked;
   
   integer i;
   integer s;
@@ -48,7 +49,6 @@ module tb_TOP_para_debug2;
 
   initial begin
     inst_counter    = 0;
-  
     i_clock         = 1'b0;
     i_reset         = 1'b1;
     i_reset_wz   = 1'b1;

@@ -7,10 +7,10 @@ Saves the input addres in an internal register and outputs it.
 module pc#(
     parameter NB_DATA = `ADDRWIDTH
     )(
-    input wire i_clk,
-    input wire i_reset,
-    input wire i_enable,
-    input wire [NB_DATA - 1:0] i_addr,
+    input wire                  i_clock,
+    input wire                  i_reset,
+    input wire                  i_enable,
+    input wire [NB_DATA - 1:0]  i_addr,
     output wire [NB_DATA - 1:0] o_addr
     );
     
@@ -20,7 +20,7 @@ module pc#(
         reg_addr <= {NB_DATA{1'b0}};
     end
 
-    always @(negedge i_clk)
+    always @(negedge i_clock)
     begin
         if(i_reset)
             reg_addr <= {NB_DATA{1'b0}};

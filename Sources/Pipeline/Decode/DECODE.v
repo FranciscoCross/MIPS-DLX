@@ -48,13 +48,12 @@ module DECODE
 		output wire [NB_WB_CTRL-1:0] 	o_WB_control,     			// Bus de control para la etapa WB
 		output wire 					o_halt     					// Señal de control para detener la ejecución
 	);
-	wire wire_halt_detected;    // Señal de detección de parada
-	wire is_equal;      		// Señal para comparación de igualdad
-	wire wire_stall;     		// Señal de retardo para comprobar la igualdad de los registros fuente en instrucciones de salto
-	wire wire_beq;     			// Señal de control para instrucción BEQ (igualdad)
-	wire wire_bne;     			// Señal de control para instrucción BNE (no igualdad)
-	wire wire_jump;     		// Señal de control para instrucción de salto
-
+	wire 					wire_halt_detected;    		// Señal de detección de parada
+	wire 					is_equal;      				// Señal para comparación de igualdad
+	wire 					wire_stall;     			// Señal de retardo para comprobar la igualdad de los registros fuente en instrucciones de salto
+	wire 					wire_beq;     				// Señal de control para instrucción BEQ (igualdad)
+	wire 					wire_bne;     				// Señal de control para instrucción BNE (no igualdad)
+	wire 					wire_jump;     				// Señal de control para instrucción de salto
 	wire [NB_REG-1:0]       wire_addr_ra;     			// Dirección para acceder al registro de depuración
 	wire [NB_DATA-1:0]      wire_inm_ext;     			// Inmediato extendido
 	wire [NB_DATA-1:0]      data_ra_branch;     		// Datos del registro fuente A para instrucción de salto
@@ -64,41 +63,21 @@ module DECODE
 	wire [NB_MEM_CTRL-1:0]  wire_M_control;     		// Bus de control para la etapa MEM
 	wire [NB_DATA-1:0]      reg_data_ra, reg_data_rb;	// Datos del registro fuente A y B
 	wire [`ADDRWIDTH-1:0] 	wire_addr_branch;     		// Dirección de salto para instrucción de salto
+	reg [NB_REG-1:0]  		rs_reg;
+	reg [NB_REG-1:0]  		rt_reg;
+	reg [NB_REG-1:0]  		rd_reg;
+	reg [NB_REG-1:0]    	reg_shamt;     				// Campo de desplazamiento en la instrucción
+	reg [NB_DATA-1:0]   	reg_inm_ext;    			// Inmediato extendido
+	reg [NB_OPCODE-1:0] 	reg_function;     			// Campo de código de función
+	reg [NB_WB_CTRL-1:0]   	reg_WB_control;     		// Bus de control para la etapa WB
+	reg [NB_EX_CTRL-1:0]   	reg_EX_control;     		// Bus de control para la etapa EX
+	reg [NB_MEM_CTRL-1:0]  	reg_M_control;     			// Bus de control para la etapa MEM
+	reg [`ADDRWIDTH-1:0] 	reg_addr_branch;   			// Dirección de salto para instrucción de rama
+	reg [`ADDRWIDTH-1:0] 	reg_addr_jump;     			// Dirección de salto para instrucción de salto
+	reg 					reg_branch_or_jump;   		// Señal de control para rama o salto
+	reg 					reg_halt;   				// Señal de control para rama o salto
 
 
-	reg [NB_REG-1:0]  rs_reg;
-	reg [NB_REG-1:0]  rt_reg;
-	reg [NB_REG-1:0]  rd_reg;
-	reg [NB_REG-1:0]    reg_shamt;     			// Campo de desplazamiento en la instrucción
-	reg [NB_DATA-1:0]   reg_inm_ext;    		// Inmediato extendido
-	reg [NB_OPCODE-1:0] reg_function;     		// Campo de código de función
-	reg [NB_WB_CTRL-1:0]   reg_WB_control;     	// Bus de control para la etapa WB
-	reg [NB_EX_CTRL-1:0]   reg_EX_control;     	// Bus de control para la etapa EX
-	reg [NB_MEM_CTRL-1:0]  reg_M_control;     	// Bus de control para la etapa MEM
-	reg [`ADDRWIDTH-1:0] reg_addr_branch;   	// Dirección de salto para instrucción de rama
-	reg [`ADDRWIDTH-1:0] reg_addr_jump;     	// Dirección de salto para instrucción de salto
-		
-	reg reg_branch_or_jump;   // Señal de control para rama o salto
-	reg reg_halt;   // Señal de control para rama o salto
-
-	// Asignaciones de las salidas a las señales internas
-	assign o_rs =                   rs_reg;
-	assign o_rt =                   rt_reg;
-	assign o_rd =                   rd_reg;
-	assign o_shamt =                reg_shamt;
-	assign o_function =             reg_function;
-	assign o_data_reg_debug_unit =  reg_data_ra;
-	assign o_data_ra =              reg_data_ra;
-	assign o_data_rb =              reg_data_rb;
-	assign o_EX_control =           reg_EX_control;
-	assign o_M_control =            reg_M_control;
-	assign o_WB_control =           reg_WB_control;
-	assign o_addr_register  =       reg_data_ra[`ADDRWIDTH-1:0];
-	assign o_addr_jump =            reg_addr_jump;
-	assign o_addr_branch =          reg_addr_branch;
-	assign o_inm_ext =              reg_inm_ext;
-	assign o_branch_or_jump =       reg_branch_or_jump;
-	assign o_halt =                 reg_halt;
 
 
 
@@ -106,77 +85,70 @@ module DECODE
 	begin
 		if(i_reset)
 		begin	
-			rs_reg <= 0;
-			rt_reg <= 0;
-			rd_reg <= 0;
-			reg_shamt <=    0;
-			reg_function <= 0;
-
-			reg_addr_jump <= 0;
-			reg_addr_branch <= 0;
-
-			reg_EX_control <= 0;
-			reg_M_control <=  0;
-			reg_WB_control <= 0;
-
-			reg_inm_ext <= 0;
-			reg_halt <= 0;
+			rs_reg 				<= 0;
+			rt_reg 				<= 0;
+			rd_reg 				<= 0;
+			reg_shamt 			<= 0;
+			reg_function 		<= 0;
+			reg_addr_jump 		<= 0;
+			reg_addr_branch 	<= 0;
+			reg_EX_control 		<= 0;
+			reg_M_control 		<=  0;
+			reg_WB_control 		<= 0;
+			reg_inm_ext 		<= 0;
+			reg_halt 			<= 0;
 		end
 		else
 		begin
-			rs_reg <= i_instruction[`RS_BIT];
-			rt_reg <= i_instruction[`RT_BIT];
-			rd_reg <= i_instruction[`RD_BIT];
-			reg_shamt <=    i_instruction[`SHAMT_BIT];
-			reg_function <= i_instruction[`FUNC_BIT];
-			
-			reg_addr_jump <=   i_instruction[`ADDRWIDTH-1:0];
-			reg_addr_branch <= wire_addr_branch;
-
-			reg_EX_control <=  (wire_stall) ? {NB_EX_CTRL{1'b0}} : wire_EX_control;
-			reg_M_control <=   (wire_stall) ? {NB_MEM_CTRL{1'b0}} : wire_M_control;
-			reg_WB_control <=  (wire_stall) ? {NB_WB_CTRL{1'b0}} : wire_WB_control;
-			
-			reg_inm_ext <=  wire_inm_ext;
-			
-			reg_halt <= wire_halt_detected;
+			rs_reg 				<= i_instruction[`RS_BIT];
+			rt_reg 				<= i_instruction[`RT_BIT];
+			rd_reg 				<= i_instruction[`RD_BIT];
+			reg_shamt 			<= i_instruction[`SHAMT_BIT];
+			reg_function 		<= i_instruction[`FUNC_BIT];
+			reg_addr_jump 		<= i_instruction[`ADDRWIDTH-1:0];
+			reg_addr_branch 	<= wire_addr_branch;
+			reg_EX_control 		<= (wire_stall) ? {NB_EX_CTRL{1'b0}} : wire_EX_control;
+			reg_M_control 		<= (wire_stall) ? {NB_MEM_CTRL{1'b0}} : wire_M_control;
+			reg_WB_control 		<= (wire_stall) ? {NB_WB_CTRL{1'b0}} : wire_WB_control;
+			reg_inm_ext 		<=  wire_inm_ext;
+			reg_halt 			<= wire_halt_detected;
 		end
 	end
 
 	always @(*) begin
 		if(i_reset)
 		begin	
-			reg_branch_or_jump <= 0;
+			reg_branch_or_jump 	<= 0;
 		end
 		else
 		begin
-			reg_branch_or_jump <= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
+			reg_branch_or_jump 	<= ((wire_beq && is_equal) | (wire_bne && !is_equal) | wire_jump);
 		end
 	end
 
 	// Instancias de los módulos y asignaciones de las señales
 	unit_branch unit_branch
 	(
-		.i_pc(i_pc), 															//Representa la dirección de la próxima instrucción a ejecutar.
-		.i_inm_ext(wire_inm_ext[`ADDRWIDTH-1:0]), //Representa la dirección de destino del salto condicional.
+		.i_pc(i_pc), 											//Representa la dirección de la próxima instrucción a ejecutar.
+		.i_inm_ext(wire_inm_ext[`ADDRWIDTH-1:0]), 				//Representa la dirección de destino del salto condicional.
 		.i_data_ra(data_ra_branch),								//Contiene el valor del registro RA (Registro A).
 		.i_data_rb(data_rb_branch), 							//Contiene el valor del registro RB (Registro B).
 
 		.o_is_equal(is_equal),
-		.o_branch_address(wire_addr_branch) //Contiene la dirección de destino del salto incondicional.
+		.o_branch_address(wire_addr_branch) 					//Contiene la dirección de destino del salto incondicional.
 	);
 	
 	unit_hazard unit_hazard
 	(
-		.i_ID_rs(i_instruction[`RS_BIT]),												//RS de instruccion ACTUAL
-		.i_ID_rt(i_instruction[`RT_BIT]),												//RT de instruccion ACTUAL
-		.i_EX_reg_write(i_reg_write), 												//Si la etapa que sigue (EXECUTION) escribe en un registro
+		.i_ID_rs(i_instruction[`RS_BIT]),						//RS de instruccion ACTUAL
+		.i_ID_rt(i_instruction[`RT_BIT]),						//RT de instruccion ACTUAL
+		.i_EX_reg_write(i_reg_write), 							//Si la etapa que sigue (EXECUTION) escribe en un registro
 		.i_EX_write_register_usage(i_EX_write_register_usage),	//Registro que escribe la etapa que sigue (EXECUTION) 
-		.i_EX_rt(i_EX_rt),																			//RT de la estapa que sigue (EXECUTION) o instruccion PASADA
-		.i_ID_EX_mem_read(i_ID_EX_mem_read),										//La instruccion PASADA escribira en MEMORIA
+		.i_EX_rt(i_EX_rt),										//RT de la estapa que sigue (EXECUTION) o instruccion PASADA
+		.i_ID_EX_mem_read(i_ID_EX_mem_read),					//La instruccion PASADA escribira en MEMORIA
 		.i_halt(wire_halt_detected),
 		.o_stall(wire_stall),
-		.o_pc_write(o_pc_write),																//cuando hay un stall aca deshabilita el PC ya que asi no sigue trajento instrucciones
+		.o_pc_write(o_pc_write),								//cuando hay un stall aca deshabilita el PC ya que asi no sigue trajento instrucciones
 		.o_IF_ID_write(o_IF_ID_write)
 	);
 
@@ -239,5 +211,26 @@ module DECODE
 		.i_unextended(i_instruction[`INM_BIT]),
 		.o_extended(wire_inm_ext)
 	);
+
+
+
+	// Asignaciones de las salidas a las señales internas
+	assign o_rs 					= rs_reg;
+	assign o_rt 					= rt_reg;
+	assign o_rd 					= rd_reg;
+	assign o_shamt 					= reg_shamt;
+	assign o_function 				= reg_function;
+	assign o_data_reg_debug_unit 	= reg_data_ra;
+	assign o_data_ra 				= reg_data_ra;
+	assign o_data_rb 				= reg_data_rb;
+	assign o_EX_control 			= reg_EX_control;
+	assign o_M_control 				= reg_M_control;
+	assign o_WB_control 			= reg_WB_control;
+	assign o_addr_register  		= reg_data_ra[`ADDRWIDTH-1:0];
+	assign o_addr_jump 				= reg_addr_jump;
+	assign o_addr_branch 			= reg_addr_branch;
+	assign o_inm_ext 				= reg_inm_ext;
+	assign o_branch_or_jump 		= reg_branch_or_jump;
+	assign o_halt 					= reg_halt;
 
 endmodule

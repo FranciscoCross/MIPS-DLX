@@ -35,9 +35,9 @@
             <obj_property name="ElementShortName">i_enable</obj_property>
             <obj_property name="ObjectShortName">i_enable</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_FETCH/instruccion_fetch/i_clk" type="logic">
-            <obj_property name="ElementShortName">i_clk</obj_property>
-            <obj_property name="ObjectShortName">i_clk</obj_property>
+         <wvobject fp_name="/tb_FETCH/instruccion_fetch/i_clock" type="logic">
+            <obj_property name="ElementShortName">i_clock</obj_property>
+            <obj_property name="ObjectShortName">i_clock</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_FETCH/instruccion_fetch/i_reset" type="logic">
             <obj_property name="ElementShortName">i_reset</obj_property>

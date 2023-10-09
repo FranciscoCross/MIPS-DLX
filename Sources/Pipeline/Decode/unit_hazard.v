@@ -28,17 +28,17 @@ module unit_hazard
 		parameter NB_REG = 5
 	)
 	(
-		input wire i_ID_EX_mem_read,
-		input wire i_EX_reg_write,
+		input wire 				i_ID_EX_mem_read,
+		input wire 				i_EX_reg_write,
 		input wire [NB_REG-1:0] i_ID_rs,
 		input wire [NB_REG-1:0] i_ID_rt,
 		input wire [NB_REG-1:0] i_EX_write_register_usage,
 		input wire [NB_REG-1:0] i_EX_rt,
+		input wire 				i_halt,
 
-		input wire i_halt,
-		output reg o_stall,
-		output wire o_pc_write, //detiene cargar la sig direccion
-		output wire o_IF_ID_write //detiene cargar la instruccion en el registro IF_ID
+		output reg 				o_stall,
+		output wire 			o_pc_write, //detiene cargar la sig direccion
+		output wire 			o_IF_ID_write //detiene cargar la instruccion en el registro IF_ID
 	
 
 	);
@@ -48,32 +48,32 @@ module unit_hazard
 		begin
 			reg_pc_write    = 1'b1;
 			reg_IF_ID_write = 1'b1; 
-			o_stall = 1'b0; 
+			o_stall 		= 1'b0; 
 		end
 
 	always @(*)
 		begin 
 			if (((i_ID_EX_mem_read == 1'b1) && ((i_EX_rt != 5'b0) && ((i_EX_rt == i_ID_rs) || (i_EX_rt == i_ID_rt)))) || i_halt)                
 				begin						
-					reg_pc_write = 1'b0;
+					reg_pc_write 	= 1'b0;
 					reg_IF_ID_write = 1'b0;
-					o_stall = 1'b1;
+					o_stall 		= 1'b1;
 				end
 			else if (i_EX_reg_write == 1'b1 && ((`WR_REG) && ((`OP1) || (`OP2))))
 				begin					
-					reg_pc_write = 1'b0;
+					reg_pc_write 	= 1'b0;
 					reg_IF_ID_write = 1'b0;
-					o_stall = 1'b1;
+					o_stall 		= 1'b1;
 				end			
 			else
 				begin
-					reg_pc_write = 1'b1;
+					reg_pc_write 	= 1'b1;
 					reg_IF_ID_write = 1'b1;
-					o_stall = 1'b0; 
+					o_stall 		= 1'b0; 
 				end
 		end
 
-	assign o_pc_write = reg_pc_write;
+	assign o_pc_write 	= reg_pc_write;
 	assign o_IF_ID_write = reg_IF_ID_write;
 	
 endmodule

@@ -90,7 +90,7 @@ module MEMORIA
 
 	dmem memory_data
 	(
-		.i_clk(i_clock),
+		.i_clock(i_clock),
 		.i_mem_enable(i_enable_mem),
 		.i_addr(wire_addr_mem),		
 		.i_data(wire_data_mem_write),

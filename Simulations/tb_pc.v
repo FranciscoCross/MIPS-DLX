@@ -32,7 +32,7 @@ module tb_pc;
 
     pc #(.NB_DATA (NB_DATA)) inst_pc
     (
-        .i_clk(clk),
+        .i_clock(clk),
         .i_reset(reset),
         .i_enable(enable),
         .i_addr(i_addr),

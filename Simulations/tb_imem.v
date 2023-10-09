@@ -20,7 +20,7 @@ module tb_imem;
         .NB_DATA(N_BITS)
     )
     instancia_imem(
-        .i_clk(clk),
+        .i_clock(clk),
         .i_en_write(EN_W),
         .i_en_read(EN_R),
         .i_addr(ADDR_I),

@@ -10,65 +10,46 @@ module EXECUTE
 		parameter NB_OP_ALU     = 4
 	)
 	(
-		input wire i_clock,
-		input wire i_reset,
-		input wire [NB_FUNCTION-1:0] i_function,		
-		input wire [NB_DATA-1:0]    i_data_ra,
-		input wire [NB_DATA-1:0]    i_data_rb,
-		input wire [NB_DATA-1:0]    i_data_inm,
-
-		input wire [NB_REG-1:0]	    i_shamt,
-		input wire [NB_REG-1:0]	    i_rs, 
-        input wire [NB_REG-1:0]     i_rt,
-        input wire [NB_REG-1:0]     i_rd,
-
-		input wire [NB_EX_CTRL-1:0] i_EX_control,
-		input wire [NB_M_CTRL-1:0] 	i_M_control,
-		input wire [NB_WB_CTRL-1:0] i_WB_control,
-
-		input wire [NB_REG-1:0]     i_EX_MEM_write_reg, // addres de reg a escribir
-		input wire [NB_REG-1:0]     i_MEM_WB_write_reg,
-
-		input wire i_EX_MEM_reg_write, //escritura en reg ?
-		input wire i_MEM_WB_reg_write,
-
+		input wire 						i_clock,
+		input wire 						i_reset,
+		input wire [NB_FUNCTION-1:0] 	i_function,		
+		input wire [NB_DATA-1:0]    	i_data_ra,
+		input wire [NB_DATA-1:0]    	i_data_rb,
+		input wire [NB_DATA-1:0]    	i_data_inm,
+		input wire [NB_REG-1:0]	    	i_shamt,
+		input wire [NB_REG-1:0]	    	i_rs, 
+        input wire [NB_REG-1:0]     	i_rt,
+        input wire [NB_REG-1:0]     	i_rd,
+		input wire [NB_EX_CTRL-1:0] 	i_EX_control,
+		input wire [NB_M_CTRL-1:0] 		i_M_control,
+		input wire [NB_WB_CTRL-1:0] 	i_WB_control,
+		input wire [NB_REG-1:0]     	i_EX_MEM_write_reg, // addres de reg a escribir
+		input wire [NB_REG-1:0]     	i_MEM_WB_write_reg,
+		input wire 						i_EX_MEM_reg_write, //escritura en reg ?
+		input wire 						i_MEM_WB_reg_write,
 		input wire [NB_DATA-1:0]   		i_EX_MEM_result_alu,
 		input wire [NB_DATA-1:0]  	 	i_MEM_WB_data,
-		
-
 		output wire [NB_M_CTRL-1:0] 	o_M_control,
 		output wire [NB_WB_CTRL-1:0] 	o_WB_control,
-
 		output wire [NB_DATA-1:0]  		o_data_write_mem,
 		output wire [NB_REG-1:0]   		o_write_register,
 		output wire [NB_DATA-1:0]  		o_result_alu
 	);
 	
-	wire [NB_DATA-1:0]  wire_input_alu_A;  //entradas a la alu
-    wire [NB_DATA-1:0]  wire_input_alu_B;
-	wire [NB_DATA-1:0]  out_mux_forwardA;
-    wire [NB_DATA-1:0]  out_mux_forwardB;
-
-	wire [1:0]  src_forwardA;
-	wire [1:0]  src_forwardB;
-
-	wire [NB_REG-1:0]   wire_write_register;
-	wire [NB_DATA-1:0]  wire_result_alu;
-	wire [3:0] cod_op_alu;
-
-	reg [NB_DATA-1:0]  reg_data_write_mem;
-	reg [NB_REG-1:0]   reg_write_register;
-	reg [NB_DATA-1:0]  reg_result_alu;
-
-	reg [NB_M_CTRL-1:0]  M_control_reg;
-	reg [NB_WB_CTRL-1:0] WB_control_reg;
-
-	assign o_data_write_mem = reg_data_write_mem; 
-	assign o_write_register = reg_write_register; 
-	assign o_result_alu = reg_result_alu; 
-
-	assign o_M_control 	= M_control_reg;
-	assign o_WB_control = WB_control_reg;
+	wire [NB_DATA-1:0]  	wire_input_alu_A;  //entradas a la alu
+    wire [NB_DATA-1:0]  	wire_input_alu_B;
+	wire [NB_DATA-1:0]  	out_mux_forwardA;
+    wire [NB_DATA-1:0]  	out_mux_forwardB;
+	wire [1:0]  			src_forwardA;
+	wire [1:0]  			src_forwardB;
+	wire [NB_REG-1:0]   	wire_write_register;
+	wire [NB_DATA-1:0]  	wire_result_alu;
+	wire [3:0] 				cod_op_alu;
+	reg [NB_DATA-1:0]  		reg_data_write_mem;
+	reg [NB_REG-1:0]   		reg_write_register;
+	reg [NB_DATA-1:0]  		reg_result_alu;
+	reg [NB_M_CTRL-1:0]  	M_control_reg;
+	reg [NB_WB_CTRL-1:0] 	WB_control_reg;
 
 	initial begin
 		reg_data_write_mem = 0;
@@ -193,5 +174,11 @@ module EXECUTE
 		.i_SEL(i_EX_control[4:3]),
 		.o_OUT(wire_write_register)
 	);
+
+	assign o_data_write_mem = reg_data_write_mem; 
+	assign o_write_register = reg_write_register; 
+	assign o_result_alu 	= reg_result_alu; 
+	assign o_M_control 		= M_control_reg;
+	assign o_WB_control 	= WB_control_reg;
 
 endmodule

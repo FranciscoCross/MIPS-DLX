@@ -8,18 +8,19 @@ module imem#(
     parameter MEM_SIZEB = 128 //Set memory size in bits
     )
     (
-    input wire i_clk,
-    input wire i_enable,
-    input wire i_reset,
-    input wire i_en_write,
-    input wire i_en_read,
+    input wire                      i_clock,
+    input wire                      i_enable,
+    input wire                      i_reset,
+    input wire                      i_en_write,
+    input wire                      i_en_read,
     input wire [`ADDRWIDTH - 1 : 0] i_addr,
-    input wire [NB_INST - 1  :  0] i_data,
-    output wire [NB_INST - 1 :  0] o_data
+    input wire [NB_INST - 1  :  0]  i_data,
+    
+    output wire [NB_INST - 1 :  0]  o_data
     );
     
     reg [NB_INST-1 : 0] MEM[MEM_SIZEB - 1 : 0];  //Register of memory 
-    reg [NB_INST-1 : 0] data;             //Local variable to store the latest register pointed at
+    reg [NB_INST-1 : 0] data;                   //Local variable to store the latest register pointed at
 
    generate
         integer reg_index;
@@ -29,13 +30,13 @@ module imem#(
     endgenerate
 
    //Write
-    always @(posedge i_clk)
+    always @(posedge i_clock)
       begin
          if(i_en_write)
             MEM[i_addr] = i_data;          
       end
    //Read
-   always @(negedge i_clk)
+   always @(negedge i_clock)
       begin
          if(i_reset)
             data = 0;

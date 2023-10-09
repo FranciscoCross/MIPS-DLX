@@ -38,12 +38,12 @@ module mem_controller
 		parameter NB_MEM_CTRL = 6	    
 	)
 	(
-		input wire [NB_DATA-1:0] i_data_write,		
-		input wire [NB_DATA-1:0] i_data_read,
-   		input wire [NB_MEM_CTRL-1:0] i_MEM_control,
+		input wire [NB_DATA-1:0] 		i_data_write,		
+		input wire [NB_DATA-1:0] 		i_data_read,
+   		input wire [NB_MEM_CTRL-1:0] 	i_MEM_control,
 
-   		output wire [NB_DATA-1:0] o_data_write,
-   		output wire [NB_DATA-1:0] o_data_read
+   		output wire [NB_DATA-1:0] 		o_data_write,
+   		output wire [NB_DATA-1:0] 		o_data_read
 	
 	);
 

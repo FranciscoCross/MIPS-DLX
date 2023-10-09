@@ -92,9 +92,9 @@
    <wvobject fp_name="group199" type="group">
       <obj_property name="label">Data Memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_MEMORIA/MEMORIA/memory_data/i_clk" type="logic">
-         <obj_property name="ElementShortName">i_clk</obj_property>
-         <obj_property name="ObjectShortName">i_clk</obj_property>
+      <wvobject fp_name="/tb_MEMORIA/MEMORIA/memory_data/i_clock" type="logic">
+         <obj_property name="ElementShortName">i_clock</obj_property>
+         <obj_property name="ObjectShortName">i_clock</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_MEMORIA/MEMORIA/memory_data/i_mem_enable" type="logic">
          <obj_property name="ElementShortName">i_mem_enable</obj_property>

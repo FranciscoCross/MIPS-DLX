@@ -14,10 +14,6 @@ module latch_IF_ID
 		output reg [`ADDRWIDTH-1:0] o_pc,
 		output reg [NB_DATA-1:0] o_instruction			
 	);
-	initial begin
-		o_pc = 0;
-		o_instruction = 0;
-	end
 	always @(negedge i_clock)
 		begin
 			if (i_reset)

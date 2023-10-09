@@ -267,9 +267,9 @@
             <obj_property name="ObjectShortName">dm_enable</obj_property>
          </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_DEBUGUNIT2/instancia_imem/i_clk" type="logic">
-         <obj_property name="ElementShortName">i_clk</obj_property>
-         <obj_property name="ObjectShortName">i_clk</obj_property>
+      <wvobject fp_name="/tb_DEBUGUNIT2/instancia_imem/i_clock" type="logic">
+         <obj_property name="ElementShortName">i_clock</obj_property>
+         <obj_property name="ObjectShortName">i_clock</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_DEBUGUNIT2/debug_unit2/br_read" type="logic">
          <obj_property name="ElementShortName">br_read</obj_property>
