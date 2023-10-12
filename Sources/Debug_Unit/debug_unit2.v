@@ -7,6 +7,8 @@ module debug_unit2#(
     parameter NB_SIZE     = 16, // 2B x 8 b, el tamaño de los datos a recibir en bits
     parameter N_SIZE      = 2,  // 2B de frame para obtener el total de los datos (size)
     parameter NB_DATA     = 32,
+    parameter SIZE_DM  = 128,
+    parameter SIZE_RB  = 32,
     parameter NB_DATA_RB  = 5,
     parameter NB_BYTE_CTR = 2,
     parameter NB_DATA_DM  = 5, 
@@ -167,7 +169,7 @@ always @(*) begin: set_next_values
     next_im_data_write      = im_data_write;
 
     case(state)
-        IDLE: begin: idle_state
+        IDLE: begin: idle_state //0
             next_im_write_enable    = 1'b0;
             next_br_read            = 1'b0;
             next_dm_enable          = 1'b0;
@@ -241,7 +243,7 @@ always @(*) begin: set_next_values
             end
         end
         WRITE_IM: begin: write_im_state
-            if(im_count == 7'd10)begin
+            if(im_count == 7'd10)begin //1 instruccion 
                 next_state              = READY;
                 next_im_write_enable    = 1'b0;
                 next_debug_unit_load    = 1'b0;
@@ -310,7 +312,7 @@ always @(*) begin: set_next_values
                     next_count_br_byte      = 2'd0;
                     next_state              = READ_BR;
 
-                    if(count_br_tx_done == NB_DATA-1)begin
+                    if(count_br_tx_done == SIZE_RB-1)begin
                         next_br_read    = 1'b0;
                         tx_start_next   = 1'b0;
                         next_state      = prev_state;
@@ -349,7 +351,7 @@ always @(*) begin: set_next_values
                     next_count_dm_byte = 2'd0;
                     next_state = READ_MEM;
 
-                    if(count_dm_tx_done == NB_DATA-1)begin
+                    if(count_dm_tx_done == SIZE_DM-1)begin
                         next_dm_read_enable  = 1'b0;
                         next_dm_enable       = 1'b0;
                         tx_start_next        = 1'b0;
