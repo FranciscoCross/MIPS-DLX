@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="80.560001 us"></ZoomEndTime>
-      <Cursor1Time time="1.000000 us"></Cursor1Time>
+      <ZoomStartTime time="1,332.909909 us"></ZoomStartTime>
+      <ZoomEndTime time="1,380.114586 us"></ZoomEndTime>
+      <Cursor1Time time="1,344.952677 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="261"></NameColumnWidth>
+      <NameColumnWidth column_width="257"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="3" />
@@ -83,6 +83,7 @@
             <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/debug_unit2/\send_data_reg[7]_0 " type="array">
                <obj_property name="ElementShortName">\send_data_reg[7]_0 [7:0]</obj_property>
                <obj_property name="ObjectShortName">\send_data_reg[7]_0 [7:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>
@@ -116,6 +117,7 @@
             <obj_property name="ElementShortName">Q[6:0]</obj_property>
             <obj_property name="ObjectShortName">Q[6:0]</obj_property>
             <obj_property name="label">PC - Q[6:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/pipeline/instruccion_fetch/inst_pc/\reg_addr_reg[5]_0 " type="array">
             <obj_property name="DisplayName">label</obj_property>
