@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_TOP_para_debug_func_synth.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_TOP_para_debug" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="57,126.349 ns"></ZoomStartTime>
+      <ZoomEndTime time="57,684.664 ns"></ZoomEndTime>
+      <Cursor1Time time="57,441.792 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="303"></NameColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wave_markers>
+      <marker time="1385000" label="" />
+      <marker time="58841333" label="" />
+      <marker time="59085712" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/clock_wz/locked" type="logic">
+      <obj_property name="ElementShortName">locked</obj_property>
+      <obj_property name="ObjectShortName">locked</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/clock_wz/clk_out1" type="logic">
+      <obj_property name="ElementShortName">clk_out1</obj_property>
+      <obj_property name="ObjectShortName">clk_out1</obj_property>
+   </wvobject>
+   <wvobject fp_name="group23" type="group">
+      <obj_property name="label">Pipeline</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">FETCH</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_addr_instr_mem</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_src_pc</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_Input_reg_IF_ID</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_addr_branch_jump</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">PC</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">PC_adder</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">Instruccion_Memory</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/instruccion_fetch/instancia_imem/i_addr" type="array">
+                     <obj_property name="ElementShortName">i_addr[6:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_addr[6:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">REGS</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group853" type="group">
+                  <obj_property name="label">AUX REGS</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">       latch IF/ID</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/IF_ID/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">DECODE</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/o_data_ra" type="array">
+               <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/o_data_rb" type="array">
+               <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="group802" type="group">
+               <obj_property name="label">JUMP</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">unit_branch</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">unit_hazard</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">unit_control</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">bank_register</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+                  <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/bank_register/o_data_ra" type="array">
+                     <obj_property name="ElementShortName">o_data_ra[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_data_ra[31:0]</obj_property>
+                     <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/pipeline/Decode_stage/bank_register/o_data_rb" type="array">
+                     <obj_property name="ElementShortName">o_data_rb[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_data_rb[31:0]</obj_property>
+                     <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_read_debug</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_reg_A</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_reg_B</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">ext_signo</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">       latch ID/IE</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">EXECUTE</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">alu_control</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">alu</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">unit_forward</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_forwardA</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_forwardB</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_alu_src_A</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_alu_src_B</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_reg_dest</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">       latch IE/IM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">MEMORY</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_addr_debug_mem</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_wr_debug_mem</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">mux_controller</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group24" type="group">
+               <obj_property name="label">memory_data</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+               <wvobject fp_name="group24" type="group">
+                  <obj_property name="label">REGS</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group1614" type="group">
+                  <obj_property name="label">MemAux</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">       latch IM/IWB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">WRITTE_BACK</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider65">
+         <obj_property name="label">other</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">BranchForwardUnit</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject fp_name="group24" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group24" type="group">
+      <obj_property name="label">DebugUnit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group788" type="group">
+         <obj_property name="label">Outputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">IDLE(1)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/clock_wz/clk_out1" type="logic">
+            <obj_property name="ElementShortName">clk_out1</obj_property>
+            <obj_property name="ObjectShortName">clk_out1</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">WRITE_IM(2)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/i_rx_data" type="array">
+            <obj_property name="ElementShortName">i_rx_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx_data[7:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">READY(4)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">START(8)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/i_rx_done" type="logic">
+            <obj_property name="ElementShortName">i_rx_done</obj_property>
+            <obj_property name="ObjectShortName">i_rx_done</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_dm_enable" type="logic">
+            <obj_property name="ElementShortName">next_dm_enable</obj_property>
+            <obj_property name="ObjectShortName">next_dm_enable</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">STEP_BY_STEP(16)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/count_dm_tx_done_next" type="logic">
+            <obj_property name="ElementShortName">count_dm_tx_done_next</obj_property>
+            <obj_property name="ObjectShortName">count_dm_tx_done_next</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_count_br_tx_done" type="logic">
+            <obj_property name="ElementShortName">next_count_br_tx_done</obj_property>
+            <obj_property name="ObjectShortName">next_count_br_tx_done</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_dm_enable" type="logic">
+            <obj_property name="ElementShortName">next_dm_enable</obj_property>
+            <obj_property name="ObjectShortName">next_dm_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_prev_state" type="logic">
+            <obj_property name="ElementShortName">next_prev_state</obj_property>
+            <obj_property name="ObjectShortName">next_prev_state</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">SEND_BR(64)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/tx_start_next" type="logic">
+            <obj_property name="ElementShortName">tx_start_next</obj_property>
+            <obj_property name="ObjectShortName">tx_start_next</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_dm_enable" type="logic">
+            <obj_property name="ElementShortName">next_dm_enable</obj_property>
+            <obj_property name="ObjectShortName">next_dm_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_count_br_byte" type="logic">
+            <obj_property name="ElementShortName">next_count_br_byte</obj_property>
+            <obj_property name="ObjectShortName">next_count_br_byte</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_send_data" type="logic">
+            <obj_property name="ElementShortName">next_send_data</obj_property>
+            <obj_property name="ObjectShortName">next_send_data</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/count_br_byte" type="array">
+            <obj_property name="ElementShortName">count_br_byte[1:0]</obj_property>
+            <obj_property name="ObjectShortName">count_br_byte[1:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">SEND_MEM(256)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/tx_start_next" type="logic">
+            <obj_property name="ElementShortName">tx_start_next</obj_property>
+            <obj_property name="ObjectShortName">tx_start_next</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_count_dm_byte" type="logic">
+            <obj_property name="ElementShortName">next_count_dm_byte</obj_property>
+            <obj_property name="ObjectShortName">next_count_dm_byte</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_send_data" type="logic">
+            <obj_property name="ElementShortName">next_send_data</obj_property>
+            <obj_property name="ObjectShortName">next_send_data</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">SEND_PC(512)</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/tx_start_next" type="logic">
+            <obj_property name="ElementShortName">tx_start_next</obj_property>
+            <obj_property name="ObjectShortName">tx_start_next</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_dm_enable" type="logic">
+            <obj_property name="ElementShortName">next_dm_enable</obj_property>
+            <obj_property name="ObjectShortName">next_dm_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/next_send_data" type="logic">
+            <obj_property name="ElementShortName">next_send_data</obj_property>
+            <obj_property name="ObjectShortName">next_send_data</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP_para_debug/o_tx_data" type="array">
+         <obj_property name="ElementShortName">o_tx_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">o_tx_data[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/o_state" type="array">
+         <obj_property name="ElementShortName">o_state[9:0]</obj_property>
+         <obj_property name="ObjectShortName">o_state[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/debug_unit2/o_halt_OBUF" type="logic">
+      <obj_property name="ElementShortName">o_halt_OBUF</obj_property>
+      <obj_property name="ObjectShortName">o_halt_OBUF</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_TOP_para_debug/TOP_para_debug/o_halt" type="logic">
+      <obj_property name="ElementShortName">o_halt</obj_property>
+      <obj_property name="ObjectShortName">o_halt</obj_property>
+   </wvobject>
+</wave_config>

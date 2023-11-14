@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_TOP_para_debug2_func_synth.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_TOP_para_debug2" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,332.909909 us"></ZoomStartTime>
+      <ZoomEndTime time="1,380.114586 us"></ZoomEndTime>
+      <Cursor1Time time="1,344.952677 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="257"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="3" />
+   <wave_markers>
+      <marker time="34460100" label="" />
+   </wave_markers>
+   <wvobject fp_name="group294" type="group">
+      <obj_property name="label">TB_TOP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP_para_debug2/memory" type="array">
+         <obj_property name="ElementShortName">memory[255:0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">memory[255:0][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="group294" type="group">
+         <obj_property name="label">Inputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="group294" type="group">
+         <obj_property name="label">Outputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="group299" type="group">
+         <obj_property name="label">Aux</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group507" type="group">
+      <obj_property name="label">DebugUnit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/o_state" type="array">
+         <obj_property name="ElementShortName">o_state[9:0]</obj_property>
+         <obj_property name="ObjectShortName">o_state[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="group780" type="group">
+         <obj_property name="label">UART Simulada</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group784" type="group">
+            <obj_property name="label">RX</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="/tb_TOP_para_debug2/i_rx_data" type="array">
+               <obj_property name="ElementShortName">i_rx_data[7:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rx_data[7:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_para_debug2/i_rx_done" type="logic">
+               <obj_property name="ElementShortName">i_rx_done</obj_property>
+               <obj_property name="ObjectShortName">i_rx_done</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group785" type="group">
+            <obj_property name="label">TX</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="/tb_TOP_para_debug2/i_tx_done" type="logic">
+               <obj_property name="ElementShortName">i_tx_done</obj_property>
+               <obj_property name="ObjectShortName">i_tx_done</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/debug_unit2/\send_data_reg[7]_0 " type="array">
+               <obj_property name="ElementShortName">\send_data_reg[7]_0 [7:0]</obj_property>
+               <obj_property name="ObjectShortName">\send_data_reg[7]_0 [7:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/debug_unit2/wire_enable_pipe" type="logic">
+         <obj_property name="ElementShortName">wire_enable_pipe</obj_property>
+         <obj_property name="ObjectShortName">wire_enable_pipe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/wire_im_data_write" type="array">
+         <obj_property name="ElementShortName">wire_im_data_write[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wire_im_data_write[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group8" type="group">
+      <obj_property name="label">Pipeline</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP_para_debug2/i_clock" type="logic">
+         <obj_property name="ElementShortName">i_clock</obj_property>
+         <obj_property name="ObjectShortName">i_clock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP_para_debug2/o_halt" type="logic">
+         <obj_property name="ElementShortName">o_halt</obj_property>
+         <obj_property name="ObjectShortName">o_halt</obj_property>
+      </wvobject>
+      <wvobject fp_name="group9" type="group">
+         <obj_property name="label">Fetch</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/pipeline/instruccion_fetch/inst_pc/Q" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">Q[6:0]</obj_property>
+            <obj_property name="ObjectShortName">Q[6:0]</obj_property>
+            <obj_property name="label">PC - Q[6:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/pipeline/instruccion_fetch/inst_pc/\reg_addr_reg[5]_0 " type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">\reg_addr_reg[5]_0 [6:0]</obj_property>
+            <obj_property name="ObjectShortName">\reg_addr_reg[5]_0 [6:0]</obj_property>
+            <obj_property name="label">Next PC Addr - reg_addr_reg [6:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_para_debug2/TOP_para_debug/pipeline/instruccion_fetch/instancia_imem/MEM_reg_0" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">MEM_reg_0[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MEM_reg_0[31:0]</obj_property>
+            <obj_property name="label">Inst Mem - MEM_reg_0[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group809" type="group">
+         <obj_property name="label">Decode</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group810" type="group">
+            <obj_property name="label">Bank Register</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>
