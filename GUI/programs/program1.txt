@@ -1,0 +1,10 @@
+addi R1, 10
+addi R2, 20
+addi R3, 20
+addi R4, 30
+addu R5, R4, R3
+addu R4, R4, R2
+beq R5, R4, 1
+sw R1, 1(0)
+sw R4, 2(0)
+halt
