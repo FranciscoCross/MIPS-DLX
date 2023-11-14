@@ -45,7 +45,11 @@ def make_I(instruccion, file):
     #Load/Store
     opcode = Inst_L_S[instruccion[0]]
     rt = registros[instruccion[1].upper()]
-    rs = format(int(instruccion[2].split('(')[1].replace(')', '')), '05b')
+    dst = instruccion[2].split('(')[1].replace(')', '')
+    if(dst in registros.keys()):
+      rs =  registros[dst.upper()]
+    else:
+      rs = format(int(dst), '05b')
     inm = format(int(instruccion[2].split('(')[0]), '016b')
   print(I(opcode, rs, rt, inm))
   return I(opcode, rs, rt, inm) 
