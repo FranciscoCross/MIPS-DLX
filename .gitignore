@@ -5,4 +5,5 @@
 MIPS_DLX.runs
 *.xpr
 *.pdf
-Pipeline.*/*
+MIPS-DLX.*/*
+compiled.txt

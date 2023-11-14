@@ -49,9 +49,10 @@ module unit_stall #(
         end
         else if(i_MEM_halt || i_WB_halt) begin // halt
             // Flush all
+            // Cuando el HALT llega a las ultimas dos etapas se vacian las etapas anteriores
             o_flush_IF              = 1'b1;
             o_flush_EX              = 1'b1;
-            o_flush_ID              = 1'b1; // DECODE
+            o_flush_ID              = 1'b1; 
             o_enable_IF_ID_reg      = 1'b1;
             o_enable_pc             = 1'b1;
         end

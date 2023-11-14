@@ -22,6 +22,7 @@ module DECODE#(
         input [NB_REG-1:0]          i_write_reg,    // from WB, addr to write
         input                       i_reg_write,    // from unit_control, en write reg
         input                       i_flush_unit_ctrl,
+        
         output                      o_signed,
         output                      o_reg_dest,     // EX, signal
         output [NB_OPCODE-1:0]      o_alu_op,       // EX, signal
