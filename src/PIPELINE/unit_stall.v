@@ -62,7 +62,7 @@ module unit_stall #(
                 o_flush_IF              = 1'b0;     // No hay flush en FETCH
                 o_flush_EX              = 1'b0;     // No hay flush en EXECUTE
                 o_flush_ID              = 1'b1;     // Flush signals in DECODE
-                o_enable_IF_ID_reg      = 1'b0;     // disbale FETCH/DECODE reg
+                o_enable_IF_ID_reg      = 1'b0;     // disable FETCH/DECODE reg
                 o_enable_pc             = 1'b0;     // disable PC
             end
             else  begin
