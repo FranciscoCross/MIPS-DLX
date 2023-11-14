@@ -19,7 +19,7 @@ module IF_ID_reg_tb;
     .NB_INSTRUCTION (
         NB_INSTRUCTION )
   )
-  IF_ID_reg_dut (
+  IF_ID_reg (
     .i_clock (i_clock ),
     .i_IF_adder_result (i_IF_adder_result ),
     .i_IF_instruction (i_IF_instruction ),

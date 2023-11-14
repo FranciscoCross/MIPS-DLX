@@ -38,7 +38,7 @@ module tb_TOP;
   integer inst_counter = 0;
   reg [NB_DATA-1:0] memory [255:0]; 
 
-  TOP TOP_dut (.i_clock (i_clock),
+  TOP TOP (.i_clock (i_clock),
             .i_reset (i_reset),
             .i_clock_reset (i_clock_reset),
             .i_uart_debug_unit_rx (uart_debug_unit_rx),
@@ -50,7 +50,7 @@ module tb_TOP;
 
   UART #(.NB_DATA(NB_DATA),
          .NB_OP(NB_OP))
-  UART_dut(.i_clock(clk_wzrd), // Cambiar
+  UART(.i_clock(clk_wzrd), // Cambiar
            .i_reset(i_reset),
            .i_rx(uart_debug_unit_tx),
            .i_tx(command),

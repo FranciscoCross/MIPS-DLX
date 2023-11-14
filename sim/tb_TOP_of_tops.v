@@ -34,7 +34,7 @@ module tb_TOP_for_debug;
         .DWORD(DWORD),
         .ADDR(ADDR),
         .RB_ADDR(RB_ADDR))
-  TOP_dut(.i_clock(i_clock),
+  TOP(.i_clock(i_clock),
           .i_reset(i_reset),
           .i_rx_done(i_rx_done),
           .i_tx_done(i_tx_done),

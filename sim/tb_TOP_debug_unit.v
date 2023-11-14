@@ -12,7 +12,7 @@ module tb_TOP_debug_unit;
 
   TOP_debug_unit #( .BYTE(BYTE),
                     .ADDR(ADDR))
-  TOP_debug_unit_dut (.i_clock(i_clock),
+  TOP_debug_unit (.i_clock(i_clock),
                       .i_reset(i_reset),
                       .command(command),
                       .send (send));

@@ -64,7 +64,7 @@ module tb_EX_stage;
     .NB_REG(NB_REG),
     .NB_FCODE (NB_FCODE)
   )
-  EX_stage_dut (
+  EX_stage (
     .i_clock (i_clock),
     .i_EX_reg_write(i_EX_reg_write),
     .i_EX_mem_to_reg(i_EX_mem_to_reg),

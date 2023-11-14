@@ -26,7 +26,7 @@ module WRITE_BACK_tb;
     .NB_REG(NB_REG),
     .NB_PC(NB_PC)
   )
-  WRITE_BACK_dut(
+  WRITE_BACK(
     .i_WB_reg_write(i_WB_reg_write),
     .i_WB_mem_to_reg(i_WB_mem_to_reg),
     .i_WB_mem_data(i_WB_mem_data),
