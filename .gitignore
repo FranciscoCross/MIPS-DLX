@@ -7,4 +7,4 @@ MIPS_DLX.runs
 *.pdf
 MIPS-DLX.*/*
 compiled.txt
-GUI/programs/*.txt
+

@@ -1,0 +1,15 @@
+addi R1, 1
+addi R2, 2
+addi R3, 3
+addi R4, 4
+addi R10, 8
+sw R1, 1(0)
+sw R2, 2(0)
+sw R3, 3(0)
+sw R4, 4(0)
+lw R5, 0(R4)
+addu R6, R5, R4
+beq R6, R10, 1
+sw R10, 5(0)
+sw R4, 6(0)
+halt
