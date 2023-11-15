@@ -21,7 +21,7 @@ module FETCH#(
         input  [NB_PC-1:0]          i_branch_addr,          // Branching
         input  [NB_PC-1:0]          i_jump_addr,            // J y JAL
         input  [NB_PC-1:0]          i_data_last_register,   // JR y JALR
-        input                       i_pc_stall,            // STALL UNIT
+        input                       i_pc_stall,             // STALL UNIT
         
         output [NB_PC-1:0]          o_last_pc,              // PC
         output [NB_PC-1:0]          o_adder_result,         // PC+4

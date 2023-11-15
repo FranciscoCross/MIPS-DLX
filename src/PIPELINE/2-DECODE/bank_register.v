@@ -8,15 +8,15 @@ module bank_register#(
     (
         input               i_clock,
         input               i_reset,
-        input               i_reg_write,  // Señal de control RegWrite proveniente de WB
+        input               i_reg_write,    // Señal de control RegWrite proveniente de WB
         input [NB_ADDR-1:0] i_read_reg_a,
         input [NB_ADDR-1:0] i_read_reg_b,
-        input [NB_ADDR-1:0] i_write_reg,  // addr 
-        input [NB_DATA-1:0] i_write_data, // Data
+        input [NB_ADDR-1:0] i_write_reg,    // addr 
+        input [NB_DATA-1:0] i_write_data,   // Data
 
         input               i_enable,       // Debug Unit
         input               i_read_enable,  // Debug Unit
-        input [NB_ADDR-1:0] i_read_addr, // Debug Unit
+        input [NB_ADDR-1:0] i_read_addr,    // Debug Unit
               
         output [NB_DATA-1:0] o_data_a,
         output [NB_DATA-1:0] o_data_b 

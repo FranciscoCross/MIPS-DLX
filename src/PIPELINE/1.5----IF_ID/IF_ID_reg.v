@@ -8,7 +8,7 @@ module IF_ID_reg#(
         input                       i_clock,
         input                       i_reset,
         input                       i_pipeline_enable,  // DEBUG UNIT
-        input                       i_enable, // STALL UNIT: 1 -> data hazard (stall) 0 -> !data_hazard
+        input                       i_enable,           // STALL UNIT: 1 -> data hazard (stall) 0 -> !data_hazard
         input                       i_flush,            // STALL UNIT: 1 -> control hazards     0 -> !control_hazard
         input [NB_PC-1:0]           i_adder_result,
         input [NB_INSTRUCTION-1:0]  i_instruction,
