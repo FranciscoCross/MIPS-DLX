@@ -18,8 +18,6 @@ module TOP_for_debug#(
 
         output                o_halt,
         output [NB_STATE-1:0] o_state,
-        // output                o_led_rx_done, //borrar
-        // output                o_pc_value,
         output [BYTE-1:0]     o_tx_data,
         output                o_tx_start
     );
@@ -28,12 +26,9 @@ module TOP_for_debug#(
     
    clk_wiz_0 clk_wizard
      (
-     // Clock out ports  
      .clk_out1(clk_wiz),
-     // Status and control signals               
      .reset(i_clock_reset), 
      .locked(),
-    // Clock in ports
      .clk_in1(i_clock)
      );
 
@@ -69,12 +64,12 @@ module TOP_for_debug#(
         .i_tx_done(i_tx_done),
         .i_rx_data(i_rx_data),
         .i_pc_value(pc),
-        .i_memory_data_data(mem_data),
-        .i_bank_register_data(rb_data),
+        .i_mem_data(mem_data),
+        .i_bank_reg_data(rb_data),
         .o_instru_mem_data(im_data),
         .o_instru_mem_addr(im_addr),
         .o_rb_addr(rb_addr),
-        .o_memory_data_addr(mem_addr),
+        .o_mem_data_addr(mem_addr),
         .o_tx_data(o_tx_data),
         .o_tx_start(o_tx_start),
         .o_instru_mem_write_enable(im_write_enable),
@@ -82,13 +77,13 @@ module TOP_for_debug#(
         .o_instru_mem_enable(im_enable),
         .o_rb_read_enable(rb_read_enable),
         .o_rb_enable(rb_enable),
-        .o_memory_data_enable(mem_enable),
-        .o_memory_data_read_enable(mem_read_enable),
-        .o_memory_data_debug_unit_flag(read_memory_data_from_du),
+        .o_mem_data_enable(mem_enable),
+        .o_mem_data_read_enable(mem_read_enable),
+        .o_mem_data_debug_unit(read_memory_data_from_du),
         .o_unit_control_enable(unit_control_enable),
         .o_pc_enable(pc_enable),
         .o_state(state),
-        .o_PIPELINE_enable(PIPELINE_enable)
+        .o_pipeline_enable(PIPELINE_enable)
     );
 
     
