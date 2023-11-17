@@ -11,22 +11,26 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="63.635001 us"></ZoomEndTime>
-      <Cursor1Time time="63.635000 us"></Cursor1Time>
+      <ZoomStartTime time="63,608.381 ns"></ZoomStartTime>
+      <ZoomEndTime time="64,081.030 ns"></ZoomEndTime>
+      <Cursor1Time time="63,885.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="303"></NameColumnWidth>
-      <ValueColumnWidth column_width="85"></ValueColumnWidth>
+      <NameColumnWidth column_width="355"></NameColumnWidth>
+      <ValueColumnWidth column_width="95"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="3" />
+   <wave_markers>
+      <marker time="63625000" label="" />
+      <marker time="64045000" label="" />
+   </wave_markers>
    <wvobject fp_name="group23" type="group">
       <obj_property name="label">PIPELINE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group23" type="group">
          <obj_property name="label">Inputs</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject fp_name="group23" type="group">
          <obj_property name="label">Outputs</obj_property>
@@ -42,6 +46,7 @@
          <wvobject fp_name="group23" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_clock" type="logic">
                <obj_property name="ElementShortName">i_clock</obj_property>
                <obj_property name="ObjectShortName">i_clock</obj_property>
@@ -122,7 +127,6 @@
          <wvobject fp_name="group23" type="group">
             <obj_property name="label">Submodules</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="group23" type="group">
                <obj_property name="label">pc</obj_property>
                <obj_property name="DisplayName">label</obj_property>
@@ -190,6 +194,7 @@
             <wvobject fp_name="group23" type="group">
                <obj_property name="label">instru_mem</obj_property>
                <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="isExpanded"></obj_property>
                <wvobject fp_name="group23" type="group">
                   <obj_property name="label">Inputs</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
@@ -233,6 +238,7 @@
                <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/BRAM" type="array">
                   <obj_property name="ElementShortName">BRAM[255:0][7:0]</obj_property>
                   <obj_property name="ObjectShortName">BRAM[255:0][7:0]</obj_property>
+                  <obj_property name="isExpanded"></obj_property>
                </wvobject>
             </wvobject>
             <wvobject fp_name="group23" type="group">
@@ -1796,7 +1802,6 @@
       <wvobject fp_name="group23" type="group">
          <obj_property name="label">----MEM/WB</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group23" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -1885,7 +1890,6 @@
       <wvobject fp_name="group23" type="group">
          <obj_property name="label">WRITE_BACK</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="group23" type="group">
             <obj_property name="label">Inputs</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -1943,11 +1947,143 @@
             </wvobject>
          </wvobject>
       </wvobject>
+      <wvobject type="divider" fp_name="divider109">
+         <obj_property name="label">DIVIDER</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">forward_unit</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_EX_MEM_rd" type="array">
+               <obj_property name="ElementShortName">i_EX_MEM_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_EX_MEM_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_MEM_WB_rd" type="array">
+               <obj_property name="ElementShortName">i_MEM_WB_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_MEM_WB_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_rt" type="array">
+               <obj_property name="ElementShortName">i_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_rs" type="array">
+               <obj_property name="ElementShortName">i_rs[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rs[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_EX_mem_write" type="logic">
+               <obj_property name="ElementShortName">i_EX_mem_write</obj_property>
+               <obj_property name="ObjectShortName">i_EX_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_MEM_write_reg" type="logic">
+               <obj_property name="ElementShortName">i_MEM_write_reg</obj_property>
+               <obj_property name="ObjectShortName">i_MEM_write_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/i_WB_write_reg" type="logic">
+               <obj_property name="ElementShortName">i_WB_write_reg</obj_property>
+               <obj_property name="ObjectShortName">i_WB_write_reg</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/o_forwarding_a" type="array">
+               <obj_property name="ElementShortName">o_forwarding_a[1:0]</obj_property>
+               <obj_property name="ObjectShortName">o_forwarding_a[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/o_forwarding_b" type="array">
+               <obj_property name="ElementShortName">o_forwarding_b[1:0]</obj_property>
+               <obj_property name="ObjectShortName">o_forwarding_b[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/forwarding_unit/o_forwarding_mux" type="array">
+               <obj_property name="ElementShortName">o_forwarding_mux[1:0]</obj_property>
+               <obj_property name="ObjectShortName">o_forwarding_mux[1:0]</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">unit_stall</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_MEM_halt" type="logic">
+               <obj_property name="ElementShortName">i_MEM_halt</obj_property>
+               <obj_property name="ObjectShortName">i_MEM_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_WB_halt" type="logic">
+               <obj_property name="ElementShortName">i_WB_halt</obj_property>
+               <obj_property name="ObjectShortName">i_WB_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_branch_taken" type="logic">
+               <obj_property name="ElementShortName">i_branch_taken</obj_property>
+               <obj_property name="ObjectShortName">i_branch_taken</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_ID_EX_mem_read" type="logic">
+               <obj_property name="ElementShortName">i_ID_EX_mem_read</obj_property>
+               <obj_property name="ObjectShortName">i_ID_EX_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_EX_jump" type="logic">
+               <obj_property name="ElementShortName">i_EX_jump</obj_property>
+               <obj_property name="ObjectShortName">i_EX_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_MEM_jump" type="logic">
+               <obj_property name="ElementShortName">i_MEM_jump</obj_property>
+               <obj_property name="ObjectShortName">i_MEM_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_ID_EX_rt" type="array">
+               <obj_property name="ElementShortName">i_ID_EX_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_ID_EX_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_IF_ID_rt" type="array">
+               <obj_property name="ElementShortName">i_IF_ID_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_IF_ID_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/i_IF_ID_rs" type="array">
+               <obj_property name="ElementShortName">i_IF_ID_rs[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_IF_ID_rs[4:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/o_flush_ID" type="logic">
+               <obj_property name="ElementShortName">o_flush_ID</obj_property>
+               <obj_property name="ObjectShortName">o_flush_ID</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/o_enable_IF_ID_reg" type="logic">
+               <obj_property name="ElementShortName">o_enable_IF_ID_reg</obj_property>
+               <obj_property name="ObjectShortName">o_enable_IF_ID_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/o_enable_pc" type="logic">
+               <obj_property name="ElementShortName">o_enable_pc</obj_property>
+               <obj_property name="ObjectShortName">o_enable_pc</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/o_flush_IF" type="logic">
+               <obj_property name="ElementShortName">o_flush_IF</obj_property>
+               <obj_property name="ObjectShortName">o_flush_IF</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/unit_stall/o_flush_EX" type="logic">
+               <obj_property name="ElementShortName">o_flush_EX</obj_property>
+               <obj_property name="ObjectShortName">o_flush_EX</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group22" type="group">
       <obj_property name="label">DEBUG UNIT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_state" type="array">
          <obj_property name="ElementShortName">o_state[9:0]</obj_property>
          <obj_property name="ObjectShortName">o_state[9:0]</obj_property>
