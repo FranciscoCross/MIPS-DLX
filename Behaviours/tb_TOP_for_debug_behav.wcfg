@@ -1,0 +1,2065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_TOP_for_debug_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_TOP_for_debug" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="63,634,997 ps"></ZoomStartTime>
+      <ZoomEndTime time="63,635,004 ps"></ZoomEndTime>
+      <Cursor1Time time="63,634,998 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="303"></NameColumnWidth>
+      <ValueColumnWidth column_width="85"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="group23" type="group">
+      <obj_property name="label">PIPELINE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">Inputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">Outputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider109">
+         <obj_property name="label">DIVIDER</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">FETCH</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_branch" type="logic">
+               <obj_property name="ElementShortName">i_branch</obj_property>
+               <obj_property name="ObjectShortName">i_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_j_jal" type="logic">
+               <obj_property name="ElementShortName">i_j_jal</obj_property>
+               <obj_property name="ObjectShortName">i_j_jal</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">i_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">i_jr_jalr</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_pc_enable" type="logic">
+               <obj_property name="ElementShortName">i_pc_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pc_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_pc_reset" type="logic">
+               <obj_property name="ElementShortName">i_pc_reset</obj_property>
+               <obj_property name="ObjectShortName">i_pc_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_read_enable" type="logic">
+               <obj_property name="ElementShortName">i_read_enable</obj_property>
+               <obj_property name="ObjectShortName">i_read_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_instru_mem_enable" type="logic">
+               <obj_property name="ElementShortName">i_instru_mem_enable</obj_property>
+               <obj_property name="ObjectShortName">i_instru_mem_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_write_enable" type="logic">
+               <obj_property name="ElementShortName">i_write_enable</obj_property>
+               <obj_property name="ObjectShortName">i_write_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_write_data" type="array">
+               <obj_property name="ElementShortName">i_write_data[7:0]</obj_property>
+               <obj_property name="ObjectShortName">i_write_data[7:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_write_addr" type="array">
+               <obj_property name="ElementShortName">i_write_addr[7:0]</obj_property>
+               <obj_property name="ObjectShortName">i_write_addr[7:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_branch_addr" type="array">
+               <obj_property name="ElementShortName">i_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_jump_addr" type="array">
+               <obj_property name="ElementShortName">i_jump_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_jump_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_data_last_register" type="array">
+               <obj_property name="ElementShortName">i_data_last_register[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_last_register[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/i_pc_stall" type="logic">
+               <obj_property name="ElementShortName">i_pc_stall</obj_property>
+               <obj_property name="ObjectShortName">i_pc_stall</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/o_last_pc" type="array">
+               <obj_property name="ElementShortName">o_last_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_last_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/o_adder_result" type="array">
+               <obj_property name="ElementShortName">o_adder_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_adder_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/o_instruction" type="array">
+               <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">pc</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/i_enable" type="logic">
+                  <obj_property name="ElementShortName">i_enable</obj_property>
+                  <obj_property name="ObjectShortName">i_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/i_clock" type="logic">
+                  <obj_property name="ElementShortName">i_clock</obj_property>
+                  <obj_property name="ObjectShortName">i_clock</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/i_reset" type="logic">
+                  <obj_property name="ElementShortName">i_reset</obj_property>
+                  <obj_property name="ObjectShortName">i_reset</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/i_mux_pc" type="array">
+                  <obj_property name="ElementShortName">i_mux_pc[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_mux_pc[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/i_pc_stall" type="logic">
+                  <obj_property name="ElementShortName">i_pc_stall</obj_property>
+                  <obj_property name="ObjectShortName">i_pc_stall</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/program_counter/o_pc" type="array">
+                  <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">adder</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/adder/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/adder/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/adder/o_result" type="array">
+                  <obj_property name="ElementShortName">o_result[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_result[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">latch</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/latch/i_clock" type="logic">
+                  <obj_property name="ElementShortName">i_clock</obj_property>
+                  <obj_property name="ObjectShortName">i_clock</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/latch/i_next_pc" type="array">
+                  <obj_property name="ElementShortName">i_next_pc[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_next_pc[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/latch/o_next_pc" type="array">
+                  <obj_property name="ElementShortName">o_next_pc[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_next_pc[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/latch/next_pc" type="array">
+                  <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">instru_mem</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_clock" type="logic">
+                     <obj_property name="ElementShortName">i_clock</obj_property>
+                     <obj_property name="ObjectShortName">i_clock</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_enable" type="logic">
+                     <obj_property name="ElementShortName">i_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_read_enable" type="logic">
+                     <obj_property name="ElementShortName">i_read_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_read_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_write_enable" type="logic">
+                     <obj_property name="ElementShortName">i_write_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_write_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_write_data" type="array">
+                     <obj_property name="ElementShortName">i_write_data[7:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_write_data[7:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_write_addr" type="array">
+                     <obj_property name="ElementShortName">i_write_addr[7:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_write_addr[7:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/i_read_addr" type="array">
+                     <obj_property name="ElementShortName">i_read_addr[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_read_addr[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/o_read_data" type="array">
+                     <obj_property name="ElementShortName">o_read_data[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_read_data[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/instru_mem/BRAM" type="array">
+                  <obj_property name="ElementShortName">BRAM[255:0][7:0]</obj_property>
+                  <obj_property name="ObjectShortName">BRAM[255:0][7:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux1</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_1/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_1/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_1/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_1/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux2</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_2/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_2/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_2/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_2/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux3</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_3/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_3/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_3/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/FETCH/mux2_3/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">----IF/ID</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_pipeline_enable" type="logic">
+               <obj_property name="ElementShortName">i_pipeline_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pipeline_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_enable" type="logic">
+               <obj_property name="ElementShortName">i_enable</obj_property>
+               <obj_property name="ObjectShortName">i_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_flush" type="logic">
+               <obj_property name="ElementShortName">i_flush</obj_property>
+               <obj_property name="ObjectShortName">i_flush</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_adder_result" type="array">
+               <obj_property name="ElementShortName">i_adder_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_adder_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/i_instruction" type="array">
+               <obj_property name="ElementShortName">i_instruction[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_instruction[31:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/o_adder_result" type="array">
+               <obj_property name="ElementShortName">o_adder_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_adder_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/IF_ID_reg/o_instruction" type="array">
+               <obj_property name="ElementShortName">o_instruction[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_instruction[31:0]</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">DECODE</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_pipeline_enable" type="logic">
+               <obj_property name="ElementShortName">i_pipeline_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pipeline_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_unit_control_enable" type="logic">
+               <obj_property name="ElementShortName">i_unit_control_enable</obj_property>
+               <obj_property name="ObjectShortName">i_unit_control_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_rb_enable" type="logic">
+               <obj_property name="ElementShortName">i_rb_enable</obj_property>
+               <obj_property name="ObjectShortName">i_rb_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_rb_read_enable" type="logic">
+               <obj_property name="ElementShortName">i_rb_read_enable</obj_property>
+               <obj_property name="ObjectShortName">i_rb_read_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_rb_read_addr" type="array">
+               <obj_property name="ElementShortName">i_rb_read_addr[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rb_read_addr[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_inst" type="array">
+               <obj_property name="ElementShortName">i_inst[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_inst[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_write_data" type="array">
+               <obj_property name="ElementShortName">i_write_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_write_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_write_reg" type="array">
+               <obj_property name="ElementShortName">i_write_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_write_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/i_flush_unit_ctrl" type="logic">
+               <obj_property name="ElementShortName">i_flush_unit_ctrl</obj_property>
+               <obj_property name="ObjectShortName">i_flush_unit_ctrl</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_signed" type="logic">
+               <obj_property name="ElementShortName">o_signed</obj_property>
+               <obj_property name="ObjectShortName">o_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_reg_dest" type="logic">
+               <obj_property name="ElementShortName">o_reg_dest</obj_property>
+               <obj_property name="ObjectShortName">o_reg_dest</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_alu_op" type="array">
+               <obj_property name="ElementShortName">o_alu_op[5:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_op[5:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_alu_src" type="logic">
+               <obj_property name="ElementShortName">o_alu_src</obj_property>
+               <obj_property name="ObjectShortName">o_alu_src</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_mem_read" type="logic">
+               <obj_property name="ElementShortName">o_mem_read</obj_property>
+               <obj_property name="ObjectShortName">o_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_mem_write" type="logic">
+               <obj_property name="ElementShortName">o_mem_write</obj_property>
+               <obj_property name="ObjectShortName">o_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_branch" type="logic">
+               <obj_property name="ElementShortName">o_branch</obj_property>
+               <obj_property name="ObjectShortName">o_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_jump" type="logic">
+               <obj_property name="ElementShortName">o_jump</obj_property>
+               <obj_property name="ObjectShortName">o_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">o_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">o_jr_jalr</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_jump_addr" type="array">
+               <obj_property name="ElementShortName">o_jump_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_jump_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_data_a" type="array">
+               <obj_property name="ElementShortName">o_data_a[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_a[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_data_b" type="array">
+               <obj_property name="ElementShortName">o_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_immediate" type="array">
+               <obj_property name="ElementShortName">o_immediate[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_immediate[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_shamt" type="array">
+               <obj_property name="ElementShortName">o_shamt[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_shamt[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_rt" type="array">
+               <obj_property name="ElementShortName">o_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_rd" type="array">
+               <obj_property name="ElementShortName">o_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_rs" type="array">
+               <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_byte_enable" type="logic">
+               <obj_property name="ElementShortName">o_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">o_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">o_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">o_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/o_word_enable" type="logic">
+               <obj_property name="ElementShortName">o_word_enable</obj_property>
+               <obj_property name="ObjectShortName">o_word_enable</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">bank_register</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_clock" type="logic">
+                     <obj_property name="ElementShortName">i_clock</obj_property>
+                     <obj_property name="ObjectShortName">i_clock</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_reset" type="logic">
+                     <obj_property name="ElementShortName">i_reset</obj_property>
+                     <obj_property name="ObjectShortName">i_reset</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_reg_write" type="logic">
+                     <obj_property name="ElementShortName">i_reg_write</obj_property>
+                     <obj_property name="ObjectShortName">i_reg_write</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_read_reg_a" type="array">
+                     <obj_property name="ElementShortName">i_read_reg_a[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_read_reg_a[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_read_reg_b" type="array">
+                     <obj_property name="ElementShortName">i_read_reg_b[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_read_reg_b[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_write_reg" type="array">
+                     <obj_property name="ElementShortName">i_write_reg[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_write_reg[4:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_write_data" type="array">
+                     <obj_property name="ElementShortName">i_write_data[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_write_data[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_enable" type="logic">
+                     <obj_property name="ElementShortName">i_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_read_enable" type="logic">
+                     <obj_property name="ElementShortName">i_read_enable</obj_property>
+                     <obj_property name="ObjectShortName">i_read_enable</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/i_read_addr" type="array">
+                     <obj_property name="ElementShortName">i_read_addr[4:0]</obj_property>
+                     <obj_property name="ObjectShortName">i_read_addr[4:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/o_data_a" type="array">
+                     <obj_property name="ElementShortName">o_data_a[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_data_a[31:0]</obj_property>
+                  </wvobject>
+                  <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/o_data_b" type="array">
+                     <obj_property name="ElementShortName">o_data_b[31:0]</obj_property>
+                     <obj_property name="ObjectShortName">o_data_b[31:0]</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/bank_register/registers" type="array">
+                  <obj_property name="ElementShortName">registers[31:0][31:0]</obj_property>
+                  <obj_property name="ObjectShortName">registers[31:0][31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">unit_control</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_clock" type="logic">
+                  <obj_property name="ElementShortName">i_clock</obj_property>
+                  <obj_property name="ObjectShortName">i_clock</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_enable" type="logic">
+                  <obj_property name="ElementShortName">i_enable</obj_property>
+                  <obj_property name="ObjectShortName">i_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_reset" type="logic">
+                  <obj_property name="ElementShortName">i_reset</obj_property>
+                  <obj_property name="ObjectShortName">i_reset</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_opcode" type="array">
+                  <obj_property name="ElementShortName">i_opcode[5:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_opcode[5:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_funct" type="array">
+                  <obj_property name="ElementShortName">i_funct[5:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_funct[5:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/i_flush_unit_ctrl" type="logic">
+                  <obj_property name="ElementShortName">i_flush_unit_ctrl</obj_property>
+                  <obj_property name="ObjectShortName">i_flush_unit_ctrl</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_signed" type="logic">
+                  <obj_property name="ElementShortName">o_signed</obj_property>
+                  <obj_property name="ObjectShortName">o_signed</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_reg_dest" type="logic">
+                  <obj_property name="ElementShortName">o_reg_dest</obj_property>
+                  <obj_property name="ObjectShortName">o_reg_dest</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_alu_op" type="array">
+                  <obj_property name="ElementShortName">o_alu_op[5:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_alu_op[5:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_alu_src" type="logic">
+                  <obj_property name="ElementShortName">o_alu_src</obj_property>
+                  <obj_property name="ObjectShortName">o_alu_src</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_mem_read" type="logic">
+                  <obj_property name="ElementShortName">o_mem_read</obj_property>
+                  <obj_property name="ObjectShortName">o_mem_read</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_mem_write" type="logic">
+                  <obj_property name="ElementShortName">o_mem_write</obj_property>
+                  <obj_property name="ObjectShortName">o_mem_write</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_branch" type="logic">
+                  <obj_property name="ElementShortName">o_branch</obj_property>
+                  <obj_property name="ObjectShortName">o_branch</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_reg_write" type="logic">
+                  <obj_property name="ElementShortName">o_reg_write</obj_property>
+                  <obj_property name="ObjectShortName">o_reg_write</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_mem_to_reg" type="logic">
+                  <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+                  <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_jump" type="logic">
+                  <obj_property name="ElementShortName">o_jump</obj_property>
+                  <obj_property name="ObjectShortName">o_jump</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_byte_enable" type="logic">
+                  <obj_property name="ElementShortName">o_byte_enable</obj_property>
+                  <obj_property name="ObjectShortName">o_byte_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_halfword_enable" type="logic">
+                  <obj_property name="ElementShortName">o_halfword_enable</obj_property>
+                  <obj_property name="ObjectShortName">o_halfword_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_word_enable" type="logic">
+                  <obj_property name="ElementShortName">o_word_enable</obj_property>
+                  <obj_property name="ObjectShortName">o_word_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_jr_jalr" type="logic">
+                  <obj_property name="ElementShortName">o_jr_jalr</obj_property>
+                  <obj_property name="ObjectShortName">o_jr_jalr</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/unit_control/o_halt" type="logic">
+                  <obj_property name="ElementShortName">o_halt</obj_property>
+                  <obj_property name="ObjectShortName">o_halt</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">ext_sig</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/ext_sign/i_data" type="array">
+                  <obj_property name="ElementShortName">i_data[15:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_data[15:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/ext_sign/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">ext</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/extend/i_data" type="array">
+                  <obj_property name="ElementShortName">i_data[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_data[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/extend/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">concat</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/concat_module/i_enable" type="logic">
+                  <obj_property name="ElementShortName">i_enable</obj_property>
+                  <obj_property name="ObjectShortName">i_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/concat_module/i_inst" type="array">
+                  <obj_property name="ElementShortName">i_inst[25:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_inst[25:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/concat_module/i_next_pc" type="array">
+                  <obj_property name="ElementShortName">i_next_pc[3:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_next_pc[3:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/DECODE/concat_module/o_jump_addr" type="array">
+                  <obj_property name="ElementShortName">o_jump_addr[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_jump_addr[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">----ID/EX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_pipeline_enable" type="logic">
+               <obj_property name="ElementShortName">i_pipeline_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pipeline_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_signed" type="logic">
+               <obj_property name="ElementShortName">i_signed</obj_property>
+               <obj_property name="ObjectShortName">i_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_mem_read" type="logic">
+               <obj_property name="ElementShortName">i_mem_read</obj_property>
+               <obj_property name="ObjectShortName">i_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_mem_write" type="logic">
+               <obj_property name="ElementShortName">i_mem_write</obj_property>
+               <obj_property name="ObjectShortName">i_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_branch" type="logic">
+               <obj_property name="ElementShortName">i_branch</obj_property>
+               <obj_property name="ObjectShortName">i_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_alu_src" type="logic">
+               <obj_property name="ElementShortName">i_alu_src</obj_property>
+               <obj_property name="ObjectShortName">i_alu_src</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_reg_dest" type="logic">
+               <obj_property name="ElementShortName">i_reg_dest</obj_property>
+               <obj_property name="ObjectShortName">i_reg_dest</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_alu_op" type="array">
+               <obj_property name="ElementShortName">i_alu_op[5:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_op[5:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_data_a" type="array">
+               <obj_property name="ElementShortName">i_data_a[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_a[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_data_b" type="array">
+               <obj_property name="ElementShortName">i_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_immediate" type="array">
+               <obj_property name="ElementShortName">i_immediate[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_immediate[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_shamt" type="array">
+               <obj_property name="ElementShortName">i_shamt[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_shamt[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_rt" type="array">
+               <obj_property name="ElementShortName">i_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_rd" type="array">
+               <obj_property name="ElementShortName">i_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_rs" type="array">
+               <obj_property name="ElementShortName">i_rs[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rs[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_byte_enable" type="logic">
+               <obj_property name="ElementShortName">i_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">i_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">i_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">i_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_word_enable" type="logic">
+               <obj_property name="ElementShortName">i_word_enable</obj_property>
+               <obj_property name="ObjectShortName">i_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_jump" type="logic">
+               <obj_property name="ElementShortName">i_jump</obj_property>
+               <obj_property name="ObjectShortName">i_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/i_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">i_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">i_jr_jalr</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_signed" type="logic">
+               <obj_property name="ElementShortName">o_signed</obj_property>
+               <obj_property name="ObjectShortName">o_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_mem_read" type="logic">
+               <obj_property name="ElementShortName">o_mem_read</obj_property>
+               <obj_property name="ObjectShortName">o_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_mem_write" type="logic">
+               <obj_property name="ElementShortName">o_mem_write</obj_property>
+               <obj_property name="ObjectShortName">o_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_branch" type="logic">
+               <obj_property name="ElementShortName">o_branch</obj_property>
+               <obj_property name="ObjectShortName">o_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_alu_src" type="logic">
+               <obj_property name="ElementShortName">o_alu_src</obj_property>
+               <obj_property name="ObjectShortName">o_alu_src</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_reg_dest" type="logic">
+               <obj_property name="ElementShortName">o_reg_dest</obj_property>
+               <obj_property name="ObjectShortName">o_reg_dest</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_alu_op" type="array">
+               <obj_property name="ElementShortName">o_alu_op[5:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_op[5:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_data_a" type="array">
+               <obj_property name="ElementShortName">o_data_a[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_a[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_data_b" type="array">
+               <obj_property name="ElementShortName">o_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_immediate" type="array">
+               <obj_property name="ElementShortName">o_immediate[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_immediate[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_shamt" type="array">
+               <obj_property name="ElementShortName">o_shamt[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_shamt[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_rt" type="array">
+               <obj_property name="ElementShortName">o_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_rd" type="array">
+               <obj_property name="ElementShortName">o_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_rs" type="array">
+               <obj_property name="ElementShortName">o_rs[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_rs[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_byte_enable" type="logic">
+               <obj_property name="ElementShortName">o_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">o_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">o_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">o_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_word_enable" type="logic">
+               <obj_property name="ElementShortName">o_word_enable</obj_property>
+               <obj_property name="ObjectShortName">o_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_jump" type="logic">
+               <obj_property name="ElementShortName">o_jump</obj_property>
+               <obj_property name="ObjectShortName">o_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/ID_EX_reg/o_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">o_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">o_jr_jalr</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">EXECUTE</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_signed" type="logic">
+               <obj_property name="ElementShortName">i_signed</obj_property>
+               <obj_property name="ObjectShortName">i_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_mem_read" type="logic">
+               <obj_property name="ElementShortName">i_mem_read</obj_property>
+               <obj_property name="ObjectShortName">i_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_mem_write" type="logic">
+               <obj_property name="ElementShortName">i_mem_write</obj_property>
+               <obj_property name="ObjectShortName">i_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_branch" type="logic">
+               <obj_property name="ElementShortName">i_branch</obj_property>
+               <obj_property name="ObjectShortName">i_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_alu_src" type="logic">
+               <obj_property name="ElementShortName">i_alu_src</obj_property>
+               <obj_property name="ObjectShortName">i_alu_src</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_reg_dest" type="logic">
+               <obj_property name="ElementShortName">i_reg_dest</obj_property>
+               <obj_property name="ObjectShortName">i_reg_dest</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_alu_op" type="array">
+               <obj_property name="ElementShortName">i_alu_op[5:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_op[5:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_data_a" type="array">
+               <obj_property name="ElementShortName">i_data_a[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_a[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_data_b" type="array">
+               <obj_property name="ElementShortName">i_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_immediate" type="array">
+               <obj_property name="ElementShortName">i_immediate[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_immediate[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_shamt" type="array">
+               <obj_property name="ElementShortName">i_shamt[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_shamt[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_rt" type="array">
+               <obj_property name="ElementShortName">i_rt[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rt[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_rd" type="array">
+               <obj_property name="ElementShortName">i_rd[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_rd[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_byte_enable" type="logic">
+               <obj_property name="ElementShortName">i_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">i_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">i_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">i_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_word_enable" type="logic">
+               <obj_property name="ElementShortName">i_word_enable</obj_property>
+               <obj_property name="ObjectShortName">i_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_mem_fwd_data" type="array">
+               <obj_property name="ElementShortName">i_mem_fwd_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_mem_fwd_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_wb_fwd_data" type="array">
+               <obj_property name="ElementShortName">i_wb_fwd_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_wb_fwd_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_fwd_a" type="array">
+               <obj_property name="ElementShortName">i_fwd_a[1:0]</obj_property>
+               <obj_property name="ObjectShortName">i_fwd_a[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_fwd_b" type="array">
+               <obj_property name="ElementShortName">i_fwd_b[1:0]</obj_property>
+               <obj_property name="ObjectShortName">i_fwd_b[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_forwarding_mux" type="array">
+               <obj_property name="ElementShortName">i_forwarding_mux[1:0]</obj_property>
+               <obj_property name="ObjectShortName">i_forwarding_mux[1:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/i_jump" type="logic">
+               <obj_property name="ElementShortName">i_jump</obj_property>
+               <obj_property name="ObjectShortName">i_jump</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_signed" type="logic">
+               <obj_property name="ElementShortName">o_signed</obj_property>
+               <obj_property name="ObjectShortName">o_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_mem_read" type="logic">
+               <obj_property name="ElementShortName">o_mem_read</obj_property>
+               <obj_property name="ObjectShortName">o_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_mem_write" type="logic">
+               <obj_property name="ElementShortName">o_mem_write</obj_property>
+               <obj_property name="ObjectShortName">o_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_branch" type="logic">
+               <obj_property name="ElementShortName">o_branch</obj_property>
+               <obj_property name="ObjectShortName">o_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_branch_addr" type="array">
+               <obj_property name="ElementShortName">o_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_zero" type="logic">
+               <obj_property name="ElementShortName">o_zero</obj_property>
+               <obj_property name="ObjectShortName">o_zero</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_alu_result" type="array">
+               <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_data_b" type="array">
+               <obj_property name="ElementShortName">o_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_selected_reg" type="array">
+               <obj_property name="ElementShortName">o_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_byte_enable" type="logic">
+               <obj_property name="ElementShortName">o_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">o_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">o_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">o_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_word_enable" type="logic">
+               <obj_property name="ElementShortName">o_word_enable</obj_property>
+               <obj_property name="ObjectShortName">o_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">o_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">o_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/o_jump" type="logic">
+               <obj_property name="ElementShortName">o_jump</obj_property>
+               <obj_property name="ObjectShortName">o_jump</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">adder</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/adder_2/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/adder_2/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/adder_2/o_result" type="array">
+                  <obj_property name="ElementShortName">o_result[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_result[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">alu</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Inputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="group23" type="group">
+                  <obj_property name="label">Outputs</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu/i_alu_ctrl" type="array">
+                  <obj_property name="ElementShortName">i_alu_ctrl[3:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_alu_ctrl[3:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu/o_zero" type="logic">
+                  <obj_property name="ElementShortName">o_zero</obj_property>
+                  <obj_property name="ObjectShortName">o_zero</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu/o_result" type="array">
+                  <obj_property name="ElementShortName">o_result[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_result[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">alu_control</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu_control/i_funct_code" type="array">
+                  <obj_property name="ElementShortName">i_funct_code[5:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_funct_code[5:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu_control/i_alu_op" type="array">
+                  <obj_property name="ElementShortName">i_alu_op[5:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_alu_op[5:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu_control/o_alu_ctrl" type="array">
+                  <obj_property name="ElementShortName">o_alu_ctrl[3:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_alu_ctrl[3:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu_control/o_shamt_ctrl" type="logic">
+                  <obj_property name="ElementShortName">o_shamt_ctrl</obj_property>
+                  <obj_property name="ObjectShortName">o_shamt_ctrl</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/alu_control/o_last_register_ctrl" type="logic">
+                  <obj_property name="ElementShortName">o_last_register_ctrl</obj_property>
+                  <obj_property name="ObjectShortName">o_last_register_ctrl</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">shifter</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/shifter/i_data" type="array">
+                  <obj_property name="ElementShortName">i_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/shifter/o_result" type="array">
+                  <obj_property name="ElementShortName">o_result[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_result[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux2</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_dataB_or_Inm/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_dataB_or_Inm/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_dataB_or_Inm/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_dataB_or_Inm/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux2</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_or_RD/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_or_RD/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_or_RD/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_or_RD/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[4:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux2</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_RD_or_LAST_REG/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_RD_or_LAST_REG/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_RD_or_LAST_REG/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_RT_RD_or_LAST_REG/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[4:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux2</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_shamt_OR_dataA/i_SEL" type="logic">
+                  <obj_property name="ElementShortName">i_SEL</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_shamt_OR_dataA/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_shamt_OR_dataA/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux2_shamt_OR_dataA/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux4</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/i_SEL" type="array">
+                  <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/i_C" type="array">
+                  <obj_property name="ElementShortName">i_C[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_C[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/i_D" type="array">
+                  <obj_property name="ElementShortName">i_D[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_D[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_shamt_dataA_OR_mem_data_OR_forward_data/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux4</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/i_SEL" type="array">
+                  <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/i_C" type="array">
+                  <obj_property name="ElementShortName">i_C[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_C[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/i_D" type="array">
+                  <obj_property name="ElementShortName">i_D[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_D[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_dataB_Inm_OR_mem_data_OR_forward_data/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mux4</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/i_SEL" type="array">
+                  <obj_property name="ElementShortName">i_SEL[1:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_SEL[1:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/i_A" type="array">
+                  <obj_property name="ElementShortName">i_A[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_A[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/i_B" type="array">
+                  <obj_property name="ElementShortName">i_B[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_B[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/i_C" type="array">
+                  <obj_property name="ElementShortName">i_C[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_C[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/i_D" type="array">
+                  <obj_property name="ElementShortName">i_D[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_D[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EXECUTE/mux4_mem_data_OR_wb_data_OR_dataB/o_data" type="array">
+                  <obj_property name="ElementShortName">o_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">----EX/MEM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_pipeline_enable" type="logic">
+               <obj_property name="ElementShortName">i_pipeline_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pipeline_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_flush" type="logic">
+               <obj_property name="ElementShortName">i_flush</obj_property>
+               <obj_property name="ObjectShortName">i_flush</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_signed" type="logic">
+               <obj_property name="ElementShortName">i_signed</obj_property>
+               <obj_property name="ObjectShortName">i_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_mem_read" type="logic">
+               <obj_property name="ElementShortName">i_mem_read</obj_property>
+               <obj_property name="ObjectShortName">i_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_mem_write" type="logic">
+               <obj_property name="ElementShortName">i_mem_write</obj_property>
+               <obj_property name="ObjectShortName">i_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_branch" type="logic">
+               <obj_property name="ElementShortName">i_branch</obj_property>
+               <obj_property name="ObjectShortName">i_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_branch_addr" type="array">
+               <obj_property name="ElementShortName">i_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_zero" type="logic">
+               <obj_property name="ElementShortName">i_zero</obj_property>
+               <obj_property name="ObjectShortName">i_zero</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_alu_result" type="array">
+               <obj_property name="ElementShortName">i_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_data_b" type="array">
+               <obj_property name="ElementShortName">i_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_selected_reg" type="array">
+               <obj_property name="ElementShortName">i_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_byte_enable" type="logic">
+               <obj_property name="ElementShortName">i_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">i_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">i_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">i_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_word_enable" type="logic">
+               <obj_property name="ElementShortName">i_word_enable</obj_property>
+               <obj_property name="ObjectShortName">i_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">i_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">i_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_jump" type="logic">
+               <obj_property name="ElementShortName">i_jump</obj_property>
+               <obj_property name="ObjectShortName">i_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/i_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">i_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">i_jr_jalr</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_signed" type="logic">
+               <obj_property name="ElementShortName">o_signed</obj_property>
+               <obj_property name="ObjectShortName">o_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_mem_read" type="logic">
+               <obj_property name="ElementShortName">o_mem_read</obj_property>
+               <obj_property name="ObjectShortName">o_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_mem_write" type="logic">
+               <obj_property name="ElementShortName">o_mem_write</obj_property>
+               <obj_property name="ObjectShortName">o_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_branch" type="logic">
+               <obj_property name="ElementShortName">o_branch</obj_property>
+               <obj_property name="ObjectShortName">o_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_branch_addr" type="array">
+               <obj_property name="ElementShortName">o_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_zero" type="logic">
+               <obj_property name="ElementShortName">o_zero</obj_property>
+               <obj_property name="ObjectShortName">o_zero</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_alu_result" type="array">
+               <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_data_b" type="array">
+               <obj_property name="ElementShortName">o_data_b[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_data_b[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_selected_reg" type="array">
+               <obj_property name="ElementShortName">o_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_byte_enable" type="logic">
+               <obj_property name="ElementShortName">o_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">o_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">o_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">o_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_word_enable" type="logic">
+               <obj_property name="ElementShortName">o_word_enable</obj_property>
+               <obj_property name="ObjectShortName">o_word_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">o_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">o_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_jump" type="logic">
+               <obj_property name="ElementShortName">o_jump</obj_property>
+               <obj_property name="ObjectShortName">o_jump</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/EX_MEM_reg/o_jr_jalr" type="logic">
+               <obj_property name="ElementShortName">o_jr_jalr</obj_property>
+               <obj_property name="ObjectShortName">o_jr_jalr</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">MEMORY</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_debug_unit_flag" type="logic">
+               <obj_property name="ElementShortName">i_debug_unit_flag</obj_property>
+               <obj_property name="ObjectShortName">i_debug_unit_flag</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_signed" type="logic">
+               <obj_property name="ElementShortName">i_signed</obj_property>
+               <obj_property name="ObjectShortName">i_signed</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_memory_data_enable" type="logic">
+               <obj_property name="ElementShortName">i_memory_data_enable</obj_property>
+               <obj_property name="ObjectShortName">i_memory_data_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_memory_data_read_enable" type="logic">
+               <obj_property name="ElementShortName">i_memory_data_read_enable</obj_property>
+               <obj_property name="ObjectShortName">i_memory_data_read_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_memory_data_read_addr" type="array">
+               <obj_property name="ElementShortName">i_memory_data_read_addr[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_memory_data_read_addr[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_mem_read" type="logic">
+               <obj_property name="ElementShortName">i_mem_read</obj_property>
+               <obj_property name="ObjectShortName">i_mem_read</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_mem_write" type="logic">
+               <obj_property name="ElementShortName">i_mem_write</obj_property>
+               <obj_property name="ObjectShortName">i_mem_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_complete_word" type="logic">
+               <obj_property name="ElementShortName">i_complete_word</obj_property>
+               <obj_property name="ObjectShortName">i_complete_word</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_halfword_enable" type="logic">
+               <obj_property name="ElementShortName">i_halfword_enable</obj_property>
+               <obj_property name="ObjectShortName">i_halfword_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_byte_enable" type="logic">
+               <obj_property name="ElementShortName">i_byte_enable</obj_property>
+               <obj_property name="ObjectShortName">i_byte_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_branch" type="logic">
+               <obj_property name="ElementShortName">i_branch</obj_property>
+               <obj_property name="ObjectShortName">i_branch</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_zero" type="logic">
+               <obj_property name="ElementShortName">i_zero</obj_property>
+               <obj_property name="ObjectShortName">i_zero</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_branch_addr" type="array">
+               <obj_property name="ElementShortName">i_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_alu_result" type="array">
+               <obj_property name="ElementShortName">i_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_write_data" type="array">
+               <obj_property name="ElementShortName">i_write_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_write_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_selected_reg" type="array">
+               <obj_property name="ElementShortName">i_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">i_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">i_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_mem_data" type="array">
+               <obj_property name="ElementShortName">o_mem_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_mem_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_read_dm" type="array">
+               <obj_property name="ElementShortName">o_read_dm[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_read_dm[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_selected_reg" type="array">
+               <obj_property name="ElementShortName">o_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_alu_result" type="array">
+               <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_branch_addr" type="array">
+               <obj_property name="ElementShortName">o_branch_addr[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_branch_addr[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_branch_zero" type="logic">
+               <obj_property name="ElementShortName">o_branch_zero</obj_property>
+               <obj_property name="ObjectShortName">o_branch_zero</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">o_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">o_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Submodules</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">select_mode</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_debug_unit_flag" type="logic">
+                  <obj_property name="ElementShortName">i_debug_unit_flag</obj_property>
+                  <obj_property name="ObjectShortName">i_debug_unit_flag</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_memory_data_read_enable" type="logic">
+                  <obj_property name="ElementShortName">i_memory_data_read_enable</obj_property>
+                  <obj_property name="ObjectShortName">i_memory_data_read_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_memory_data_read_addr" type="array">
+                  <obj_property name="ElementShortName">i_memory_data_read_addr[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_memory_data_read_addr[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_mem_read" type="logic">
+                  <obj_property name="ElementShortName">i_mem_read</obj_property>
+                  <obj_property name="ObjectShortName">i_mem_read</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_mem_write" type="logic">
+                  <obj_property name="ElementShortName">i_mem_write</obj_property>
+                  <obj_property name="ObjectShortName">i_mem_write</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/i_alu_result" type="array">
+                  <obj_property name="ElementShortName">i_alu_result[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_alu_result[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/o_addr" type="array">
+                  <obj_property name="ElementShortName">o_addr[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_addr[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/o_mem_read" type="logic">
+                  <obj_property name="ElementShortName">o_mem_read</obj_property>
+                  <obj_property name="ObjectShortName">o_mem_read</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/select_mode/o_mem_write" type="logic">
+                  <obj_property name="ElementShortName">o_mem_write</obj_property>
+                  <obj_property name="ObjectShortName">o_mem_write</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mem_controller</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_signed" type="logic">
+                  <obj_property name="ElementShortName">i_signed</obj_property>
+                  <obj_property name="ObjectShortName">i_signed</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_write" type="logic">
+                  <obj_property name="ElementShortName">i_write</obj_property>
+                  <obj_property name="ObjectShortName">i_write</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_read" type="logic">
+                  <obj_property name="ElementShortName">i_read</obj_property>
+                  <obj_property name="ObjectShortName">i_read</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_word_size" type="array">
+                  <obj_property name="ElementShortName">i_word_size[2:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_word_size[2:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_write_data" type="array">
+                  <obj_property name="ElementShortName">i_write_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_write_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/i_read_data" type="array">
+                  <obj_property name="ElementShortName">i_read_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_read_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/o_write_data" type="array">
+                  <obj_property name="ElementShortName">o_write_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_write_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_controller/o_read_data" type="array">
+                  <obj_property name="ElementShortName">o_read_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_read_data[31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject fp_name="group23" type="group">
+               <obj_property name="label">mem_data</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_clock" type="logic">
+                  <obj_property name="ElementShortName">i_clock</obj_property>
+                  <obj_property name="ObjectShortName">i_clock</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_enable" type="logic">
+                  <obj_property name="ElementShortName">i_enable</obj_property>
+                  <obj_property name="ObjectShortName">i_enable</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_write" type="logic">
+                  <obj_property name="ElementShortName">i_write</obj_property>
+                  <obj_property name="ObjectShortName">i_write</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_read" type="logic">
+                  <obj_property name="ElementShortName">i_read</obj_property>
+                  <obj_property name="ObjectShortName">i_read</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_read_addr" type="array">
+                  <obj_property name="ElementShortName">i_read_addr[4:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_read_addr[4:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/i_write_data" type="array">
+                  <obj_property name="ElementShortName">i_write_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">i_write_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/o_read_data" type="array">
+                  <obj_property name="ElementShortName">o_read_data[31:0]</obj_property>
+                  <obj_property name="ObjectShortName">o_read_data[31:0]</obj_property>
+               </wvobject>
+               <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEMORY/mem_data/BRAM" type="array">
+                  <obj_property name="ElementShortName">BRAM[31:0][31:0]</obj_property>
+                  <obj_property name="ObjectShortName">BRAM[31:0][31:0]</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">----MEM/WB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_clock" type="logic">
+               <obj_property name="ElementShortName">i_clock</obj_property>
+               <obj_property name="ObjectShortName">i_clock</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_reset" type="logic">
+               <obj_property name="ElementShortName">i_reset</obj_property>
+               <obj_property name="ObjectShortName">i_reset</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_pipeline_enable" type="logic">
+               <obj_property name="ElementShortName">i_pipeline_enable</obj_property>
+               <obj_property name="ObjectShortName">i_pipeline_enable</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_mem_data" type="array">
+               <obj_property name="ElementShortName">i_mem_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_mem_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_alu_result" type="array">
+               <obj_property name="ElementShortName">i_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_selected_reg" type="array">
+               <obj_property name="ElementShortName">i_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">i_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">i_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">o_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">o_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_mem_data" type="array">
+               <obj_property name="ElementShortName">o_mem_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_mem_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_alu_result" type="array">
+               <obj_property name="ElementShortName">o_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_selected_reg" type="array">
+               <obj_property name="ElementShortName">o_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">o_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">o_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_pc" type="array">
+               <obj_property name="ElementShortName">o_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/MEM_WB_reg/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group23" type="group">
+         <obj_property name="label">WRITE_BACK</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Inputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_reg_write" type="logic">
+               <obj_property name="ElementShortName">i_reg_write</obj_property>
+               <obj_property name="ObjectShortName">i_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_mem_to_reg" type="logic">
+               <obj_property name="ElementShortName">i_mem_to_reg</obj_property>
+               <obj_property name="ObjectShortName">i_mem_to_reg</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_mem_data" type="array">
+               <obj_property name="ElementShortName">i_mem_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_mem_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_alu_result" type="array">
+               <obj_property name="ElementShortName">i_alu_result[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_alu_result[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_selected_reg" type="array">
+               <obj_property name="ElementShortName">i_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">i_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_last_register_ctrl" type="logic">
+               <obj_property name="ElementShortName">i_last_register_ctrl</obj_property>
+               <obj_property name="ObjectShortName">i_last_register_ctrl</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_pc" type="array">
+               <obj_property name="ElementShortName">i_pc[31:0]</obj_property>
+               <obj_property name="ObjectShortName">i_pc[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/i_halt" type="logic">
+               <obj_property name="ElementShortName">i_halt</obj_property>
+               <obj_property name="ObjectShortName">i_halt</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group23" type="group">
+            <obj_property name="label">Outputs</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/o_reg_write" type="logic">
+               <obj_property name="ElementShortName">o_reg_write</obj_property>
+               <obj_property name="ObjectShortName">o_reg_write</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/o_selected_data" type="array">
+               <obj_property name="ElementShortName">o_selected_data[31:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_data[31:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/o_selected_reg" type="array">
+               <obj_property name="ElementShortName">o_selected_reg[4:0]</obj_property>
+               <obj_property name="ObjectShortName">o_selected_reg[4:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_TOP_for_debug/TOP/PIPELINE/WRITE_BACK/o_halt" type="logic">
+               <obj_property name="ElementShortName">o_halt</obj_property>
+               <obj_property name="ObjectShortName">o_halt</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group22" type="group">
+      <obj_property name="label">DEBUG UNIT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_state" type="array">
+         <obj_property name="ElementShortName">o_state[9:0]</obj_property>
+         <obj_property name="ObjectShortName">o_state[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">Inputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_halt" type="logic">
+            <obj_property name="ElementShortName">i_halt</obj_property>
+            <obj_property name="ObjectShortName">i_halt</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_rx_done" type="logic">
+            <obj_property name="ElementShortName">i_rx_done</obj_property>
+            <obj_property name="ObjectShortName">i_rx_done</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_tx_done" type="logic">
+            <obj_property name="ElementShortName">i_tx_done</obj_property>
+            <obj_property name="ObjectShortName">i_tx_done</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_rx_data" type="array">
+            <obj_property name="ElementShortName">i_rx_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx_data[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_pc_value" type="array">
+            <obj_property name="ElementShortName">i_pc_value[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_pc_value[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_mem_data" type="array">
+            <obj_property name="ElementShortName">i_mem_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_mem_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/i_bank_reg_data" type="array">
+            <obj_property name="ElementShortName">i_bank_reg_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_bank_reg_data[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group24" type="group">
+         <obj_property name="label">Outputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_instru_mem_data" type="array">
+            <obj_property name="ElementShortName">o_instru_mem_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">o_instru_mem_data[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_instru_mem_addr" type="array">
+            <obj_property name="ElementShortName">o_instru_mem_addr[7:0]</obj_property>
+            <obj_property name="ObjectShortName">o_instru_mem_addr[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_rb_addr" type="array">
+            <obj_property name="ElementShortName">o_rb_addr[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_rb_addr[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_mem_data_addr" type="array">
+            <obj_property name="ElementShortName">o_mem_data_addr[4:0]</obj_property>
+            <obj_property name="ObjectShortName">o_mem_data_addr[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_tx_data" type="array">
+            <obj_property name="ElementShortName">o_tx_data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">o_tx_data[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_tx_start" type="logic">
+            <obj_property name="ElementShortName">o_tx_start</obj_property>
+            <obj_property name="ObjectShortName">o_tx_start</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_instru_mem_write_enable" type="logic">
+            <obj_property name="ElementShortName">o_instru_mem_write_enable</obj_property>
+            <obj_property name="ObjectShortName">o_instru_mem_write_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_instru_mem_read_enable" type="logic">
+            <obj_property name="ElementShortName">o_instru_mem_read_enable</obj_property>
+            <obj_property name="ObjectShortName">o_instru_mem_read_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_instru_mem_enable" type="logic">
+            <obj_property name="ElementShortName">o_instru_mem_enable</obj_property>
+            <obj_property name="ObjectShortName">o_instru_mem_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_rb_read_enable" type="logic">
+            <obj_property name="ElementShortName">o_rb_read_enable</obj_property>
+            <obj_property name="ObjectShortName">o_rb_read_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_rb_enable" type="logic">
+            <obj_property name="ElementShortName">o_rb_enable</obj_property>
+            <obj_property name="ObjectShortName">o_rb_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_mem_data_enable" type="logic">
+            <obj_property name="ElementShortName">o_mem_data_enable</obj_property>
+            <obj_property name="ObjectShortName">o_mem_data_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_mem_data_read_enable" type="logic">
+            <obj_property name="ElementShortName">o_mem_data_read_enable</obj_property>
+            <obj_property name="ObjectShortName">o_mem_data_read_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_mem_data_debug_unit" type="logic">
+            <obj_property name="ElementShortName">o_mem_data_debug_unit</obj_property>
+            <obj_property name="ObjectShortName">o_mem_data_debug_unit</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_unit_control_enable" type="logic">
+            <obj_property name="ElementShortName">o_unit_control_enable</obj_property>
+            <obj_property name="ObjectShortName">o_unit_control_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_pc_enable" type="logic">
+            <obj_property name="ElementShortName">o_pc_enable</obj_property>
+            <obj_property name="ObjectShortName">o_pc_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_pipeline_enable" type="logic">
+            <obj_property name="ElementShortName">o_pipeline_enable</obj_property>
+            <obj_property name="ObjectShortName">o_pipeline_enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_TOP_for_debug/TOP/debug_unit/o_state" type="array">
+            <obj_property name="ElementShortName">o_state[9:0]</obj_property>
+            <obj_property name="ObjectShortName">o_state[9:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>
