@@ -68,7 +68,7 @@ module tb_TOP_for_debug;
 
     #20
     i_rx_done       = 1'b0;
-    $readmemb("C:/Users/chito/OneDrive/Escritorio/MIPS-DLX/compiled.txt", memory, 0, 255);
+    $readmemb("C:/Users/chito/OneDrive/Escritorio/MIPS-DLX/GUI/programs/compiled.txt", memory, 0, 255);
 	//Se envian todas las instrucciones
     for (i=0; i<256; i=i+1) begin
         #200
