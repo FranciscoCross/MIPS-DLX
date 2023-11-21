@@ -5,15 +5,21 @@ This is the final project for the Computers Architecture subject of the Computer
 
 ## Software
 
-This project was developed using Xilinx Vivado 2022.1 with legacy boards support enabled using
+This project was developed using Xilinx Vivado 2023.1 with legacy boards support enabled using
 https://github.com/Digilent/vivado-boards
 
 ## File tree
 
 ```
 .
+├── Behaviours
+├── GUI
+├── constraints
 ├── src
-├── test
+|    ├── debug unit
+|    ├── pipeline
+|    └── uart
+├── sim
 └── Readme.md
 ```
 
